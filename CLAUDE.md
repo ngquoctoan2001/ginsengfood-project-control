@@ -53,6 +53,9 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
 
 ## 4. An toàn
 
+- **Thư mục này là repo git CÔNG KHAI** (`github.com/ngquoctoan2001/ginsengfood-project-control`, Lead chốt 14/11): mọi tệp ngoài
+  `.gitignore` sẽ ai cũng đọc được. Không ghi bí mật, mật khẩu, số điện thoại hay dữ liệu khách thật vào sổ; bằng chứng nặng để trong
+  thư mục con của `modules/<mã>/ra-soat/` (đã loại khỏi git). Trước mỗi lần push chạy lại bước quét bí mật.
 - Không đọc, in, chép bí mật (mọi `.env*`, khoá, token, mật khẩu, chuỗi số từ 10 chữ số); không dùng dữ liệu khách thật.
   6 repo có token Sheet trong `tools/task-tracker/sheet.json` đã commit: `git show/diff/log -p` luôn thêm
   `-- . ':!**/sheet.json' ':!**/.env*'`.
