@@ -1,0 +1,113 @@
+{
+  "schema": "m8-wp07d-source-review/v1",
+  "observed_at": "2026-11-02T11:42:15.999386+07:00",
+  "source_commit": "c9f0cd188f4966d07aafb3155039656b1b451034",
+  "source_clean": true,
+  "status": "SOURCE_REVIEW_AND_INDEPENDENT_DOCUMENT_REVIEW_PASS",
+  "host_actions_performed": false,
+  "REAL_CUSTOMER_CALL_ALLOWED": "NO",
+  "document": "2026-11-02-ban-khai-trien-khai-m8.md",
+  "sources": [
+    {
+      "path": "deploy/release-candidate/render_hosts.py",
+      "git_blob": "aecabb46cf8258b55b495134e7246acf02d2c6b7",
+      "working_file_sha256": "0f899acec538ab5e2edbb0a8575203041d207c5599c92f15fb4b58cc9b3179dc"
+    },
+    {
+      "path": "deploy/release-candidate/operations_payload.py",
+      "git_blob": "49f457ecd691188b943dfcdcd3d00124e04223f6",
+      "working_file_sha256": "47fcd1d4cfcfb00e4e9a4eabd1caddd45921c3a95771ab3543986ac49d584739"
+    },
+    {
+      "path": "deploy/release-candidate/build_images.py",
+      "git_blob": "089a39fad46e89301ba0ae1b7ea285413f7a47c5",
+      "working_file_sha256": "2b40770bf1a30a42c4b155561091ee0b5b76a25db89ef1ea9d241a0d0860d0b0"
+    },
+    {
+      "path": "deploy/release-candidate/tests/probe.py",
+      "git_blob": "bbce9c954e13566c2857bad5d8aa622747a2533e",
+      "working_file_sha256": "70a13c69017f187545eb1d96ed04d449c57a57e57765b1cc06490ec15c1ede38"
+    },
+    {
+      "path": "deploy/release-candidate/README.md",
+      "git_blob": "e318a9fef178fbe1d88b3f217f1b46bafb1733db",
+      "working_file_sha256": "19907fcbf82a4130fc9c8a6da422eb1100d131ef0d5d9a06d55847a18f07cfb7"
+    },
+    {
+      "path": "deploy/telephony-vm/vm_deploy.py",
+      "git_blob": "7511b91eec93eafb1f7c98f5339991352193bc06",
+      "working_file_sha256": "bebd519d06a56ed44fd40c5df5b6c3fbe8c6e7f987d2763e0d01acd037227fc5"
+    },
+    {
+      "path": "deploy/telephony-link/link_bundle.py",
+      "git_blob": "6fcbad3a3f366debbdb84b981017eeae49064214",
+      "working_file_sha256": "b2c9d87928b81953e3e4f0bc7231978f5db2b7f1ff1dd2681d6d445b53309c3e"
+    },
+    {
+      "path": "deploy/operations/ivr-operations.service",
+      "git_blob": "5750fe2b54e484aef05794ab0954355909687463",
+      "working_file_sha256": "dd0bc684f88b31e94c40001705803db9eab866325461b1053d9020d73dd6606d"
+    },
+    {
+      "path": "deploy/operations/ivr-operations-metrics.service",
+      "git_blob": "740bbc6a57c24f4e6a6ef3a824e4c206c35423f3",
+      "working_file_sha256": "4988071e11a60d56ca4e071da888bd664f73a48a211837dc21be220d54e9e551"
+    },
+    {
+      "path": "deploy/operations/prometheus.yml",
+      "git_blob": "1f105f3cfd75afc8be17ea6db8638f4b9a6712c1",
+      "working_file_sha256": "3d4737129e7cbb6771e863fc4a5e2ef3bdc3b83bc1ea19507c5025e080b9b988"
+    },
+    {
+      "path": "deploy/operations/prometheus/compose.json",
+      "git_blob": "856a7a73fc4dcdc607ba8f4a7e15742023f2bc2e",
+      "working_file_sha256": "1f6eec9cca52b3587302c862037ae52652a9e93e67dd1cce5fc887c63239477d"
+    },
+    {
+      "path": "deploy/production-window/db/README.md",
+      "git_blob": "2c8cf5dfc7b493e6c45322a9b8423573db331666",
+      "working_file_sha256": "1e23583dee7a923557240078431335031d0c80114745c27c9e8abe0b00d40d44"
+    },
+    {
+      "path": "deploy/production-window/secrets/README.md",
+      "git_blob": "6dd72aaee70d963ec7ce2304ba611b36c25965b4",
+      "working_file_sha256": "3a008dd9cbbb0163332270bbf96c745593f960d672202433f9a1d2708d241a85"
+    },
+    {
+      "path": "deploy/rollouts/production-window-20261027/README.md",
+      "git_blob": "268438e0e1a5f388ed96fedaa1944e435da586fb",
+      "working_file_sha256": "a40612a9af842b6a40801c775d92888e3c3758aab8e80e942831cc0a7b35fb65"
+    },
+    {
+      "path": "src/Ivr.MediaReceiver/Program.cs",
+      "git_blob": "f262fc6d93674e9a60e44fb68c99dc5b2523d56e",
+      "working_file_sha256": "01a73b07e24818b4207d72200c5ecea0b62608654e8a1adb82385796edc55ecd"
+    },
+    {
+      "path": "specs/api/openapi/ivr-order-confirmation.v1.yaml",
+      "git_blob": "9ae581067a00e21e9ea3e0f51961c09a886ba048",
+      "working_file_sha256": "38c85c8729734389d2fccab7158a4d3ed107666c400bb95ec50124cae73e766b"
+    },
+    {
+      "path": "deploy/backup/ivr-backup.service",
+      "git_blob": "32891df94de8fb745586ec3027c7885ffdbc8509",
+      "working_file_sha256": "bc6c4569f2f84df7e5f004568d009683f9cbf5b16af92c981eea944ce73690fe"
+    },
+    {
+      "path": "deploy/backup/ivr-media-ledger.service",
+      "git_blob": "6b583b346026867b9c037bad1f3cc14b1ada17db",
+      "working_file_sha256": "81630499b16ecfa6d5c7ef1c040089945eb495a1116d2780558a1e2f2a3a5593"
+    },
+    {
+      "path": "deploy/backup/ivr-backup.timer",
+      "git_blob": "f4f614b8e17f714dab2e1c687546bcf107f87668",
+      "working_file_sha256": "876ced45e3a64876f913f748ec791399178af421931ca4bd62f090374848fdd7"
+    },
+    {
+      "path": "deploy/backup/ivr-media-ledger.timer",
+      "git_blob": "f6f8dffb336cb43fd868e18b8372b7a7f91cd6ce",
+      "working_file_sha256": "f31d189dd3880ad183de4db4396772d2d3ffcf2f4e57d9963d24950b3126f6e6"
+    }
+  ],
+  "independent_review": "2026-11-02-wp07d-verifier.md"
+}

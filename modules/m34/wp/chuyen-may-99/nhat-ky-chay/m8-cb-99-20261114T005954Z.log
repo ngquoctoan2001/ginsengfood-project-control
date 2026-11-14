@@ -1,0 +1,6 @@
+
+===== 07:59:54 · cầu M8 .99: do 60m =====
+-- cầu m8that-cb: nguồn bị chặn trong 60m qua (số lượt, IP)
+  dòng nhật ký cầu trong 60m: 56
+M8_ALLOW_IP trong .env:  (trống = mặc định 192.168.1.61) · M3_CB_BIND_IP: 192.168.1.99
+M8_CB_DO_XONG

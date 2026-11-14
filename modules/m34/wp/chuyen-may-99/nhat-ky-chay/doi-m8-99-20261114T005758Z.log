@@ -1,0 +1,73 @@
+
+===== 07:57:58 · M8.1 máy Toàn: ca-m8.pem mới đúng vân tay m8 báo =====
+khớp: 01:39:29:F5:61:81:11:92:21:9F:20:11:7D:B5:0B:12:33:CD:E6:DA:11:8C:4E:0C:A5:4F:73:82:08:FD:86:E1
+
+===== 07:57:58 · M8.2 chép ca-m8.pem mới sang .99 (m8-that/bi-mat/ca-m8.pem.moi, 600) =====
+CHEP_XONG
+
+===== 07:58:00 · M8.3 .99: M8_ORIGIN, ca-m8.pem, be.env, tạo lại be + cầu, gọi thử M8 =====
+ca-m8.pem mới: vân tay khớp m8 báo; notAfter=Feb 15 09:29:01 2029 GMT
+bản cũ: .env.truoc-m8-99-20261114T005754Z, m8-that/bi-mat/{ca-m8.pem,be.env}.truoc-m8-99-20261114T005754Z
+-- tao-chung-thu-cau.sh: tính lại be.env (CA cầu + chứng thư cầu giữ nếu còn hợp lệ)
+SAN của chứng thư cầu: IP:192.168.1.99
+Chứng thư cầu hết hạn: Feb 15 12:10:12 2029 GMT
+CA M8 sha256 (be ghim, đã ghi vào be.env; đối chiếu với vân tay Lead M8 báo): 013929f561811192219f20117db50b1233cde6da118c4e0ca54f738208fd86e1
+CA cầu sha256 (gửi kèm ca-m3.pem cho Lead M8): d5e67d24e8216dc98ab9106720c51e645095398ee65761d95711e55e1783ed51
+-- up --wait (m8that-bi-mat chép lại ca-m8.pem; be + cầu tạo lại, nginx :80 khởi động lại theo be ~1 phút)
+ Container m34-pg-1 Running 
+ Container m34-m8that-cb-1 Running 
+ Container m34-redis-1 Running 
+ Container m34-clamav-1 Running 
+ Container m34-fe-1 Running 
+ Container m34-m8that-bi-mat-1 Recreate 
+ Container m34-nginx-1 Stopping 
+ Container m34-m8that-bi-mat-1 Recreated 
+ Container m34-nginx-1 Stopped 
+ Container m34-be-1 Recreate 
+ Container m34-be-1 Recreated 
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-pg-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-fe-1 Healthy 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-be-1 Starting 
+ Container m34-be-1 Started 
+ Container m34-be-1 Waiting 
+ Container m34-be-1 Healthy 
+ Container m34-nginx-1 Starting 
+ Container m34-nginx-1 Started 
+ Container m34-pg-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-cb-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-clamav-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-nginx-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-m8that-cb-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-clamav-1 Healthy 
+ Container m34-fe-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-nginx-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+  2026-11-14T07:58:25.737+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] c.g.p.ivr.config.IvrAuthConfigValidator  : [IVR-AUTH-CONFIG] tls=PINNED token-client=ON callback-verifier=ON
+  /api/health/ready 200 · /vi 200 · /admin 200
+-- gọi thử M8 /health/live từ mạng m34_app (đúng đường be đi ra) để m8 đọc IP nguồn
+GOI_THU_M8 giờ=2026-11-14 00:58:36 +0000 mã=403 cách=be dải_m34_app=172.24.2.0/24
+M8_99_XONG
+
+===== 07:58:43 · M8 XONG (bước 1): báo m8 dòng GOI_THU_M8 ở trên; m8 allow xong thì đo nguồn callback ở cầu rồi đặt M8_ALLOW_IP =====

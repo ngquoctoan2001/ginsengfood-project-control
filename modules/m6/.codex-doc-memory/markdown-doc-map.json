@@ -1,0 +1,516 @@
+{
+  "generatedAt": "2026-11-02T03:51:08.961Z",
+  "root": "C:\\Projects\\Project Control\\modules\\m6",
+  "files": [
+    {
+      "path": "nhat-ky/2026-10-31.md",
+      "title": "2026 10 31",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 4,
+      "words": 67,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-02.md",
+      "title": "2026 11 02",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 4,
+      "words": 201,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "PHIEN.md",
+      "title": "Phiên `m6` — M6 Đo quảng cáo / ROAS (Tài làm, Lead giám sát)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Phiên `m6` — M6 Đo quảng cáo / ROAS (Tài làm, Lead giám sát)",
+          "line": 1,
+          "slug": "phiên-m6-m6-đo-quảng-cáo-roas-tài-làm-lead-giám-sát"
+        },
+        {
+          "depth": 2,
+          "text": "Repo",
+          "line": 6,
+          "slug": "repo"
+        },
+        {
+          "depth": 2,
+          "text": "Luật repo phải nhớ",
+          "line": 15,
+          "slug": "luật-repo-phải-nhớ"
+        },
+        {
+          "depth": 2,
+          "text": "Lệnh",
+          "line": 32,
+          "slug": "lệnh"
+        },
+        {
+          "depth": 2,
+          "text": "Kế hoạch (nguồn chính)",
+          "line": 40,
+          "slug": "kế-hoạch-nguồn-chính"
+        },
+        {
+          "depth": 2,
+          "text": "Danh mục kiểm khi rà soát",
+          "line": 49,
+          "slug": "danh-mục-kiểm-khi-rà-soát"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm đầu phiên",
+          "line": 57,
+          "slug": "kiểm-đầu-phiên"
+        },
+        {
+          "depth": 2,
+          "text": "Rà soát (`/ra-soat tai`)",
+          "line": 64,
+          "slug": "rà-soát-ra-soat-tai"
+        },
+        {
+          "depth": 2,
+          "text": "Báo cáo tuần",
+          "line": 68,
+          "slug": "báo-cáo-tuần"
+        }
+      ],
+      "links": [],
+      "lines": 72,
+      "words": 851,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "QUYET_DINH.md",
+      "title": "Quyết định — m6",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Quyết định — m6",
+          "line": 1,
+          "slug": "quyết-định-m6"
+        }
+      ],
+      "links": [],
+      "lines": 11,
+      "words": 247,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-tai.md",
+      "title": "Rà soát Tài · 31/10 → 02/11/2026 · ĐỎ về bằng chứng release",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Rà soát Tài · 31/10 → 02/11/2026 · ĐỎ về bằng chứng release",
+          "line": 1,
+          "slug": "rà-soát-tài-3110-02112026-đỏ-về-bằng-chứng-release"
+        },
+        {
+          "depth": 2,
+          "text": "Lời kể và Git",
+          "line": 8,
+          "slug": "lời-kể-và-git"
+        },
+        {
+          "depth": 2,
+          "text": "Phát hiện cần xử lý",
+          "line": 19,
+          "slug": "phát-hiện-cần-xử-lý"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm độc lập",
+          "line": 28,
+          "slug": "kiểm-độc-lập"
+        },
+        {
+          "depth": 2,
+          "text": "Bậc theo bằng chứng",
+          "line": 36,
+          "slug": "bậc-theo-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "Quyết định đã thực hiện và bước tiếp",
+          "line": 46,
+          "slug": "quyết-định-đã-thực-hiện-và-bước-tiếp"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "secret_scan_repo.py:124",
+          "rawTarget": "/C:/Projects/module6/scripts/secret_scan_repo.py:124",
+          "line": 23
+        },
+        {
+          "kind": "markdown",
+          "text": "probe",
+          "rawTarget": "evidence/2026-11-02-tai/review-probes.txt",
+          "line": 23
+        },
+        {
+          "kind": "markdown",
+          "text": "outbox_store.py:68",
+          "rawTarget": "/C:/Projects/module6/app/measurement/outbox/outbox_store.py:68",
+          "line": 24
+        },
+        {
+          "kind": "markdown",
+          "text": "ports.py:145",
+          "rawTarget": "/C:/Projects/module6/app/measurement/store/ports.py:145",
+          "line": 24
+        },
+        {
+          "kind": "markdown",
+          "text": "funnel.py:156",
+          "rawTarget": "/C:/Projects/module6/app/measurement/funnel/funnel.py:156",
+          "line": 25
+        },
+        {
+          "kind": "markdown",
+          "text": "kpi_metrics.py:23",
+          "rawTarget": "/C:/Projects/module6/app/measurement/dashboard/kpi_metrics.py:23",
+          "line": 25
+        },
+        {
+          "kind": "markdown",
+          "text": "SPRINT_PLAN:218",
+          "rawTarget": "/C:/Projects/module6/docs/04-sdlc/SPRINT_PLAN_2026-11-15.md:218",
+          "line": 25
+        },
+        {
+          "kind": "markdown",
+          "text": "WORK_TRACKING:129",
+          "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:129",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "WORK_TRACKING:131",
+          "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:131",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "Lệnh và đầu ra",
+          "rawTarget": "evidence/2026-11-02-tai/verification.md",
+          "line": 31
+        }
+      ],
+      "lines": 53,
+      "words": 953,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-02-tai.md",
+          "to": "ra-soat/evidence/2026-11-02-tai/verification.md",
+          "kind": "markdown",
+          "rawTarget": "evidence/2026-11-02-tai/verification.md",
+          "line": 31
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 23,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/scripts/secret_scan_repo.py:124"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 23,
+          "kind": "markdown",
+          "rawTarget": "evidence/2026-11-02-tai/review-probes.txt"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 24,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/app/measurement/outbox/outbox_store.py:68"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 24,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/app/measurement/store/ports.py:145"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 25,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/app/measurement/funnel/funnel.py:156"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 25,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/app/measurement/dashboard/kpi_metrics.py:23"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 25,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/docs/04-sdlc/SPRINT_PLAN_2026-11-15.md:218"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 26,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:129"
+        },
+        {
+          "file": "ra-soat/2026-11-02-tai.md",
+          "line": 26,
+          "kind": "markdown",
+          "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:131"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-tai.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-tai.md",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/evidence/2026-11-02-tai/verification.md",
+      "title": "Kiểm độc lập M6 — 02/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kiểm độc lập M6 — 02/11/2026",
+          "line": 1,
+          "slug": "kiểm-độc-lập-m6-02112026"
+        }
+      ],
+      "links": [],
+      "lines": 31,
+      "words": 471,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "ra-soat/2026-11-02-tai.md",
+          "to": "ra-soat/evidence/2026-11-02-tai/verification.md",
+          "kind": "markdown",
+          "rawTarget": "evidence/2026-11-02-tai/verification.md",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "path": "SAN_SANG.md",
+      "title": "Sẵn sàng — M6 Đo quảng cáo / ROAS",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sẵn sàng — M6 Đo quảng cáo / ROAS",
+          "line": 1,
+          "slug": "sẵn-sàng-m6-đo-quảng-cáo-roas"
+        },
+        {
+          "depth": 2,
+          "text": "Kết luận nhanh",
+          "line": 6,
+          "slug": "kết-luận-nhanh"
+        },
+        {
+          "depth": 2,
+          "text": "Gói việc cần theo dõi",
+          "line": 17,
+          "slug": "gói-việc-cần-theo-dõi"
+        },
+        {
+          "depth": 2,
+          "text": "Phạm vi đã duyệt và cổng",
+          "line": 28,
+          "slug": "phạm-vi-đã-duyệt-và-cổng"
+        },
+        {
+          "depth": 2,
+          "text": "Việc chờ quyết / đối chiếu",
+          "line": 35,
+          "slug": "việc-chờ-quyết-đối-chiếu"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "bản rà 02/11",
+          "rawTarget": "ra-soat/2026-11-02-tai.md",
+          "line": 43
+        }
+      ],
+      "lines": 45,
+      "words": 736,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-tai.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-tai.md",
+          "line": 43
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "TRANG_THAI.md",
+      "title": "Trạng thái — m6",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Trạng thái — m6",
+          "line": 1,
+          "slug": "trạng-thái-m6"
+        },
+        {
+          "depth": 2,
+          "text": "Đã thực hiện theo lệnh bạn",
+          "line": 8,
+          "slug": "đã-thực-hiện-theo-lệnh-bạn"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả kiểm độc lập",
+          "line": 16,
+          "slug": "kết-quả-kiểm-độc-lập"
+        },
+        {
+          "depth": 2,
+          "text": "Phát hiện cần Tài xử lý",
+          "line": 24,
+          "slug": "phát-hiện-cần-tài-xử-lý"
+        },
+        {
+          "depth": 2,
+          "text": "Việc tiếp / cổng còn thiếu",
+          "line": 33,
+          "slug": "việc-tiếp-cổng-còn-thiếu"
+        }
+      ],
+      "links": [],
+      "lines": 46,
+      "words": 706,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "ra-soat/2026-11-02-tai.md",
+      "to": "ra-soat/evidence/2026-11-02-tai/verification.md",
+      "kind": "markdown",
+      "rawTarget": "evidence/2026-11-02-tai/verification.md",
+      "line": 31
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "ra-soat/2026-11-02-tai.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-02-tai.md",
+      "line": 43
+    }
+  ],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 23,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/scripts/secret_scan_repo.py:124"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 23,
+        "kind": "markdown",
+        "rawTarget": "evidence/2026-11-02-tai/review-probes.txt"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 24,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/app/measurement/outbox/outbox_store.py:68"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 24,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/app/measurement/store/ports.py:145"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 25,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/app/measurement/funnel/funnel.py:156"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 25,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/app/measurement/dashboard/kpi_metrics.py:23"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 25,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/docs/04-sdlc/SPRINT_PLAN_2026-11-15.md:218"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 26,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:129"
+      },
+      {
+        "file": "ra-soat/2026-11-02-tai.md",
+        "line": 26,
+        "kind": "markdown",
+        "rawTarget": "/C:/Projects/module6/docs/06-tracking/WORK_TRACKING.md:131"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "nhat-ky/2026-10-31.md",
+      "nhat-ky/2026-11-02.md",
+      "PHIEN.md",
+      "QUYET_DINH.md",
+      "TRANG_THAI.md"
+    ]
+  }
+}

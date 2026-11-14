@@ -1,0 +1,15 @@
+
+===== 09:36:55 · E01 .99: 4 lệnh kiểm + 3 yêu cầu intake bị từ chối (từ container be) =====
+-- 4 lệnh kiểm (viec-m34.md §4; CA trên máy, gọi từ be)
+  subject=CN = 192.168.1.99
+  notAfter=Feb 15 09:29:01 2029 GMT
+  sha256 DER: 013929f561811192219f20117db50b1233cde6da118c4e0ca54f738208fd86e1
+  GET /.well-known/oauth-authorization-server -> 200
+  GET /.well-known/jwks.json -> 200
+-- E01: 3 yêu cầu intake bị từ chối (từ container be)
+  E01 uat-e01-khong-token-99 nguồn=order-core token=khong -> http=401 "code":"IVR_UNAUTHENTICATED"
+  E01 uat-e01-token-rac-99 nguồn=order-core token=co -> http=403 "code":"IVR_FORBIDDEN_CALLER"
+  E01 uat-e01-sai-nguon-99 nguồn=khong-phai-order-core token=co -> http=403 "code":"IVR_FORBIDDEN_CALLER"
+  mong: 401 IVR_UNAUTHENTICATED · 403 IVR_FORBIDDEN_CALLER · 403 IVR_FORBIDDEN_CALLER (token rác ra 401 = M8 không đọc được nguồn khoá ký: dừng, báo)
+  giờ xong: 2026-11-14 02:36:50 +0000
+E01_XONG

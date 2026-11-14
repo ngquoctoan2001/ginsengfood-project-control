@@ -1,0 +1,522 @@
+{
+  "generatedAt": "2026-11-02T02:55:08.997Z",
+  "root": "C:\\Projects\\Project Control\\modules\\m7",
+  "files": [
+    {
+      "path": "CHOT_HUONG.md",
+      "title": "Chốt hướng M7 — brainstorm 31/10/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Chốt hướng M7 — brainstorm 31/10/2026",
+          "line": 1,
+          "slug": "chốt-hướng-m7-brainstorm-31102026"
+        },
+        {
+          "depth": 2,
+          "text": "Lead đã nói",
+          "line": 7,
+          "slug": "lead-đã-nói"
+        },
+        {
+          "depth": 2,
+          "text": "Còn phải chốt",
+          "line": 20,
+          "slug": "còn-phải-chốt"
+        }
+      ],
+      "links": [],
+      "lines": 25,
+      "words": 488,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-10-31.md",
+      "title": "2026 10 31",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 20,
+      "words": 516,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-01.md",
+      "title": "Nhật ký m7 — 01/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Nhật ký m7 — 01/11/2026",
+          "line": 1,
+          "slug": "nhật-ký-m7-01112026"
+        }
+      ],
+      "links": [],
+      "lines": 16,
+      "words": 445,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-02.md",
+      "title": "2026 11 02",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 11,
+      "words": 234,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "PHIEN.md",
+      "title": "Phiên `m7` — M7 Video Giờ Vàng (Lead tự làm)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Phiên `m7` — M7 Video Giờ Vàng (Lead tự làm)",
+          "line": 1,
+          "slug": "phiên-m7-m7-video-giờ-vàng-lead-tự-làm"
+        },
+        {
+          "depth": 2,
+          "text": "Repo",
+          "line": 3,
+          "slug": "repo"
+        },
+        {
+          "depth": 2,
+          "text": "Luật repo phải nhớ (`CLAUDE.md`, `AGENTS.md`; repo không có `.claude/`, chỉ `.codex/rules/`)",
+          "line": 14,
+          "slug": "luật-repo-phải-nhớ-claudemd-agentsmd-repo-không-có-claude-chỉ-codexrules"
+        },
+        {
+          "depth": 2,
+          "text": "Lệnh",
+          "line": 25,
+          "slug": "lệnh"
+        },
+        {
+          "depth": 2,
+          "text": "Chạy song song: chỉ nhánh `main`, chế độ S (D-m7-013)",
+          "line": 29,
+          "slug": "chạy-song-song-chỉ-nhánh-main-chế-độ-s-d-m7-013"
+        },
+        {
+          "depth": 2,
+          "text": "Cổng mở code (quan trọng)",
+          "line": 36,
+          "slug": "cổng-mở-code-quan-trọng"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm đầu phiên",
+          "line": 42,
+          "slug": "kiểm-đầu-phiên"
+        },
+        {
+          "depth": 2,
+          "text": "Mảng khảo sát cho `/ke-hoach`",
+          "line": 48,
+          "slug": "mảng-khảo-sát-cho-ke-hoach"
+        },
+        {
+          "depth": 2,
+          "text": "Báo cáo tuần",
+          "line": 56,
+          "slug": "báo-cáo-tuần"
+        }
+      ],
+      "links": [],
+      "lines": 59,
+      "words": 640,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "QUYET_DINH.md",
+      "title": "Quyết định — m7",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Quyết định — m7",
+          "line": 1,
+          "slug": "quyết-định-m7"
+        }
+      ],
+      "links": [],
+      "lines": 26,
+      "words": 1103,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "SAN_SANG.md",
+      "title": "Sẵn sàng — M7 Video Giờ Vàng",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sẵn sàng — M7 Video Giờ Vàng",
+          "line": 1,
+          "slug": "sẵn-sàng-m7-video-giờ-vàng"
+        },
+        {
+          "depth": 2,
+          "text": "Hạng mục lõi (tổng trọng số 100; trọng số = tỉ lệ giờ ước trong IMPLEMENTATION_PLAN §3)",
+          "line": 9,
+          "slug": "hạng-mục-lõi-tổng-trọng-số-100-trọng-số-tỉ-lệ-giờ-ước-trong-implementationplan-3"
+        },
+        {
+          "depth": 2,
+          "text": "Cổng G1–G8 (`chung/CONG_PRODUCTION.md` §3)",
+          "line": 26,
+          "slug": "cổng-g1g8-chungcongproductionmd-3"
+        },
+        {
+          "depth": 2,
+          "text": "Gói việc (code chạy lần lượt trên `main`, một làn — D-m7-013)",
+          "line": 39,
+          "slug": "gói-việc-code-chạy-lần-lượt-trên-main-một-làn-d-m7-013"
+        },
+        {
+          "depth": 2,
+          "text": "Đường găng tới mốc A–D",
+          "line": 58,
+          "slug": "đường-găng-tới-mốc-ad"
+        },
+        {
+          "depth": 2,
+          "text": "Việc ngoài code (phiên `lead` gom về `modules/lead/VIEC_NGOAI.md`)",
+          "line": 66,
+          "slug": "việc-ngoài-code-phiên-lead-gom-về-modulesleadviecngoaimd"
+        },
+        {
+          "depth": 2,
+          "text": "Không kịp 15/11 + bản tối thiểu chạy được 15/11",
+          "line": 80,
+          "slug": "không-kịp-1511-bản-tối-thiểu-chạy-được-1511"
+        }
+      ],
+      "links": [],
+      "lines": 89,
+      "words": 1733,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "TRANG_THAI.md",
+      "title": "Trạng thái — m7",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Trạng thái — m7",
+          "line": 1,
+          "slug": "trạng-thái-m7"
+        },
+        {
+          "depth": 2,
+          "text": "Tình hình",
+          "line": 7,
+          "slug": "tình-hình"
+        },
+        {
+          "depth": 2,
+          "text": "Rủi ro đang mở",
+          "line": 20,
+          "slug": "rủi-ro-đang-mở"
+        },
+        {
+          "depth": 2,
+          "text": "Việc chặn",
+          "line": 28,
+          "slug": "việc-chặn"
+        },
+        {
+          "depth": 2,
+          "text": "Cần Lead quyết",
+          "line": 32,
+          "slug": "cần-lead-quyết"
+        },
+        {
+          "depth": 2,
+          "text": "Đề xuất sóng kế",
+          "line": 43,
+          "slug": "đề-xuất-sóng-kế"
+        }
+      ],
+      "links": [],
+      "lines": 49,
+      "words": 620,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "wp/M7-WP01.md",
+      "title": "M7-WP01 — Bỏ Model Gateway khỏi bộ docs M7",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M7-WP01 — Bỏ Model Gateway khỏi bộ docs M7",
+          "line": 1,
+          "slug": "m7-wp01-bỏ-model-gateway-khỏi-bộ-docs-m7"
+        },
+        {
+          "depth": 2,
+          "text": "Từ điển thay thế (mọi coder dùng đúng)",
+          "line": 10,
+          "slug": "từ-điển-thay-thế-mọi-coder-dùng-đúng"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 30,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 53,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 73,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 76,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 78,
+      "words": 1213,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "wp/M7-WP02.md",
+      "title": "M7-WP02 — Docs v2: hướng M7 31/10/2026 và bộ tài liệu đủ loại",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M7-WP02 — Docs v2: hướng M7 31/10/2026 và bộ tài liệu đủ loại",
+          "line": 1,
+          "slug": "m7-wp02-docs-v2-hướng-m7-31102026-và-bộ-tài-liệu-đủ-loại"
+        },
+        {
+          "depth": 2,
+          "text": "1. Từ điển chung (mọi coder dùng đúng)",
+          "line": 16,
+          "slug": "1-từ-điển-chung-mọi-coder-dùng-đúng"
+        },
+        {
+          "depth": 2,
+          "text": "2. Nhóm tệp và sóng",
+          "line": 159,
+          "slug": "2-nhóm-tệp-và-sóng"
+        },
+        {
+          "depth": 2,
+          "text": "2b. Khuôn để công cụ truy vết đọc được (sóng B, C và kế hoạch)",
+          "line": 174,
+          "slug": "2b-khuôn-để-công-cụ-truy-vết-đọc-được-sóng-b-c-và-kế-hoạch"
+        },
+        {
+          "depth": 2,
+          "text": "3. Brief chung",
+          "line": 189,
+          "slug": "3-brief-chung"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 210,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 344,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 347,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 352,
+      "words": 5879,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "wp/M7-WP04.md",
+      "title": "M7-WP04 — Lát L0 khung hệ thống (đợt đầu T001…T005)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M7-WP04 — Lát L0 khung hệ thống (đợt đầu T001…T005)",
+          "line": 1,
+          "slug": "m7-wp04-lát-l0-khung-hệ-thống-đợt-đầu-t001t005"
+        },
+        {
+          "depth": 2,
+          "text": "Mục tiêu",
+          "line": 7,
+          "slug": "mục-tiêu"
+        },
+        {
+          "depth": 2,
+          "text": "Brief A — chốt T001 (coder tài liệu, R1)",
+          "line": 12,
+          "slug": "brief-a-chốt-t001-coder-tài-liệu-r1"
+        },
+        {
+          "depth": 2,
+          "text": "Brief B — T002 khung solution (coder mã, R2)",
+          "line": 21,
+          "slug": "brief-b-t002-khung-solution-coder-mã-r2"
+        },
+        {
+          "depth": 2,
+          "text": "Giờ (ước / thực)",
+          "line": 31,
+          "slug": "giờ-ước-thực"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 40,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 52,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 55,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 57,
+      "words": 998,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "wp/M7-WP05.md",
+      "title": "M7-WP05 — Áp quyết định 01/11/2026 tối (26 câu mặc định an toàn + chỉ nhánh `main`)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M7-WP05 — Áp quyết định 01/11/2026 tối (26 câu mặc định an toàn + chỉ nhánh `main`)",
+          "line": 1,
+          "slug": "m7-wp05-áp-quyết-định-01112026-tối-26-câu-mặc-định-an-toàn-chỉ-nhánh-main"
+        },
+        {
+          "depth": 2,
+          "text": "Mục tiêu",
+          "line": 5,
+          "slug": "mục-tiêu"
+        },
+        {
+          "depth": 2,
+          "text": "Phân nhóm",
+          "line": 11,
+          "slug": "phân-nhóm"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 18,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 36,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 39,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 41,
+      "words": 454,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    }
+  ],
+  "edges": [],
+  "issues": {
+    "unresolvedLinks": [],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "CHOT_HUONG.md",
+      "nhat-ky/2026-10-31.md",
+      "nhat-ky/2026-11-01.md",
+      "nhat-ky/2026-11-02.md",
+      "PHIEN.md",
+      "QUYET_DINH.md",
+      "SAN_SANG.md",
+      "TRANG_THAI.md",
+      "wp/M7-WP01.md",
+      "wp/M7-WP02.md",
+      "wp/M7-WP04.md",
+      "wp/M7-WP05.md"
+    ]
+  }
+}

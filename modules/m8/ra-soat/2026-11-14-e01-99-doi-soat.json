@@ -1,0 +1,72 @@
+{
+  "phien_ban": 1,
+  "cong_cu": "doi_soat_m3",
+  "ket_qua": "KHOP",
+  "gio_chay": "2026-11-14T09:38:01+07:00",
+  "gio_db": "2026-11-14T09:38:01+07:00",
+  "tu": "2026-11-14T08:55:00+07:00",
+  "so_ca": 3,
+  "so_khop": 3,
+  "so_lech": 0,
+  "toan_cuc": {
+    "callback_khong_task": 0,
+    "pham_vi": "callback tạo từ 2026-11-14T08:55:00+07:00 (tính vào mã thoát)"
+  },
+  "canh_bao": [],
+  "ca": [
+    {
+      "dong": 2,
+      "ca": "E01",
+      "khoa": "correlation=uat-e01-khong-token-99",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=0",
+        "so_job=0",
+        "so_callback=0"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [],
+      "job": [],
+      "luot_goi": [],
+      "ket_qua_ivr": [],
+      "callback": []
+    },
+    {
+      "dong": 3,
+      "ca": "E01",
+      "khoa": "correlation=uat-e01-token-rac-99",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=0",
+        "so_job=0",
+        "so_callback=0"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [],
+      "job": [],
+      "luot_goi": [],
+      "ket_qua_ivr": [],
+      "callback": []
+    },
+    {
+      "dong": 4,
+      "ca": "E01",
+      "khoa": "correlation=uat-e01-sai-nguon-99",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=0",
+        "so_job=0",
+        "so_callback=0"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [],
+      "job": [],
+      "luot_goi": [],
+      "ket_qua_ivr": [],
+      "callback": []
+    }
+  ]
+}

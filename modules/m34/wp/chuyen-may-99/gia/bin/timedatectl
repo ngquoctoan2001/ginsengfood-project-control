@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+if [ "${GIA_MAY:-}" = 99 ]; then echo UTC; else echo Asia/Ho_Chi_Minh; fi

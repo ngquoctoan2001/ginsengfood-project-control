@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+echo "ssh giả bị cấm trong máy giả: $*" >&2; exit 97

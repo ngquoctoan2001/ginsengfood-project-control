@@ -1,0 +1,3923 @@
+{
+  "generatedAt": "2026-11-02T03:14:44.277Z",
+  "root": "C:\\Projects\\ginsengfood-ivr\\docs\\contracts",
+  "files": [
+    {
+      "path": "openapi-codegen.md",
+      "title": "OpenAPI Code Generation and Contract Drift Policy",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "OpenAPI Code Generation and Contract Drift Policy",
+          "line": 1,
+          "slug": "openapi-code-generation-and-contract-drift-policy"
+        },
+        {
+          "depth": 2,
+          "text": "Contract boundaries",
+          "line": 5,
+          "slug": "contract-boundaries"
+        },
+        {
+          "depth": 2,
+          "text": "Reproduce generated code",
+          "line": 18,
+          "slug": "reproduce-generated-code"
+        },
+        {
+          "depth": 2,
+          "text": "Hash and human-diff gate",
+          "line": 34,
+          "slug": "hash-and-human-diff-gate"
+        },
+        {
+          "depth": 2,
+          "text": "Current compatibility and deprecation",
+          "line": 69,
+          "slug": "current-compatibility-and-deprecation"
+        },
+        {
+          "depth": 2,
+          "text": "External gates deliberately left open",
+          "line": 83,
+          "slug": "external-gates-deliberately-left-open"
+        }
+      ],
+      "links": [],
+      "lines": 88,
+      "words": 506,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "openapi-contract-diff.md",
+      "title": "OpenAPI Contract Baseline and Human-Readable Diff",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "OpenAPI Contract Baseline and Human-Readable Diff",
+          "line": 1,
+          "slug": "openapi-contract-baseline-and-human-readable-diff"
+        },
+        {
+          "depth": 2,
+          "text": "ivr-owned-target-v1-draft",
+          "line": 10,
+          "slug": "ivr-owned-target-v1-draft"
+        },
+        {
+          "depth": 2,
+          "text": "sales-callback-target-v1-draft",
+          "line": 22,
+          "slug": "sales-callback-target-v1-draft"
+        },
+        {
+          "depth": 2,
+          "text": "sales-current-golden-hour-compat-a3aad246",
+          "line": 34,
+          "slug": "sales-current-golden-hour-compat-a3aad246"
+        },
+        {
+          "depth": 2,
+          "text": "Review boundary",
+          "line": 46,
+          "slug": "review-boundary"
+        }
+      ],
+      "links": [],
+      "lines": 52,
+      "words": 526,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+      "title": "M8-08 — Opt-out: phạm vi ngoài V1",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-08 — Opt-out: phạm vi ngoài V1",
+          "line": 1,
+          "slug": "m8-08-opt-out-phạm-vi-ngoài-v1"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§3.6",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 8
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 13,
+      "words": 123,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+          "line": 7,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+          "line": 8,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/crm-suppression-scope.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+      "title": "M8-10 — Contact: đối soát nội bộ",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-10 — Contact: đối soát nội bộ",
+          "line": 1,
+          "slug": "m8-10-contact-đối-soát-nội-bộ"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§3.3",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 8
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 13,
+      "words": 117,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "line": 7,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "line": 8,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "kind": "markdown",
+          "rawTarget": "internal/dial-token-compatibility.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+      "title": "M8-11 — Attempt policy: đối soát nội bộ",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-11 — Attempt policy: đối soát nội bộ",
+          "line": 1,
+          "slug": "m8-11-attempt-policy-đối-soát-nội-bộ"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§2",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 8
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 13,
+      "words": 112,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+          "line": 7,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+          "line": 8,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/policy-deployment-scope.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/internal/provenance.md",
+      "title": "M8-12 — Ánh xạ provenance nội bộ sau hợp nhất M3",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-12 — Ánh xạ provenance nội bộ sau hợp nhất M3",
+          "line": 1,
+          "slug": "m8-12-ánh-xạ-provenance-nội-bộ-sau-hợp-nhất-m3"
+        },
+        {
+          "depth": 2,
+          "text": "Quy tắc nhận một phản hồi",
+          "line": 22,
+          "slug": "quy-tắc-nhận-một-phản-hồi"
+        },
+        {
+          "depth": 2,
+          "text": "Pin và chứng cứ",
+          "line": 33,
+          "slug": "pin-và-chứng-cứ"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "M3-IVR-2026-10-03-r1",
+          "rawTarget": "../../../../integration-requirements/module-3/README.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "external-decision-artifacts.sha256",
+          "rawTarget": "../../../../deploy/ci/pins/external-decision-artifacts.sha256",
+          "line": 35
+        }
+      ],
+      "lines": 39,
+      "words": 407,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/internal/provenance.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/module-3/README.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/provenance.md",
+          "line": 35,
+          "kind": "markdown",
+          "rawTarget": "../../../../deploy/ci/pins/external-decision-artifacts.sha256"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/provenance.md",
+          "kind": "markdown",
+          "rawTarget": "internal/provenance.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/internal/revoke-scope.md",
+      "title": "M8-09 — Revoke/freshness: đối soát nội bộ",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-09 — Revoke/freshness: đối soát nội bộ",
+          "line": 1,
+          "slug": "m8-09-revokefreshness-đối-soát-nội-bộ"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§4.8",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 8
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 13,
+      "words": 116,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/internal/revoke-scope.md",
+          "line": 7,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/revoke-scope.md",
+          "line": 8,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/internal/revoke-scope.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/revoke-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/revoke-scope.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/README.md",
+      "title": "Target V1 — chỉ mục đối soát nội bộ",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Target V1 — chỉ mục đối soát nội bộ",
+          "line": 1,
+          "slug": "target-v1-chỉ-mục-đối-soát-nội-bộ"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "M3-IVR-2026-10-03-r1",
+          "rawTarget": "../../../integration-requirements/module-3/README.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "T-01",
+          "rawTarget": "T-01-program-matrix.md",
+          "line": 10
+        },
+        {
+          "kind": "markdown",
+          "text": "T-02",
+          "rawTarget": "T-02-task-data-order-version.md",
+          "line": 11
+        },
+        {
+          "kind": "markdown",
+          "text": "T-03",
+          "rawTarget": "T-03-speech-summary.md",
+          "line": 12
+        },
+        {
+          "kind": "markdown",
+          "text": "T-04",
+          "rawTarget": "T-04-dial-token.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "T-05",
+          "rawTarget": "T-05-callback-ack.md",
+          "line": 14
+        },
+        {
+          "kind": "markdown",
+          "text": "T-06",
+          "rawTarget": "T-06-no-answer-timeout.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "T-07",
+          "rawTarget": "T-07-production-auth.md",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "T-08",
+          "rawTarget": "T-08-openapi-compat-cdc.md",
+          "line": 17
+        },
+        {
+          "kind": "markdown",
+          "text": "T-09",
+          "rawTarget": "T-09-attempt-policy.md",
+          "line": 18
+        },
+        {
+          "kind": "markdown",
+          "text": "contract-manifest",
+          "rawTarget": "../../../specs/api/openapi/contract-manifest.json",
+          "line": 20
+        },
+        {
+          "kind": "markdown",
+          "text": "CRM ngoài V1",
+          "rawTarget": "internal/crm-suppression-scope.md",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "revoke",
+          "rawTarget": "internal/revoke-scope.md",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "token compatibility",
+          "rawTarget": "internal/dial-token-compatibility.md",
+          "line": 27
+        },
+        {
+          "kind": "markdown",
+          "text": "deployment policy",
+          "rawTarget": "internal/policy-deployment-scope.md",
+          "line": 27
+        },
+        {
+          "kind": "markdown",
+          "text": "provenance",
+          "rawTarget": "internal/provenance.md",
+          "line": 28
+        }
+      ],
+      "lines": 29,
+      "words": 221,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-01-program-matrix.md",
+          "kind": "markdown",
+          "rawTarget": "T-01-program-matrix.md",
+          "line": 10
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-02-task-data-order-version.md",
+          "kind": "markdown",
+          "rawTarget": "T-02-task-data-order-version.md",
+          "line": 11
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-03-speech-summary.md",
+          "kind": "markdown",
+          "rawTarget": "T-03-speech-summary.md",
+          "line": 12
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "T-04-dial-token.md",
+          "line": 13
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-05-callback-ack.md",
+          "kind": "markdown",
+          "rawTarget": "T-05-callback-ack.md",
+          "line": 14
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+          "kind": "markdown",
+          "rawTarget": "T-06-no-answer-timeout.md",
+          "line": 15
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-07-production-auth.md",
+          "kind": "markdown",
+          "rawTarget": "T-07-production-auth.md",
+          "line": 16
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "kind": "markdown",
+          "rawTarget": "T-08-openapi-compat-cdc.md",
+          "line": 17
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-09-attempt-policy.md",
+          "kind": "markdown",
+          "rawTarget": "T-09-attempt-policy.md",
+          "line": 18
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/crm-suppression-scope.md",
+          "line": 26
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/revoke-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/revoke-scope.md",
+          "line": 26
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "kind": "markdown",
+          "rawTarget": "internal/dial-token-compatibility.md",
+          "line": 27
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+          "kind": "markdown",
+          "rawTarget": "internal/policy-deployment-scope.md",
+          "line": 27
+        },
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/internal/provenance.md",
+          "kind": "markdown",
+          "rawTarget": "internal/provenance.md",
+          "line": 28
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/README.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/module-3/README.md"
+        },
+        {
+          "file": "target-v1-closure-pack/README.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/README.md",
+          "line": 20,
+          "kind": "markdown",
+          "rawTarget": "../../../specs/api/openapi/contract-manifest.json"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "target-v1-closure-pack/README.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/README.md",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-01-program-matrix.md",
+      "title": "T-01 — Ma trận program",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-01 — Ma trận program",
+          "line": 1,
+          "slug": "t-01-ma-trận-program"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§2.1/3.2",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 95,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-01-program-matrix.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-01-program-matrix.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-01-program-matrix.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-01-program-matrix.md",
+          "kind": "markdown",
+          "rawTarget": "T-01-program-matrix.md",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-02-task-data-order-version.md",
+      "title": "T-02 — Task và version",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-02 — Task và version",
+          "line": 1,
+          "slug": "t-02-task-và-version"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§1/3",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 92,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-02-task-data-order-version.md",
+          "kind": "markdown",
+          "rawTarget": "T-02-task-data-order-version.md",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-03-speech-summary.md",
+      "title": "T-03 — Dữ liệu lời thoại",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-03 — Dữ liệu lời thoại",
+          "line": 1,
+          "slug": "t-03-dữ-liệu-lời-thoại"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§3.5",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 102,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-03-speech-summary.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-03-speech-summary.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-03-speech-summary.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-03-speech-summary.md",
+          "kind": "markdown",
+          "rawTarget": "T-03-speech-summary.md",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-04-dial-token.md",
+      "title": "T-04 — Contact producer",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-04 — Contact producer",
+          "line": 1,
+          "slug": "t-04-contact-producer"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§3.3",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 99,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-04-dial-token.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-04-dial-token.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-04-dial-token.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "T-04-dial-token.md",
+          "line": 13
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 68
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-05-callback-ack.md",
+      "title": "T-05 — Callback và ACK",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-05 — Callback và ACK",
+          "line": 1,
+          "slug": "t-05-callback-và-ack"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§4",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 91,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-05-callback-ack.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-05-callback-ack.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-05-callback-ack.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-05-callback-ack.md",
+          "kind": "markdown",
+          "rawTarget": "T-05-callback-ack.md",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+      "title": "T-06 — Hết lượt và race",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-06 — Hết lượt và race",
+          "line": 1,
+          "slug": "t-06-hết-lượt-và-race"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§4.3/4.8",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 101,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+          "kind": "markdown",
+          "rawTarget": "T-06-no-answer-timeout.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-07-production-auth.md",
+      "title": "T-07 — Auth thật",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-07 — Auth thật",
+          "line": 1,
+          "slug": "t-07-auth-thật"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§7/4A",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 93,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-07-production-auth.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-07-production-auth.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-07-production-auth.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-07-production-auth.md",
+          "kind": "markdown",
+          "rawTarget": "T-07-production-auth.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+      "title": "T-08 — OpenAPI và CDC",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-08 — OpenAPI và CDC",
+          "line": 1,
+          "slug": "t-08-openapi-và-cdc"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§0/8",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 95,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "kind": "markdown",
+          "rawTarget": "T-08-openapi-compat-cdc.md",
+          "line": 17
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "target-v1-closure-pack/T-09-attempt-policy.md",
+      "title": "T-09 — PolicyV3",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "T-09 — PolicyV3",
+          "line": 1,
+          "slug": "t-09-policyv3"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06§2",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 9
+        }
+      ],
+      "lines": 12,
+      "words": 98,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+          "line": 4,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+          "line": 5,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "target-v1-closure-pack/README.md",
+          "to": "target-v1-closure-pack/T-09-attempt-policy.md",
+          "kind": "markdown",
+          "rawTarget": "T-09-attempt-policy.md",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "path": "target-v1-field-inventory.md",
+      "title": "Target V1 — Field and Enum Inventory",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Target V1 — Field and Enum Inventory",
+          "line": 1,
+          "slug": "target-v1-field-and-enum-inventory"
+        },
+        {
+          "depth": 2,
+          "text": "1. Intake — `IvrConfirmationTaskV1`",
+          "line": 17,
+          "slug": "1-intake-ivrconfirmationtaskv1"
+        },
+        {
+          "depth": 2,
+          "text": "2. Callback — `IvrResultCallbackV1`",
+          "line": 66,
+          "slug": "2-callback-ivrresultcallbackv1"
+        },
+        {
+          "depth": 2,
+          "text": "3. Enumerations",
+          "line": 90,
+          "slug": "3-enumerations"
+        },
+        {
+          "depth": 3,
+          "text": "3.1. Intake contract",
+          "line": 95,
+          "slug": "31-intake-contract"
+        },
+        {
+          "depth": 3,
+          "text": "3.2. Callback contract",
+          "line": 177,
+          "slug": "32-callback-contract"
+        }
+      ],
+      "links": [],
+      "lines": 196,
+      "words": 993,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "title": "Biểu mẫu — Báo cáo nghiệm thu lab 1 SIM",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Biểu mẫu — Báo cáo nghiệm thu lab 1 SIM",
+          "line": 1,
+          "slug": "biểu-mẫu-báo-cáo-nghiệm-thu-lab-1-sim"
+        },
+        {
+          "depth": 2,
+          "text": "0. Định danh phiên lab",
+          "line": 7,
+          "slug": "0-định-danh-phiên-lab"
+        },
+        {
+          "depth": 2,
+          "text": "1. Điều kiện tiên quyết — đủ 9 dòng mới được bắt đầu",
+          "line": 21,
+          "slug": "1-điều-kiện-tiên-quyết-đủ-9-dòng-mới-được-bắt-đầu"
+        },
+        {
+          "depth": 2,
+          "text": "2. Kết quả 7 kịch bản đối chiếu mock",
+          "line": 37,
+          "slug": "2-kết-quả-7-kịch-bản-đối-chiếu-mock"
+        },
+        {
+          "depth": 2,
+          "text": "3. Kết quả 15 kịch bản chỉ lab mới dựng được",
+          "line": 49,
+          "slug": "3-kết-quả-15-kịch-bản-chỉ-lab-mới-dựng-được"
+        },
+        {
+          "depth": 2,
+          "text": "4. Bảng ánh xạ disposition đã xác minh",
+          "line": 69,
+          "slug": "4-bảng-ánh-xạ-disposition-đã-xác-minh"
+        },
+        {
+          "depth": 2,
+          "text": "5. Số đo",
+          "line": 89,
+          "slug": "5-số-đo"
+        },
+        {
+          "depth": 2,
+          "text": "6. Sự cố trong phiên",
+          "line": 120,
+          "slug": "6-sự-cố-trong-phiên"
+        },
+        {
+          "depth": 2,
+          "text": "7. Kết luận",
+          "line": 126,
+          "slug": "7-kết-luận"
+        },
+        {
+          "depth": 2,
+          "text": "8. Chữ ký",
+          "line": 140,
+          "slug": "8-chữ-ký"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 73
+        }
+      ],
+      "lines": 147,
+      "words": 1495,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 73
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 29
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 118
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 38
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 39
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "title": "R-00 — Hồ sơ hỏi mua cổng thoại di động 4G/VoLTE (bản gửi thẳng nhà cung cấp)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-00 — Hồ sơ hỏi mua cổng thoại di động 4G/VoLTE (bản gửi thẳng nhà cung cấp)",
+          "line": 1,
+          "slug": "r-00-hồ-sơ-hỏi-mua-cổng-thoại-di-động-4gvolte-bản-gửi-thẳng-nhà-cung-cấp"
+        },
+        {
+          "depth": 2,
+          "text": "1. Chúng tôi cần mua gì",
+          "line": 19,
+          "slug": "1-chúng-tôi-cần-mua-gì"
+        },
+        {
+          "depth": 2,
+          "text": "2. Đường tích hợp mong muốn",
+          "line": 32,
+          "slug": "2-đường-tích-hợp-mong-muốn"
+        },
+        {
+          "depth": 2,
+          "text": "3. Bảy điều kiện loại trừ",
+          "line": 42,
+          "slug": "3-bảy-điều-kiện-loại-trừ"
+        },
+        {
+          "depth": 2,
+          "text": "4. Bảng mã kết thúc cuộc gọi — thứ chúng tôi cần nhất",
+          "line": 57,
+          "slug": "4-bảng-mã-kết-thúc-cuộc-gọi-thứ-chúng-tôi-cần-nhất"
+        },
+        {
+          "depth": 2,
+          "text": "5. Hai dòng phải hỏi kỹ nhất",
+          "line": 79,
+          "slug": "5-hai-dòng-phải-hỏi-kỹ-nhất"
+        },
+        {
+          "depth": 2,
+          "text": "6. Chín câu hỏi xin trả lời bằng văn bản",
+          "line": 97,
+          "slug": "6-chín-câu-hỏi-xin-trả-lời-bằng-văn-bản"
+        },
+        {
+          "depth": 2,
+          "text": "7. Hồ sơ xin nộp, và điều gì bị loại ngay",
+          "line": 112,
+          "slug": "7-hồ-sơ-xin-nộp-và-điều-gì-bị-loại-ngay"
+        },
+        {
+          "depth": 2,
+          "text": "8. Ghi chú nội bộ (xoá trước khi gửi)",
+          "line": 127,
+          "slug": "8-ghi-chú-nội-bộ-xoá-trước-khi-gửi"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "VNPT",
+          "rawTarget": "https://vnpt.vn/gioi-thieu/tin-tuc/15-9-2026-he-thong-2g-se-ngung-hoat-dong-tai-viet-nam.html",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "VietnamNet",
+          "rawTarget": "https://vietnamnet.vn/thang-9-2028-se-khai-tu-cong-nghe-3g-tai-viet-nam-2303408.html",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "Nhân Dân",
+          "rawTarget": "https://nhandan.vn/viet-nam-se-tat-song-3g-vao-nam-2028-post819850.html",
+          "line": 7
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/MODULE_8_IVR_ORDER_CONFIRMATION_V0.3_CLEAN.md`",
+          "rawTarget": "../../MODULE_8_IVR_ORDER_CONFIRMATION_V0.3_CLEAN.md",
+          "line": 129
+        },
+        {
+          "kind": "markdown",
+          "text": "`ProviderPorts.cs:154`",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs",
+          "line": 135
+        },
+        {
+          "kind": "markdown",
+          "text": "`DispositionMapper.cs:73`",
+          "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs",
+          "line": 136
+        },
+        {
+          "kind": "markdown",
+          "text": "`DispositionMapper.cs:76`",
+          "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs",
+          "line": 137
+        },
+        {
+          "kind": "markdown",
+          "text": "`AsteriskAriSimGateway.cs:361`",
+          "rawTarget": "../../../src/Ivr.Infrastructure/Telephony/AsteriskAriSimGateway.cs",
+          "line": 138
+        },
+        {
+          "kind": "markdown",
+          "text": "VNPT",
+          "rawTarget": "https://vnpt.vn/gioi-thieu/tin-tuc/15-9-2026-he-thong-2g-se-ngung-hoat-dong-tai-viet-nam.html",
+          "line": 140
+        },
+        {
+          "kind": "markdown",
+          "text": "VietnamNet",
+          "rawTarget": "https://vietnamnet.vn/thang-9-2028-se-khai-tu-cong-nghe-3g-tai-viet-nam-2303408.html",
+          "line": 140
+        },
+        {
+          "kind": "markdown",
+          "text": "Nhân Dân",
+          "rawTarget": "https://nhandan.vn/viet-nam-se-tat-song-3g-vao-nam-2028-post819850.html",
+          "line": 140
+        },
+        {
+          "kind": "markdown",
+          "text": "README §4",
+          "rawTarget": "README.md",
+          "line": 146
+        }
+      ],
+      "lines": 149,
+      "words": 2448,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 15
+        },
+        {
+          "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "to": "telephony-procurement-pack/README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 146
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "line": 129,
+          "kind": "markdown",
+          "rawTarget": "../../MODULE_8_IVR_ORDER_CONFIRMATION_V0.3_CLEAN.md"
+        },
+        {
+          "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "line": 135,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+        },
+        {
+          "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "line": 136,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs"
+        },
+        {
+          "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "line": 137,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs"
+        },
+        {
+          "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "line": 138,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Infrastructure/Telephony/AsteriskAriSimGateway.cs"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 11
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 100
+        },
+        {
+          "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 93
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 24
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "title": "R-01 — Yêu cầu nhà cung cấp telephony",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-01 — Yêu cầu nhà cung cấp telephony",
+          "line": 1,
+          "slug": "r-01-yêu-cầu-nhà-cung-cấp-telephony"
+        },
+        {
+          "depth": 2,
+          "text": "1. Cổng adapter — đây là hợp đồng, không phải mong muốn",
+          "line": 13,
+          "slug": "1-cổng-adapter-đây-là-hợp-đồng-không-phải-mong-muốn"
+        },
+        {
+          "depth": 2,
+          "text": "2. Protocol, SDK, phiên bản",
+          "line": 28,
+          "slug": "2-protocol-sdk-phiên-bản"
+        },
+        {
+          "depth": 2,
+          "text": "3. Xác thực và cấp phát bí mật",
+          "line": 41,
+          "slug": "3-xác-thực-và-cấp-phát-bí-mật"
+        },
+        {
+          "depth": 2,
+          "text": "4. Ranh giới `dial_token` — hạng mục loại trừ",
+          "line": 53,
+          "slug": "4-ranh-giới-dialtoken-hạng-mục-loại-trừ"
+        },
+        {
+          "depth": 2,
+          "text": "5. DTMF",
+          "line": 70,
+          "slug": "5-dtmf"
+        },
+        {
+          "depth": 2,
+          "text": "6. Codec và định dạng audio",
+          "line": 84,
+          "slug": "6-codec-và-định-dạng-audio"
+        },
+        {
+          "depth": 2,
+          "text": "7. Disposition — ánh xạ thô sang 11 giá trị của IVR",
+          "line": 96,
+          "slug": "7-disposition-ánh-xạ-thô-sang-11-giá-trị-của-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "8. Kênh, đồng thời và sức khoẻ",
+          "line": 123,
+          "slug": "8-kênh-đồng-thời-và-sức-khoẻ"
+        },
+        {
+          "depth": 2,
+          "text": "9. Caller ID",
+          "line": 138,
+          "slug": "9-caller-id"
+        },
+        {
+          "depth": 2,
+          "text": "10. CDR và đối soát",
+          "line": 150,
+          "slug": "10-cdr-và-đối-soát"
+        },
+        {
+          "depth": 2,
+          "text": "11. Ghi âm — hạng mục loại trừ",
+          "line": 162,
+          "slug": "11-ghi-âm-hạng-mục-loại-trừ"
+        },
+        {
+          "depth": 2,
+          "text": "12. Thương mại, SLA và bảo mật",
+          "line": 173,
+          "slug": "12-thương-mại-sla-và-bảo-mật"
+        },
+        {
+          "depth": 2,
+          "text": "13. Closure artifact",
+          "line": 185,
+          "slug": "13-closure-artifact"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-00",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 11
+        },
+        {
+          "kind": "markdown",
+          "text": "`src/Ivr.Domain/Ports/ProviderPorts.cs:214`",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "T-04",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 68
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/capacity-model.md`",
+          "rawTarget": "../../capacity-model.md",
+          "line": 94
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 94
+        },
+        {
+          "kind": "markdown",
+          "text": "`ProviderPorts.cs:154`",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs",
+          "line": 98
+        },
+        {
+          "kind": "markdown",
+          "text": "R-00 §4–§5",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 100
+        },
+        {
+          "kind": "markdown",
+          "text": "R-04",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 189
+        }
+      ],
+      "lines": 195,
+      "words": 2443,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 11
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 68
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 94
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 100
+        },
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "kind": "markdown",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 189
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "line": 15,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+        },
+        {
+          "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "line": 94,
+          "kind": "markdown",
+          "rawTarget": "../../capacity-model.md"
+        },
+        {
+          "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "line": 98,
+          "kind": "markdown",
+          "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 73
+        },
+        {
+          "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 15
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 119
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 46
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 17
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 19
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 20
+        },
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 85
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 25
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-02-lab-package.md",
+      "title": "R-02 — Gói lab 1 SIM thật",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-02 — Gói lab 1 SIM thật",
+          "line": 1,
+          "slug": "r-02-gói-lab-1-sim-thật"
+        },
+        {
+          "depth": 2,
+          "text": "1. Mục tiêu và giới hạn",
+          "line": 9,
+          "slug": "1-mục-tiêu-và-giới-hạn"
+        },
+        {
+          "depth": 2,
+          "text": "2. Danh mục cần có trước khi bật `IVR_ADAPTER_MODE=REAL`",
+          "line": 17,
+          "slug": "2-danh-mục-cần-có-trước-khi-bật-ivradaptermodereal"
+        },
+        {
+          "depth": 2,
+          "text": "3. Số test — quy tắc",
+          "line": 33,
+          "slug": "3-số-test-quy-tắc"
+        },
+        {
+          "depth": 2,
+          "text": "4. Kết nối và bí mật",
+          "line": 47,
+          "slug": "4-kết-nối-và-bí-mật"
+        },
+        {
+          "depth": 2,
+          "text": "5. Quyền sửa allowlist / kill switch — đã cấp, four-eyes còn thiếu",
+          "line": 57,
+          "slug": "5-quyền-sửa-allowlist-kill-switch-đã-cấp-four-eyes-còn-thiếu"
+        },
+        {
+          "depth": 2,
+          "text": "6. Checklist kịch bản — phải chạy hết",
+          "line": 65,
+          "slug": "6-checklist-kịch-bản-phải-chạy-hết"
+        },
+        {
+          "depth": 3,
+          "text": "6a. Bảy kịch bản mock đã có, chạy lại trên SIM thật",
+          "line": 67,
+          "slug": "6a-bảy-kịch-bản-mock-đã-có-chạy-lại-trên-sim-thật"
+        },
+        {
+          "depth": 3,
+          "text": "6b. Kịch bản mock KHÔNG dựng được — đây mới là lý do phải có lab",
+          "line": 81,
+          "slug": "6b-kịch-bản-mock-không-dựng-được-đây-mới-là-lý-do-phải-có-lab"
+        },
+        {
+          "depth": 2,
+          "text": "7. Quy tắc dừng",
+          "line": 103,
+          "slug": "7-quy-tắc-dừng"
+        },
+        {
+          "depth": 2,
+          "text": "8. Closure artifact",
+          "line": 114,
+          "slug": "8-closure-artifact"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-03",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 28
+        },
+        {
+          "kind": "markdown",
+          "text": "template",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 29
+        },
+        {
+          "kind": "markdown",
+          "text": "one-sim-lab-plan.md",
+          "rawTarget": "../../lab/one-sim-lab-plan.md",
+          "line": 63
+        },
+        {
+          "kind": "markdown",
+          "text": "lab-acceptance-report-template.md",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 118
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 119
+        }
+      ],
+      "lines": 124,
+      "words": 1733,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 13
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 28
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 29
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 118
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 119
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/R-02-lab-package.md",
+          "line": 63,
+          "kind": "markdown",
+          "rawTarget": "../../lab/one-sim-lab-plan.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 64
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 26
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-03-esim32-package.md",
+      "title": "R-03 — Gói production nhiều kênh eSIM",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-03 — Gói production nhiều kênh eSIM",
+          "line": 1,
+          "slug": "r-03-gói-production-nhiều-kênh-esim"
+        },
+        {
+          "depth": 2,
+          "text": "1. Con số 32 là mục tiêu, không phải kết luận",
+          "line": 9,
+          "slug": "1-con-số-32-là-mục-tiêu-không-phải-kết-luận"
+        },
+        {
+          "depth": 2,
+          "text": "2. Mô hình nhu cầu — công thức, chưa phải kết quả",
+          "line": 15,
+          "slug": "2-mô-hình-nhu-cầu-công-thức-chưa-phải-kết-quả"
+        },
+        {
+          "depth": 2,
+          "text": "3. Vòng đời kênh và cấp phát",
+          "line": 48,
+          "slug": "3-vòng-đời-kênh-và-cấp-phát"
+        },
+        {
+          "depth": 2,
+          "text": "4. Quota và giới hạn",
+          "line": 61,
+          "slug": "4-quota-và-giới-hạn"
+        },
+        {
+          "depth": 2,
+          "text": "5. Pooling, failover, quarantine",
+          "line": 73,
+          "slug": "5-pooling-failover-quarantine"
+        },
+        {
+          "depth": 2,
+          "text": "6. Throughput và độ trễ — phải đo, không suy",
+          "line": 101,
+          "slug": "6-throughput-và-độ-trễ-phải-đo-không-suy"
+        },
+        {
+          "depth": 2,
+          "text": "7. Chi phí",
+          "line": 113,
+          "slug": "7-chi-phí"
+        },
+        {
+          "depth": 2,
+          "text": "8. Observability",
+          "line": 134,
+          "slug": "8-observability"
+        },
+        {
+          "depth": 2,
+          "text": "9. Chế độ thảm hoạ",
+          "line": 151,
+          "slug": "9-chế-độ-thảm-hoạ"
+        },
+        {
+          "depth": 2,
+          "text": "10. Closure artifact",
+          "line": 163,
+          "slug": "10-closure-artifact"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "lab §5",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 38
+        },
+        {
+          "kind": "markdown",
+          "text": "lab §5",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 39
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 46
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 120
+        }
+      ],
+      "lines": 174,
+      "words": 1772,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 38
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 39
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 46
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 120
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 13
+        },
+        {
+          "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 91
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 27
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "title": "R-04 — Scorecard nhà cung cấp, gap register và điều khoản hợp đồng",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-04 — Scorecard nhà cung cấp, gap register và điều khoản hợp đồng",
+          "line": 1,
+          "slug": "r-04-scorecard-nhà-cung-cấp-gap-register-và-điều-khoản-hợp-đồng"
+        },
+        {
+          "depth": 2,
+          "text": "1. Hạng mục loại trừ — chấm điểm sau, loại trước",
+          "line": 11,
+          "slug": "1-hạng-mục-loại-trừ-chấm-điểm-sau-loại-trước"
+        },
+        {
+          "depth": 2,
+          "text": "2. Scorecard có trọng số",
+          "line": 24,
+          "slug": "2-scorecard-có-trọng-số"
+        },
+        {
+          "depth": 2,
+          "text": "3. Gap register",
+          "line": 52,
+          "slug": "3-gap-register"
+        },
+        {
+          "depth": 2,
+          "text": "4. Điều khoản hợp đồng cần có",
+          "line": 68,
+          "slug": "4-điều-khoản-hợp-đồng-cần-có"
+        },
+        {
+          "depth": 2,
+          "text": "5. Closure artifact",
+          "line": 87,
+          "slug": "5-closure-artifact"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 17
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 19
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 20
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 44
+        },
+        {
+          "kind": "markdown",
+          "text": "R-02",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 64
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 65
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/api-versioning.md`",
+          "rawTarget": "../../api-versioning.md",
+          "line": 74
+        },
+        {
+          "kind": "markdown",
+          "text": "T-08",
+          "rawTarget": "../target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 85
+        }
+      ],
+      "lines": 95,
+      "words": 1446,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 17
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 19
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 20
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 44
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 64
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 65
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+          "line": 85
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "line": 74,
+          "kind": "markdown",
+          "rawTarget": "../../api-versioning.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "kind": "markdown",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 189
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "kind": "markdown",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "title": "R-05 — Năng lực TTS và nguồn audio",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "R-05 — Năng lực TTS và nguồn audio",
+          "line": 1,
+          "slug": "r-05-năng-lực-tts-và-nguồn-audio"
+        },
+        {
+          "depth": 2,
+          "text": "1. Đã chốt: VieNeu-TTS tự host",
+          "line": 8,
+          "slug": "1-đã-chốt-vieneu-tts-tự-host"
+        },
+        {
+          "depth": 2,
+          "text": "2. Ràng buộc kỹ thuật đã có trong code",
+          "line": 20,
+          "slug": "2-ràng-buộc-kỹ-thuật-đã-có-trong-code"
+        },
+        {
+          "depth": 2,
+          "text": "3. Nghiệm thu phát âm tiếng Việt",
+          "line": 39,
+          "slug": "3-nghiệm-thu-phát-âm-tiếng-việt"
+        },
+        {
+          "depth": 2,
+          "text": "4. Chi phí",
+          "line": 61,
+          "slug": "4-chi-phí"
+        },
+        {
+          "depth": 2,
+          "text": "5. Còn thiếu trước khi bật ở production",
+          "line": 76,
+          "slug": "5-còn-thiếu-trước-khi-bật-ở-production"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/capacity-model.md`",
+          "rawTarget": "../../capacity-model.md",
+          "line": 22
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 85
+        }
+      ],
+      "lines": 88,
+      "words": 1021,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 85
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "line": 22,
+          "kind": "markdown",
+          "rawTarget": "../../capacity-model.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 94
+        },
+        {
+          "from": "telephony-procurement-pack/R-02-lab-package.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 28
+        },
+        {
+          "from": "telephony-procurement-pack/R-03-esim32-package.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 120
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 44
+        },
+        {
+          "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 65
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 29
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+      "title": "Tờ trình đề nghị duyệt mua thiết bị gọi tự động",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Tờ trình đề nghị duyệt mua thiết bị gọi tự động",
+          "line": 1,
+          "slug": "tờ-trình-đề-nghị-duyệt-mua-thiết-bị-gọi-tự-động"
+        },
+        {
+          "depth": 2,
+          "text": "1. Đề nghị duyệt mua",
+          "line": 13,
+          "slug": "1-đề-nghị-duyệt-mua"
+        },
+        {
+          "depth": 2,
+          "text": "2. Mua để làm gì",
+          "line": 22,
+          "slug": "2-mua-để-làm-gì"
+        },
+        {
+          "depth": 2,
+          "text": "3. Vì sao phải quyết trước ngày 15/09/2026",
+          "line": 30,
+          "slug": "3-vì-sao-phải-quyết-trước-ngày-15092026"
+        },
+        {
+          "depth": 2,
+          "text": "4. Nếu không mua thì sao",
+          "line": 41,
+          "slug": "4-nếu-không-mua-thì-sao"
+        },
+        {
+          "depth": 2,
+          "text": "5. Đề xuất 4 kênh — một lựa chọn cần báo giá, chưa phải con số đã chốt",
+          "line": 46,
+          "slug": "5-đề-xuất-4-kênh-một-lựa-chọn-cần-báo-giá-chưa-phải-con-số-đã-chốt"
+        },
+        {
+          "depth": 2,
+          "text": "6. Phạm vi của lần mua này",
+          "line": 54,
+          "slug": "6-phạm-vi-của-lần-mua-này"
+        },
+        {
+          "depth": 2,
+          "text": "7. Đề nghị",
+          "line": 62,
+          "slug": "7-đề-nghị"
+        },
+        {
+          "depth": 2,
+          "text": "Ghi chú nội bộ (xoá trước khi gửi)",
+          "line": 75,
+          "slug": "ghi-chú-nội-bộ-xoá-trước-khi-gửi"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "VNPT",
+          "rawTarget": "https://vnpt.vn/gioi-thieu/tin-tuc/15-9-2026-he-thong-2g-se-ngung-hoat-dong-tai-viet-nam.html",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "VietnamNet",
+          "rawTarget": "https://vietnamnet.vn/thang-9-2028-se-khai-tu-cong-nghe-3g-tai-viet-nam-2303408.html",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "Nhân Dân",
+          "rawTarget": "https://nhandan.vn/viet-nam-se-tat-song-3g-vao-nam-2028-post819850.html",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "R-03 §2",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 91
+        },
+        {
+          "kind": "markdown",
+          "text": "R-00",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 93
+        }
+      ],
+      "lines": 94,
+      "words": 1144,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 91
+        },
+        {
+          "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 93
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "kind": "markdown",
+          "rawTarget": "R-06-to-trinh-mua-thiet-bi.md",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "path": "telephony-procurement-pack/README.md",
+      "title": "Telephony Procurement Pack — 1 SIM lab và 32 eSIM production",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Telephony Procurement Pack — 1 SIM lab và 32 eSIM production",
+          "line": 1,
+          "slug": "telephony-procurement-pack-1-sim-lab-và-32-esim-production"
+        },
+        {
+          "depth": 2,
+          "text": "1. Vì sao có gói này",
+          "line": 14,
+          "slug": "1-vì-sao-có-gói-này"
+        },
+        {
+          "depth": 2,
+          "text": "2. Bảng artifact",
+          "line": 20,
+          "slug": "2-bảng-artifact"
+        },
+        {
+          "depth": 2,
+          "text": "3. Quyết định mở mà gói này phục vụ",
+          "line": 33,
+          "slug": "3-quyết-định-mở-mà-gói-này-phục-vụ"
+        },
+        {
+          "depth": 2,
+          "text": "4. Ba ràng buộc bất biến trong mọi cuộc nói chuyện với nhà cung cấp",
+          "line": 44,
+          "slug": "4-ba-ràng-buộc-bất-biến-trong-mọi-cuộc-nói-chuyện-với-nhà-cung-cấp"
+        },
+        {
+          "depth": 2,
+          "text": "5. Cái gói này KHÔNG làm",
+          "line": 52,
+          "slug": "5-cái-gói-này-không-làm"
+        },
+        {
+          "depth": 2,
+          "text": "6. Liên quan",
+          "line": 59,
+          "slug": "6-liên-quan"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "kind": "markdown",
+          "text": "R-00",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 24
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 25
+        },
+        {
+          "kind": "markdown",
+          "text": "R-02",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "R-03",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 27
+        },
+        {
+          "kind": "markdown",
+          "text": "R-04",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 28
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 29
+        },
+        {
+          "kind": "markdown",
+          "text": "R-06",
+          "rawTarget": "R-06-to-trinh-mua-thiet-bi.md",
+          "line": 30
+        },
+        {
+          "kind": "markdown",
+          "text": "lab-acceptance-report-template.md",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 31
+        },
+        {
+          "kind": "markdown",
+          "text": "R-00",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "R-02",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "R-03",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 38
+        },
+        {
+          "kind": "markdown",
+          "text": "R-01",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 39
+        },
+        {
+          "kind": "markdown",
+          "text": "T-04",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 39
+        },
+        {
+          "kind": "markdown",
+          "text": "R-05",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 40
+        },
+        {
+          "kind": "markdown",
+          "text": "`specs/_review/open-decisions-register.md`",
+          "rawTarget": "../../../specs/_review/open-decisions-register.md",
+          "line": 42
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/contracts/target-v1-closure-pack/`",
+          "rawTarget": "../target-v1-closure-pack/README.md",
+          "line": 61
+        },
+        {
+          "kind": "markdown",
+          "text": "`docs/capacity-model.md`",
+          "rawTarget": "../../capacity-model.md",
+          "line": 62
+        },
+        {
+          "kind": "markdown",
+          "text": "`prompt/_execution/prompt-execution-tracker.md`",
+          "rawTarget": "../../../docs/release/work-register.md",
+          "line": 63
+        }
+      ],
+      "lines": 64,
+      "words": 960,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 18
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 24
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 25
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 26
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 27
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+          "kind": "markdown",
+          "rawTarget": "R-04-scorecard-and-gaps.md",
+          "line": 28
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 29
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+          "kind": "markdown",
+          "rawTarget": "R-06-to-trinh-mua-thiet-bi.md",
+          "line": 30
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+          "kind": "markdown",
+          "rawTarget": "lab-acceptance-report-template.md",
+          "line": 31
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "kind": "markdown",
+          "rawTarget": "R-00-voice-gateway-rfq.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-02-lab-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-02-lab-package.md",
+          "line": 37
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-03-esim32-package.md",
+          "kind": "markdown",
+          "rawTarget": "R-03-esim32-package.md",
+          "line": 38
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "R-01-vendor-requirements.md",
+          "line": 39
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "target-v1-closure-pack/T-04-dial-token.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+          "line": 39
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+          "kind": "markdown",
+          "rawTarget": "R-05-tts-audio-capability.md",
+          "line": 40
+        },
+        {
+          "from": "telephony-procurement-pack/README.md",
+          "to": "target-v1-closure-pack/README.md",
+          "kind": "markdown",
+          "rawTarget": "../target-v1-closure-pack/README.md",
+          "line": 61
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "telephony-procurement-pack/README.md",
+          "line": 42,
+          "kind": "markdown",
+          "rawTarget": "../../../specs/_review/open-decisions-register.md"
+        },
+        {
+          "file": "telephony-procurement-pack/README.md",
+          "line": 62,
+          "kind": "markdown",
+          "rawTarget": "../../capacity-model.md"
+        },
+        {
+          "file": "telephony-procurement-pack/README.md",
+          "line": 63,
+          "kind": "markdown",
+          "rawTarget": "../../../docs/release/work-register.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+          "to": "telephony-procurement-pack/README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 146
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-01-program-matrix.md",
+      "kind": "markdown",
+      "rawTarget": "T-01-program-matrix.md",
+      "line": 10
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-02-task-data-order-version.md",
+      "kind": "markdown",
+      "rawTarget": "T-02-task-data-order-version.md",
+      "line": 11
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-03-speech-summary.md",
+      "kind": "markdown",
+      "rawTarget": "T-03-speech-summary.md",
+      "line": 12
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-04-dial-token.md",
+      "kind": "markdown",
+      "rawTarget": "T-04-dial-token.md",
+      "line": 13
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-05-callback-ack.md",
+      "kind": "markdown",
+      "rawTarget": "T-05-callback-ack.md",
+      "line": 14
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+      "kind": "markdown",
+      "rawTarget": "T-06-no-answer-timeout.md",
+      "line": 15
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-07-production-auth.md",
+      "kind": "markdown",
+      "rawTarget": "T-07-production-auth.md",
+      "line": 16
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+      "kind": "markdown",
+      "rawTarget": "T-08-openapi-compat-cdc.md",
+      "line": 17
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/T-09-attempt-policy.md",
+      "kind": "markdown",
+      "rawTarget": "T-09-attempt-policy.md",
+      "line": 18
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+      "kind": "markdown",
+      "rawTarget": "internal/crm-suppression-scope.md",
+      "line": 26
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/internal/revoke-scope.md",
+      "kind": "markdown",
+      "rawTarget": "internal/revoke-scope.md",
+      "line": 26
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+      "kind": "markdown",
+      "rawTarget": "internal/dial-token-compatibility.md",
+      "line": 27
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+      "kind": "markdown",
+      "rawTarget": "internal/policy-deployment-scope.md",
+      "line": 27
+    },
+    {
+      "from": "target-v1-closure-pack/README.md",
+      "to": "target-v1-closure-pack/internal/provenance.md",
+      "kind": "markdown",
+      "rawTarget": "internal/provenance.md",
+      "line": 28
+    },
+    {
+      "from": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 73
+    },
+    {
+      "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 15
+    },
+    {
+      "from": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "to": "telephony-procurement-pack/README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 146
+    },
+    {
+      "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "kind": "markdown",
+      "rawTarget": "R-00-voice-gateway-rfq.md",
+      "line": 11
+    },
+    {
+      "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "to": "target-v1-closure-pack/T-04-dial-token.md",
+      "kind": "markdown",
+      "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+      "line": 68
+    },
+    {
+      "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 94
+    },
+    {
+      "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "kind": "markdown",
+      "rawTarget": "R-00-voice-gateway-rfq.md",
+      "line": 100
+    },
+    {
+      "from": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "kind": "markdown",
+      "rawTarget": "R-04-scorecard-and-gaps.md",
+      "line": 189
+    },
+    {
+      "from": "telephony-procurement-pack/R-02-lab-package.md",
+      "to": "telephony-procurement-pack/R-03-esim32-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-03-esim32-package.md",
+      "line": 13
+    },
+    {
+      "from": "telephony-procurement-pack/R-02-lab-package.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 28
+    },
+    {
+      "from": "telephony-procurement-pack/R-02-lab-package.md",
+      "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "kind": "markdown",
+      "rawTarget": "lab-acceptance-report-template.md",
+      "line": 29
+    },
+    {
+      "from": "telephony-procurement-pack/R-02-lab-package.md",
+      "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "kind": "markdown",
+      "rawTarget": "lab-acceptance-report-template.md",
+      "line": 118
+    },
+    {
+      "from": "telephony-procurement-pack/R-02-lab-package.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 119
+    },
+    {
+      "from": "telephony-procurement-pack/R-03-esim32-package.md",
+      "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "kind": "markdown",
+      "rawTarget": "lab-acceptance-report-template.md",
+      "line": 38
+    },
+    {
+      "from": "telephony-procurement-pack/R-03-esim32-package.md",
+      "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "kind": "markdown",
+      "rawTarget": "lab-acceptance-report-template.md",
+      "line": 39
+    },
+    {
+      "from": "telephony-procurement-pack/R-03-esim32-package.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 46
+    },
+    {
+      "from": "telephony-procurement-pack/R-03-esim32-package.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 120
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 17
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 18
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 19
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 20
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 44
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-02-lab-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-02-lab-package.md",
+      "line": 64
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 65
+    },
+    {
+      "from": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "to": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+      "kind": "markdown",
+      "rawTarget": "../target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+      "line": 85
+    },
+    {
+      "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 18
+    },
+    {
+      "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 37
+    },
+    {
+      "from": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 85
+    },
+    {
+      "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+      "to": "telephony-procurement-pack/R-03-esim32-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-03-esim32-package.md",
+      "line": 91
+    },
+    {
+      "from": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+      "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "kind": "markdown",
+      "rawTarget": "R-00-voice-gateway-rfq.md",
+      "line": 93
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 18
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "kind": "markdown",
+      "rawTarget": "R-00-voice-gateway-rfq.md",
+      "line": 24
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 25
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-02-lab-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-02-lab-package.md",
+      "line": 26
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-03-esim32-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-03-esim32-package.md",
+      "line": 27
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+      "kind": "markdown",
+      "rawTarget": "R-04-scorecard-and-gaps.md",
+      "line": 28
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 29
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-06-to-trinh-mua-thiet-bi.md",
+      "kind": "markdown",
+      "rawTarget": "R-06-to-trinh-mua-thiet-bi.md",
+      "line": 30
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/lab-acceptance-report-template.md",
+      "kind": "markdown",
+      "rawTarget": "lab-acceptance-report-template.md",
+      "line": 31
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+      "kind": "markdown",
+      "rawTarget": "R-00-voice-gateway-rfq.md",
+      "line": 37
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 37
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-02-lab-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-02-lab-package.md",
+      "line": 37
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-03-esim32-package.md",
+      "kind": "markdown",
+      "rawTarget": "R-03-esim32-package.md",
+      "line": 38
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-01-vendor-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "R-01-vendor-requirements.md",
+      "line": 39
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "target-v1-closure-pack/T-04-dial-token.md",
+      "kind": "markdown",
+      "rawTarget": "../target-v1-closure-pack/T-04-dial-token.md",
+      "line": 39
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+      "kind": "markdown",
+      "rawTarget": "R-05-tts-audio-capability.md",
+      "line": 40
+    },
+    {
+      "from": "telephony-procurement-pack/README.md",
+      "to": "target-v1-closure-pack/README.md",
+      "kind": "markdown",
+      "rawTarget": "../target-v1-closure-pack/README.md",
+      "line": 61
+    }
+  ],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+        "line": 7,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+        "line": 8,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/crm-suppression-scope.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+        "line": 7,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+        "line": 8,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/dial-token-compatibility.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+        "line": 7,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+        "line": 8,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/policy-deployment-scope.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/provenance.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/module-3/README.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/provenance.md",
+        "line": 35,
+        "kind": "markdown",
+        "rawTarget": "../../../../deploy/ci/pins/external-decision-artifacts.sha256"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/revoke-scope.md",
+        "line": 7,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/revoke-scope.md",
+        "line": 8,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/internal/revoke-scope.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/README.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/module-3/README.md"
+      },
+      {
+        "file": "target-v1-closure-pack/README.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/README.md",
+        "line": 20,
+        "kind": "markdown",
+        "rawTarget": "../../../specs/api/openapi/contract-manifest.json"
+      },
+      {
+        "file": "target-v1-closure-pack/T-01-program-matrix.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-01-program-matrix.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-01-program-matrix.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-02-task-data-order-version.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-03-speech-summary.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-03-speech-summary.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-03-speech-summary.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-04-dial-token.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-04-dial-token.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-04-dial-token.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-05-callback-ack.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-05-callback-ack.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-05-callback-ack.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-06-no-answer-timeout.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-07-production-auth.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-07-production-auth.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-07-production-auth.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-08-openapi-compat-cdc.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+        "line": 4,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+        "line": 5,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "target-v1-closure-pack/T-09-attempt-policy.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "../../../integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+        "line": 129,
+        "kind": "markdown",
+        "rawTarget": "../../MODULE_8_IVR_ORDER_CONFIRMATION_V0.3_CLEAN.md"
+      },
+      {
+        "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+        "line": 135,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+        "line": 136,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+        "line": 137,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Domain/Confirmation/DispositionMapper.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-00-voice-gateway-rfq.md",
+        "line": 138,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Infrastructure/Telephony/AsteriskAriSimGateway.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+        "line": 15,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+        "line": 94,
+        "kind": "markdown",
+        "rawTarget": "../../capacity-model.md"
+      },
+      {
+        "file": "telephony-procurement-pack/R-01-vendor-requirements.md",
+        "line": 98,
+        "kind": "markdown",
+        "rawTarget": "../../../src/Ivr.Domain/Ports/ProviderPorts.cs"
+      },
+      {
+        "file": "telephony-procurement-pack/R-02-lab-package.md",
+        "line": 63,
+        "kind": "markdown",
+        "rawTarget": "../../lab/one-sim-lab-plan.md"
+      },
+      {
+        "file": "telephony-procurement-pack/R-04-scorecard-and-gaps.md",
+        "line": 74,
+        "kind": "markdown",
+        "rawTarget": "../../api-versioning.md"
+      },
+      {
+        "file": "telephony-procurement-pack/R-05-tts-audio-capability.md",
+        "line": 22,
+        "kind": "markdown",
+        "rawTarget": "../../capacity-model.md"
+      },
+      {
+        "file": "telephony-procurement-pack/README.md",
+        "line": 42,
+        "kind": "markdown",
+        "rawTarget": "../../../specs/_review/open-decisions-register.md"
+      },
+      {
+        "file": "telephony-procurement-pack/README.md",
+        "line": 62,
+        "kind": "markdown",
+        "rawTarget": "../../capacity-model.md"
+      },
+      {
+        "file": "telephony-procurement-pack/README.md",
+        "line": 63,
+        "kind": "markdown",
+        "rawTarget": "../../../docs/release/work-register.md"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "openapi-codegen.md",
+      "openapi-contract-diff.md",
+      "target-v1-field-inventory.md"
+    ]
+  }
+}

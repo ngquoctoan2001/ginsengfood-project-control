@@ -1,0 +1,122 @@
+{
+  "pass": 14,
+  "skip": 0,
+  "fail": 0,
+  "total": 14,
+  "jobs": 3,
+  "ms": 33803,
+  "probes": [
+    {
+      "file": "test/channel-identity/feed-comment-ingest.probe.ts",
+      "verdict": "PASS",
+      "ms": 4121,
+      "checksPass": 81,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/channel-identity/messenger-last-inbound.probe.ts",
+      "verdict": "PASS",
+      "ms": 3641,
+      "checksPass": 16,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/channel-identity/replay-window.probe.ts",
+      "verdict": "PASS",
+      "ms": 3327,
+      "checksPass": 33,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/comment-boundary/classifier-corpus.probe.ts",
+      "verdict": "PASS",
+      "ms": 2417,
+      "checksPass": 134,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/foundation/masking-time.probe.ts",
+      "verdict": "PASS",
+      "ms": 27229,
+      "checksPass": 54,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/foundation/masking.probe.ts",
+      "verdict": "PASS",
+      "ms": 2087,
+      "checksPass": 60,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/foundation/retention-purge.probe.ts",
+      "verdict": "PASS",
+      "ms": 8047,
+      "checksPass": 42,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/foundation/vi-pii-corpus.probe.ts",
+      "verdict": "PASS",
+      "ms": 2935,
+      "checksPass": 28,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/http/request-validation.probe.ts",
+      "verdict": "PASS",
+      "ms": 9573,
+      "checksPass": 71,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/observability/app-logger.probe.ts",
+      "verdict": "PASS",
+      "ms": 9591,
+      "checksPass": 20,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/observability/health-ready.probe.ts",
+      "verdict": "PASS",
+      "ms": 16456,
+      "checksPass": 33,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/observability/metrics-registry.probe.ts",
+      "verdict": "PASS",
+      "ms": 2008,
+      "checksPass": 21,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/observability/slo-deferred.probe.ts",
+      "verdict": "PASS",
+      "ms": 1548,
+      "checksPass": 12,
+      "checksFail": 0,
+      "failedChecks": []
+    },
+    {
+      "file": "test/outbound-guard/window-check-real.probe.ts",
+      "verdict": "PASS",
+      "ms": 7688,
+      "checksPass": 38,
+      "checksFail": 0,
+      "failedChecks": []
+    }
+  ]
+}

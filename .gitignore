@@ -1,0 +1,32 @@
+# Project Control lên git (Toàn chốt 14/11: repo công khai). Chỉ đưa sổ sách và tài liệu.
+
+# Bằng chứng nặng của các lượt rà: mã nguồn chép, gói .tar, .exe, log, cây thư mục kiểm — giữ trên máy Lead
+modules/*/ra-soat/*/
+
+# Bí mật và cấu hình riêng máy — không bao giờ đưa lên
+.env*
+**/sheet.json
+*.pem
+*.key
+*.pfx
+id_*
+*.kdbx
+.claude/settings.local.json
+
+# Nhị phân, gói, bản dump
+*.exe
+*.dll
+*.pdb
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.dump
+*.bak
+
+# Rác máy
+Thumbs.db
+desktop.ini
+~$*
+__pycache__/

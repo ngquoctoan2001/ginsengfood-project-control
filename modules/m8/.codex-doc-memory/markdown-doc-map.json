@@ -1,0 +1,2673 @@
+{
+  "generatedAt": "2026-11-02T19:34:36.334Z",
+  "root": "C:\\Projects\\Project Control\\modules\\m8",
+  "files": [
+    {
+      "path": "nhat-ky/2026-10-31.md",
+      "title": "2026 10 31",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 4,
+      "words": 78,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-01.md",
+      "title": "2026 11 01",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 10,
+      "words": 288,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-02.md",
+      "title": "02/11/2026 20:31 UTC+7 · Chốt sóng2 local",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 2,
+          "text": "02/11/2026 20:31 UTC+7 · Chốt sóng2 local",
+          "line": 44,
+          "slug": "02112026-2031-utc7-chốt-sóng2-local"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Báo cáo",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 46
+        }
+      ],
+      "lines": 47,
+      "words": 1665,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "nhat-ky/2026-11-02.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 46
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-03.md",
+      "title": "2026 11 03",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 4,
+      "words": 76,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "PHIEN.md",
+      "title": "Phiên `m8` — M8 IVR gọi xác nhận đơn (Lead tự code)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Phiên `m8` — M8 IVR gọi xác nhận đơn (Lead tự code)",
+          "line": 1,
+          "slug": "phiên-m8-m8-ivr-gọi-xác-nhận-đơn-lead-tự-code"
+        },
+        {
+          "depth": 2,
+          "text": "Repo",
+          "line": 3,
+          "slug": "repo"
+        },
+        {
+          "depth": 2,
+          "text": "Luật repo phải nhớ (`CLAUDE.md` = `AGENTS.md`)",
+          "line": 16,
+          "slug": "luật-repo-phải-nhớ-claudemd-agentsmd"
+        },
+        {
+          "depth": 2,
+          "text": "Lệnh",
+          "line": 27,
+          "slug": "lệnh"
+        },
+        {
+          "depth": 2,
+          "text": "Chạy song song: chế độ A (bản sao `git archive`) + S cho việc nhỏ",
+          "line": 35,
+          "slug": "chạy-song-song-chế-độ-a-bản-sao-git-archive-s-cho-việc-nhỏ"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm đầu phiên",
+          "line": 50,
+          "slug": "kiểm-đầu-phiên"
+        },
+        {
+          "depth": 2,
+          "text": "Mảng khảo sát cho `/ke-hoach`",
+          "line": 56,
+          "slug": "mảng-khảo-sát-cho-ke-hoach"
+        },
+        {
+          "depth": 2,
+          "text": "Báo cáo tuần",
+          "line": 64,
+          "slug": "báo-cáo-tuần"
+        }
+      ],
+      "links": [],
+      "lines": 67,
+      "words": 831,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "QUYET_DINH.md",
+      "title": "Quyết định — m8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Quyết định — m8",
+          "line": 1,
+          "slug": "quyết-định-m8"
+        }
+      ],
+      "links": [],
+      "lines": 25,
+      "words": 1166,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+      "title": "Bản khai triển khai M8 — cụm IVR hai máy",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Bản khai triển khai M8 — cụm IVR hai máy",
+          "line": 1,
+          "slug": "bản-khai-triển-khai-m8-cụm-ivr-hai-máy"
+        },
+        {
+          "depth": 2,
+          "text": "1. Đơn vị triển khai và trách nhiệm",
+          "line": 9,
+          "slug": "1-đơn-vị-triển-khai-và-trách-nhiệm"
+        },
+        {
+          "depth": 2,
+          "text": "2. Dịch vụ, cổng, health và tài nguyên đã khai trong mã",
+          "line": 28,
+          "slug": "2-dịch-vụ-cổng-health-và-tài-nguyên-đã-khai-trong-mã"
+        },
+        {
+          "depth": 2,
+          "text": "3. Dữ liệu, mạng và bí mật (chỉ tên tham chiếu)",
+          "line": 58,
+          "slug": "3-dữ-liệu-mạng-và-bí-mật-chỉ-tên-tham-chiếu"
+        },
+        {
+          "depth": 2,
+          "text": "4. Ngoại lệ đã chốt và cách nghiệm thu tương đương",
+          "line": 82,
+          "slug": "4-ngoại-lệ-đã-chốt-và-cách-nghiệm-thu-tương-đương"
+        },
+        {
+          "depth": 2,
+          "text": "5. Điều kiện còn mở trước G5",
+          "line": 95,
+          "slug": "5-điều-kiện-còn-mở-trước-g5"
+        },
+        {
+          "depth": 2,
+          "text": "6. Kiểm WP07D",
+          "line": 105,
+          "slug": "6-kiểm-wp07d"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Biên bản kiểm độc lập",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 108
+        }
+      ],
+      "lines": 109,
+      "words": 1934,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 108
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 21
+        },
+        {
+          "from": "wp/M8-WP07D.md",
+          "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-02-deploy-contract-m8.md",
+      "title": "Đối chiếu hợp đồng triển khai M8 · 02/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Đối chiếu hợp đồng triển khai M8 · 02/11/2026",
+          "line": 1,
+          "slug": "đối-chiếu-hợp-đồng-triển-khai-m8-02112026"
+        }
+      ],
+      "links": [],
+      "lines": 20,
+      "words": 455,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-deploy-contract-m8.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-deploy-contract-m8.md",
+          "line": 128
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-02-duyet-m8-002.md",
+      "title": "Duyệt diff M8-002 — sóng chuẩn bị cài bản thật (lab, chưa chạm `.61`/`.64`)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Duyệt diff M8-002 — sóng chuẩn bị cài bản thật (lab, chưa chạm `.61`/`.64`)",
+          "line": 1,
+          "slug": "duyệt-diff-m8-002-sóng-chuẩn-bị-cài-bản-thật-lab-chưa-chạm-6164"
+        },
+        {
+          "depth": 2,
+          "text": "Chỗ nên đọc (mã chính, phần còn lại là test + bằng chứng)",
+          "line": 11,
+          "slug": "chỗ-nên-đọc-mã-chính-phần-còn-lại-là-test-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "Số kiểm cuối",
+          "line": 21,
+          "slug": "số-kiểm-cuối"
+        },
+        {
+          "depth": 2,
+          "text": "Lệch tài liệu / thiết kế cần biết (đã chấp nhận ở mức phiên, Lead xem lại khi duyệt)",
+          "line": 29,
+          "slug": "lệch-tài-liệu-thiết-kế-cần-biết-đã-chấp-nhận-ở-mức-phiên-lead-xem-lại-khi-duyệt"
+        },
+        {
+          "depth": 2,
+          "text": "Chưa làm, sang sóng sau",
+          "line": 39,
+          "slug": "chưa-làm-sang-sóng-sau"
+        },
+        {
+          "depth": 2,
+          "text": "Cách xem diff",
+          "line": 45,
+          "slug": "cách-xem-diff"
+        },
+        {
+          "depth": 2,
+          "text": "Đã ghép",
+          "line": 51,
+          "slug": "đã-ghép"
+        }
+      ],
+      "links": [],
+      "lines": 54,
+      "words": 827,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-ke-hoach-m8.md",
+      "title": "Rà soát phục vụ /ke-hoach M8 · 02/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Rà soát phục vụ /ke-hoach M8 · 02/11/2026",
+          "line": 1,
+          "slug": "rà-soát-phục-vụ-ke-hoach-m8-02112026"
+        },
+        {
+          "depth": 2,
+          "text": "Danh mục bằng chứng",
+          "line": 7,
+          "slug": "danh-mục-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "Đối chiếu SHA và giới hạn",
+          "line": 28,
+          "slug": "đối-chiếu-sha-và-giới-hạn"
+        },
+        {
+          "depth": 2,
+          "text": "Kết luận kiểm chéo",
+          "line": 38,
+          "slug": "kết-luận-kiểm-chéo"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả kiểm chéo và chỉnh kế hoạch",
+          "line": 46,
+          "slug": "kết-quả-kiểm-chéo-và-chỉnh-kế-hoạch"
+        }
+      ],
+      "links": [],
+      "lines": 53,
+      "words": 999,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-ke-hoach-m8.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-ke-hoach-m8.md",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+      "title": "M8 — kết quả sóng 1 ngày 02/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8 — kết quả sóng 1 ngày 02/11/2026",
+          "line": 1,
+          "slug": "m8-kết-quả-sóng-1-ngày-02112026"
+        },
+        {
+          "depth": 2,
+          "text": "Định danh và quyền thực hiện",
+          "line": 6,
+          "slug": "định-danh-và-quyền-thực-hiện"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả từng gói",
+          "line": 14,
+          "slug": "kết-quả-từng-gói"
+        },
+        {
+          "depth": 2,
+          "text": "Nguồn địa bàn mới",
+          "line": 27,
+          "slug": "nguồn-địa-bàn-mới"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm cuối và sổ",
+          "line": 37,
+          "slug": "kiểm-cuối-và-sổ"
+        },
+        {
+          "depth": 2,
+          "text": "Giới hạn và cleanup",
+          "line": 46,
+          "slug": "giới-hạn-và-cleanup"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Bản khai",
+          "rawTarget": "2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 21
+        },
+        {
+          "kind": "markdown",
+          "text": "verifier",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 21
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản cleanup",
+          "rawTarget": "2026-11-02-song1-cleanup.json",
+          "line": 50
+        }
+      ],
+      "lines": 55,
+      "words": 934,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 21
+        },
+        {
+          "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 21
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+          "line": 50,
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-song1-cleanup.json"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-song2-diff-r3.md",
+      "title": "Sóng 2 M8 — diff và kiểm trước ghép",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sóng 2 M8 — diff và kiểm trước ghép",
+          "line": 1,
+          "slug": "sóng-2-m8-diff-và-kiểm-trước-ghép"
+        },
+        {
+          "depth": 2,
+          "text": "Thay đổi cần ghép",
+          "line": 7,
+          "slug": "thay-đổi-cần-ghép"
+        },
+        {
+          "depth": 2,
+          "text": "Bằng chứng trước ghép",
+          "line": 21,
+          "slug": "bằng-chứng-trước-ghép"
+        },
+        {
+          "depth": 2,
+          "text": "Ghép và kiểm main",
+          "line": 35,
+          "slug": "ghép-và-kiểm-main"
+        },
+        {
+          "depth": 2,
+          "text": "Follow-up test-only sau kiểm main (17:23)",
+          "line": 58,
+          "slug": "follow-up-test-only-sau-kiểm-main-1723"
+        },
+        {
+          "depth": 2,
+          "text": "Chốt kiểm sau ghép — 02/11/2026 20:31 UTC+7",
+          "line": 72,
+          "slug": "chốt-kiểm-sau-ghép-02112026-2031-utc7"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "báo cáo cuối",
+          "rawTarget": "2026-11-02-song2-m8-ket-qua.md",
+          "line": 74
+        }
+      ],
+      "lines": 75,
+      "words": 816,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-02-song2-diff-r3.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-song2-m8-ket-qua.md",
+          "line": 74
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-song2-diff-r3.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-song2-diff-r3.md",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "title": "Sóng 2 M8 — 02E + 03A + 01A phía M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sóng 2 M8 — 02E + 03A + 01A phía M8",
+          "line": 1,
+          "slug": "sóng-2-m8-02e-03a-01a-phía-m8"
+        },
+        {
+          "depth": 2,
+          "text": "Mã nguồn và bằng chứng",
+          "line": 5,
+          "slug": "mã-nguồn-và-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả ba gói",
+          "line": 12,
+          "slug": "kết-quả-ba-gói"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm cuối trên bản sao 055b9a9",
+          "line": 22,
+          "slug": "kiểm-cuối-trên-bản-sao-055b9a9"
+        },
+        {
+          "depth": 2,
+          "text": "Sổ và vận hành",
+          "line": 37,
+          "slug": "sổ-và-vận-hành"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Hồ sơ kiểm bản sao",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/evidence/W-0494/wave2-final/README.md",
+          "line": 10
+        },
+        {
+          "kind": "markdown",
+          "text": "diff trước ghép",
+          "rawTarget": "2026-11-02-song2-diff-r3.md",
+          "line": 10
+        }
+      ],
+      "lines": 48,
+      "words": 736,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-song2-diff-r3.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-song2-diff-r3.md",
+          "line": 10
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 10,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/evidence/W-0494/wave2-final/README.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "nhat-ky/2026-11-02.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 46
+        },
+        {
+          "from": "ra-soat/2026-11-02-song2-diff-r3.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-song2-m8-ket-qua.md",
+          "line": 74
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 5
+        },
+        {
+          "from": "TRANG_THAI.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 24
+        },
+        {
+          "from": "wp/M8-WP01A.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 59
+        },
+        {
+          "from": "wp/M8-WP02E.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 57
+        },
+        {
+          "from": "wp/M8-WP03A.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+      "title": "WP02D — diff R3 đã được Lead duyệt và ghép local",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "WP02D — diff R3 đã được Lead duyệt và ghép local",
+          "line": 1,
+          "slug": "wp02d-diff-r3-đã-được-lead-duyệt-và-ghép-local"
+        },
+        {
+          "depth": 2,
+          "text": "Thay đổi cần duyệt",
+          "line": 10,
+          "slug": "thay-đổi-cần-duyệt"
+        },
+        {
+          "depth": 2,
+          "text": "Kết luận kiểm độc lập",
+          "line": 26,
+          "slug": "kết-luận-kiểm-độc-lập"
+        },
+        {
+          "depth": 2,
+          "text": "Hành động xin duyệt m8.16",
+          "line": 46,
+          "slug": "hành-động-xin-duyệt-m816"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "m8-wp02d-reviewed-final.patch",
+          "rawTarget": "C:/Projects/_wt/m8/m8-wp02d-reviewed-final.patch",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "manifest bàn giao",
+          "rawTarget": "C:/Projects/_wt/m8/wp02d-final-delivery.json",
+          "line": 8
+        },
+        {
+          "kind": "markdown",
+          "text": "Verifier cuối",
+          "rawTarget": "C:/Projects/_wt/m8/m8-wp02d/docs/evidence/W-0489/verifier-r3-review.md",
+          "line": 28
+        },
+        {
+          "kind": "markdown",
+          "text": "/song bước 6",
+          "rawTarget": "../../../.claude/commands/song.md",
+          "line": 52
+        },
+        {
+          "kind": "markdown",
+          "text": "CÁCH LÀM §4",
+          "rawTarget": "../../../chung/CACH_LAM.md",
+          "line": 53
+        }
+      ],
+      "lines": 55,
+      "words": 626,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+          "line": 52,
+          "kind": "markdown",
+          "rawTarget": "../../../.claude/commands/song.md"
+        },
+        {
+          "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+          "line": 53,
+          "kind": "markdown",
+          "rawTarget": "../../../chung/CACH_LAM.md"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+      "title": "WP02D — đề xuất một vòng sửa hẹp sau verifier R3 vòng 2",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "WP02D — đề xuất một vòng sửa hẹp sau verifier R3 vòng 2",
+          "line": 1,
+          "slug": "wp02d-đề-xuất-một-vòng-sửa-hẹp-sau-verifier-r3-vòng-2"
+        },
+        {
+          "depth": 2,
+          "text": "Điều còn thiếu",
+          "line": 6,
+          "slug": "điều-còn-thiếu"
+        },
+        {
+          "depth": 2,
+          "text": "Diff dự kiến, chưa áp dụng",
+          "line": 16,
+          "slug": "diff-dự-kiến-chưa-áp-dụng"
+        },
+        {
+          "depth": 2,
+          "text": "Kết luận verifier vòng 2 đã đóng băng",
+          "line": 36,
+          "slug": "kết-luận-verifier-vòng-2-đã-đóng-băng"
+        },
+        {
+          "depth": 2,
+          "text": "Vòng hẹp đề nghị",
+          "line": 42,
+          "slug": "vòng-hẹp-đề-nghị"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Báo cáo độc lập",
+          "rawTarget": "C:/Projects/_wt/m8/m8-wp02d/docs/evidence/W-0489/verifier-r2-review.md",
+          "line": 38
+        },
+        {
+          "kind": "markdown",
+          "text": "/song bước 5",
+          "rawTarget": "../../../.claude/commands/song.md",
+          "line": 50
+        },
+        {
+          "kind": "markdown",
+          "text": "CÁCH LÀM §4",
+          "rawTarget": "../../../chung/CACH_LAM.md",
+          "line": 51
+        }
+      ],
+      "lines": 54,
+      "words": 384,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+          "line": 50,
+          "kind": "markdown",
+          "rawTarget": "../../../.claude/commands/song.md"
+        },
+        {
+          "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+          "line": 51,
+          "kind": "markdown",
+          "rawTarget": "../../../chung/CACH_LAM.md"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "ra-soat/2026-11-02-wp07d-verifier.md",
+      "title": "WP07D — kiểm độc lập R1, 02/11/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "WP07D — kiểm độc lập R1, 02/11/2026",
+          "line": 1,
+          "slug": "wp07d-kiểm-độc-lập-r1-02112026"
+        }
+      ],
+      "links": [],
+      "lines": 19,
+      "words": 411,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 108
+        },
+        {
+          "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-02-wp07d-verifier.md",
+          "line": 21
+        },
+        {
+          "from": "wp/M8-WP07D.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-wp07d-verifier.md",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-03-07b-lab-brief.md",
+      "title": "07B — đóng gói bộ monitoring cho LAB sau sóng 2",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "07B — đóng gói bộ monitoring cho LAB sau sóng 2",
+          "line": 1,
+          "slug": "07b-đóng-gói-bộ-monitoring-cho-lab-sau-sóng-2"
+        },
+        {
+          "depth": 2,
+          "text": "Brief coder — đủ 8 mục",
+          "line": 5,
+          "slug": "brief-coder-đủ-8-mục"
+        },
+        {
+          "depth": 2,
+          "text": "Đầu vào LAB đã kiểm ngày 03/11",
+          "line": 16,
+          "slug": "đầu-vào-lab-đã-kiểm-ngày-0311"
+        },
+        {
+          "depth": 2,
+          "text": "Bổ sung môi trường kiểm",
+          "line": 20,
+          "slug": "bổ-sung-môi-trường-kiểm"
+        }
+      ],
+      "links": [],
+      "lines": 25,
+      "words": 779,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-03-07b-lab-brief.md",
+          "line": 26
+        },
+        {
+          "from": "wp/M8-WP07B.md",
+          "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-brief.md",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "path": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "title": "Kết quả LAB WP07B — đóng bộ monitoring",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kết quả LAB WP07B — đóng bộ monitoring",
+          "line": 1,
+          "slug": "kết-quả-lab-wp07b-đóng-bộ-monitoring"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Hồ sơ hiện hành",
+          "rawTarget": "C:/Projects/ginsengfood-ivr/docs/evidence/W-0495/CURRENT.md",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "Verifier",
+          "rawTarget": "C:/Projects/ginsengfood-ivr/docs/evidence/W-0495/verifier-r1/review.md",
+          "line": 26
+        },
+        {
+          "kind": "markdown",
+          "text": "Brief",
+          "rawTarget": "2026-11-03-07b-lab-brief.md",
+          "line": 26
+        }
+      ],
+      "lines": 27,
+      "words": 363,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+          "kind": "markdown",
+          "rawTarget": "2026-11-03-07b-lab-brief.md",
+          "line": 26
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 134
+        },
+        {
+          "from": "TRANG_THAI.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 24
+        },
+        {
+          "from": "wp/M8-WP07B.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "path": "SAN_SANG.md",
+      "title": "Sẵn sàng — M8 IVR",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sẵn sàng — M8 IVR",
+          "line": 1,
+          "slug": "sẵn-sàng-m8-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "Phạm vi và quyết định đang hiệu lực",
+          "line": 8,
+          "slug": "phạm-vi-và-quyết-định-đang-hiệu-lực"
+        },
+        {
+          "depth": 2,
+          "text": "Hạng mục lõi (giữ trọng số giữa các tuần, tổng 100)",
+          "line": 16,
+          "slug": "hạng-mục-lõi-giữ-trọng-số-giữa-các-tuần-tổng-100"
+        },
+        {
+          "depth": 2,
+          "text": "Hạng mục mở rộng",
+          "line": 32,
+          "slug": "hạng-mục-mở-rộng"
+        },
+        {
+          "depth": 2,
+          "text": "Cổng G1–G8",
+          "line": 38,
+          "slug": "cổng-g1g8"
+        },
+        {
+          "depth": 2,
+          "text": "Gói việc",
+          "line": 53,
+          "slug": "gói-việc"
+        },
+        {
+          "depth": 2,
+          "text": "Hai sóng đầu và tệp nóng",
+          "line": 75,
+          "slug": "hai-sóng-đầu-và-tệp-nóng"
+        },
+        {
+          "depth": 2,
+          "text": "Đường găng tới A–D",
+          "line": 88,
+          "slug": "đường-găng-tới-ad"
+        },
+        {
+          "depth": 2,
+          "text": "Việc ngoài code",
+          "line": 103,
+          "slug": "việc-ngoài-code"
+        },
+        {
+          "depth": 2,
+          "text": "Không kịp 15/11 và bản tối thiểu",
+          "line": 119,
+          "slug": "không-kịp-1511-và-bản-tối-thiểu"
+        },
+        {
+          "depth": 2,
+          "text": "Cần quyết và bước tiếp theo",
+          "line": 126,
+          "slug": "cần-quyết-và-bước-tiếp-theo"
+        },
+        {
+          "depth": 2,
+          "text": "Tiếp LAB ngày 03/11",
+          "line": 132,
+          "slug": "tiếp-lab-ngày-0311"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Kết quả sóng2",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "Danh mục bằng chứng và giới hạn",
+          "rawTarget": "ra-soat/2026-11-02-ke-hoach-m8.md",
+          "line": 6
+        },
+        {
+          "kind": "markdown",
+          "text": "02A",
+          "rawTarget": "wp/M8-WP02A.md",
+          "line": 60
+        },
+        {
+          "kind": "markdown",
+          "text": "02B",
+          "rawTarget": "wp/M8-WP02B.md",
+          "line": 60
+        },
+        {
+          "kind": "markdown",
+          "text": "02C",
+          "rawTarget": "wp/M8-WP02C.md",
+          "line": 60
+        },
+        {
+          "kind": "markdown",
+          "text": "02D",
+          "rawTarget": "wp/M8-WP02D.md",
+          "line": 61
+        },
+        {
+          "kind": "markdown",
+          "text": "07A",
+          "rawTarget": "wp/M8-WP07A.md",
+          "line": 62
+        },
+        {
+          "kind": "markdown",
+          "text": "04A",
+          "rawTarget": "wp/M8-WP04A.md",
+          "line": 63
+        },
+        {
+          "kind": "markdown",
+          "text": "07D",
+          "rawTarget": "wp/M8-WP07D.md",
+          "line": 64
+        },
+        {
+          "kind": "markdown",
+          "text": "02E",
+          "rawTarget": "wp/M8-WP02E.md",
+          "line": 65
+        },
+        {
+          "kind": "markdown",
+          "text": "03A",
+          "rawTarget": "wp/M8-WP03A.md",
+          "line": 66
+        },
+        {
+          "kind": "markdown",
+          "text": "01A",
+          "rawTarget": "wp/M8-WP01A.md",
+          "line": 67
+        },
+        {
+          "kind": "markdown",
+          "text": "07V",
+          "rawTarget": "wp/M8-WP07V.md",
+          "line": 68
+        },
+        {
+          "kind": "markdown",
+          "text": "07B",
+          "rawTarget": "wp/M8-WP07B.md",
+          "line": 69
+        },
+        {
+          "kind": "markdown",
+          "text": "05",
+          "rawTarget": "wp/M8-WP05.md",
+          "line": 70
+        },
+        {
+          "kind": "markdown",
+          "text": "08",
+          "rawTarget": "wp/M8-WP08.md",
+          "line": 71
+        },
+        {
+          "kind": "markdown",
+          "text": "02F",
+          "rawTarget": "wp/M8-WP02F.md",
+          "line": 72
+        },
+        {
+          "kind": "markdown",
+          "text": "06",
+          "rawTarget": "wp/M8-WP06.md",
+          "line": 73
+        },
+        {
+          "kind": "markdown",
+          "text": "ma trận",
+          "rawTarget": "ra-soat/2026-11-02-deploy-contract-m8.md",
+          "line": 128
+        },
+        {
+          "kind": "markdown",
+          "text": "Kết quả",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 134
+        }
+      ],
+      "lines": 135,
+      "words": 2940,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 5
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-ke-hoach-m8.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-ke-hoach-m8.md",
+          "line": 6
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02A.md",
+          "line": 60
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02B.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02B.md",
+          "line": 60
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02C.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02C.md",
+          "line": 60
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02D.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02D.md",
+          "line": 61
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07A.md",
+          "line": 62
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP04A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP04A.md",
+          "line": 63
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07D.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07D.md",
+          "line": 64
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02E.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02E.md",
+          "line": 65
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP03A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP03A.md",
+          "line": 66
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP01A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP01A.md",
+          "line": 67
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07V.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07V.md",
+          "line": 68
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07B.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07B.md",
+          "line": 69
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP05.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP05.md",
+          "line": 70
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP08.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP08.md",
+          "line": 71
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02F.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02F.md",
+          "line": 72
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP06.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP06.md",
+          "line": 73
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-02-deploy-contract-m8.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-deploy-contract-m8.md",
+          "line": 128
+        },
+        {
+          "from": "SAN_SANG.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 134
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "TRANG_THAI.md",
+          "to": "SAN_SANG.md",
+          "kind": "markdown",
+          "rawTarget": "SAN_SANG.md",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "path": "TRANG_THAI.md",
+      "title": "Trạng thái — m8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Trạng thái — m8",
+          "line": 1,
+          "slug": "trạng-thái-m8"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả hiện tại",
+          "line": 6,
+          "slug": "kết-quả-hiện-tại"
+        },
+        {
+          "depth": 2,
+          "text": "Sẵn sàng và ranh giới",
+          "line": 15,
+          "slug": "sẵn-sàng-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Bước tiếp theo",
+          "line": 21,
+          "slug": "bước-tiếp-theo"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Kết quả LAB",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 24
+        },
+        {
+          "kind": "markdown",
+          "text": "Sóng2",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 24
+        },
+        {
+          "kind": "markdown",
+          "text": "Sẵn sàng",
+          "rawTarget": "SAN_SANG.md",
+          "line": 24
+        }
+      ],
+      "lines": 25,
+      "words": 278,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "TRANG_THAI.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 24
+        },
+        {
+          "from": "TRANG_THAI.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 24
+        },
+        {
+          "from": "TRANG_THAI.md",
+          "to": "SAN_SANG.md",
+          "kind": "markdown",
+          "rawTarget": "SAN_SANG.md",
+          "line": 24
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "wp/M8-WP01A.md",
+      "title": "M8-WP01A — Chuẩn bị và nghiệm thu phần M8 trong luồng xác nhận đơn",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP01A — Chuẩn bị và nghiệm thu phần M8 trong luồng xác nhận đơn",
+          "line": 1,
+          "slug": "m8-wp01a-chuẩn-bị-và-nghiệm-thu-phần-m8-trong-luồng-xác-nhận-đơn"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Kết quả",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 59
+        }
+      ],
+      "lines": 60,
+      "words": 1299,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "wp/M8-WP01A.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 59
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP01A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP01A.md",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02A.md",
+      "title": "M8-WP02A — Dựng DB production và phân quyền cho `.61`, diễn tập trên Postgres tạm",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02A — Dựng DB production và phân quyền cho `.61`, diễn tập trên Postgres tạm",
+          "line": 1,
+          "slug": "m8-wp02a-dựng-db-production-và-phân-quyền-cho-61-diễn-tập-trên-postgres-tạm"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 7,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến (mỗi vòng một dòng, mới nhất ở cuối)",
+          "line": 44,
+          "slug": "diễn-biến-mỗi-vòng-một-dòng-mới-nhất-ở-cuối"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 66,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 69,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 73,
+      "words": 1975,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02A.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02B.md",
+      "title": "M8-WP02B — Cấp và kiểm bí mật production hai máy, diễn tập trong container Linux",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02B — Cấp và kiểm bí mật production hai máy, diễn tập trong container Linux",
+          "line": 1,
+          "slug": "m8-wp02b-cấp-và-kiểm-bí-mật-production-hai-máy-diễn-tập-trong-container-linux"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 7,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến (mỗi vòng một dòng, mới nhất ở cuối)",
+          "line": 47,
+          "slug": "diễn-biến-mỗi-vòng-một-dòng-mới-nhất-ở-cuối"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 65,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 68,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 70,
+      "words": 1587,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02B.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02B.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02C.md",
+      "title": "M8-WP02C — Bộ điều phối cửa sổ: kế hoạch chuyển, kiểm sau chuyển, quay lui sinh từ inventory",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02C — Bộ điều phối cửa sổ: kế hoạch chuyển, kiểm sau chuyển, quay lui sinh từ inventory",
+          "line": 1,
+          "slug": "m8-wp02c-bộ-điều-phối-cửa-sổ-kế-hoạch-chuyển-kiểm-sau-chuyển-quay-lui-sinh-từ-inventory"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 7,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến (mỗi vòng một dòng, mới nhất ở cuối)",
+          "line": 45,
+          "slug": "diễn-biến-mỗi-vòng-một-dòng-mới-nhất-ở-cuối"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 59,
+          "slug": "bước-kế-tiếp-chính-xác"
+        },
+        {
+          "depth": 2,
+          "text": "Còn lại / CẦN QUYẾT",
+          "line": 62,
+          "slug": "còn-lại-cần-quyết"
+        }
+      ],
+      "links": [],
+      "lines": 66,
+      "words": 1348,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02C.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02C.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02D.md",
+      "title": "M8-WP02D — Điều phối ba dịch vụ tổng đài và khép nợ sóng 1",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02D — Điều phối ba dịch vụ tổng đài và khép nợ sóng 1",
+          "line": 1,
+          "slug": "m8-wp02d-điều-phối-ba-dịch-vụ-tổng-đài-và-khép-nợ-sóng-1"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 54,
+      "words": 988,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02D.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02D.md",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02E.md",
+      "title": "M8-WP02E — Diễn tập chuyển giám sát theo profile máy đã ghim",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02E — Diễn tập chuyển giám sát theo profile máy đã ghim",
+          "line": 1,
+          "slug": "m8-wp02e-diễn-tập-chuyển-giám-sát-theo-profile-máy-đã-ghim"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 31,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 38,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 42,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Kết quả",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 57
+        }
+      ],
+      "lines": 58,
+      "words": 1189,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "wp/M8-WP02E.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 57
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02E.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02E.md",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP02F.md",
+      "title": "M8-WP02F — Diễn tập rồi thực hiện cửa sổ đóng gọi và nghiệm thu vận hành",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP02F — Diễn tập rồi thực hiện cửa sổ đóng gọi và nghiệm thu vận hành",
+          "line": 1,
+          "slug": "m8-wp02f-diễn-tập-rồi-thực-hiện-cửa-sổ-đóng-gọi-và-nghiệm-thu-vận-hành"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 31,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 38,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 42,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 45,
+      "words": 781,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP02F.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP02F.md",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP03A.md",
+      "title": "M8-WP03A — Nối cấp quyền backup và khôi phục đủ đường đi trong lab",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP03A — Nối cấp quyền backup và khôi phục đủ đường đi trong lab",
+          "line": 1,
+          "slug": "m8-wp03a-nối-cấp-quyền-backup-và-khôi-phục-đủ-đường-đi-trong-lab"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Kết quả",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 60
+        }
+      ],
+      "lines": 61,
+      "words": 1398,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "wp/M8-WP03A.md",
+          "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+          "line": 60
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP03A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP03A.md",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP04A.md",
+      "title": "M8-WP04A — Đối chiếu tên địa bàn và chuẩn bị bộ lời thoại để duyệt",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP04A — Đối chiếu tên địa bàn và chuẩn bị bộ lời thoại để duyệt",
+          "line": 1,
+          "slug": "m8-wp04a-đối-chiếu-tên-địa-bàn-và-chuẩn-bị-bộ-lời-thoại-để-duyệt"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 54,
+      "words": 1103,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP04A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP04A.md",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP05.md",
+      "title": "M8-WP05 — Kiểm luồng worker qua MobiFone và đo giới hạn thực",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP05 — Kiểm luồng worker qua MobiFone và đo giới hạn thực",
+          "line": 1,
+          "slug": "m8-wp05-kiểm-luồng-worker-qua-mobifone-và-đo-giới-hạn-thực"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 44,
+      "words": 674,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP05.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP05.md",
+          "line": 70
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP06.md",
+      "title": "M8-WP06 — Mở rộng ngoại mạng và nhà mạng thứ hai sau tên định danh",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP06 — Mở rộng ngoại mạng và nhà mạng thứ hai sau tên định danh",
+          "line": 1,
+          "slug": "m8-wp06-mở-rộng-ngoại-mạng-và-nhà-mạng-thứ-hai-sau-tên-định-danh"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 29,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 36,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 40,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 43,
+      "words": 629,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP06.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP06.md",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP07A.md",
+      "title": "M8-WP07A — Khôi phục các cổng kiểm và xác minh phạm vi quét bí mật",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP07A — Khôi phục các cổng kiểm và xác minh phạm vi quét bí mật",
+          "line": 1,
+          "slug": "m8-wp07a-khôi-phục-các-cổng-kiểm-và-xác-minh-phạm-vi-quét-bí-mật"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 52,
+      "words": 985,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07A.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07A.md",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP07B.md",
+      "title": "M8-WP07B — Đóng và kiểm một bộ ứng viên có đủ định danh",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP07B — Đóng và kiểm một bộ ứng viên có đủ định danh",
+          "line": 1,
+          "slug": "m8-wp07b-đóng-và-kiểm-một-bộ-ứng-viên-có-đủ-định-danh"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 31,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 38,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 42,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Brief",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-brief.md",
+          "line": 46
+        },
+        {
+          "kind": "markdown",
+          "text": "Kết quả",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 50
+        }
+      ],
+      "lines": 51,
+      "words": 921,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "wp/M8-WP07B.md",
+          "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-brief.md",
+          "line": 46
+        },
+        {
+          "from": "wp/M8-WP07B.md",
+          "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-03-07b-lab-ket-qua.md",
+          "line": 50
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07B.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07B.md",
+          "line": 69
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP07D.md",
+      "title": "M8-WP07D — Chốt bản khai triển khai phù hợp kiến trúc M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP07D — Chốt bản khai triển khai phù hợp kiến trúc M8",
+          "line": 1,
+          "slug": "m8-wp07d-chốt-bản-khai-triển-khai-phù-hợp-kiến-trúc-m8"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "bản khai",
+          "rawTarget": "../ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 46
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản",
+          "rawTarget": "../ra-soat/2026-11-02-wp07d-verifier.md",
+          "line": 47
+        }
+      ],
+      "lines": 49,
+      "words": 748,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "wp/M8-WP07D.md",
+          "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+          "line": 46
+        },
+        {
+          "from": "wp/M8-WP07D.md",
+          "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+          "kind": "markdown",
+          "rawTarget": "../ra-soat/2026-11-02-wp07d-verifier.md",
+          "line": 47
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07D.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07D.md",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP07V.md",
+      "title": "M8-WP07V — Hoàn tất bộ giọng đọc và chuỗi artifact được duyệt",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP07V — Hoàn tất bộ giọng đọc và chuỗi artifact được duyệt",
+          "line": 1,
+          "slug": "m8-wp07v-hoàn-tất-bộ-giọng-đọc-và-chuỗi-artifact-được-duyệt"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 31,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 38,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 42,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 45,
+      "words": 759,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP07V.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP07V.md",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "path": "wp/M8-WP08.md",
+      "title": "M8-WP08 — Đo tải và chốt quy mô vận hành đã chứng minh",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M8-WP08 — Đo tải và chốt quy mô vận hành đã chứng minh",
+          "line": 1,
+          "slug": "m8-wp08-đo-tải-và-chốt-quy-mô-vận-hành-đã-chứng-minh"
+        },
+        {
+          "depth": 2,
+          "text": "Brief",
+          "line": 9,
+          "slug": "brief"
+        },
+        {
+          "depth": 2,
+          "text": "Phụ thuộc và ranh giới",
+          "line": 30,
+          "slug": "phụ-thuộc-và-ranh-giới"
+        },
+        {
+          "depth": 2,
+          "text": "Diễn biến",
+          "line": 37,
+          "slug": "diễn-biến"
+        },
+        {
+          "depth": 2,
+          "text": "Bước kế tiếp chính xác",
+          "line": 41,
+          "slug": "bước-kế-tiếp-chính-xác"
+        }
+      ],
+      "links": [],
+      "lines": 44,
+      "words": 673,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "SAN_SANG.md",
+          "to": "wp/M8-WP08.md",
+          "kind": "markdown",
+          "rawTarget": "wp/M8-WP08.md",
+          "line": 71
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "nhat-ky/2026-11-02.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 46
+    },
+    {
+      "from": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+      "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-02-wp07d-verifier.md",
+      "line": 108
+    },
+    {
+      "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+      "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-02-ban-khai-trien-khai-m8.md",
+      "line": 21
+    },
+    {
+      "from": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+      "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-02-wp07d-verifier.md",
+      "line": 21
+    },
+    {
+      "from": "ra-soat/2026-11-02-song2-diff-r3.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-02-song2-m8-ket-qua.md",
+      "line": 74
+    },
+    {
+      "from": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "to": "ra-soat/2026-11-02-song2-diff-r3.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-02-song2-diff-r3.md",
+      "line": 10
+    },
+    {
+      "from": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+      "kind": "markdown",
+      "rawTarget": "2026-11-03-07b-lab-brief.md",
+      "line": 26
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 5
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "ra-soat/2026-11-02-ke-hoach-m8.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-02-ke-hoach-m8.md",
+      "line": 6
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02A.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02A.md",
+      "line": 60
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02B.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02B.md",
+      "line": 60
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02C.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02C.md",
+      "line": 60
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02D.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02D.md",
+      "line": 61
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP07A.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP07A.md",
+      "line": 62
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP04A.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP04A.md",
+      "line": 63
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP07D.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP07D.md",
+      "line": 64
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02E.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02E.md",
+      "line": 65
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP03A.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP03A.md",
+      "line": 66
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP01A.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP01A.md",
+      "line": 67
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP07V.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP07V.md",
+      "line": 68
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP07B.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP07B.md",
+      "line": 69
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP05.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP05.md",
+      "line": 70
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP08.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP08.md",
+      "line": 71
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP02F.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP02F.md",
+      "line": 72
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "wp/M8-WP06.md",
+      "kind": "markdown",
+      "rawTarget": "wp/M8-WP06.md",
+      "line": 73
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "ra-soat/2026-11-02-deploy-contract-m8.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-02-deploy-contract-m8.md",
+      "line": 128
+    },
+    {
+      "from": "SAN_SANG.md",
+      "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "line": 134
+    },
+    {
+      "from": "TRANG_THAI.md",
+      "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "line": 24
+    },
+    {
+      "from": "TRANG_THAI.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 24
+    },
+    {
+      "from": "TRANG_THAI.md",
+      "to": "SAN_SANG.md",
+      "kind": "markdown",
+      "rawTarget": "SAN_SANG.md",
+      "line": 24
+    },
+    {
+      "from": "wp/M8-WP01A.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 59
+    },
+    {
+      "from": "wp/M8-WP02E.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 57
+    },
+    {
+      "from": "wp/M8-WP03A.md",
+      "to": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-song2-m8-ket-qua.md",
+      "line": 60
+    },
+    {
+      "from": "wp/M8-WP07B.md",
+      "to": "ra-soat/2026-11-03-07b-lab-brief.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-03-07b-lab-brief.md",
+      "line": 46
+    },
+    {
+      "from": "wp/M8-WP07B.md",
+      "to": "ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-03-07b-lab-ket-qua.md",
+      "line": 50
+    },
+    {
+      "from": "wp/M8-WP07D.md",
+      "to": "ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-ban-khai-trien-khai-m8.md",
+      "line": 46
+    },
+    {
+      "from": "wp/M8-WP07D.md",
+      "to": "ra-soat/2026-11-02-wp07d-verifier.md",
+      "kind": "markdown",
+      "rawTarget": "../ra-soat/2026-11-02-wp07d-verifier.md",
+      "line": 47
+    }
+  ],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+        "line": 50,
+        "kind": "markdown",
+        "rawTarget": "2026-11-02-song1-cleanup.json"
+      },
+      {
+        "file": "ra-soat/2026-11-02-song2-m8-ket-qua.md",
+        "line": 10,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/docs/evidence/W-0494/wave2-final/README.md"
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+        "line": 52,
+        "kind": "markdown",
+        "rawTarget": "../../../.claude/commands/song.md"
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+        "line": 53,
+        "kind": "markdown",
+        "rawTarget": "../../../chung/CACH_LAM.md"
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+        "line": 50,
+        "kind": "markdown",
+        "rawTarget": "../../../.claude/commands/song.md"
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+        "line": 51,
+        "kind": "markdown",
+        "rawTarget": "../../../chung/CACH_LAM.md"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "nhat-ky/2026-10-31.md",
+      "nhat-ky/2026-11-01.md",
+      "nhat-ky/2026-11-03.md",
+      "PHIEN.md",
+      "QUYET_DINH.md",
+      "ra-soat/2026-11-02-duyet-m8-002.md",
+      "ra-soat/2026-11-02-wp02d-diff-r3.md",
+      "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md"
+    ]
+  }
+}

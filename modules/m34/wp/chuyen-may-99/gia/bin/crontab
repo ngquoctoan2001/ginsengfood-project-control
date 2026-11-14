@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# crontab giả: lưu ở $GIA_MAY_DIR/crontab
+f="${GIA_MAY_DIR:?}/crontab"
+case "${1-}" in
+  -l) [ -f "$f" ] || { echo "no crontab for ssv" >&2; exit 1; }; cat "$f" ;;
+  -) cat > "$f" ;;
+  *) cp "$1" "$f" ;;
+esac

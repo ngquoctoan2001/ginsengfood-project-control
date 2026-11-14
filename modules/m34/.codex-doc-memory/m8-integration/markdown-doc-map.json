@@ -1,0 +1,2756 @@
+{
+  "generatedAt": "2026-11-02T03:58:21.519Z",
+  "root": "C:\\Projects\\ginsengfood-ivr\\integration-requirements",
+  "files": [
+    {
+      "path": "00-index.md",
+      "title": "Integration requirements — nguồn hiện hành",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Integration requirements — nguồn hiện hành",
+          "line": 1,
+          "slug": "integration-requirements-nguồn-hiện-hành"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Bộ r2",
+          "rawTarget": "module-3/README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Tiến độ gửi",
+          "rawTarget": "../docs/README.md#bộ-m3-r1-và-r2",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "ZIP chính thức duy nhất gửi M3",
+          "rawTarget": "module-3/M3-IVR-2026-10-03-r1.zip",
+          "line": 9
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 11
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 12
+        },
+        {
+          "kind": "markdown",
+          "text": "API reference",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-01",
+          "rawTarget": "01-sales-platform-requirements.md",
+          "line": 14
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-03",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-04",
+          "rawTarget": "04-shared-auth-audit-requirements.md",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-05",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 17
+        }
+      ],
+      "lines": 21,
+      "words": 197,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "00-index.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 3
+        },
+        {
+          "from": "00-index.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "../docs/README.md#bộ-m3-r1-và-r2",
+          "line": 5
+        },
+        {
+          "from": "00-index.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "from": "00-index.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 11
+        },
+        {
+          "from": "00-index.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 12
+        },
+        {
+          "from": "00-index.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "from": "00-index.md",
+          "to": "01-sales-platform-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "01-sales-platform-requirements.md",
+          "line": 14
+        },
+        {
+          "from": "00-index.md",
+          "to": "03-telephony-sim-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        },
+        {
+          "from": "00-index.md",
+          "to": "04-shared-auth-audit-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "04-shared-auth-audit-requirements.md",
+          "line": 16
+        },
+        {
+          "from": "00-index.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 17
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "00-index.md",
+          "line": 9,
+          "kind": "markdown",
+          "rawTarget": "module-3/M3-IVR-2026-10-03-r1.zip"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "01-sales-platform-requirements.md",
+      "title": "IR-01 — Sổ mã yêu cầu M3",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-01 — Sổ mã yêu cầu M3",
+          "line": 1,
+          "slug": "ir-01-sổ-mã-yêu-cầu-m3"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        }
+      ],
+      "lines": 29,
+      "words": 404,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "01-sales-platform-requirements.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "from": "01-sales-platform-requirements.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "01-sales-platform-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "01-sales-platform-requirements.md",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "path": "03-telephony-sim-requirements.md",
+      "title": "IR-03 — Telephony / SIM Gateway Requirements",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-03 — Telephony / SIM Gateway Requirements",
+          "line": 1,
+          "slug": "ir-03-telephony-sim-gateway-requirements"
+        },
+        {
+          "depth": 2,
+          "text": "1. Lộ trình đã được owner chỉ đạo",
+          "line": 6,
+          "slug": "1-lộ-trình-đã-được-owner-chỉ-đạo"
+        },
+        {
+          "depth": 2,
+          "text": "2. Yêu cầu adapter/vendor",
+          "line": 16,
+          "slug": "2-yêu-cầu-adaptervendor"
+        },
+        {
+          "depth": 2,
+          "text": "3. Lab acceptance với 1 SIM thật",
+          "line": 30,
+          "slug": "3-lab-acceptance-với-1-sim-thật"
+        },
+        {
+          "depth": 2,
+          "text": "4. Thông tin cần vendor/Infra trả",
+          "line": 48,
+          "slug": "4-thông-tin-cần-vendorinfra-trả"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-05 §2",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 42
+        },
+        {
+          "kind": "markdown",
+          "text": "M8-10 decision pack",
+          "rawTarget": "../docs/contracts/target-v1-closure-pack/internal/dial-token-compatibility.md",
+          "line": 46
+        }
+      ],
+      "lines": 51,
+      "words": 508,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "03-telephony-sim-requirements.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 42
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "03-telephony-sim-requirements.md",
+          "line": 46,
+          "kind": "markdown",
+          "rawTarget": "../docs/contracts/target-v1-closure-pack/internal/dial-token-compatibility.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "03-telephony-sim-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "03-telephony-sim-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "04-shared-auth-audit-requirements.md",
+      "title": "IR-04 — Shared Auth, Audit and Release Requirements",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-04 — Shared Auth, Audit and Release Requirements",
+          "line": 1,
+          "slug": "ir-04-shared-auth-audit-and-release-requirements"
+        },
+        {
+          "depth": 2,
+          "text": "Auth acceptance",
+          "line": 20,
+          "slug": "auth-acceptance"
+        },
+        {
+          "depth": 2,
+          "text": "Notification boundary",
+          "line": 28,
+          "slug": "notification-boundary"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06 §7",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 6
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-05",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 6
+        }
+      ],
+      "lines": 31,
+      "words": 344,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "04-shared-auth-audit-requirements.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 6
+        },
+        {
+          "from": "04-shared-auth-audit-requirements.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 6
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "04-shared-auth-audit-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "04-shared-auth-audit-requirements.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "05-open-contract-questions.md",
+      "title": "IR-05 — Đầu mối quyết định và hồ sơ còn thiếu",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-05 — Đầu mối quyết định và hồ sơ còn thiếu",
+          "line": 1,
+          "slug": "ir-05-đầu-mối-quyết-định-và-hồ-sơ-còn-thiếu"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "một gói",
+          "rawTarget": "module-3/README.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-03",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "Master tracker",
+          "rawTarget": "../prompt/_execution/prompt-execution-tracker.md",
+          "line": 18
+        }
+      ],
+      "lines": 20,
+      "words": 229,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 4
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 5
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "03-telephony-sim-requirements.md",
+          "kind": "markdown",
+          "rawTarget": "03-telephony-sim-requirements.md",
+          "line": 15
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "05-open-contract-questions.md",
+          "line": 18,
+          "kind": "markdown",
+          "rawTarget": "../prompt/_execution/prompt-execution-tracker.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 17
+        },
+        {
+          "from": "03-telephony-sim-requirements.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 42
+        },
+        {
+          "from": "04-shared-auth-audit-requirements.md",
+          "to": "05-open-contract-questions.md",
+          "kind": "markdown",
+          "rawTarget": "05-open-contract-questions.md",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "path": "06-module-3-api-handover.md",
+      "title": "IR-06 — Hợp đồng triển khai Module 3 ↔ IVR",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-06 — Hợp đồng triển khai Module 3 ↔ IVR",
+          "line": 1,
+          "slug": "ir-06-hợp-đồng-triển-khai-module-3-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "0. Bộ tài liệu và cách đọc",
+          "line": 8,
+          "slug": "0-bộ-tài-liệu-và-cách-đọc"
+        },
+        {
+          "depth": 2,
+          "text": "1. Trách nhiệm",
+          "line": 24,
+          "slug": "1-trách-nhiệm"
+        },
+        {
+          "depth": 2,
+          "text": "2. Chính sách cố định",
+          "line": 44,
+          "slug": "2-chính-sách-cố-định"
+        },
+        {
+          "depth": 3,
+          "text": "2.1. Program và lịch",
+          "line": 55,
+          "slug": "21-program-và-lịch"
+        },
+        {
+          "depth": 3,
+          "text": "2.2. Ngoài giờ: M3 gửi ngay, IVR giữ",
+          "line": 73,
+          "slug": "22-ngoài-giờ-m3-gửi-ngay-ivr-giữ"
+        },
+        {
+          "depth": 3,
+          "text": "2.3. Lượt gọi",
+          "line": 90,
+          "slug": "23-lượt-gọi"
+        },
+        {
+          "depth": 2,
+          "text": "3. API A — gửi task",
+          "line": 99,
+          "slug": "3-api-a-gửi-task"
+        },
+        {
+          "depth": 3,
+          "text": "3.1. Endpoint/header/idempotency",
+          "line": 101,
+          "slug": "31-endpointheaderidempotency"
+        },
+        {
+          "depth": 3,
+          "text": "3.2. Điều kiện producer",
+          "line": 119,
+          "slug": "32-điều-kiện-producer"
+        },
+        {
+          "depth": 3,
+          "text": "3.3. Field có điều kiện và compatibility",
+          "line": 132,
+          "slug": "33-field-có-điều-kiện-và-compatibility"
+        },
+        {
+          "depth": 3,
+          "text": "3.4. 19 field bắt buộc trên wire",
+          "line": 153,
+          "slug": "34-19-field-bắt-buộc-trên-wire"
+        },
+        {
+          "depth": 3,
+          "text": "3.5. privacy_safe_order_summary",
+          "line": 180,
+          "slug": "35-privacysafeordersummary"
+        },
+        {
+          "depth": 3,
+          "text": "3.6. Eligibility snapshot (tùy chọn từ r2)",
+          "line": 202,
+          "slug": "36-eligibility-snapshot-tùy-chọn-từ-r2"
+        },
+        {
+          "depth": 3,
+          "text": "3.7. Response intake",
+          "line": 215,
+          "slug": "37-response-intake"
+        },
+        {
+          "depth": 2,
+          "text": "4. API B — callback do M3 triển khai",
+          "line": 241,
+          "slug": "4-api-b-callback-do-m3-triển-khai"
+        },
+        {
+          "depth": 3,
+          "text": "4.1. Endpoint",
+          "line": 243,
+          "slug": "41-endpoint"
+        },
+        {
+          "depth": 3,
+          "text": "4.2. Body IVR gửi: 13 field bắt buộc + 1 optional",
+          "line": 258,
+          "slug": "42-body-ivr-gửi-13-field-bắt-buộc-1-optional"
+        },
+        {
+          "depth": 3,
+          "text": "4.3. Áp dụng kết quả — ivr-cancel-reason-map.v1",
+          "line": 277,
+          "slug": "43-áp-dụng-kết-quả-ivr-cancel-reason-mapv1"
+        },
+        {
+          "depth": 3,
+          "text": "4.4. Dedupe/revalidation/retry",
+          "line": 302,
+          "slug": "44-deduperevalidationretry"
+        },
+        {
+          "depth": 3,
+          "text": "4.5. ACK/error M3",
+          "line": 318,
+          "slug": "45-ackerror-m3"
+        },
+        {
+          "depth": 3,
+          "text": "4.8. Revoke",
+          "line": 337,
+          "slug": "48-revoke"
+        },
+        {
+          "depth": 2,
+          "text": "4A. Console/BFF M3",
+          "line": 367,
+          "slug": "4a-consolebff-m3"
+        },
+        {
+          "depth": 3,
+          "text": "4A.1. Credential/role",
+          "line": 369,
+          "slug": "4a1-credentialrole"
+        },
+        {
+          "depth": 3,
+          "text": "4A.2. Headers/body",
+          "line": 378,
+          "slug": "4a2-headersbody"
+        },
+        {
+          "depth": 3,
+          "text": "4A.3. Phân nhóm",
+          "line": 386,
+          "slug": "4a3-phân-nhóm"
+        },
+        {
+          "depth": 3,
+          "text": "4A.4. Chức năng UI",
+          "line": 392,
+          "slug": "4a4-chức-năng-ui"
+        },
+        {
+          "depth": 3,
+          "text": "4A.5. Script permissions",
+          "line": 400,
+          "slug": "4a5-script-permissions"
+        },
+        {
+          "depth": 3,
+          "text": "4A.7. Bốn trạng thái nghiệp vụ ở M3",
+          "line": 407,
+          "slug": "4a7-bốn-trạng-thái-nghiệp-vụ-ở-m3"
+        },
+        {
+          "depth": 2,
+          "text": "5. Lưu và xóa dữ liệu (TN-4)",
+          "line": 421,
+          "slug": "5-lưu-và-xóa-dữ-liệu-tn-4"
+        },
+        {
+          "depth": 2,
+          "text": "7. Auth và môi trường thật",
+          "line": 434,
+          "slug": "7-auth-và-môi-trường-thật"
+        },
+        {
+          "depth": 2,
+          "text": "8. Phản hồi và triển khai",
+          "line": 460,
+          "slug": "8-phản-hồi-và-triển-khai"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 6
+        },
+        {
+          "kind": "markdown",
+          "text": "API reference",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 14
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "module-3/README.md",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "nguồn duy nhất §4.4",
+          "rawTarget": "../plan/ivr-orther/chot-quy-trinh-goi-va-loi-thoai-2026-09-30.md#loi-thoai-cuoi",
+          "line": 199
+        },
+        {
+          "kind": "markdown",
+          "text": "examples",
+          "rawTarget": "module-3/examples/index.json",
+          "line": 237
+        }
+      ],
+      "lines": 467,
+      "words": 4741,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 6
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 14
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 15
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 16
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "06-module-3-api-handover.md",
+          "line": 199,
+          "kind": "markdown",
+          "rawTarget": "../plan/ivr-orther/chot-quy-trinh-goi-va-loi-thoai-2026-09-30.md#loi-thoai-cuoi"
+        },
+        {
+          "file": "06-module-3-api-handover.md",
+          "line": 237,
+          "kind": "markdown",
+          "rawTarget": "module-3/examples/index.json"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "from": "01-sales-platform-requirements.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 4
+        },
+        {
+          "from": "04-shared-auth-audit-requirements.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 6
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 5
+        },
+        {
+          "from": "07-module-3-decision-sheet.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 3
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "../06-module-3-api-handover.md",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "path": "07-module-3-decision-sheet.md",
+      "title": "IR-07 — M3 xác nhận một lần và giao thông tin triển khai",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-07 — M3 xác nhận một lần và giao thông tin triển khai",
+          "line": 1,
+          "slug": "ir-07-m3-xác-nhận-một-lần-và-giao-thông-tin-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "1. Yêu cầu gửi M3",
+          "line": 8,
+          "slug": "1-yêu-cầu-gửi-m3"
+        },
+        {
+          "depth": 2,
+          "text": "2. Tuyên bố chấp thuận toàn bộ",
+          "line": 21,
+          "slug": "2-tuyên-bố-chấp-thuận-toàn-bộ"
+        },
+        {
+          "depth": 2,
+          "text": "3. Bảng đầu vào triển khai — M3 điền một lần",
+          "line": 40,
+          "slug": "3-bảng-đầu-vào-triển-khai-m3-điền-một-lần"
+        },
+        {
+          "depth": 2,
+          "text": "4. Danh mục tên/địa bàn để dựng sẵn — tùy chọn, thay yêu cầu M3-33 cũ",
+          "line": 64,
+          "slug": "4-danh-mục-tênđịa-bàn-để-dựng-sẵn-tùy-chọn-thay-yêu-cầu-m3-33-cũ"
+        },
+        {
+          "depth": 2,
+          "text": "4A. Dữ liệu tổng hợp cho calibration capacity",
+          "line": 101,
+          "slug": "4a-dữ-liệu-tổng-hợp-cho-calibration-capacity"
+        },
+        {
+          "depth": 2,
+          "text": "5. Mốc bàn giao và nghiệm thu",
+          "line": 132,
+          "slug": "5-mốc-bàn-giao-và-nghiệm-thu"
+        },
+        {
+          "depth": 2,
+          "text": "6. M8 bàn giao cùng quá trình triển khai",
+          "line": 145,
+          "slug": "6-m8-bàn-giao-cùng-quá-trình-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "7. Bao phủ yêu cầu cũ — chỉ để tra cứu, không là phiếu hỏi thêm",
+          "line": 155,
+          "slug": "7-bao-phủ-yêu-cầu-cũ-chỉ-để-tra-cứu-không-là-phiếu-hỏi-thêm"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 11
+        }
+      ],
+      "lines": 173,
+      "words": 2217,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "07-module-3-decision-sheet.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 10
+        },
+        {
+          "from": "07-module-3-decision-sheet.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 11
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 11
+        },
+        {
+          "from": "01-sales-platform-requirements.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 6
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 14
+        },
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "../07-module-3-decision-sheet.md",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "path": "08-module-3-sandbox-guide.md",
+      "title": "IR-08 — Sandbox, ví dụ và nghiệm thu M3 ↔ IVR",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-08 — Sandbox, ví dụ và nghiệm thu M3 ↔ IVR",
+          "line": 1,
+          "slug": "ir-08-sandbox-ví-dụ-và-nghiệm-thu-m3-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "1. Những gì có trong gói",
+          "line": 6,
+          "slug": "1-những-gì-có-trong-gói"
+        },
+        {
+          "depth": 2,
+          "text": "2. Chạy sandbox IVR local",
+          "line": 19,
+          "slug": "2-chạy-sandbox-ivr-local"
+        },
+        {
+          "depth": 2,
+          "text": "3. POST thủ công đúng request",
+          "line": 52,
+          "slug": "3-post-thủ-công-đúng-request"
+        },
+        {
+          "depth": 2,
+          "text": "4. Ma trận nghiệm thu chung",
+          "line": 85,
+          "slug": "4-ma-trận-nghiệm-thu-chung"
+        },
+        {
+          "depth": 2,
+          "text": "5. Trình tự sau khi M3 trả IR-07",
+          "line": 140,
+          "slug": "5-trình-tự-sau-khi-m3-trả-ir-07"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "kind": "markdown",
+          "text": "API reference",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 9
+        },
+        {
+          "kind": "markdown",
+          "text": "24 JSON mẫu và index",
+          "rawTarget": "module-3/examples/index.json",
+          "line": 10
+        },
+        {
+          "kind": "markdown",
+          "text": "Script rebase mẫu",
+          "rawTarget": "module-3/refresh-examples.py",
+          "line": 12
+        }
+      ],
+      "lines": 153,
+      "words": 1897,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "06-module-3-api-handover.md",
+          "line": 3
+        },
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "07-module-3-decision-sheet.md",
+          "line": 4
+        },
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 9
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "08-module-3-sandbox-guide.md",
+          "line": 10,
+          "kind": "markdown",
+          "rawTarget": "module-3/examples/index.json"
+        },
+        {
+          "file": "08-module-3-sandbox-guide.md",
+          "line": 12,
+          "kind": "markdown",
+          "rawTarget": "module-3/refresh-examples.py"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 12
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 15
+        },
+        {
+          "from": "07-module-3-decision-sheet.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "08-module-3-sandbox-guide.md",
+          "line": 11
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "../08-module-3-sandbox-guide.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "module-3/api-reference.md",
+      "title": "API reference — M3-IVR-2026-10-10-r2",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "API reference — M3-IVR-2026-10-10-r2",
+          "line": 1,
+          "slug": "api-reference-m3-ivr-2026-10-10-r2"
+        },
+        {
+          "depth": 2,
+          "text": "intakeTask",
+          "line": 58,
+          "slug": "intaketask"
+        },
+        {
+          "depth": 2,
+          "text": "revokeTask",
+          "line": 358,
+          "slug": "revoketask"
+        },
+        {
+          "depth": 2,
+          "text": "recordEligibility",
+          "line": 418,
+          "slug": "recordeligibility"
+        },
+        {
+          "depth": 2,
+          "text": "createCallJob",
+          "line": 461,
+          "slug": "createcalljob"
+        },
+        {
+          "depth": 2,
+          "text": "listCallJobs",
+          "line": 509,
+          "slug": "listcalljobs"
+        },
+        {
+          "depth": 2,
+          "text": "getCallJob",
+          "line": 541,
+          "slug": "getcalljob"
+        },
+        {
+          "depth": 2,
+          "text": "recordAttempt",
+          "line": 564,
+          "slug": "recordattempt"
+        },
+        {
+          "depth": 2,
+          "text": "recordResult",
+          "line": 612,
+          "slug": "recordresult"
+        },
+        {
+          "depth": 2,
+          "text": "recordResultCallback",
+          "line": 660,
+          "slug": "recordresultcallback"
+        },
+        {
+          "depth": 2,
+          "text": "getQueue",
+          "line": 708,
+          "slug": "getqueue"
+        },
+        {
+          "depth": 2,
+          "text": "getDashboard",
+          "line": 728,
+          "slug": "getdashboard"
+        },
+        {
+          "depth": 2,
+          "text": "getThreeCallDashboard",
+          "line": 752,
+          "slug": "getthreecalldashboard"
+        },
+        {
+          "depth": 2,
+          "text": "getCallJobDetail",
+          "line": 776,
+          "slug": "getcalljobdetail"
+        },
+        {
+          "depth": 2,
+          "text": "listSimChannels",
+          "line": 799,
+          "slug": "listsimchannels"
+        },
+        {
+          "depth": 2,
+          "text": "getScriptCatalog",
+          "line": 819,
+          "slug": "getscriptcatalog"
+        },
+        {
+          "depth": 2,
+          "text": "createScriptDraft",
+          "line": 839,
+          "slug": "createscriptdraft"
+        },
+        {
+          "depth": 2,
+          "text": "getScriptVersion",
+          "line": 898,
+          "slug": "getscriptversion"
+        },
+        {
+          "depth": 2,
+          "text": "submitScriptForReview",
+          "line": 922,
+          "slug": "submitscriptforreview"
+        },
+        {
+          "depth": 2,
+          "text": "approveScriptVersion",
+          "line": 966,
+          "slug": "approvescriptversion"
+        },
+        {
+          "depth": 2,
+          "text": "retireScriptVersion",
+          "line": 1020,
+          "slug": "retirescriptversion"
+        },
+        {
+          "depth": 2,
+          "text": "loadDevSeed",
+          "line": 1064,
+          "slug": "loaddevseed"
+        },
+        {
+          "depth": 2,
+          "text": "dryRunDevScenario",
+          "line": 1118,
+          "slug": "dryrundevscenario"
+        },
+        {
+          "depth": 2,
+          "text": "applyDevIntegrationProfile",
+          "line": 1163,
+          "slug": "applydevintegrationprofile"
+        },
+        {
+          "depth": 2,
+          "text": "terminateAllCallJobs",
+          "line": 1209,
+          "slug": "terminateallcalljobs"
+        },
+        {
+          "depth": 2,
+          "text": "terminateCallJob",
+          "line": 1254,
+          "slug": "terminatecalljob"
+        },
+        {
+          "depth": 2,
+          "text": "replayResultCallback",
+          "line": 1301,
+          "slug": "replayresultcallback"
+        },
+        {
+          "depth": 2,
+          "text": "getIntegrationStatus",
+          "line": 1348,
+          "slug": "getintegrationstatus"
+        },
+        {
+          "depth": 2,
+          "text": "listReviewItems",
+          "line": 1369,
+          "slug": "listreviewitems"
+        },
+        {
+          "depth": 2,
+          "text": "getAnalyticsSummary",
+          "line": 1393,
+          "slug": "getanalyticssummary"
+        },
+        {
+          "depth": 2,
+          "text": "getAnalyticsTrend",
+          "line": 1420,
+          "slug": "getanalyticstrend"
+        },
+        {
+          "depth": 2,
+          "text": "getAnalyticsBreakdown",
+          "line": 1447,
+          "slug": "getanalyticsbreakdown"
+        },
+        {
+          "depth": 2,
+          "text": "getAnalyticsListening",
+          "line": 1475,
+          "slug": "getanalyticslistening"
+        },
+        {
+          "depth": 2,
+          "text": "exportAnalytics",
+          "line": 1501,
+          "slug": "exportanalytics"
+        },
+        {
+          "depth": 2,
+          "text": "pauseQueue",
+          "line": 1530,
+          "slug": "pausequeue"
+        },
+        {
+          "depth": 2,
+          "text": "resumeQueue",
+          "line": 1576,
+          "slug": "resumequeue"
+        },
+        {
+          "depth": 2,
+          "text": "disableSim",
+          "line": 1622,
+          "slug": "disablesim"
+        },
+        {
+          "depth": 2,
+          "text": "enableSim",
+          "line": 1670,
+          "slug": "enablesim"
+        },
+        {
+          "depth": 2,
+          "text": "technicalRetry",
+          "line": 1718,
+          "slug": "technicalretry"
+        },
+        {
+          "depth": 2,
+          "text": "adminReview",
+          "line": 1775,
+          "slug": "adminreview"
+        },
+        {
+          "depth": 2,
+          "text": "getFeatureFlags",
+          "line": 1832,
+          "slug": "getfeatureflags"
+        },
+        {
+          "depth": 2,
+          "text": "mutateFeatureFlags",
+          "line": 1855,
+          "slug": "mutatefeatureflags"
+        },
+        {
+          "depth": 2,
+          "text": "verifyFeatureFlagKillSwitch",
+          "line": 1909,
+          "slug": "verifyfeatureflagkillswitch"
+        },
+        {
+          "depth": 2,
+          "text": "getAuditEvidence",
+          "line": 1931,
+          "slug": "getauditevidence"
+        },
+        {
+          "depth": 2,
+          "text": "submitIvrOrderConfirmationResult",
+          "line": 1956,
+          "slug": "submitivrorderconfirmationresult"
+        },
+        {
+          "depth": 1,
+          "text": "Schemas: ivr",
+          "line": 2066,
+          "slug": "schemas-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.ErrorCode",
+          "line": 2070,
+          "slug": "ivrerrorcode"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.ErrorEnvelope",
+          "line": 2096,
+          "slug": "ivrerrorenvelope"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.ProgramCode",
+          "line": 2134,
+          "slug": "ivrprogramcode"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.OrderSpeechItem",
+          "line": 2146,
+          "slug": "ivrorderspeechitem"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.PrivacySafeOrderSummary",
+          "line": 2174,
+          "slug": "ivrprivacysafeordersummary"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrConfirmationTaskV1",
+          "line": 2258,
+          "slug": "ivrivrconfirmationtaskv1"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrTaskRevocationRequest",
+          "line": 2516,
+          "slug": "ivrivrtaskrevocationrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrTaskRevocationResult",
+          "line": 2548,
+          "slug": "ivrivrtaskrevocationresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrTaskIntakeResult",
+          "line": 2594,
+          "slug": "ivrivrtaskintakeresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.EligibilityLifecycleRequest",
+          "line": 2636,
+          "slug": "ivreligibilitylifecyclerequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.CallJobLifecycleRequest",
+          "line": 2654,
+          "slug": "ivrcalljoblifecyclerequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.CallAttemptLifecycleRequest",
+          "line": 2677,
+          "slug": "ivrcallattemptlifecyclerequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.CallResultLifecycleRequest",
+          "line": 2700,
+          "slug": "ivrcallresultlifecyclerequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.ResultCallbackLifecycleRequest",
+          "line": 2723,
+          "slug": "ivrresultcallbacklifecyclerequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrSeedLoadRequest",
+          "line": 2746,
+          "slug": "ivrivrseedloadrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrSeedTaskOutcome",
+          "line": 2776,
+          "slug": "ivrivrseedtaskoutcome"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrSeedLoadResult",
+          "line": 2819,
+          "slug": "ivrivrseedloadresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScenarioAttemptReplay",
+          "line": 2883,
+          "slug": "ivrivrscenarioattemptreplay"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScenarioDryRunResult",
+          "line": 2931,
+          "slug": "ivrivrscenariodryrunresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrIntegrationProfileEffect",
+          "line": 3021,
+          "slug": "ivrivrintegrationprofileeffect"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrIntegrationProfileResult",
+          "line": 3053,
+          "slug": "ivrivrintegrationprofileresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.AdminMutationRequest",
+          "line": 3103,
+          "slug": "ivradminmutationrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.TechnicalRetryRequest",
+          "line": 3125,
+          "slug": "ivrtechnicalretryrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.AdminReviewRequest",
+          "line": 3157,
+          "slug": "ivradminreviewrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrEligibilityDecision",
+          "line": 3190,
+          "slug": "ivrivreligibilitydecision"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallJob",
+          "line": 3225,
+          "slug": "ivrivrcalljob"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallAttempt",
+          "line": 3303,
+          "slug": "ivrivrcallattempt"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallResult",
+          "line": 3355,
+          "slug": "ivrivrcallresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.ResultType",
+          "line": 3419,
+          "slug": "ivrresulttype"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrResultCallbackLifecycle",
+          "line": 3440,
+          "slug": "ivrivrresultcallbacklifecycle"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrQueueProjection",
+          "line": 3481,
+          "slug": "ivrivrqueueprojection"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrThreeCallDashboardProjection",
+          "line": 3523,
+          "slug": "ivrivrthreecalldashboardprojection"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDashboardQueuePanel",
+          "line": 3591,
+          "slug": "ivrivrdashboardqueuepanel"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDashboardResultPanel",
+          "line": 3653,
+          "slug": "ivrivrdashboardresultpanel"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDashboardAttemptPanel",
+          "line": 3709,
+          "slug": "ivrivrdashboardattemptpanel"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDashboardSimPanel",
+          "line": 3742,
+          "slug": "ivrivrdashboardsimpanel"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCapacityIncidentSummary",
+          "line": 3806,
+          "slug": "ivrivrcapacityincidentsummary"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDashboardProjection",
+          "line": 3848,
+          "slug": "ivrivrdashboardprojection"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallJobListItem",
+          "line": 3917,
+          "slug": "ivrivrcalljoblistitem"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallJobPage",
+          "line": 3990,
+          "slug": "ivrivrcalljobpage"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallAttemptDetail",
+          "line": 4026,
+          "slug": "ivrivrcallattemptdetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallResultDetail",
+          "line": 4157,
+          "slug": "ivrivrcallresultdetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrResultCallbackDetail",
+          "line": 4205,
+          "slug": "ivrivrresultcallbackdetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrTechnicalExceptionDetail",
+          "line": 4262,
+          "slug": "ivrivrtechnicalexceptiondetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrReviewItemDetail",
+          "line": 4305,
+          "slug": "ivrivrreviewitemdetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrCallJobDetail",
+          "line": 4350,
+          "slug": "ivrivrcalljobdetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptApproval",
+          "line": 4555,
+          "slug": "ivrivrscriptapproval"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptVersion",
+          "line": 4589,
+          "slug": "ivrivrscriptversion"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDtmfKey",
+          "line": 4670,
+          "slug": "ivrivrdtmfkey"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptVersionDetail",
+          "line": 4695,
+          "slug": "ivrivrscriptversiondetail"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptDraftRequest",
+          "line": 4813,
+          "slug": "ivrivrscriptdraftrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptTransitionRequest",
+          "line": 4848,
+          "slug": "ivrivrscripttransitionrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptApprovalRequest",
+          "line": 4866,
+          "slug": "ivrivrscriptapprovalrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptActionResult",
+          "line": 4894,
+          "slug": "ivrivrscriptactionresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrScriptCatalog",
+          "line": 4940,
+          "slug": "ivrivrscriptcatalog"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrDependencyStatus",
+          "line": 5001,
+          "slug": "ivrivrdependencystatus"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrFailClosedEvent",
+          "line": 5047,
+          "slug": "ivrivrfailclosedevent"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrIntegrationStatus",
+          "line": 5084,
+          "slug": "ivrivrintegrationstatus"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrReviewQueueItem",
+          "line": 5148,
+          "slug": "ivrivrreviewqueueitem"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrReviewQueue",
+          "line": 5207,
+          "slug": "ivrivrreviewqueue"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrSimChannel",
+          "line": 5243,
+          "slug": "ivrivrsimchannel"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrSimChannelList",
+          "line": 5317,
+          "slug": "ivrivrsimchannellist"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsDataQuality",
+          "line": 5350,
+          "slug": "ivrivranalyticsdataquality"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsFilter",
+          "line": 5427,
+          "slug": "ivrivranalyticsfilter"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsKpi",
+          "line": 5471,
+          "slug": "ivrivranalyticskpi"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsBreakdownRow",
+          "line": 5561,
+          "slug": "ivrivranalyticsbreakdownrow"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsTrendBucket",
+          "line": 5603,
+          "slug": "ivrivranalyticstrendbucket"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsSummary",
+          "line": 5670,
+          "slug": "ivrivranalyticssummary"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsTrend",
+          "line": 5706,
+          "slug": "ivrivranalyticstrend"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsBreakdown",
+          "line": 5734,
+          "slug": "ivrivranalyticsbreakdown"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAuditEvidenceRow",
+          "line": 5771,
+          "slug": "ivrivrauditevidencerow"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAuditEvidence",
+          "line": 5840,
+          "slug": "ivrivrauditevidence"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsListeningRow",
+          "line": 5897,
+          "slug": "ivrivranalyticslisteningrow"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsListening",
+          "line": 5948,
+          "slug": "ivrivranalyticslistening"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAnalyticsExport",
+          "line": 5976,
+          "slug": "ivrivranalyticsexport"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAdminActionResult",
+          "line": 6046,
+          "slug": "ivrivradminactionresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrTechnicalRetryResult",
+          "line": 6093,
+          "slug": "ivrivrtechnicalretryresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.IvrAdminReviewResult",
+          "line": 6141,
+          "slug": "ivrivradminreviewresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.FeatureFlagSnapshot",
+          "line": 6187,
+          "slug": "ivrfeatureflagsnapshot"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.FeatureFlagReadResult",
+          "line": 6277,
+          "slug": "ivrfeatureflagreadresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.FeatureFlagChangeSet",
+          "line": 6302,
+          "slug": "ivrfeatureflagchangeset"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.FeatureFlagMutationRequest",
+          "line": 6359,
+          "slug": "ivrfeatureflagmutationrequest"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.FeatureFlagMutationResult",
+          "line": 6385,
+          "slug": "ivrfeatureflagmutationresult"
+        },
+        {
+          "depth": 2,
+          "text": "ivr.KillSwitchVerification",
+          "line": 6416,
+          "slug": "ivrkillswitchverification"
+        },
+        {
+          "depth": 1,
+          "text": "Schemas: callback",
+          "line": 6447,
+          "slug": "schemas-callback"
+        },
+        {
+          "depth": 2,
+          "text": "callback.ResultType",
+          "line": 6451,
+          "slug": "callbackresulttype"
+        },
+        {
+          "depth": 2,
+          "text": "callback.RecommendedCoreAction",
+          "line": 6472,
+          "slug": "callbackrecommendedcoreaction"
+        },
+        {
+          "depth": 2,
+          "text": "callback.IvrResultCallbackV1",
+          "line": 6489,
+          "slug": "callbackivrresultcallbackv1"
+        },
+        {
+          "depth": 2,
+          "text": "callback.CallbackAck200",
+          "line": 6576,
+          "slug": "callbackcallbackack200"
+        },
+        {
+          "depth": 2,
+          "text": "callback.CallbackAck409",
+          "line": 6614,
+          "slug": "callbackcallbackack409"
+        },
+        {
+          "depth": 2,
+          "text": "callback.ErrorResponse",
+          "line": 6647,
+          "slug": "callbackerrorresponse"
+        }
+      ],
+      "links": [],
+      "lines": 6671,
+      "words": 7971,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 13
+        },
+        {
+          "from": "08-module-3-sandbox-guide.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/api-reference.md",
+          "line": 9
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "api-reference.md",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "path": "module-3/IR-07_M3_TRA_LOI_2026-10-08.md",
+      "title": "IR-07 — M3 xác nhận một lần và giao thông tin triển khai (bản trả lời của M3)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-07 — M3 xác nhận một lần và giao thông tin triển khai (bản trả lời của M3)",
+          "line": 1,
+          "slug": "ir-07-m3-xác-nhận-một-lần-và-giao-thông-tin-triển-khai-bản-trả-lời-của-m3"
+        },
+        {
+          "depth": 2,
+          "text": "2. Tuyên bố chấp thuận",
+          "line": 8,
+          "slug": "2-tuyên-bố-chấp-thuận"
+        },
+        {
+          "depth": 3,
+          "text": "Trở ngại cụ thể (liệt kê một lần)",
+          "line": 29,
+          "slug": "trở-ngại-cụ-thể-liệt-kê-một-lần"
+        },
+        {
+          "depth": 2,
+          "text": "3. Bảng đầu vào triển khai",
+          "line": 48,
+          "slug": "3-bảng-đầu-vào-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "Ghi chú cho anh Mạnh (không gửi)",
+          "line": 76,
+          "slug": "ghi-chú-cho-anh-mạnh-không-gửi"
+        }
+      ],
+      "links": [],
+      "lines": 115,
+      "words": 3521,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "module-3/M3-tra-loi-2026-10-12/BIEN-NHAN.md",
+          "to": "module-3/IR-07_M3_TRA_LOI_2026-10-08.md",
+          "kind": "markdown",
+          "rawTarget": "../IR-07_M3_TRA_LOI_2026-10-08.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "module-3/IVR-operations-20261017.md",
+      "title": "M3 nhận cảnh báo vận hành IVR — 17/10/2026",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M3 nhận cảnh báo vận hành IVR — 17/10/2026",
+          "line": 1,
+          "slug": "m3-nhận-cảnh-báo-vận-hành-ivr-17102026"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "giám sát",
+          "rawTarget": "../../deploy/operations/README.md",
+          "line": 32
+        },
+        {
+          "kind": "markdown",
+          "text": "operations-response.json",
+          "rawTarget": "../../deploy/operations/evidence/20261017/api/operations-response.json",
+          "line": 59
+        }
+      ],
+      "lines": 64,
+      "words": 605,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "module-3/IVR-operations-20261017.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "../../deploy/operations/README.md",
+          "line": 32
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "module-3/IVR-operations-20261017.md",
+          "line": 59,
+          "kind": "markdown",
+          "rawTarget": "../../deploy/operations/evidence/20261017/api/operations-response.json"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "module-3/M3-tra-loi-2026-10-12/BIEN-NHAN.md",
+      "title": "Biên nhận: M3 trả lời gói r2 (12/10/2026)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Biên nhận: M3 trả lời gói r2 (12/10/2026)",
+          "line": 1,
+          "slug": "biên-nhận-m3-trả-lời-gói-r2-12102026"
+        },
+        {
+          "depth": 2,
+          "text": "IVR chốt cuối (13/10/2026)",
+          "line": 18,
+          "slug": "ivr-chốt-cuối-13102026"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "../IR-07_M3_TRA_LOI_2026-10-08.md",
+          "rawTarget": "../IR-07_M3_TRA_LOI_2026-10-08.md",
+          "line": 15
+        }
+      ],
+      "lines": 29,
+      "words": 351,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "module-3/M3-tra-loi-2026-10-12/BIEN-NHAN.md",
+          "to": "module-3/IR-07_M3_TRA_LOI_2026-10-08.md",
+          "kind": "markdown",
+          "rawTarget": "../IR-07_M3_TRA_LOI_2026-10-08.md",
+          "line": 15
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "module-3/M3-tra-loi-2026-10-12/IR-07_M3_r2_GUI_2026-10-12.md",
+      "title": "IR-07 — M3 xác nhận gói r2 và giao thông tin triển khai (bản chính thức)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IR-07 — M3 xác nhận gói r2 và giao thông tin triển khai (bản chính thức)",
+          "line": 1,
+          "slug": "ir-07-m3-xác-nhận-gói-r2-và-giao-thông-tin-triển-khai-bản-chính-thức"
+        },
+        {
+          "depth": 2,
+          "text": "2. Tuyên bố chấp thuận",
+          "line": 5,
+          "slug": "2-tuyên-bố-chấp-thuận"
+        },
+        {
+          "depth": 3,
+          "text": "Trở ngại còn lại",
+          "line": 25,
+          "slug": "trở-ngại-còn-lại"
+        },
+        {
+          "depth": 2,
+          "text": "3. Bảng đầu vào triển khai",
+          "line": 31,
+          "slug": "3-bảng-đầu-vào-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "4. Trả lời các câu IVR hỏi M3",
+          "line": 55,
+          "slug": "4-trả-lời-các-câu-ivr-hỏi-m3"
+        },
+        {
+          "depth": 2,
+          "text": "5. Đề nghị IVR xác nhận",
+          "line": 65,
+          "slug": "5-đề-nghị-ivr-xác-nhận"
+        }
+      ],
+      "links": [],
+      "lines": 75,
+      "words": 2647,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "module-3/M3-tra-loi-2026-10-12/IVR_CHOT_CUOI_r2_2026-10-13.md",
+      "title": "IVR (M8) chốt cuối gói r2 với M3",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "IVR (M8) chốt cuối gói r2 với M3",
+          "line": 1,
+          "slug": "ivr-m8-chốt-cuối-gói-r2-với-m3"
+        },
+        {
+          "depth": 2,
+          "text": "1. TN-3 · Kho clip ở production: giữ như r2, M3 rút trở ngại",
+          "line": 14,
+          "slug": "1-tn-3-kho-clip-ở-production-giữ-như-r2-m3-rút-trở-ngại"
+        },
+        {
+          "depth": 2,
+          "text": "2. Đơn quà tặng: chỉ gọi đơn COD, và luôn gọi người đặt",
+          "line": 34,
+          "slug": "2-đơn-quà-tặng-chỉ-gọi-đơn-cod-và-luôn-gọi-người-đặt"
+        },
+        {
+          "depth": 2,
+          "text": "3. Số kênh đồng thời: M3 chốt",
+          "line": 49,
+          "slug": "3-số-kênh-đồng-thời-m3-chốt"
+        },
+        {
+          "depth": 2,
+          "text": "4. Trả lời các câu ở mục 5 của IR-07",
+          "line": 74,
+          "slug": "4-trả-lời-các-câu-ở-mục-5-của-ir-07"
+        },
+        {
+          "depth": 2,
+          "text": "5. Các ô D bên mình ghi nhận",
+          "line": 112,
+          "slug": "5-các-ô-d-bên-mình-ghi-nhận"
+        },
+        {
+          "depth": 2,
+          "text": "6. M3 trả lời một lần, trước 16/10/2026",
+          "line": 124,
+          "slug": "6-m3-trả-lời-một-lần-trước-16102026"
+        }
+      ],
+      "links": [],
+      "lines": 146,
+      "words": 1974,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "module-3/M3-tra-loi-2026-10-12/TIN_TOAN_IVR_r2_2026-10-12.md",
+      "title": "TIN TOAN IVR r2 2026 10 12",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 26,
+      "words": 305,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "module-3/README.md",
+      "title": "Bộ gửi Module 3 — chốt một lần để triển khai",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Bộ gửi Module 3 — chốt một lần để triển khai",
+          "line": 1,
+          "slug": "bộ-gửi-module-3-chốt-một-lần-để-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "Dành cho M8: dựng/kiểm lại gói",
+          "line": 27,
+          "slug": "dành-cho-m8-dựngkiểm-lại-gói"
+        },
+        {
+          "depth": 2,
+          "text": "Phạm vi dọn tài liệu",
+          "line": 41,
+          "slug": "phạm-vi-dọn-tài-liệu"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "M3-IVR-2026-10-10-r2.zip",
+          "rawTarget": "M3-IVR-2026-10-10-r2.zip",
+          "line": 6
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06 — hợp đồng triển khai",
+          "rawTarget": "../06-module-3-api-handover.md",
+          "line": 12
+        },
+        {
+          "kind": "markdown",
+          "text": "API reference đầy đủ",
+          "rawTarget": "api-reference.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "IVR draft.44",
+          "rawTarget": "../../specs/api/openapi/ivr-order-confirmation.v1.yaml",
+          "line": 14
+        },
+        {
+          "kind": "markdown",
+          "text": "callback M3",
+          "rawTarget": "../../specs/api/openapi/order-core-ivr-callback.target-v1.yaml",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08 — ví dụ/sandbox/nghiệm thu",
+          "rawTarget": "../08-module-3-sandbox-guide.md",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "JSON examples",
+          "rawTarget": "examples/index.json",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../07-module-3-decision-sheet.md",
+          "line": 17
+        }
+      ],
+      "lines": 50,
+      "words": 479,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "module-3/README.md",
+          "to": "06-module-3-api-handover.md",
+          "kind": "markdown",
+          "rawTarget": "../06-module-3-api-handover.md",
+          "line": 12
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "module-3/api-reference.md",
+          "kind": "markdown",
+          "rawTarget": "api-reference.md",
+          "line": 13
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "08-module-3-sandbox-guide.md",
+          "kind": "markdown",
+          "rawTarget": "../08-module-3-sandbox-guide.md",
+          "line": 16
+        },
+        {
+          "from": "module-3/README.md",
+          "to": "07-module-3-decision-sheet.md",
+          "kind": "markdown",
+          "rawTarget": "../07-module-3-decision-sheet.md",
+          "line": 17
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "module-3/README.md",
+          "line": 6,
+          "kind": "markdown",
+          "rawTarget": "M3-IVR-2026-10-10-r2.zip"
+        },
+        {
+          "file": "module-3/README.md",
+          "line": 14,
+          "kind": "markdown",
+          "rawTarget": "../../specs/api/openapi/ivr-order-confirmation.v1.yaml"
+        },
+        {
+          "file": "module-3/README.md",
+          "line": 15,
+          "kind": "markdown",
+          "rawTarget": "../../specs/api/openapi/order-core-ivr-callback.target-v1.yaml"
+        },
+        {
+          "file": "module-3/README.md",
+          "line": 16,
+          "kind": "markdown",
+          "rawTarget": "examples/index.json"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "00-index.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 3
+        },
+        {
+          "from": "00-index.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "../docs/README.md#bộ-m3-r1-và-r2",
+          "line": 5
+        },
+        {
+          "from": "05-open-contract-questions.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 4
+        },
+        {
+          "from": "06-module-3-api-handover.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "module-3/README.md",
+          "line": 16
+        },
+        {
+          "from": "module-3/IVR-operations-20261017.md",
+          "to": "module-3/README.md",
+          "kind": "markdown",
+          "rawTarget": "../../deploy/operations/README.md",
+          "line": 32
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "00-index.md",
+      "to": "module-3/README.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/README.md",
+      "line": 3
+    },
+    {
+      "from": "00-index.md",
+      "to": "module-3/README.md",
+      "kind": "markdown",
+      "rawTarget": "../docs/README.md#bộ-m3-r1-và-r2",
+      "line": 5
+    },
+    {
+      "from": "00-index.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 10
+    },
+    {
+      "from": "00-index.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 11
+    },
+    {
+      "from": "00-index.md",
+      "to": "08-module-3-sandbox-guide.md",
+      "kind": "markdown",
+      "rawTarget": "08-module-3-sandbox-guide.md",
+      "line": 12
+    },
+    {
+      "from": "00-index.md",
+      "to": "module-3/api-reference.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/api-reference.md",
+      "line": 13
+    },
+    {
+      "from": "00-index.md",
+      "to": "01-sales-platform-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "01-sales-platform-requirements.md",
+      "line": 14
+    },
+    {
+      "from": "00-index.md",
+      "to": "03-telephony-sim-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "03-telephony-sim-requirements.md",
+      "line": 15
+    },
+    {
+      "from": "00-index.md",
+      "to": "04-shared-auth-audit-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "04-shared-auth-audit-requirements.md",
+      "line": 16
+    },
+    {
+      "from": "00-index.md",
+      "to": "05-open-contract-questions.md",
+      "kind": "markdown",
+      "rawTarget": "05-open-contract-questions.md",
+      "line": 17
+    },
+    {
+      "from": "01-sales-platform-requirements.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 4
+    },
+    {
+      "from": "01-sales-platform-requirements.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 4
+    },
+    {
+      "from": "03-telephony-sim-requirements.md",
+      "to": "05-open-contract-questions.md",
+      "kind": "markdown",
+      "rawTarget": "05-open-contract-questions.md",
+      "line": 42
+    },
+    {
+      "from": "04-shared-auth-audit-requirements.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 6
+    },
+    {
+      "from": "04-shared-auth-audit-requirements.md",
+      "to": "05-open-contract-questions.md",
+      "kind": "markdown",
+      "rawTarget": "05-open-contract-questions.md",
+      "line": 6
+    },
+    {
+      "from": "05-open-contract-questions.md",
+      "to": "module-3/README.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/README.md",
+      "line": 4
+    },
+    {
+      "from": "05-open-contract-questions.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 4
+    },
+    {
+      "from": "05-open-contract-questions.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 5
+    },
+    {
+      "from": "05-open-contract-questions.md",
+      "to": "03-telephony-sim-requirements.md",
+      "kind": "markdown",
+      "rawTarget": "03-telephony-sim-requirements.md",
+      "line": 15
+    },
+    {
+      "from": "06-module-3-api-handover.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 6
+    },
+    {
+      "from": "06-module-3-api-handover.md",
+      "to": "module-3/api-reference.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/api-reference.md",
+      "line": 13
+    },
+    {
+      "from": "06-module-3-api-handover.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 14
+    },
+    {
+      "from": "06-module-3-api-handover.md",
+      "to": "08-module-3-sandbox-guide.md",
+      "kind": "markdown",
+      "rawTarget": "08-module-3-sandbox-guide.md",
+      "line": 15
+    },
+    {
+      "from": "06-module-3-api-handover.md",
+      "to": "module-3/README.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/README.md",
+      "line": 16
+    },
+    {
+      "from": "07-module-3-decision-sheet.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 10
+    },
+    {
+      "from": "07-module-3-decision-sheet.md",
+      "to": "08-module-3-sandbox-guide.md",
+      "kind": "markdown",
+      "rawTarget": "08-module-3-sandbox-guide.md",
+      "line": 11
+    },
+    {
+      "from": "08-module-3-sandbox-guide.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "06-module-3-api-handover.md",
+      "line": 3
+    },
+    {
+      "from": "08-module-3-sandbox-guide.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "07-module-3-decision-sheet.md",
+      "line": 4
+    },
+    {
+      "from": "08-module-3-sandbox-guide.md",
+      "to": "module-3/api-reference.md",
+      "kind": "markdown",
+      "rawTarget": "module-3/api-reference.md",
+      "line": 9
+    },
+    {
+      "from": "module-3/IVR-operations-20261017.md",
+      "to": "module-3/README.md",
+      "kind": "markdown",
+      "rawTarget": "../../deploy/operations/README.md",
+      "line": 32
+    },
+    {
+      "from": "module-3/M3-tra-loi-2026-10-12/BIEN-NHAN.md",
+      "to": "module-3/IR-07_M3_TRA_LOI_2026-10-08.md",
+      "kind": "markdown",
+      "rawTarget": "../IR-07_M3_TRA_LOI_2026-10-08.md",
+      "line": 15
+    },
+    {
+      "from": "module-3/README.md",
+      "to": "06-module-3-api-handover.md",
+      "kind": "markdown",
+      "rawTarget": "../06-module-3-api-handover.md",
+      "line": 12
+    },
+    {
+      "from": "module-3/README.md",
+      "to": "module-3/api-reference.md",
+      "kind": "markdown",
+      "rawTarget": "api-reference.md",
+      "line": 13
+    },
+    {
+      "from": "module-3/README.md",
+      "to": "08-module-3-sandbox-guide.md",
+      "kind": "markdown",
+      "rawTarget": "../08-module-3-sandbox-guide.md",
+      "line": 16
+    },
+    {
+      "from": "module-3/README.md",
+      "to": "07-module-3-decision-sheet.md",
+      "kind": "markdown",
+      "rawTarget": "../07-module-3-decision-sheet.md",
+      "line": 17
+    }
+  ],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "00-index.md",
+        "line": 9,
+        "kind": "markdown",
+        "rawTarget": "module-3/M3-IVR-2026-10-03-r1.zip"
+      },
+      {
+        "file": "03-telephony-sim-requirements.md",
+        "line": 46,
+        "kind": "markdown",
+        "rawTarget": "../docs/contracts/target-v1-closure-pack/internal/dial-token-compatibility.md"
+      },
+      {
+        "file": "05-open-contract-questions.md",
+        "line": 18,
+        "kind": "markdown",
+        "rawTarget": "../prompt/_execution/prompt-execution-tracker.md"
+      },
+      {
+        "file": "06-module-3-api-handover.md",
+        "line": 199,
+        "kind": "markdown",
+        "rawTarget": "../plan/ivr-orther/chot-quy-trinh-goi-va-loi-thoai-2026-09-30.md#loi-thoai-cuoi"
+      },
+      {
+        "file": "06-module-3-api-handover.md",
+        "line": 237,
+        "kind": "markdown",
+        "rawTarget": "module-3/examples/index.json"
+      },
+      {
+        "file": "08-module-3-sandbox-guide.md",
+        "line": 10,
+        "kind": "markdown",
+        "rawTarget": "module-3/examples/index.json"
+      },
+      {
+        "file": "08-module-3-sandbox-guide.md",
+        "line": 12,
+        "kind": "markdown",
+        "rawTarget": "module-3/refresh-examples.py"
+      },
+      {
+        "file": "module-3/IVR-operations-20261017.md",
+        "line": 59,
+        "kind": "markdown",
+        "rawTarget": "../../deploy/operations/evidence/20261017/api/operations-response.json"
+      },
+      {
+        "file": "module-3/README.md",
+        "line": 6,
+        "kind": "markdown",
+        "rawTarget": "M3-IVR-2026-10-10-r2.zip"
+      },
+      {
+        "file": "module-3/README.md",
+        "line": 14,
+        "kind": "markdown",
+        "rawTarget": "../../specs/api/openapi/ivr-order-confirmation.v1.yaml"
+      },
+      {
+        "file": "module-3/README.md",
+        "line": 15,
+        "kind": "markdown",
+        "rawTarget": "../../specs/api/openapi/order-core-ivr-callback.target-v1.yaml"
+      },
+      {
+        "file": "module-3/README.md",
+        "line": 16,
+        "kind": "markdown",
+        "rawTarget": "examples/index.json"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "module-3/M3-tra-loi-2026-10-12/IR-07_M3_r2_GUI_2026-10-12.md",
+      "module-3/M3-tra-loi-2026-10-12/IVR_CHOT_CUOI_r2_2026-10-13.md",
+      "module-3/M3-tra-loi-2026-10-12/TIN_TOAN_IVR_r2_2026-10-12.md"
+    ]
+  }
+}

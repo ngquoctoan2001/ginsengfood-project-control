@@ -1,0 +1,41 @@
+
+===== 08:24:22 · CORS .99: thêm tên miền ginsengfood.vn (+ www), giữ LAN; tạo lại be ~1 phút =====
+CORS_ALLOWED_ORIGINS hiện: http://192.168.1.99 · preflight Origin https://ginsengfood.vn: 403
+đã đổi; bản cũ .env.truoc-cors-20261114T012416Z
+-- tạo lại be, chờ health
+ Container m34-redis-1 Running 
+ Container m34-pg-1 Running 
+ Container m34-be-1 Recreate 
+ Container m34-be-1 Recreated 
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-redis-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-be-1 Starting 
+ Container m34-be-1 Started 
+ Container m34-redis-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-redis-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-be-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+  preflight Origin https://ginsengfood.vn: 200
+  preflight Origin https://www.ginsengfood.vn: 200
+  preflight Origin http://192.168.1.99: 200
+  /api/health/ready 200 · /vi 200 · /admin 200
+CORS_XONG
+
+===== 08:24:58 · CORS XONG =====

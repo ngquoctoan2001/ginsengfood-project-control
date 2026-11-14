@@ -1,0 +1,10 @@
+
+===== 20:26:43 · M .60: OPS_CORE_BASE_URL -> http://192.168.1.99:5000 (m12 đã cắt xong), tạo lại be, thử be -> M12 =====
+OPS_CORE_BASE_URL trong .env: (chưa đặt)
+be đang nhận: OPS_CORE_ENABLED=false · OPS_CORE_BASE_URL=(trống)
+compose.override.yml, dòng có OPS_CORE hoặc 192.168.1.60 (chỉ tên khoá):
+  dòng 18: (không tách được tên khoá)
+be .60 không bật gọi M12 (OPS_CORE_ENABLED không phải true): pha M KHÔNG CẦN, không sửa .env, không tạo lại be
+M_XONG
+
+===== 20:26:45 · PHA M XONG (dòng trên: đã đổi, hoặc KHÔNG CẦN vì be .60 không bật gọi M12); pha B (B3b) chép .env này sang .99 =====

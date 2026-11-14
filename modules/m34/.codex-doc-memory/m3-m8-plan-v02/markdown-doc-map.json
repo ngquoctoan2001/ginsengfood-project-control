@@ -1,0 +1,3914 @@
+{
+  "generatedAt": "2026-11-02T07:17:04.893Z",
+  "root": "C:\\Projects\\ginsengfood-business-platform\\docs\\integration\\m3-m8",
+  "files": [
+    {
+      "path": "01-nguon-hien-hanh-va-hop-dong.md",
+      "title": "M3 ↔ M8: nguồn hiện hành, hợp đồng và các điểm cần đồng bộ",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "M3 ↔ M8: nguồn hiện hành, hợp đồng và các điểm cần đồng bộ",
+          "line": 1,
+          "slug": "m3-m8-nguồn-hiện-hành-hợp-đồng-và-các-điểm-cần-đồng-bộ"
+        },
+        {
+          "depth": 2,
+          "text": "1. Kết luận về r2 và cách chọn nguồn",
+          "line": 7,
+          "slug": "1-kết-luận-về-r2-và-cách-chọn-nguồn"
+        },
+        {
+          "depth": 2,
+          "text": "2. Kiểm kê 16 Markdown trong `integration-requirements`",
+          "line": 30,
+          "slug": "2-kiểm-kê-16-markdown-trong-integration-requirements"
+        },
+        {
+          "depth": 2,
+          "text": "3. Những điều M3 đã trả lời, không hỏi lại từ đầu",
+          "line": 65,
+          "slug": "3-những-điều-m3-đã-trả-lời-không-hỏi-lại-từ-đầu"
+        },
+        {
+          "depth": 2,
+          "text": "4. Hợp đồng task, thời gian và kết quả",
+          "line": 89,
+          "slug": "4-hợp-đồng-task-thời-gian-và-kết-quả"
+        },
+        {
+          "depth": 3,
+          "text": "4.1. Producer mới",
+          "line": 91,
+          "slug": "41-producer-mới"
+        },
+        {
+          "depth": 3,
+          "text": "4.2. Policy V4 và hold",
+          "line": 109,
+          "slug": "42-policy-v4-và-hold"
+        },
+        {
+          "depth": 3,
+          "text": "4.3. Intake decision và revoke",
+          "line": 124,
+          "slug": "43-intake-decision-và-revoke"
+        },
+        {
+          "depth": 3,
+          "text": "4.4. Callback và hiệu ứng nghiệp vụ",
+          "line": 133,
+          "slug": "44-callback-và-hiệu-ứng-nghiệp-vụ"
+        },
+        {
+          "depth": 2,
+          "text": "5. Auth, idempotency và delivery chính xác",
+          "line": 153,
+          "slug": "5-auth-idempotency-và-delivery-chính-xác"
+        },
+        {
+          "depth": 3,
+          "text": "5.1. Hai chiều dịch vụ",
+          "line": 155,
+          "slug": "51-hai-chiều-dịch-vụ"
+        },
+        {
+          "depth": 3,
+          "text": "5.2. Callback inbox/ACK",
+          "line": 172,
+          "slug": "52-callback-inboxack"
+        },
+        {
+          "depth": 3,
+          "text": "5.3. Gap delivery production là code/config thật",
+          "line": 191,
+          "slug": "53-gap-delivery-production-là-codeconfig-thật"
+        },
+        {
+          "depth": 2,
+          "text": "6. Bao phủ toàn bộ API và bề mặt UI",
+          "line": 197,
+          "slug": "6-bao-phủ-toàn-bộ-api-và-bề-mặt-ui"
+        },
+        {
+          "depth": 2,
+          "text": "7. Cập nhật ma trận nghiệm thu E01–E42",
+          "line": 231,
+          "slug": "7-cập-nhật-ma-trận-nghiệm-thu-e01e42"
+        },
+        {
+          "depth": 2,
+          "text": "8. Sổ lệch quyết định → tài liệu → source → phương án",
+          "line": 257,
+          "slug": "8-sổ-lệch-quyết-định-tài-liệu-source-phương-án"
+        },
+        {
+          "depth": 2,
+          "text": "9. Chính sách đã khóa và inventory kỹ thuật còn lại",
+          "line": 283,
+          "slug": "9-chính-sách-đã-khóa-và-inventory-kỹ-thuật-còn-lại"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "biên bản09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "00-index.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/00-index.md",
+          "line": 36
+        },
+        {
+          "kind": "markdown",
+          "text": "01-sales-platform-requirements.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/01-sales-platform-requirements.md",
+          "line": 37
+        },
+        {
+          "kind": "markdown",
+          "text": "03-telephony-sim-requirements.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/03-telephony-sim-requirements.md",
+          "line": 38
+        },
+        {
+          "kind": "markdown",
+          "text": "04-shared-auth-audit-requirements.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/04-shared-auth-audit-requirements.md",
+          "line": 39
+        },
+        {
+          "kind": "markdown",
+          "text": "05-open-contract-questions.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/05-open-contract-questions.md",
+          "line": 40
+        },
+        {
+          "kind": "markdown",
+          "text": "06-module-3-api-handover.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/06-module-3-api-handover.md",
+          "line": 41
+        },
+        {
+          "kind": "markdown",
+          "text": "07-module-3-decision-sheet.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/07-module-3-decision-sheet.md",
+          "line": 42
+        },
+        {
+          "kind": "markdown",
+          "text": "08-module-3-sandbox-guide.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 43
+        },
+        {
+          "kind": "markdown",
+          "text": "module-3/README.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/README.md",
+          "line": 44
+        },
+        {
+          "kind": "markdown",
+          "text": "module-3/api-reference.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/api-reference.md",
+          "line": 45
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07_M3_TRA_LOI_2026-10-08.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/IR-07_M3_TRA_LOI_2026-10-08.md",
+          "line": 46
+        },
+        {
+          "kind": "markdown",
+          "text": "IVR-operations-20261017.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/IVR-operations-20261017.md",
+          "line": 47
+        },
+        {
+          "kind": "markdown",
+          "text": "BIEN-NHAN.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/BIEN-NHAN.md",
+          "line": 48
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07_M3_r2_GUI_2026-10-12.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IR-07_M3_r2_GUI_2026-10-12.md",
+          "line": 49
+        },
+        {
+          "kind": "markdown",
+          "text": "IVR_CHOT_CUOI_r2_2026-10-13.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IVR_CHOT_CUOI_r2_2026-10-13.md",
+          "line": 50
+        },
+        {
+          "kind": "markdown",
+          "text": "TIN_TOAN_IVR_r2_2026-10-12.md",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/TIN_TOAN_IVR_r2_2026-10-12.md",
+          "line": 51
+        },
+        {
+          "kind": "markdown",
+          "text": "IVR draft.45",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/api/openapi/ivr-order-confirmation.v1.yaml",
+          "line": 63
+        },
+        {
+          "kind": "markdown",
+          "text": "callback Target V1",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/api/openapi/order-core-ivr-callback.target-v1.yaml",
+          "line": 63
+        },
+        {
+          "kind": "markdown",
+          "text": "functional/03",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/functional/03-scheduler-attempt-policy.md",
+          "line": 111
+        },
+        {
+          "kind": "markdown",
+          "text": "GoldenHourTwoCallAttemptPolicies.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Intake/GoldenHourTwoCallAttemptPolicies.cs",
+          "line": 111
+        },
+        {
+          "kind": "markdown",
+          "text": "AttemptStartRules.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Scheduling/AttemptStartRules.cs",
+          "line": 111
+        },
+        {
+          "kind": "markdown",
+          "text": "V252",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql",
+          "line": 149
+        },
+        {
+          "kind": "markdown",
+          "text": "ServiceTokenEndpoints.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Auth/ServiceTokenEndpoints.cs",
+          "line": 166
+        },
+        {
+          "kind": "markdown",
+          "text": "runbook AUTH-a",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md",
+          "line": 168
+        },
+        {
+          "kind": "markdown",
+          "text": "IvrJwksKeyCache.java",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/IvrJwksKeyCache.java",
+          "line": 168
+        },
+        {
+          "kind": "markdown",
+          "text": "transport",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Callbacks/TargetV1CallbackTransport.cs",
+          "line": 174
+        },
+        {
+          "kind": "markdown",
+          "text": "snapshot factory",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Callbacks/CallbackOutboxSnapshotFactory.cs",
+          "line": 174
+        },
+        {
+          "kind": "markdown",
+          "text": "CallbackDeliveryOptions.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Callbacks/CallbackDeliveryOptions.cs",
+          "line": 189
+        },
+        {
+          "kind": "markdown",
+          "text": "CallbackDispatcher.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Callbacks/CallbackDispatcher.cs",
+          "line": 189
+        },
+        {
+          "kind": "markdown",
+          "text": "CallbackDeliveryOptions.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Callbacks/CallbackDeliveryOptions.cs",
+          "line": 193
+        },
+        {
+          "kind": "markdown",
+          "text": "ServiceIdentity.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Auth/ServiceIdentity.cs",
+          "line": 195
+        },
+        {
+          "kind": "markdown",
+          "text": "04-ui-quan-tri-m34.md",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 199
+        },
+        {
+          "kind": "markdown",
+          "text": "IvrAdminEndpoints.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Admin/IvrAdminEndpoints.cs",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "OperationsEndpoints.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Admin/OperationsEndpoints.cs",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "FeatureFlagEndpoint.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Admin/FeatureFlagEndpoint.cs",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "ScriptLifecycleEndpoints.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Admin/ScriptLifecycleEndpoints.cs",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "DevToolingEndpoints.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Admin/DevToolingEndpoints.cs",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCoreAllowlistOptions.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Auth/OrderCoreAllowlistOptions.cs",
+          "line": 279
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCoreAllowlistMiddleware.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Api/Auth/OrderCoreAllowlistMiddleware.cs",
+          "line": 279
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 285
+        }
+      ],
+      "lines": 293,
+      "words": 6155,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 199
+        },
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 285
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 149,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+        },
+        {
+          "file": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 168,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+        },
+        {
+          "file": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 168,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/IvrJwksKeyCache.java"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 166
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 31
+        },
+        {
+          "from": "README.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "path": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "title": "Kết nối M3–M8: luồng nghiệp vụ để trình bày",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kết nối M3–M8: luồng nghiệp vụ để trình bày",
+          "line": 1,
+          "slug": "kết-nối-m3m8-luồng-nghiệp-vụ-để-trình-bày"
+        },
+        {
+          "depth": 3,
+          "text": "Nhìn nhanh toàn bộ luồng",
+          "line": 13,
+          "slug": "nhìn-nhanh-toàn-bộ-luồng"
+        },
+        {
+          "depth": 2,
+          "text": "1. Ba điều cần thống nhất ngay khi trình bày",
+          "line": 38,
+          "slug": "1-ba-điều-cần-thống-nhất-ngay-khi-trình-bày"
+        },
+        {
+          "depth": 2,
+          "text": "2. Đơn nào gọi, đơn nào không gọi?",
+          "line": 46,
+          "slug": "2-đơn-nào-gọi-đơn-nào-không-gọi"
+        },
+        {
+          "depth": 3,
+          "text": "Bảng phân biệt hiện tại, chính sách đã chốt và việc cần thực hiện",
+          "line": 71,
+          "slug": "bảng-phân-biệt-hiện-tại-chính-sách-đã-chốt-và-việc-cần-thực-hiện"
+        },
+        {
+          "depth": 2,
+          "text": "3. Một đơn đi qua hệ thống như thế nào?",
+          "line": 84,
+          "slug": "3-một-đơn-đi-qua-hệ-thống-như-thế-nào"
+        },
+        {
+          "depth": 2,
+          "text": "4. Gọi trước hay sau khi khách trả tiền?",
+          "line": 95,
+          "slug": "4-gọi-trước-hay-sau-khi-khách-trả-tiền"
+        },
+        {
+          "depth": 2,
+          "text": "5. Lịch gọi hiện hành để giải thích với khách và quản lý",
+          "line": 114,
+          "slug": "5-lịch-gọi-hiện-hành-để-giải-thích-với-khách-và-quản-lý"
+        },
+        {
+          "depth": 2,
+          "text": "6. Những tình huống người vận hành cần hiểu",
+          "line": 132,
+          "slug": "6-những-tình-huống-người-vận-hành-cần-hiểu"
+        },
+        {
+          "depth": 2,
+          "text": "7. Nhân viên sẽ sử dụng quản trị M3 thế nào?",
+          "line": 158,
+          "slug": "7-nhân-viên-sẽ-sử-dụng-quản-trị-m3-thế-nào"
+        },
+        {
+          "depth": 2,
+          "text": "8. Khi có sự cố, việc bán hàng được bảo vệ ra sao?",
+          "line": 183,
+          "slug": "8-khi-có-sự-cố-việc-bán-hàng-được-bảo-vệ-ra-sao"
+        },
+        {
+          "depth": 2,
+          "text": "9. Các quyết định đã chốt và việc tiếp theo",
+          "line": 191,
+          "slug": "9-các-quyết-định-đã-chốt-và-việc-tiếp-theo"
+        },
+        {
+          "depth": 2,
+          "text": "10. Lời trình bày khoảng hai phút",
+          "line": 201,
+          "slug": "10-lời-trình-bày-khoảng-hai-phút"
+        },
+        {
+          "depth": 2,
+          "text": "11. Nguồn đối chiếu",
+          "line": 215,
+          "slug": "11-nguồn-đối-chiếu"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "phiếu WP00",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "bộ sơ đồ luồng",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 11
+        },
+        {
+          "kind": "markdown",
+          "text": "M3 trả lời chính thức ngày 12/10",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IR-07_M3_r2_GUI_2026-10-12.md",
+          "line": 219
+        },
+        {
+          "kind": "markdown",
+          "text": "Thư chốt cuối ngày 13/10",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IVR_CHOT_CUOI_r2_2026-10-13.md",
+          "line": 220
+        },
+        {
+          "kind": "markdown",
+          "text": "Scheduler V4 hiện hành",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/functional/03-scheduler-attempt-policy.md",
+          "line": 221
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/06-module-3-api-handover.md",
+          "line": 222
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCreateServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java",
+          "line": 223
+        },
+        {
+          "kind": "markdown",
+          "text": "ConfirmationRoute",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/enums/ConfirmationRoute.java",
+          "line": 223
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderStateMachineImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java",
+          "line": 224
+        },
+        {
+          "kind": "markdown",
+          "text": "Kết quả và callback hiện hành",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/functional/05-result-normalization-callback.md",
+          "line": 225
+        },
+        {
+          "kind": "markdown",
+          "text": "Thiết kế backend và scale",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 226
+        },
+        {
+          "kind": "markdown",
+          "text": "kiểm thử, vận hành và nghiệm thu",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 226
+        },
+        {
+          "kind": "markdown",
+          "text": "Tạo đơn, thanh toán và giao hàng",
+          "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/04-tao-don-thanh-toan-va-giao-hang.md",
+          "line": 227
+        },
+        {
+          "kind": "markdown",
+          "text": "Giờ Vàng và reservation",
+          "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/05-golden-hour-reservation.md",
+          "line": 227
+        },
+        {
+          "kind": "markdown",
+          "text": "WP00 P01–P09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 228
+        }
+      ],
+      "lines": 231,
+      "words": 5408,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 11
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 226
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 226
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 228
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 223,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+        },
+        {
+          "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 223,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/enums/ConfirmationRoute.java"
+        },
+        {
+          "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 224,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+        },
+        {
+          "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 227,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/04-tao-don-thanh-toan-va-giao-hang.md"
+        },
+        {
+          "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 227,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/05-golden-hour-reservation.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "03-so-do-luong.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 5
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "03-so-do-luong.md",
+      "title": "Sơ đồ kết nối M3–M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sơ đồ kết nối M3–M8",
+          "line": 1,
+          "slug": "sơ-đồ-kết-nối-m3m8"
+        },
+        {
+          "depth": 2,
+          "text": "1. Activity với các làn trách nhiệm",
+          "line": 17,
+          "slug": "1-activity-với-các-làn-trách-nhiệm"
+        },
+        {
+          "depth": 2,
+          "text": "2. Sequence thành công: một đơn COD thuộc diện gọi",
+          "line": 105,
+          "slug": "2-sequence-thành-công-một-đơn-cod-thuộc-diện-gọi"
+        },
+        {
+          "depth": 2,
+          "text": "3. Sequence gửi lặp, thu hồi và kết quả cũ",
+          "line": 157,
+          "slug": "3-sequence-gửi-lặp-thu-hồi-và-kết-quả-cũ"
+        },
+        {
+          "depth": 2,
+          "text": "4. Sequence Giờ Vàng ONLINE sau thanh toán và tiền đến muộn",
+          "line": 220,
+          "slug": "4-sequence-giờ-vàng-online-sau-thanh-toán-và-tiền-đến-muộn"
+        },
+        {
+          "depth": 2,
+          "text": "5. Sơ đồ trạng thái xác nhận, tách khỏi thanh toán",
+          "line": 271,
+          "slug": "5-sơ-đồ-trạng-thái-xác-nhận-tách-khỏi-thanh-toán"
+        },
+        {
+          "depth": 3,
+          "text": "Mapping kết quả cuối để đọc sơ đồ",
+          "line": 333,
+          "slug": "mapping-kết-quả-cuối-để-đọc-sơ-đồ"
+        },
+        {
+          "depth": 2,
+          "text": "6. Kiến trúc triển khai và ranh giới dữ liệu",
+          "line": 346,
+          "slug": "6-kiến-trúc-triển-khai-và-ranh-giới-dữ-liệu"
+        },
+        {
+          "depth": 2,
+          "text": "7. Điều hướng quản trị và hành động theo quyền",
+          "line": 406,
+          "slug": "7-điều-hướng-quản-trị-và-hành-động-theo-quyền"
+        },
+        {
+          "depth": 2,
+          "text": "8. Dừng khẩn và phục hồi không bỏ qua bước gọi bắt buộc",
+          "line": 436,
+          "slug": "8-dừng-khẩn-và-phục-hồi-không-bỏ-qua-bước-gọi-bắt-buộc"
+        },
+        {
+          "depth": 2,
+          "text": "9. Bảng kiểm khi dùng sơ đồ làm đầu vào triển khai",
+          "line": 458,
+          "slug": "9-bảng-kiểm-khi-dùng-sơ-đồ-làm-đầu-vào-triển-khai"
+        },
+        {
+          "depth": 2,
+          "text": "10. Nguồn và baseline",
+          "line": 473,
+          "slug": "10-nguồn-và-baseline"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "bản nghiệp vụ để trình bày",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản WP00",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "thiết kế UI",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 408
+        },
+        {
+          "kind": "markdown",
+          "text": "M3 trả lời chính thức 12/10",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IR-07_M3_r2_GUI_2026-10-12.md",
+          "line": 477
+        },
+        {
+          "kind": "markdown",
+          "text": "Thư M8 chốt cuối 13/10",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/module-3/M3-tra-loi-2026-10-12/IVR_CHOT_CUOI_r2_2026-10-13.md",
+          "line": 478
+        },
+        {
+          "kind": "markdown",
+          "text": "Scheduler V4",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/functional/03-scheduler-attempt-policy.md",
+          "line": 479
+        },
+        {
+          "kind": "markdown",
+          "text": "GoldenHourTwoCallAttemptPolicies.cs",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/src/Ivr.Infrastructure/Intake/GoldenHourTwoCallAttemptPolicies.cs",
+          "line": 479
+        },
+        {
+          "kind": "markdown",
+          "text": "Result normalization và callback",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/functional/05-result-normalization-callback.md",
+          "line": 480
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/integration-requirements/06-module-3-api-handover.md",
+          "line": 480
+        },
+        {
+          "kind": "markdown",
+          "text": "Thiết kế backend và scale",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 481
+        },
+        {
+          "kind": "markdown",
+          "text": "kiểm thử, vận hành và nghiệm thu",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 481
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderStateMachineImpl.java",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java",
+          "line": 482
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCreateServiceImpl.java",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java",
+          "line": 482
+        },
+        {
+          "kind": "markdown",
+          "text": "Task OpenAPI",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/api/openapi/ivr-order-confirmation.v1.yaml",
+          "line": 483
+        },
+        {
+          "kind": "markdown",
+          "text": "Callback OpenAPI",
+          "rawTarget": "https://github.com/ngquoctoan2001/ginsengfood-ivr/blob/c9f0cd188f4966d07aafb3155039656b1b451034/specs/api/openapi/order-core-ivr-callback.target-v1.yaml",
+          "line": 483
+        },
+        {
+          "kind": "markdown",
+          "text": "Biên bản WP00 P01–P09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 484
+        }
+      ],
+      "lines": 487,
+      "words": 2659,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "03-so-do-luong.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 408
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 481
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 481
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 484
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "03-so-do-luong.md",
+          "line": 482,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+        },
+        {
+          "file": "03-so-do-luong.md",
+          "line": 482,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 11
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "04-ui-quan-tri-m34.md",
+      "title": "Thiết kế UI quản trị M34 — kết nối M3 với M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Thiết kế UI quản trị M34 — kết nối M3 với M8",
+          "line": 1,
+          "slug": "thiết-kế-ui-quản-trị-m34-kết-nối-m3-với-m8"
+        },
+        {
+          "depth": 2,
+          "text": "1. Nguồn và giới hạn kết luận",
+          "line": 11,
+          "slug": "1-nguồn-và-giới-hạn-kết-luận"
+        },
+        {
+          "depth": 2,
+          "text": "2. Hiện trạng tái dùng và phần cần làm",
+          "line": 36,
+          "slug": "2-hiện-trạng-tái-dùng-và-phần-cần-làm"
+        },
+        {
+          "depth": 2,
+          "text": "3. Route, bố cục và phạm vi trang đề xuất",
+          "line": 48,
+          "slug": "3-route-bố-cục-và-phạm-vi-trang-đề-xuất"
+        },
+        {
+          "depth": 2,
+          "text": "4. Trạng thái nghiệp vụ, thanh toán và tiến trình",
+          "line": 84,
+          "slug": "4-trạng-thái-nghiệp-vụ-thanh-toán-và-tiến-trình"
+        },
+        {
+          "depth": 3,
+          "text": "4.1. Hành vi UI theo P01–P05 đã chốt",
+          "line": 104,
+          "slug": "41-hành-vi-ui-theo-p01p05-đã-chốt"
+        },
+        {
+          "depth": 2,
+          "text": "5. Quyền và ranh giới BFF",
+          "line": 112,
+          "slug": "5-quyền-và-ranh-giới-bff"
+        },
+        {
+          "depth": 3,
+          "text": "5.1. Chính sách đã chốt và phần kỹ thuật còn phải hoàn thiện",
+          "line": 114,
+          "slug": "51-chính-sách-đã-chốt-và-phần-kỹ-thuật-còn-phải-hoàn-thiện"
+        },
+        {
+          "depth": 3,
+          "text": "5.2. Hợp đồng bảo vệ chung",
+          "line": 133,
+          "slug": "52-hợp-đồng-bảo-vệ-chung"
+        },
+        {
+          "depth": 2,
+          "text": "6. Ma trận UI → BFF → API M8",
+          "line": 144,
+          "slug": "6-ma-trận-ui-bff-api-m8"
+        },
+        {
+          "depth": 3,
+          "text": "6.1. API đọc — 19 operation",
+          "line": 148,
+          "slug": "61-api-đọc-19-operation"
+        },
+        {
+          "depth": 3,
+          "text": "6.2. API thao tác — 9 DANGER và 8 WRITE",
+          "line": 178,
+          "slug": "62-api-thao-tác-9-danger-và-8-write"
+        },
+        {
+          "depth": 2,
+          "text": "7. Tương tác, query và trạng thái màn hình",
+          "line": 211,
+          "slug": "7-tương-tác-query-và-trạng-thái-màn-hình"
+        },
+        {
+          "depth": 3,
+          "text": "7.1. Filter và cache",
+          "line": 213,
+          "slug": "71-filter-và-cache"
+        },
+        {
+          "depth": 3,
+          "text": "7.2. Loading/error/empty và trạng thái nguồn",
+          "line": 234,
+          "slug": "72-loadingerrorempty-và-trạng-thái-nguồn"
+        },
+        {
+          "depth": 2,
+          "text": "8. Giám sát vận hành bắt buộc theo bản 17/10",
+          "line": 252,
+          "slug": "8-giám-sát-vận-hành-bắt-buộc-theo-bản-1710"
+        },
+        {
+          "depth": 2,
+          "text": "9. Modal hành động, idempotency và audit",
+          "line": 276,
+          "slug": "9-modal-hành-động-idempotency-và-audit"
+        },
+        {
+          "depth": 2,
+          "text": "10. Ngôn ngữ, PII, màn nhỏ và accessibility",
+          "line": 293,
+          "slug": "10-ngôn-ngữ-pii-màn-nhỏ-và-accessibility"
+        },
+        {
+          "depth": 2,
+          "text": "11. Công việc dự kiến, dependencies và lợi ích scale",
+          "line": 305,
+          "slug": "11-công-việc-dự-kiến-dependencies-và-lợi-ích-scale"
+        },
+        {
+          "depth": 2,
+          "text": "12. Ma trận nghiệm thu với backend thật và cleanup",
+          "line": 321,
+          "slug": "12-ma-trận-nghiệm-thu-với-backend-thật-và-cleanup"
+        },
+        {
+          "depth": 2,
+          "text": "13. Điều kiện chuyển từ thiết kế sang task READY",
+          "line": 342,
+          "slug": "13-điều-kiện-chuyển-từ-thiết-kế-sang-task-ready"
+        },
+        {
+          "depth": 2,
+          "text": "14. Kiểm thiết kế UI trong lượt tài liệu",
+          "line": 350,
+          "slug": "14-kiểm-thiết-kế-ui-trong-lượt-tài-liệu"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Nguồn và hợp đồng",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Backend",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Roadmap",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Nghiệm thu",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "phiếu WP00",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "D-m34-007 / phiếu P01–P09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 30
+        }
+      ],
+      "lines": 357,
+      "words": 8418,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 30
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 199
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 408
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 15
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 112
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 79
+        },
+        {
+          "from": "README.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "path": "05-thiet-ke-backend-va-scale.md",
+      "title": "Thiết kế backend, dữ liệu và khả năng mở rộng",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Thiết kế backend, dữ liệu và khả năng mở rộng",
+          "line": 1,
+          "slug": "thiết-kế-backend-dữ-liệu-và-khả-năng-mở-rộng"
+        },
+        {
+          "depth": 2,
+          "text": "1. Ranh giới và công nghệ",
+          "line": 7,
+          "slug": "1-ranh-giới-và-công-nghệ"
+        },
+        {
+          "depth": 2,
+          "text": "2. Khoảng trống M3 cần giải quyết cùng đợt",
+          "line": 25,
+          "slug": "2-khoảng-trống-m3-cần-giải-quyết-cùng-đợt"
+        },
+        {
+          "depth": 3,
+          "text": "2.1. Hai điều kiện độc lập trước giao hàng",
+          "line": 38,
+          "slug": "21-hai-điều-kiện-độc-lập-trước-giao-hàng"
+        },
+        {
+          "depth": 2,
+          "text": "3. Dữ liệu đề xuất và bất biến",
+          "line": 54,
+          "slug": "3-dữ-liệu-đề-xuất-và-bất-biến"
+        },
+        {
+          "depth": 3,
+          "text": "3.1. Mutation matrix phải đưa vào code review",
+          "line": 67,
+          "slug": "31-mutation-matrix-phải-đưa-vào-code-review"
+        },
+        {
+          "depth": 2,
+          "text": "4. Transaction và dispatcher",
+          "line": 82,
+          "slug": "4-transaction-và-dispatcher"
+        },
+        {
+          "depth": 3,
+          "text": "4.1. HTTP/result handling",
+          "line": 92,
+          "slug": "41-httpresult-handling"
+        },
+        {
+          "depth": 2,
+          "text": "5. Auth và phần M8 cần nối",
+          "line": 107,
+          "slug": "5-auth-và-phần-m8-cần-nối"
+        },
+        {
+          "depth": 2,
+          "text": "6. Retention và tính nhất quán",
+          "line": 121,
+          "slug": "6-retention-và-tính-nhất-quán"
+        },
+        {
+          "depth": 2,
+          "text": "7. Scale theo điểm nghẽn",
+          "line": 127,
+          "slug": "7-scale-theo-điểm-nghẽn"
+        },
+        {
+          "depth": 3,
+          "text": "7.1. Bằng chứng tải phải đọc đúng phạm vi",
+          "line": 147,
+          "slug": "71-bằng-chứng-tải-phải-đọc-đúng-phạm-vi"
+        },
+        {
+          "depth": 3,
+          "text": "7.2. Các nấc tăng tải",
+          "line": 155,
+          "slug": "72-các-nấc-tăng-tải"
+        },
+        {
+          "depth": 2,
+          "text": "8. Nguồn mã để bắt đầu implementation",
+          "line": 164,
+          "slug": "8-nguồn-mã-để-bắt-đầu-implementation"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Nguồn và hợp đồng",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Sơ đồ",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "UI quản trị",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "bản nghiệp vụ",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "chuẩn bị WP01",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "Thiết kế UI đầy đủ",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "Spring transaction events",
+          "rawTarget": "https://docs.spring.io/spring-framework/reference/data-access/transaction/event.html",
+          "line": 21
+        },
+        {
+          "kind": "markdown",
+          "text": "PostgreSQL SELECT",
+          "rawTarget": "https://www.postgresql.org/docs/17/sql-select.html",
+          "line": 23
+        },
+        {
+          "kind": "markdown",
+          "text": "UI/BFF",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 112
+        },
+        {
+          "kind": "markdown",
+          "text": "runbook AUTH-a",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md",
+          "line": 117
+        },
+        {
+          "kind": "markdown",
+          "text": "01",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 166
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCreateServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java",
+          "line": 170
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderStateMachineImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java",
+          "line": 171
+        },
+        {
+          "kind": "markdown",
+          "text": "Order",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java",
+          "line": 172
+        },
+        {
+          "kind": "markdown",
+          "text": "ShipmentServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/ShipmentServiceImpl.java",
+          "line": 173
+        },
+        {
+          "kind": "markdown",
+          "text": "CarrierShipmentService",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/shipping/carrier/shipment/CarrierShipmentService.java",
+          "line": 174
+        },
+        {
+          "kind": "markdown",
+          "text": "GuestOrderProgressMapper",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/GuestOrderProgressMapper.java",
+          "line": 175
+        },
+        {
+          "kind": "markdown",
+          "text": "RefundReturnReplacementServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/RefundReturnReplacementServiceImpl.java",
+          "line": 176
+        },
+        {
+          "kind": "markdown",
+          "text": "IvrAuthConfiguration",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/config/IvrAuthConfiguration.java",
+          "line": 177
+        },
+        {
+          "kind": "markdown",
+          "text": "JwksIvrCallbackTokenVerifier",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/JwksIvrCallbackTokenVerifier.java",
+          "line": 178
+        },
+        {
+          "kind": "markdown",
+          "text": "V252",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql",
+          "line": 179
+        },
+        {
+          "kind": "markdown",
+          "text": "D17 legacy closure",
+          "rawTarget": "../../../contracts/contract-diff/golden-hour-legacy-ivr-callback-d17-diff.md",
+          "line": 180
+        }
+      ],
+      "lines": 183,
+      "words": 3397,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 5
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 5
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 15
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 112
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 166
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 117,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 170,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 171,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 172,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 173,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/ShipmentServiceImpl.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 174,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/shipping/carrier/shipment/CarrierShipmentService.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 175,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/GuestOrderProgressMapper.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 176,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/RefundReturnReplacementServiceImpl.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 177,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/config/IvrAuthConfiguration.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 178,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/JwksIvrCallbackTokenVerifier.java"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 179,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+        },
+        {
+          "file": "05-thiet-ke-backend-va-scale.md",
+          "line": 180,
+          "kind": "markdown",
+          "rawTarget": "../../../contracts/contract-diff/golden-hour-legacy-ivr-callback-d17-diff.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 226
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 481
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 134
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 211
+        },
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "path": "06-ke-hoach-trien-khai.md",
+      "title": "Kế hoạch triển khai backend → quản trị M34 → nghiệm thu",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kế hoạch triển khai backend → quản trị M34 → nghiệm thu",
+          "line": 1,
+          "slug": "kế-hoạch-triển-khai-backend-quản-trị-m34-nghiệm-thu"
+        },
+        {
+          "depth": 2,
+          "text": "1. P01–P09 đã chốt, đầu vào kỹ thuật theo từng gói",
+          "line": 7,
+          "slug": "1-p01p09-đã-chốt-đầu-vào-kỹ-thuật-theo-từng-gói"
+        },
+        {
+          "depth": 2,
+          "text": "2. Gói việc và đầu ra hữu hình",
+          "line": 25,
+          "slug": "2-gói-việc-và-đầu-ra-hữu-hình"
+        },
+        {
+          "depth": 3,
+          "text": "2.1. Handoff mỗi gói phải có gì",
+          "line": 46,
+          "slug": "21-handoff-mỗi-gói-phải-có-gì"
+        },
+        {
+          "depth": 2,
+          "text": "3. Các làn song song và tệp không được cùng ghi",
+          "line": 55,
+          "slug": "3-các-làn-song-song-và-tệp-không-được-cùng-ghi"
+        },
+        {
+          "depth": 3,
+          "text": "3.1. Quy tắc checkout và kiểm độc lập",
+          "line": 90,
+          "slug": "31-quy-tắc-checkout-và-kiểm-độc-lập"
+        },
+        {
+          "depth": 2,
+          "text": "4. Mốc cũ, mục tiêu mới và cách báo tiến độ",
+          "line": 98,
+          "slug": "4-mốc-cũ-mục-tiêu-mới-và-cách-báo-tiến-độ"
+        },
+        {
+          "depth": 2,
+          "text": "5. Định nghĩa hoàn tất",
+          "line": 110,
+          "slug": "5-định-nghĩa-hoàn-tất"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Thiết kế backend",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Thiết kế UI",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Kiểm thử và vận hành",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 9
+        },
+        {
+          "kind": "markdown",
+          "text": "Chuẩn bị WP01",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 23
+        },
+        {
+          "kind": "markdown",
+          "text": "quy trình repo",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/task-prompts/phase-to-task-prompt-generation-checklist.md",
+          "line": 23
+        }
+      ],
+      "lines": 121,
+      "words": 1965,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 9
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 23
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "06-ke-hoach-trien-khai.md",
+          "line": 23,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/task-prompts/phase-to-task-prompt-generation-checklist.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "path": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "title": "Kiểm thử, vận hành, cutover và nghiệm thu",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kiểm thử, vận hành, cutover và nghiệm thu",
+          "line": 1,
+          "slug": "kiểm-thử-vận-hành-cutover-và-nghiệm-thu"
+        },
+        {
+          "depth": 2,
+          "text": "1. Các lớp bằng chứng",
+          "line": 7,
+          "slug": "1-các-lớp-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "2. IR-08 E01–E42 và disposition hiện hành",
+          "line": 20,
+          "slug": "2-ir-08-e01e42-và-disposition-hiện-hành"
+        },
+        {
+          "depth": 2,
+          "text": "3. Ma trận nghiệp vụ và lỗi bổ sung",
+          "line": 38,
+          "slug": "3-ma-trận-nghiệp-vụ-và-lỗi-bổ-sung"
+        },
+        {
+          "depth": 2,
+          "text": "4. UI không được nghiệm thu bằng ảnh mock",
+          "line": 77,
+          "slug": "4-ui-không-được-nghiệm-thu-bằng-ảnh-mock"
+        },
+        {
+          "depth": 2,
+          "text": "5. Lệnh kiểm khi triển khai — không tự chạy trong lượt viết plan",
+          "line": 99,
+          "slug": "5-lệnh-kiểm-khi-triển-khai-không-tự-chạy-trong-lượt-viết-plan"
+        },
+        {
+          "depth": 2,
+          "text": "6. Chỉ tiêu kỹ thuật và kế hoạch tải theo P08 đã chốt",
+          "line": 111,
+          "slug": "6-chỉ-tiêu-kỹ-thuật-và-kế-hoạch-tải-theo-p08-đã-chốt"
+        },
+        {
+          "depth": 3,
+          "text": "6.1. Ngưỡng dừng, cảnh báo và trực đã chốt",
+          "line": 136,
+          "slug": "61-ngưỡng-dừng-cảnh-báo-và-trực-đã-chốt"
+        },
+        {
+          "depth": 2,
+          "text": "7. Cutover, dừng khẩn và rollback",
+          "line": 151,
+          "slug": "7-cutover-dừng-khẩn-và-rollback"
+        },
+        {
+          "depth": 3,
+          "text": "7.1. Trước mở",
+          "line": 153,
+          "slug": "71-trước-mở"
+        },
+        {
+          "depth": 3,
+          "text": "7.2. Khi phát hiện lỗi nghiêm trọng",
+          "line": 163,
+          "slug": "72-khi-phát-hiện-lỗi-nghiêm-trọng"
+        },
+        {
+          "depth": 3,
+          "text": "7.3. Điều kiện tiếp tục",
+          "line": 176,
+          "slug": "73-điều-kiện-tiếp-tục"
+        },
+        {
+          "depth": 2,
+          "text": "8. Hồ sơ bàn giao cuối",
+          "line": 183,
+          "slug": "8-hồ-sơ-bàn-giao-cuối"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Nguồn",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "UI và ma trận real E2E",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Gói việc",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "phiếu WP00",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "08",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 5
+        },
+        {
+          "kind": "markdown",
+          "text": "04",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 79
+        },
+        {
+          "kind": "markdown",
+          "text": "05 §7.2",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 134
+        }
+      ],
+      "lines": 190,
+      "words": 4079,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "08-bien-ban-ra-soat-tai-lieu.md",
+          "kind": "markdown",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 5
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 79
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 134
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 226
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 481
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "path": "08-bien-ban-ra-soat-tai-lieu.md",
+      "title": "Biên bản rà soát bộ kế hoạch",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Biên bản rà soát bộ kế hoạch",
+          "line": 1,
+          "slug": "biên-bản-rà-soát-bộ-kế-hoạch"
+        },
+        {
+          "depth": 2,
+          "text": "Vì sao rà lại",
+          "line": 5,
+          "slug": "vì-sao-rà-lại"
+        },
+        {
+          "depth": 2,
+          "text": "Các luồng khảo sát độc lập",
+          "line": 9,
+          "slug": "các-luồng-khảo-sát-độc-lập"
+        },
+        {
+          "depth": 2,
+          "text": "Phát hiện được đưa vào bản0.2",
+          "line": 20,
+          "slug": "phát-hiện-được-đưa-vào-bản02"
+        },
+        {
+          "depth": 2,
+          "text": "Kết quả kiểm tài liệu",
+          "line": 33,
+          "slug": "kết-quả-kiểm-tài-liệu"
+        },
+        {
+          "depth": 2,
+          "text": "Hash nguồn đã đối chiếu",
+          "line": 49,
+          "slug": "hash-nguồn-đã-đối-chiếu"
+        },
+        {
+          "depth": 2,
+          "text": "Giới hạn",
+          "line": 63,
+          "slug": "giới-hạn"
+        },
+        {
+          "depth": 2,
+          "text": "8. Đồng bộ bản0.3 và chuẩn bị WP01 theo D-m34-007",
+          "line": 70,
+          "slug": "8-đồng-bộ-bản03-và-chuẩn-bị-wp01-theo-d-m34-007"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        }
+      ],
+      "lines": 79,
+      "words": 1257,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "08-bien-ban-ra-soat-tai-lieu.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "08-bien-ban-ra-soat-tai-lieu.md",
+          "kind": "markdown",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 5
+        },
+        {
+          "from": "README.md",
+          "to": "08-bien-ban-ra-soat-tai-lieu.md",
+          "kind": "markdown",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "path": "09-wp00-phieu-chot-p01-p09.md",
+      "title": "WP00 — Biên bản chốt P01–P09 cho kết nối M3–M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "WP00 — Biên bản chốt P01–P09 cho kết nối M3–M8",
+          "line": 1,
+          "slug": "wp00-biên-bản-chốt-p01p09-cho-kết-nối-m3m8"
+        },
+        {
+          "depth": 2,
+          "text": "1. Chín quyết định, đọc trong vài phút",
+          "line": 13,
+          "slug": "1-chín-quyết-định-đọc-trong-vài-phút"
+        },
+        {
+          "depth": 2,
+          "text": "2. Những điều đã có nguồn, không yêu cầu chốt lại",
+          "line": 29,
+          "slug": "2-những-điều-đã-có-nguồn-không-yêu-cầu-chốt-lại"
+        },
+        {
+          "depth": 2,
+          "text": "3. P01 — Định nghĩa khách mới/cũ cho IVR",
+          "line": 41,
+          "slug": "3-p01-định-nghĩa-khách-mớicũ-cho-ivr"
+        },
+        {
+          "depth": 2,
+          "text": "4. P02 — Quà tặng và thông tin người được gọi",
+          "line": 63,
+          "slug": "4-p02-quà-tặng-và-thông-tin-người-được-gọi"
+        },
+        {
+          "depth": 2,
+          "text": "5. P03 — Mốc gọi Giờ Vàng ONLINE và tiền đến muộn",
+          "line": 85,
+          "slug": "5-p03-mốc-gọi-giờ-vàng-online-và-tiền-đến-muộn"
+        },
+        {
+          "depth": 2,
+          "text": "6. P04 — Hạn chế gọi, thiếu dữ liệu và thời điểm kiểm",
+          "line": 106,
+          "slug": "6-p04-hạn-chế-gọi-thiếu-dữ-liệu-và-thời-điểm-kiểm"
+        },
+        {
+          "depth": 2,
+          "text": "7. P05 — Sửa đơn, phiên xác nhận và deadline",
+          "line": 122,
+          "slug": "7-p05-sửa-đơn-phiên-xác-nhận-và-deadline"
+        },
+        {
+          "depth": 2,
+          "text": "8. P06 — Quyền màn quản trị và người giữ quyền",
+          "line": 148,
+          "slug": "8-p06-quyền-màn-quản-trị-và-người-giữ-quyền"
+        },
+        {
+          "depth": 2,
+          "text": "9. P07 — Môi trường, khóa xác thực và TN-3",
+          "line": 172,
+          "slug": "9-p07-môi-trường-khóa-xác-thực-và-tn-3"
+        },
+        {
+          "depth": 2,
+          "text": "10. P08 — Tải, canary và trực vận hành",
+          "line": 197,
+          "slug": "10-p08-tải-canary-và-trực-vận-hành"
+        },
+        {
+          "depth": 2,
+          "text": "11. P09 — Phân công và mốc bàn giao",
+          "line": 228,
+          "slug": "11-p09-phân-công-và-mốc-bàn-giao"
+        },
+        {
+          "depth": 2,
+          "text": "12. Ghi nhận phê duyệt và bàn giao WP01",
+          "line": 249,
+          "slug": "12-ghi-nhận-phê-duyệt-và-bàn-giao-wp01"
+        },
+        {
+          "depth": 2,
+          "text": "13. Bằng chứng lượt chuẩn bị WP00 trước phê duyệt (13:45)",
+          "line": 264,
+          "slug": "13-bằng-chứng-lượt-chuẩn-bị-wp00-trước-phê-duyệt-1345"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Kế hoạch 12 WP",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Bản trình bày nghiệp vụ",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "01 §§3–5",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 31
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderRepository",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java",
+          "line": 47
+        },
+        {
+          "kind": "markdown",
+          "text": "CanonicalCustomerLookupPort",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/port/CanonicalCustomerLookupPort.java",
+          "line": 47
+        },
+        {
+          "kind": "markdown",
+          "text": "CustomerCheckoutIdentityCheckpointAdapter",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerCheckoutIdentityCheckpointAdapter.java",
+          "line": 71
+        },
+        {
+          "kind": "markdown",
+          "text": "GoldenHourPaymentGateServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourPaymentGateServiceImpl.java",
+          "line": 100
+        },
+        {
+          "kind": "markdown",
+          "text": "GoldenHourReservationServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourReservationServiceImpl.java",
+          "line": 100
+        },
+        {
+          "kind": "markdown",
+          "text": "CustomerConsentRuntimeServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerConsentRuntimeServiceImpl.java",
+          "line": 110
+        },
+        {
+          "kind": "markdown",
+          "text": "AUTH-a",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md",
+          "line": 187
+        },
+        {
+          "kind": "markdown",
+          "text": "05 §7",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 211
+        },
+        {
+          "kind": "markdown",
+          "text": "chuẩn bị WP01",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 253
+        }
+      ],
+      "lines": 273,
+      "words": 6549,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 31
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 211
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 253
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 47,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 47,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/port/CanonicalCustomerLookupPort.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 71,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerCheckoutIdentityCheckpointAdapter.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 100,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourPaymentGateServiceImpl.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 100,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourReservationServiceImpl.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 110,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerConsentRuntimeServiceImpl.java"
+        },
+        {
+          "file": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 187,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "from": "01-nguon-hien-hanh-va-hop-dong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 285
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 228
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "03-so-do-luong.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 484
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 30
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 9
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 5
+        },
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "from": "README.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 13
+        },
+        {
+          "from": "README.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "path": "10-wp01-chuan-bi-trien-khai.md",
+      "title": "WP01 — Chuẩn bị nền dữ liệu bền vững cho M3–M8",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "WP01 — Chuẩn bị nền dữ liệu bền vững cho M3–M8",
+          "line": 1,
+          "slug": "wp01-chuẩn-bị-nền-dữ-liệu-bền-vững-cho-m3m8"
+        },
+        {
+          "depth": 2,
+          "text": "1. Kết quả WP01 phải tạo ra",
+          "line": 11,
+          "slug": "1-kết-quả-wp01-phải-tạo-ra"
+        },
+        {
+          "depth": 2,
+          "text": "2. Nguồn đã kiểm và khoảng trống có bằng chứng",
+          "line": 24,
+          "slug": "2-nguồn-đã-kiểm-và-khoảng-trống-có-bằng-chứng"
+        },
+        {
+          "depth": 2,
+          "text": "3. Hợp đồng dữ liệu kỹ thuật để review",
+          "line": 38,
+          "slug": "3-hợp-đồng-dữ-liệu-kỹ-thuật-để-review"
+        },
+        {
+          "depth": 3,
+          "text": "3.1. Decision snapshot khác confirmation generation",
+          "line": 42,
+          "slug": "31-decision-snapshot-khác-confirmation-generation"
+        },
+        {
+          "depth": 3,
+          "text": "3.2. State và clock không trộn nghĩa",
+          "line": 99,
+          "slug": "32-state-và-clock-không-trộn-nghĩa"
+        },
+        {
+          "depth": 3,
+          "text": "3.3. Hai loại hash và receipt",
+          "line": 107,
+          "slug": "33-hai-loại-hash-và-receipt"
+        },
+        {
+          "depth": 2,
+          "text": "4. Transaction, khóa và lease",
+          "line": 113,
+          "slug": "4-transaction-khóa-và-lease"
+        },
+        {
+          "depth": 2,
+          "text": "5. Retention, quyền dữ liệu và không phát sinh endpoint",
+          "line": 134,
+          "slug": "5-retention-quyền-dữ-liệu-và-không-phát-sinh-endpoint"
+        },
+        {
+          "depth": 2,
+          "text": "6. Allowlist dự kiến và cách làm song song",
+          "line": 147,
+          "slug": "6-allowlist-dự-kiến-và-cách-làm-song-song"
+        },
+        {
+          "depth": 2,
+          "text": "7. Bộ kiểm WP01 cần đạt",
+          "line": 160,
+          "slug": "7-bộ-kiểm-wp01-cần-đạt"
+        },
+        {
+          "depth": 2,
+          "text": "8. Preflight trước thực thi và tiêu chí bàn giao",
+          "line": 191,
+          "slug": "8-preflight-trước-thực-thi-và-tiêu-chí-bàn-giao"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "Mục lục",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "P01–P09 đã duyệt",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Backend",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Requirement review",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/phase-requirement-reviews/m3-m8-wp01-requirement-review.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "Order.java",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java",
+          "line": 28
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderRepository",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java",
+          "line": 28
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderCreateServiceImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java",
+          "line": 29
+        },
+        {
+          "kind": "markdown",
+          "text": "OrderStateMachineImpl",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java",
+          "line": 30
+        },
+        {
+          "kind": "markdown",
+          "text": "RetryBackoffCalculator",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/RetryBackoffCalculator.java",
+          "line": 31
+        },
+        {
+          "kind": "markdown",
+          "text": "OutboxMessageContract",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/OutboxMessageContract.java",
+          "line": 31
+        },
+        {
+          "kind": "markdown",
+          "text": "GoldenHourAutomationRunJdbcRepository",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/repository/jdbc/GoldenHourAutomationRunJdbcRepository.java",
+          "line": 32
+        },
+        {
+          "kind": "markdown",
+          "text": "Schema Order",
+          "rawTarget": "../../docs-ginsengfood-project/schema-detail/10-order-payment-shipment.sql",
+          "line": 33
+        },
+        {
+          "kind": "markdown",
+          "text": "schema queues",
+          "rawTarget": "../../docs-ginsengfood-project/schema-detail/17-ivr-gsm-async-domain-queues.sql",
+          "line": 33
+        },
+        {
+          "kind": "markdown",
+          "text": "V252",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql",
+          "line": 33
+        },
+        {
+          "kind": "markdown",
+          "text": "IsolatedPostgresTestDatabase",
+          "rawTarget": "../../../back-end/src/test/java/com/ginsengfood/project/testsupport/IsolatedPostgresTestDatabase.java",
+          "line": 34
+        }
+      ],
+      "lines": 202,
+      "words": 2925,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 3
+        },
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 3
+        }
+      ],
+      "unresolvedLinks": [
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 3,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/to-do-list/phase-requirement-reviews/m3-m8-wp01-requirement-review.md"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 28,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 28,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 29,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 30,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 31,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/RetryBackoffCalculator.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 31,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/OutboxMessageContract.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 32,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/repository/jdbc/GoldenHourAutomationRunJdbcRepository.java"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 33,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/schema-detail/10-order-payment-shipment.sql"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 33,
+          "kind": "markdown",
+          "rawTarget": "../../docs-ginsengfood-project/schema-detail/17-ivr-gsm-async-domain-queues.sql"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 33,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+        },
+        {
+          "file": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 34,
+          "kind": "markdown",
+          "rawTarget": "../../../back-end/src/test/java/com/ginsengfood/project/testsupport/IsolatedPostgresTestDatabase.java"
+        }
+      ],
+      "incomingLinks": [
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 5
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 23
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 253
+        },
+        {
+          "from": "README.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 14
+        },
+        {
+          "from": "README.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "path": "README.md",
+      "title": "Kế hoạch kết nối M3–M8 và UI quản trị IVR M34",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kế hoạch kết nối M3–M8 và UI quản trị IVR M34",
+          "line": 1,
+          "slug": "kế-hoạch-kết-nối-m3m8-và-ui-quản-trị-ivr-m34"
+        },
+        {
+          "depth": 2,
+          "text": "Đọc theo nhu cầu",
+          "line": 9,
+          "slug": "đọc-theo-nhu-cầu"
+        },
+        {
+          "depth": 2,
+          "text": "Các thay đổi quan trọng so với bản đầu",
+          "line": 24,
+          "slug": "các-thay-đổi-quan-trọng-so-với-bản-đầu"
+        },
+        {
+          "depth": 2,
+          "text": "Baseline và cách dùng nguồn",
+          "line": 33,
+          "slug": "baseline-và-cách-dùng-nguồn"
+        },
+        {
+          "depth": 2,
+          "text": "Phạm vi hoàn tất và bước kế tiếp",
+          "line": 44,
+          "slug": "phạm-vi-hoàn-tất-và-bước-kế-tiếp"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "09 — WP00: Biên bản quyết định",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 13
+        },
+        {
+          "kind": "markdown",
+          "text": "10 — Chuẩn bị triển khai WP01",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 14
+        },
+        {
+          "kind": "markdown",
+          "text": "02 — Luồng nghiệp vụ dễ trình bày",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 15
+        },
+        {
+          "kind": "markdown",
+          "text": "03 — Sơ đồ luồng",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 16
+        },
+        {
+          "kind": "markdown",
+          "text": "01 — Nguồn hiện hành và hợp đồng",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 17
+        },
+        {
+          "kind": "markdown",
+          "text": "04 — UI quản trị M34",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 18
+        },
+        {
+          "kind": "markdown",
+          "text": "05 — Thiết kế backend và scale",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 19
+        },
+        {
+          "kind": "markdown",
+          "text": "06 — Kế hoạch triển khai",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 20
+        },
+        {
+          "kind": "markdown",
+          "text": "07 — Kiểm thử, vận hành và nghiệm thu",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 21
+        },
+        {
+          "kind": "markdown",
+          "text": "08 — Biên bản rà soát tài liệu",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 22
+        },
+        {
+          "kind": "markdown",
+          "text": "tài liệu chính thức",
+          "rawTarget": "https://mermaid.js.org/intro/",
+          "line": 42
+        },
+        {
+          "kind": "markdown",
+          "text": "biên bản09",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 48
+        },
+        {
+          "kind": "markdown",
+          "text": "Bản chuẩn bị WP01",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 48
+        }
+      ],
+      "lines": 49,
+      "words": 904,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [
+        {
+          "from": "README.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 13
+        },
+        {
+          "from": "README.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 14
+        },
+        {
+          "from": "README.md",
+          "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "kind": "markdown",
+          "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+          "line": 15
+        },
+        {
+          "from": "README.md",
+          "to": "03-so-do-luong.md",
+          "kind": "markdown",
+          "rawTarget": "03-so-do-luong.md",
+          "line": 16
+        },
+        {
+          "from": "README.md",
+          "to": "01-nguon-hien-hanh-va-hop-dong.md",
+          "kind": "markdown",
+          "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+          "line": 17
+        },
+        {
+          "from": "README.md",
+          "to": "04-ui-quan-tri-m34.md",
+          "kind": "markdown",
+          "rawTarget": "04-ui-quan-tri-m34.md",
+          "line": 18
+        },
+        {
+          "from": "README.md",
+          "to": "05-thiet-ke-backend-va-scale.md",
+          "kind": "markdown",
+          "rawTarget": "05-thiet-ke-backend-va-scale.md",
+          "line": 19
+        },
+        {
+          "from": "README.md",
+          "to": "06-ke-hoach-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "06-ke-hoach-trien-khai.md",
+          "line": 20
+        },
+        {
+          "from": "README.md",
+          "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "kind": "markdown",
+          "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "line": 21
+        },
+        {
+          "from": "README.md",
+          "to": "08-bien-ban-ra-soat-tai-lieu.md",
+          "kind": "markdown",
+          "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+          "line": 22
+        },
+        {
+          "from": "README.md",
+          "to": "09-wp00-phieu-chot-p01-p09.md",
+          "kind": "markdown",
+          "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+          "line": 48
+        },
+        {
+          "from": "README.md",
+          "to": "10-wp01-chuan-bi-trien-khai.md",
+          "kind": "markdown",
+          "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+          "line": 48
+        }
+      ],
+      "unresolvedLinks": [],
+      "incomingLinks": [
+        {
+          "from": "04-ui-quan-tri-m34.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "05-thiet-ke-backend-va-scale.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "06-ke-hoach-trien-khai.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "08-bien-ban-ra-soat-tai-lieu.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "09-wp00-phieu-chot-p01-p09.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        },
+        {
+          "from": "10-wp01-chuan-bi-trien-khai.md",
+          "to": "README.md",
+          "kind": "markdown",
+          "rawTarget": "README.md",
+          "line": 3
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "01-nguon-hien-hanh-va-hop-dong.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 3
+    },
+    {
+      "from": "01-nguon-hien-hanh-va-hop-dong.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 199
+    },
+    {
+      "from": "01-nguon-hien-hanh-va-hop-dong.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 285
+    },
+    {
+      "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 5
+    },
+    {
+      "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "to": "03-so-do-luong.md",
+      "kind": "markdown",
+      "rawTarget": "03-so-do-luong.md",
+      "line": 11
+    },
+    {
+      "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 226
+    },
+    {
+      "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "kind": "markdown",
+      "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "line": 226
+    },
+    {
+      "from": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 228
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "kind": "markdown",
+      "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "line": 3
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 5
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 408
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 481
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "kind": "markdown",
+      "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "line": 481
+    },
+    {
+      "from": "03-so-do-luong.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 484
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 3
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 3
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "06-ke-hoach-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "06-ke-hoach-trien-khai.md",
+      "line": 3
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "kind": "markdown",
+      "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "line": 3
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 5
+    },
+    {
+      "from": "04-ui-quan-tri-m34.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 30
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 3
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "03-so-do-luong.md",
+      "kind": "markdown",
+      "rawTarget": "03-so-do-luong.md",
+      "line": 3
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 3
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "kind": "markdown",
+      "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "line": 5
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 5
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "10-wp01-chuan-bi-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+      "line": 5
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 15
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 112
+    },
+    {
+      "from": "05-thiet-ke-backend-va-scale.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 166
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 3
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 3
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "kind": "markdown",
+      "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "line": 3
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 9
+    },
+    {
+      "from": "06-ke-hoach-trien-khai.md",
+      "to": "10-wp01-chuan-bi-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+      "line": 23
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 3
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 3
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "06-ke-hoach-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "06-ke-hoach-trien-khai.md",
+      "line": 3
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 5
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "08-bien-ban-ra-soat-tai-lieu.md",
+      "kind": "markdown",
+      "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+      "line": 5
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 79
+    },
+    {
+      "from": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 134
+    },
+    {
+      "from": "08-bien-ban-ra-soat-tai-lieu.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "06-ke-hoach-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "06-ke-hoach-trien-khai.md",
+      "line": 3
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "kind": "markdown",
+      "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "line": 3
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 31
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 211
+    },
+    {
+      "from": "09-wp00-phieu-chot-p01-p09.md",
+      "to": "10-wp01-chuan-bi-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+      "line": 253
+    },
+    {
+      "from": "10-wp01-chuan-bi-trien-khai.md",
+      "to": "README.md",
+      "kind": "markdown",
+      "rawTarget": "README.md",
+      "line": 3
+    },
+    {
+      "from": "10-wp01-chuan-bi-trien-khai.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 3
+    },
+    {
+      "from": "10-wp01-chuan-bi-trien-khai.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 3
+    },
+    {
+      "from": "README.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 13
+    },
+    {
+      "from": "README.md",
+      "to": "10-wp01-chuan-bi-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+      "line": 14
+    },
+    {
+      "from": "README.md",
+      "to": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "kind": "markdown",
+      "rawTarget": "02-luong-nghiep-vu-de-trinh-bay.md",
+      "line": 15
+    },
+    {
+      "from": "README.md",
+      "to": "03-so-do-luong.md",
+      "kind": "markdown",
+      "rawTarget": "03-so-do-luong.md",
+      "line": 16
+    },
+    {
+      "from": "README.md",
+      "to": "01-nguon-hien-hanh-va-hop-dong.md",
+      "kind": "markdown",
+      "rawTarget": "01-nguon-hien-hanh-va-hop-dong.md",
+      "line": 17
+    },
+    {
+      "from": "README.md",
+      "to": "04-ui-quan-tri-m34.md",
+      "kind": "markdown",
+      "rawTarget": "04-ui-quan-tri-m34.md",
+      "line": 18
+    },
+    {
+      "from": "README.md",
+      "to": "05-thiet-ke-backend-va-scale.md",
+      "kind": "markdown",
+      "rawTarget": "05-thiet-ke-backend-va-scale.md",
+      "line": 19
+    },
+    {
+      "from": "README.md",
+      "to": "06-ke-hoach-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "06-ke-hoach-trien-khai.md",
+      "line": 20
+    },
+    {
+      "from": "README.md",
+      "to": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "kind": "markdown",
+      "rawTarget": "07-kiem-thu-van-hanh-va-nghiem-thu.md",
+      "line": 21
+    },
+    {
+      "from": "README.md",
+      "to": "08-bien-ban-ra-soat-tai-lieu.md",
+      "kind": "markdown",
+      "rawTarget": "08-bien-ban-ra-soat-tai-lieu.md",
+      "line": 22
+    },
+    {
+      "from": "README.md",
+      "to": "09-wp00-phieu-chot-p01-p09.md",
+      "kind": "markdown",
+      "rawTarget": "09-wp00-phieu-chot-p01-p09.md",
+      "line": 48
+    },
+    {
+      "from": "README.md",
+      "to": "10-wp01-chuan-bi-trien-khai.md",
+      "kind": "markdown",
+      "rawTarget": "10-wp01-chuan-bi-trien-khai.md",
+      "line": 48
+    }
+  ],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "01-nguon-hien-hanh-va-hop-dong.md",
+        "line": 149,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+      },
+      {
+        "file": "01-nguon-hien-hanh-va-hop-dong.md",
+        "line": 168,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+      },
+      {
+        "file": "01-nguon-hien-hanh-va-hop-dong.md",
+        "line": 168,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/IvrJwksKeyCache.java"
+      },
+      {
+        "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+        "line": 223,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+      },
+      {
+        "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+        "line": 223,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/enums/ConfirmationRoute.java"
+      },
+      {
+        "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+        "line": 224,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+      },
+      {
+        "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+        "line": 227,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/04-tao-don-thanh-toan-va-giao-hang.md"
+      },
+      {
+        "file": "02-luong-nghiep-vu-de-trinh-bay.md",
+        "line": 227,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/bussiness-flows/05-golden-hour-reservation.md"
+      },
+      {
+        "file": "03-so-do-luong.md",
+        "line": 482,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+      },
+      {
+        "file": "03-so-do-luong.md",
+        "line": 482,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 117,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 170,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 171,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 172,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 173,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/ShipmentServiceImpl.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 174,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/shipping/carrier/shipment/CarrierShipmentService.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 175,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/GuestOrderProgressMapper.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 176,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/RefundReturnReplacementServiceImpl.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 177,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/config/IvrAuthConfiguration.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 178,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/ivr/adapter/out/auth/JwksIvrCallbackTokenVerifier.java"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 179,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+      },
+      {
+        "file": "05-thiet-ke-backend-va-scale.md",
+        "line": 180,
+        "kind": "markdown",
+        "rawTarget": "../../../contracts/contract-diff/golden-hour-legacy-ivr-callback-d17-diff.md"
+      },
+      {
+        "file": "06-ke-hoach-trien-khai.md",
+        "line": 23,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/to-do-list/task-prompts/phase-to-task-prompt-generation-checklist.md"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 47,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 47,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/port/CanonicalCustomerLookupPort.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 71,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerCheckoutIdentityCheckpointAdapter.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 100,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourPaymentGateServiceImpl.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 100,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/service/impl/GoldenHourReservationServiceImpl.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 110,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/customer/service/impl/CustomerConsentRuntimeServiceImpl.java"
+      },
+      {
+        "file": "09-wp00-phieu-chot-p01-p09.md",
+        "line": 187,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/to-do-list/migration-readiness/ivr-auth/ivr-auth-runbook.md"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 3,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/to-do-list/phase-requirement-reviews/m3-m8-wp01-requirement-review.md"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 28,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/domain/Order.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 28,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/repository/OrderRepository.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 29,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderCreateServiceImpl.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 30,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/order/service/impl/OrderStateMachineImpl.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 31,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/RetryBackoffCalculator.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 31,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/common/outbox/OutboxMessageContract.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 32,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/java/com/ginsengfood/project/promotion/repository/jdbc/GoldenHourAutomationRunJdbcRepository.java"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 33,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/schema-detail/10-order-payment-shipment.sql"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 33,
+        "kind": "markdown",
+        "rawTarget": "../../docs-ginsengfood-project/schema-detail/17-ivr-gsm-async-domain-queues.sql"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 33,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/main/resources/db/migration/V252__owner_2026_10_01_order_lifecycle_layer_b_foundation.sql"
+      },
+      {
+        "file": "10-wp01-chuan-bi-trien-khai.md",
+        "line": 34,
+        "kind": "markdown",
+        "rawTarget": "../../../back-end/src/test/java/com/ginsengfood/project/testsupport/IsolatedPostgresTestDatabase.java"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": []
+  }
+}

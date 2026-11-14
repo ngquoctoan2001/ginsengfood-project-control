@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# curl giả: luôn 200 khi hỏi mã
+for a in "$@"; do case $a in *remote_ip*) echo "200 192.168.1.99"; exit 0 ;; *http_code*) echo 200; exit 0 ;; esac; done
+exit 0

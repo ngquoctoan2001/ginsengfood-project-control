@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+case "${1-}" in -un) echo ssv ;; -nG) echo "ssv sudo docker" ;; *) /usr/bin/id "$@" ;; esac

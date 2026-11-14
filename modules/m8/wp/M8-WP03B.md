@@ -1,0 +1,55 @@
+# M8-WP03B — Khôi phục thật trên .61 vào DB tách riêng
+
+Trạng thái: ĐÃ GỘP local W-0522 (`e74e2ed9`, chưa push) · Rủi ro: R3 · Chế độ: A · Mốc: 12/11
+Hạng mục nâng: Sao lưu và khôi phục 50 → 75 (khi chạy trên .61 đạt) · Sheet: M8-003 · Ước lượng: 8 giờ
+Chỗ làm: `C:\Projects\_wt\m8\M8-WP03B` (bản sao archive, repo tạm commit `goc` ceb9bf9) · Base SHA: `005bc43d` · Chỗ kiểm: cùng bản sao
+Quyết định: D-m8-070 (được restore vào DB tách riêng trên .61). Kho ngoài máy vẫn chờ Anh Tuấn (M8-003), không thuộc lượt này.
+
+## Brief
+1. Repo · thư mục: bản sao archive của `ginsengfood-ivr` @ `005bc43d` tại `C:\Projects\_wt\m8\M8-WP03B` (repo tạm có commit `goc`; KHÔNG commit thêm).
+   Repo gốc `C:\Projects\ginsengfood-ivr` chỉ đọc.
+2. Mục tiêu: phiên chính có một lệnh diễn tập khôi phục chạy trên .61 (khuôn `~/m8`), không chạm project `m8` đang chạy:
+   a) lấy bản dump mới nhất trong `~/m8/sao-luu/` (hoặc tạo bản mới đúng cách `trien-khai.sh` bước [2/5], chỉ đọc DB sống);
+   b) dựng Postgres tạm tách riêng (container, volume, mạng riêng; không cổng ra ngoài; giới hạn RAM; image Postgres đúng bản project `m8` đang dùng);
+   c) `pg_restore` vào đó; d) đối soát: số bảng, số dòng từng bảng, `__EFMigrationsHistory` (45 migration, tên migration cuối), so với DB sống;
+   e) đo RTO (từ lúc bắt đầu tới DB tạm sẵn sàng + đối soát xong); f) dọn container/volume/mạng tạm kể cả khi lỗi (trap);
+   g) biên bản JSON không có dữ liệu khách, không bí mật;
+   h) kiểm 45 migration từ DB rỗng: chạy image `migrate` của bản đang chạy vào một Postgres tạm rỗng khác, so `__EFMigrationsHistory` + hash schema
+      (`pg_dump --schema-only`, bỏ dòng thay đổi theo lần chạy) với DB sống.
+   Tận dụng `deploy/backup/restore.sh`, `recovery_guard.py` khi hợp; không viết trùng.
+   Tiêu chí đạt: test viết đỏ trước rồi xanh; script từ chối chạy khi tên container/volume/mạng trùng project `m8`, khi đích là DB sống, khi đĩa trống < 2× dump;
+   dọn sạch khi lỗi giữa chừng; không in mật khẩu (lấy từ tệp secret sẵn có, không echo). `python -B -X utf8 -m unittest` vùng mới + `deploy/backup` test cũ đạt
+   (ghi số); `bash -n` mọi .sh mới. Có thể thử thật với Postgres 16 nhỏ local (xem mục 5).
+3. Phạm vi ghi: `deploy/backup/dien-tap/**` (mới) hoặc `deploy/backup/restore_drill.py` + test trong `deploy/backup/`, `deploy/backup/README.md` (một mục),
+   `docs/evidence/W-PENDING-03B/**`. Cấm: `deploy/m8/**` (cần thêm dòng vào README m8 → ghi đề xuất trong đầu ra), migration, `src/**`, `docs/release/*`, `.gitleaks*`.
+4. Đọc trước: `CLAUDE.md`, `AGENTS.md`; `deploy/backup/README.md`, `restore.sh`, `recovery_guard.py`, `test_recovery.py`; `deploy/m8/README.md` (khuôn thư mục,
+   bước [2/5], mục 10); `deploy/m8/compose.yml` (postgres, migrate, mạng, tệp secret DB); `deploy/m8/trien-khai.sh`.
+5. Được chạy: python unittest; docker local chỉ Postgres 16 nhỏ `--memory 1g --cpus 2`, tên tiền tố `m8w03b-`, không cổng 5005/55433, xoá sau khi xong;
+   không chạy khi có container nhãn `com.gitlab.gitlab-runner.type`; dừng nếu RAM trống < 4 GB. KHÔNG: ssh/scp, gọi .60/.61/.64, sheet-sync, cấp W-ID,
+   sửa repo gốc, chạy migration lên DB dùng chung.
+6. Bằng chứng: `docs/evidence/W-PENDING-03B/README.md` (lệnh + số, RTO đo local, giới hạn, CHƯA CHẠY trên host); không lập MANIFEST.
+7. Tuân thủ `C:\Projects\Project Control\chung\LUAT_SUBAGENT.md`.
+8. Đầu ra: tin nhắn cuối ≤ 25 dòng theo LUAT_SUBAGENT mục 10.
+
+## Diễn biến (mỗi vòng một dòng, mới nhất ở cuối)
+- 10/11 10:37 giao coder v1.
+- 10/11 11:33 coder v1: ĐẠT local · mới `deploy/backup/dien-tap/dien_tap_khoi_phuc.py` + 2 tệp test, README backup +44 dòng, bằng chứng `W-PENDING-03B` · unittest 40 (37 qua, 3 bỏ qua lab), lab Postgres 16 + migrate 45: 3/3 (đầy đủ 37 bảng/20.109 dòng khớp; dump cắt → mã 1 + dọn; tiền tố m8 → mã 2); RTO local 15,1 s; đột biến 13/14; PII PASS; `test_recovery` CHƯA CHẠY (thiếu `cryptography`). CẦN QUYẾT: vai trò không có trong dump (đề xuất `pg_dumpall --roles-only` ở [2/5]); dòng README m8; mục tiêu RTO; Postgres trust trên mạng internal cho kiểm migration (phiên chính chấp nhận: tạm, không cổng, xoá ngay).
+- 10/11 12:41 tester độc lập R3: CHƯA ĐẠT 1 ca · bộ đóng băng 175 ca (172 đạt, 3 bỏ qua có lý do), bổ sung 7 ca (6 đạt, 1 hỏng G7) trên Docker local, mã coder sha256 `6d8569d0…` không đổi; lỗi: `dien_tap_khoi_phuc.py:744-754, 818-820` bản sao lưu có sẵn (`moi-nhat`/tệp) không đối chiếu danh sách migration với DB sống → tên migration cuối khác vẫn `DAT`. Đạt: từ chối tiền tố/tên trùng `m8`, đích DB sống (kể cả `system_identifier`), đĩa đúng biên 2× dump, dump hỏng, tiêm lỗi 15 bước + `--don-sot` dọn sạch, biên bản không mật khẩu. CHƯA CHẠY: `flock`, SIGTERM/SIGHUP, quyền 600 (chỉ Linux, .61). Phiên chính chốt theo đề xuất: bản có sẵn phải có danh sách migration là phần đầu của DB sống, bằng hẳn khi có `--so-migration` → coder v2.
+- 10/11 13:15 coder v2: ĐẠT · `dien_tap_khoi_phuc.py` (sha256 `20b45e26…`): hàm `so_migration_voi_song` → KHOP / CU_HON / LECH áp cho mọi bản; CU_HON thành LECH khi bản mới tạo hoặc có `--so-migration`; bản cũ hơn không cờ → DAT kèm `canh_bao`, `migration_khop_song=false`; tự chặt thêm: DB khôi phục không có lịch sử migration mà DB sống có → LECH. Test đỏ 12 → xanh; unittest dien-tap 53 (48 qua, 5 bỏ qua lab), lab coder 5/5 (208 s); bộ tester 182 (179 qua, 0 hỏng, 3 bỏ qua cũ), G7 nay `LECH` rc=1; đột biến 8/8; `test_recovery` CHƯA CHẠY (thiếu `cryptography`). Giao verifier R3.
+- 10/11 14:29 verifier R3: CẦN SỬA (nhẹ–trung bình, không lỗi an toàn .61) · (1) test tín hiệu không đi qua bẫy thật (`test_dien_tap_khoi_phuc.py:523-540`; xoá bẫy vẫn xanh); (2) SIGTERM lúc xoá DB tạm trước (h) bị nuốt → `DAT` mã 0 (`dien_tap_khoi_phuc.py:918-923`); (3) thiếu test (h) cùng số migration khác tên; (4) tài liệu: `pg_dump` không đặt `read_only` như README ghi, câu PII PASS cho cả `dien-tap` sai (25 trúng giả `duong` trong `kiem-doc-lap/`). Đột biến 8/13 (sống: bỏ chặn mạng `host`, bỏ xác minh đích DB rỗng, (h) so số lượng, biên bản 644). Rủi ro .61: ngưỡng đĩa 2× dump nén có thể nhỏ hơn DB khôi phục; RAM chưa tính (h) 2×768 MiB; ngắt giữa `pg_dump` có thể để tiến trình trong container sống. Điểm coder tự chặt (không lịch sử migration → LECH) hợp lý. Unittest 53 (48/5), bộ tester 182 (178 qua, 1 hỏng E20 do container phiên khác, 3 bỏ qua); lab coder CHƯA CHẠY (runner GitLab chạy). Giao coder v3 — vòng sửa cuối, chưa đạt thì dừng báo Lead.
+- 10/11 16:27 coder v3 dừng giữa chừng do lỗi xác thực API (bản sao còn phần dở: `dien_tap_khoi_phuc.py` 14:51 sha `96c3f38e…`, `test_tin_hieu_that.py` mới) → nhắn coder làm tiếp; Docker để sau khi runner xong.
+- 10/11 16:52 coder v3: xong a–f phần không Docker · `dien_tap_khoi_phuc.py` sha `43c94b0a…`: bẫy tín hiệu `nhan_tin_hieu` (:594, cài :1331), dọn chỉ nuốt `Loi`, tín hiệu ném lại sau dọn và hạ `DAT`→`LOI`; (h) so cả danh sách tên; `kiem_dich` chặn mạng host/bridge + xác minh đích DB rỗng; biên bản `mo_tep_600`; đĩa ≥ max(2× dump, cỡ DB sống × 1,5 + dump) từ `pg_database_size` chỉ đọc; RAM tính cả (h), kiểm lại trước (h); `pg_dump` có `PGAPPNAME` riêng, lỗi/tín hiệu thì `pg_terminate_backend` đúng tên đó (thử Postgres 16 thật: ĐẠT). Test 48 → 84 (79 qua, 5 bỏ qua lab; đỏ trên mã cũ 18F + 7E), `test_tin_hieu_that.py` 9 ca tín hiệu thật; đột biến 22/22 (gồm 5 ca sống của verifier). CHƯA CHẠY: lab coder trên bản cuối (lượt trên bản trước 4/5, `test_1` hỏng ở khung tự kiểm rò volume `docker events`), PII trong container (runner đang chạy). CẦN QUYẾT: ca lab `TestC2_DiaDu_Dung2x` của tester theo biên 2× cũ → phiên chính chốt: nhờ tester độc lập đổi biên theo tiêu chí đĩa mới (không để coder sửa bộ tester).
+- 10/11 16:57 tester độc lập cập nhật biên đĩa theo tiêu chí mới (tự tính từ tiêu chí, so `dia.can_byte`): bỏ C1/C2 cũ (2×), thêm 4 ca lab (vế DB sống thiếu 1 byte/đủ, vế 2× dump lớn thiếu/đủ) + `test_w03t_khong_lab.py` 10/10; lab CHƯA CHẠY (runner đang chạy). sha `test_w03t_doc_lap.py` `613b4246…`, `w03t_lab.py` `46110e71…`.
+- 11/11 02:20 máy rảnh (không runner, CPU 21%, RAM trống 12,7 GB) → giao verifier R3 vòng 2 (vòng cuối): lab coder + bộ tester `W03T_LAB=YES`, đột biến lại 5 ca sống + phần mới, PII container `deploy/backup` + evidence; bộ đủ `deploy/backup` một lần (D-lead-030).
+- 11/11 02:32 verifier R3 vòng 2 (cuối): CẦN SỬA mức nhẹ, không lỗi sản phẩm/an toàn .61 · 4 lỗi vòng 1 đóng thật; coder 84 OK, lab coder 5/5 (79,9 s), tester không lab 10/10, tester `W03T_LAB=YES` 207 OK (642,7 s); đột biến 14/15 (6 ca sống vòng 1 nay đỏ); PII evidence 27 tệp PASS. Còn: (1) đột biến W11 sống — `test_dien_tap_khoi_phuc.py:929-936` không kiểm thứ tự kết thúc `pg_dump` trước nhả khoá khi `pg_dump` trả mã khác 0 (bỏ `dien_tap_khoi_phuc.py:783-784` thì kết thúc ở dọn cuối, sau `:1153` nhả khoá); (2) PII `deploy/backup` FAIL 25 dòng tên `duong`/"đường dẫn" trong `kiem-doc-lap/w03t_{chay,lab,shim}.py` (ngoài vùng CI quét) + 3 dòng `README.md` có sẵn từ gốc. Theo luật vòng cuối → DỪNG WP, trình Lead m8.75.
+- 11/11 05:32 Lead "m8.75 A" (D-m8-077): một vòng sửa nhỏ chỉ test + đổi chữ; giao coder.
+- 11/11 05:52 coder vòng sửa nhỏ (D-m8-077) xong: assert `test_dien_tap_khoi_phuc.py:939-940`; W11 đỏ trên bản đột biến, xanh bản thật; đổi chữ 25 dòng `w03t_{chay,lab,shim}.py` (đảo ngược ra đúng sha cũ); `test_dien_tap_khoi_phuc` 70 OK, tester không lab 10 OK, tester lab 207 OK (738 s); PII container `deploy/backup/dien-tap` 10 + evidence 27 PASS, đối chứng FAIL; `dien_tap_khoi_phuc.py` không đổi. Lệch nhỏ: container lab tiền tố `m8w03t-` (viết cứng trong tester); lỡ kéo `busybox:1.36` khi đo RAM, đã xoá. → verifier kiểm hai điểm.
+- 11/11 05:54 verifier R3 vòng 3 (D-m8-077) ĐẠT: W11 đỏ đúng 1 ca trên bản đột biến, bản thật 84 (= 70 + 9 tín hiệu + 5 lab bỏ qua); đảo đổi tên ra đúng sha cũ (25 chỗ); PII container `deploy/backup/dien-tap` 10 + evidence 27 PASS; chỉ 6 tệp đổi đúng danh sách; `dien_tap_khoi_phuc.py` sha `43c94b0a…` không đổi. → trình Lead "ok gộp".
+- 11/11 07:21 Lead "ok gộp 03B" → ghép `main` W-0522 `e74e2ed9` (43 tệp, +10.728): bản vá áp sạch sau W-0521, bằng chứng đổi tên `W-0522`, biên bản verifier chép vào `verifier-r3.md`. Bộ đủ trên bản ghép: test cũ `deploy/backup` đạt (`test_recovery` CHƯA CHẠY: thiếu `cryptography`), `dien-tap` 84 OK, lab coder 5/5 (111 s), tester không lab 10 OK, tester lab 207 OK (733 s), Docker sạch; selftest + gate-status PASS; PII container 39 tệp PASS + đối chứng FAIL; gitleaks thử trước commit + sau commit (toàn lịch sử, `16135c72..e74e2ed9`) sạch. Sheet M8-003 IN_PROGRESS 60. Không push.
+
+## Bước kế tiếp chính xác
+1. Push cùng W-0521 khi Lead lệnh (pre-push-scan trước push).
+2. Diễn tập thật trên .61 theo `deploy/backup/README.md` mục "Diễn tập khôi phục CSDL M8 trên .61": cần lệnh Lead và cách chạy lệnh trên .61; ghi RTO .61, `flock`, tín hiệu, quyền 600 trên Linux.
+
+## Còn lại / CẦN QUYẾT
+- Kho ngoài máy + RPO/RTO duyệt: Anh Tuấn/Lead (ngoài lượt này).

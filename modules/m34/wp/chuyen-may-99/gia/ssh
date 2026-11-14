@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# ssh GIẢ cho chạy thử (thu-gia.sh). Không mở mạng: chạy lệnh "từ xa" bằng bash cục bộ với HOME và PATH của máy giả.
+# ssv@192.168.1.60 -> $GIA_GOC/may60/home, ssv@192.168.1.99 -> $GIA_GOC/may99/home; lệnh docker/crontab/curl/... là bản giả trong gia/bin.
+# Ca hỏng (biến môi trường của thu-gia.sh): GIA_99_CHET (ssh tới .99 lỗi 255), GIA_SAI_IP_99 (.99 báo địa chỉ .199),
+# GIA_HONG_CHEP (dump chép sang .99 bị thêm rác).
+set -euo pipefail
+: "${GIA_GOC:?thiếu GIA_GOC}"
+host=''
+while [ $# -gt 0 ]; do
+  case $1 in
+    -o|-i|-F|-p) shift 2 ;;
+    -*) shift ;;
+    *) host=$1; shift; break ;;
+  esac
+done
+case $host in
+  ssv@192.168.1.60) may=60 ;;
+  ssv@192.168.1.99) may=99 ;;
+  *) echo "ssh giả: host lạ '$host'" >&2; exit 255 ;;
+esac
+lenh="$*"
+printf '%s ssh %s: %s\n' "$(date +%T)" "$may" "${lenh:0:160}" >> "$GIA_GOC/ssh.log"
+if [ -n "${GIA_99_CHET:-}" ] && [ "$may" = 99 ]; then
+  echo "ssh: connect to host 192.168.1.99 port 22: No route to host" >&2; exit 255
+fi
+ip="192.168.1.$may"
+if [ -n "${GIA_SAI_IP_99:-}" ] && [ "$may" = 99 ]; then ip=192.168.1.199; fi
+GIA_BIN="$(cd "$(dirname "$0")" && pwd)/bin"
+cd "$GIA_GOC/may$may/home"
+chay_lenh() {
+  env HOME="$GIA_GOC/may$may/home" GIA_MAY="$may" GIA_IP="$ip" GIA_MAY_DIR="$GIA_GOC/may$may" PATH="$GIA_BIN:$PATH" bash -c "$lenh"
+}
+if [ -n "${GIA_HONG_CHEP:-}" ] && [ "$may" = 99 ] && [[ $lenh == *'cat > '*chuyen-may/* ]]; then
+  { cat; echo rac; } | chay_lenh
+  exit
+fi
+chay_lenh

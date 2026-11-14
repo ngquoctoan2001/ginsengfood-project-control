@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "m9-review-be",
+      "runtimeExecutable": "C:/Program Files/Git/bin/bash.exe",
+      "runtimeArgs": ["C:/Projects/_wt/lead/review-m9-run/chay-be.sh"],
+      "port": 18080
+    },
+    {
+      "name": "m9-review-fe",
+      "runtimeExecutable": "C:/Program Files/Git/bin/bash.exe",
+      "runtimeArgs": ["C:/Projects/_wt/lead/review-m9-run/chay-fe.sh"],
+      "port": 3300
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+
+===== 08:25:08 · cầu M8 .99: dat 172.24.2.1 co-172 =====
+-- up --wait (cầu tạo lại; bản cũ .env.truoc-m8-allow-20261114T012501Z)
+ Container m34-be-1 Running 
+ Container m34-fe-1 Running 
+ Container m34-nginx-1 Running 
+ Container m34-m8that-cb-1 Running 
+ Container m34-pg-1 Running 
+ Container m34-redis-1 Running 
+ Container m34-clamav-1 Running 
+ Container m34-m8that-bi-mat-1 Recreate 
+ Container m34-m8that-bi-mat-1 Recreated 
+ Container m34-fe-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-redis-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-fe-1 Healthy 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-be-1 Waiting 
+ Container m34-be-1 Healthy 
+ Container m34-fe-1 Waiting 
+ Container m34-nginx-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-cb-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-clamav-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-fe-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-m8that-cb-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-clamav-1 Healthy 
+ Container m34-nginx-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+  /api/health/ready 200
+M8_ALLOW_IP=172.24.2.1
+M8_CB_DAT_XONG

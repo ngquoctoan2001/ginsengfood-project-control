@@ -1,0 +1,54 @@
+{
+  "head": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+  "branch": "main",
+  "status": "clean",
+  "protected_files": 534,
+  "source_bytes_stable": true,
+  "evidence_only_delta": 6,
+  "document_map": {
+    "markdown_files": 31,
+    "resolved_in_map": 26,
+    "unresolved_in_map": 6,
+    "all_unresolved_targets_exist": true,
+    "missing_files": 0,
+    "scope_note": "Four links leave the mapped module; two target a JSON file, excluded from the Markdown graph.",
+    "checks": [
+      {
+        "file": "ra-soat/2026-11-02-song1-m8-ket-qua.md",
+        "target": "2026-11-02-song1-cleanup.json",
+        "resolved": "C:\\Projects\\Project Control\\modules\\m8\\ra-soat\\2026-11-02-song1-cleanup.json",
+        "exists": true
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+        "target": "../../../.claude/commands/song.md",
+        "resolved": "C:\\Projects\\Project Control\\.claude\\commands\\song.md",
+        "exists": true
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-diff-r3.md",
+        "target": "../../../chung/CACH_LAM.md",
+        "resolved": "C:\\Projects\\Project Control\\chung\\CACH_LAM.md",
+        "exists": true
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+        "target": "../../../.claude/commands/song.md",
+        "resolved": "C:\\Projects\\Project Control\\.claude\\commands\\song.md",
+        "exists": true
+      },
+      {
+        "file": "ra-soat/2026-11-02-wp02d-v2-xin-vong-hep.md",
+        "target": "../../../chung/CACH_LAM.md",
+        "resolved": "C:\\Projects\\Project Control\\chung\\CACH_LAM.md",
+        "exists": true
+      },
+      {
+        "file": "TRANG_THAI.md",
+        "target": "ra-soat/2026-11-02-song1-cleanup.json",
+        "resolved": "C:\\Projects\\Project Control\\modules\\m8\\ra-soat\\2026-11-02-song1-cleanup.json",
+        "exists": true
+      }
+    ]
+  }
+}

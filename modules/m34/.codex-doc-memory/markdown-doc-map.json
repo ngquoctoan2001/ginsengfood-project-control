@@ -1,0 +1,790 @@
+{
+  "generatedAt": "2026-11-02T04:28:39.891Z",
+  "root": "C:\\Projects\\Project Control\\modules\\m34",
+  "files": [
+    {
+      "path": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+      "title": "Kế hoạch kết nối M3 ↔ M8 — đơn hàng, gọi xác nhận và nhận kết quả",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Kế hoạch kết nối M3 ↔ M8 — đơn hàng, gọi xác nhận và nhận kết quả",
+          "line": 1,
+          "slug": "kế-hoạch-kết-nối-m3-m8-đơn-hàng-gọi-xác-nhận-và-nhận-kết-quả"
+        },
+        {
+          "depth": 2,
+          "text": "1. Kết quả cần đạt và định hướng",
+          "line": 11,
+          "slug": "1-kết-quả-cần-đạt-và-định-hướng"
+        },
+        {
+          "depth": 2,
+          "text": "2. Baseline khảo sát và mức bằng chứng",
+          "line": 32,
+          "slug": "2-baseline-khảo-sát-và-mức-bằng-chứng"
+        },
+        {
+          "depth": 3,
+          "text": "2.1. Đã có gì, còn thiếu gì",
+          "line": 45,
+          "slug": "21-đã-có-gì-còn-thiếu-gì"
+        },
+        {
+          "depth": 3,
+          "text": "2.2. Các lệch nguồn cần khép trong WP00",
+          "line": 61,
+          "slug": "22-các-lệch-nguồn-cần-khép-trong-wp00"
+        },
+        {
+          "depth": 2,
+          "text": "3. Ranh giới trách nhiệm và kiến trúc",
+          "line": 76,
+          "slug": "3-ranh-giới-trách-nhiệm-và-kiến-trúc"
+        },
+        {
+          "depth": 2,
+          "text": "4. Công nghệ, công cụ và lợi ích",
+          "line": 106,
+          "slug": "4-công-nghệ-công-cụ-và-lợi-ích"
+        },
+        {
+          "depth": 2,
+          "text": "5. Phạm vi nghiệp vụ và chính sách phải giữ",
+          "line": 127,
+          "slug": "5-phạm-vi-nghiệp-vụ-và-chính-sách-phải-giữ"
+        },
+        {
+          "depth": 3,
+          "text": "5.1. Chọn đơn và mốc thanh toán",
+          "line": 129,
+          "slug": "51-chọn-đơn-và-mốc-thanh-toán"
+        },
+        {
+          "depth": 3,
+          "text": "5.2. Lịch V4 theo quyết định 20/10 và spec/code hiện hành",
+          "line": 150,
+          "slug": "52-lịch-v4-theo-quyết-định-2010-và-speccode-hiện-hành"
+        },
+        {
+          "depth": 3,
+          "text": "5.3. Kết quả cuối và hậu quả M3",
+          "line": 161,
+          "slug": "53-kết-quả-cuối-và-hậu-quả-m3"
+        },
+        {
+          "depth": 2,
+          "text": "6. Hợp đồng kỹ thuật và mapping",
+          "line": 178,
+          "slug": "6-hợp-đồng-kỹ-thuật-và-mapping"
+        },
+        {
+          "depth": 3,
+          "text": "6.1. Bốn đường giao tiếp",
+          "line": 180,
+          "slug": "61-bốn-đường-giao-tiếp"
+        },
+        {
+          "depth": 3,
+          "text": "6.2. Producer payload",
+          "line": 189,
+          "slug": "62-producer-payload"
+        },
+        {
+          "depth": 3,
+          "text": "6.3. Callback và ACK",
+          "line": 210,
+          "slug": "63-callback-và-ack"
+        },
+        {
+          "depth": 3,
+          "text": "6.4. Bảo mật và cấu hình",
+          "line": 233,
+          "slug": "64-bảo-mật-và-cấu-hình"
+        },
+        {
+          "depth": 2,
+          "text": "7. Thiết kế dữ liệu M3 — đề xuất để WP00 chốt",
+          "line": 243,
+          "slug": "7-thiết-kế-dữ-liệu-m3-đề-xuất-để-wp00-chốt"
+        },
+        {
+          "depth": 3,
+          "text": "7.1. Các transaction và race quan trọng",
+          "line": 258,
+          "slug": "71-các-transaction-và-race-quan-trọng"
+        },
+        {
+          "depth": 2,
+          "text": "8. Phần M8 cần chỉnh trong phạm vi nối",
+          "line": 271,
+          "slug": "8-phần-m8-cần-chỉnh-trong-phạm-vi-nối"
+        },
+        {
+          "depth": 2,
+          "text": "9. UI, API và quyền vận hành M3",
+          "line": 283,
+          "slug": "9-ui-api-và-quyền-vận-hành-m3"
+        },
+        {
+          "depth": 2,
+          "text": "10. Gói việc triển khai và thứ tự",
+          "line": 299,
+          "slug": "10-gói-việc-triển-khai-và-thứ-tự"
+        },
+        {
+          "depth": 3,
+          "text": "10.1. Các sóng và tệp nóng",
+          "line": 319,
+          "slug": "101-các-sóng-và-tệp-nóng"
+        },
+        {
+          "depth": 3,
+          "text": "10.2. Mốc điều hành dự kiến",
+          "line": 328,
+          "slug": "102-mốc-điều-hành-dự-kiến"
+        },
+        {
+          "depth": 2,
+          "text": "11. Kiểm thử, bằng chứng và điều kiện nghiệm thu",
+          "line": 341,
+          "slug": "11-kiểm-thử-bằng-chứng-và-điều-kiện-nghiệm-thu"
+        },
+        {
+          "depth": 3,
+          "text": "11.1. Ma trận E01–E42 hiện hành",
+          "line": 343,
+          "slug": "111-ma-trận-e01e42-hiện-hành"
+        },
+        {
+          "depth": 3,
+          "text": "11.2. Những thử nghiệm quyết định chất lượng",
+          "line": 359,
+          "slug": "112-những-thử-nghiệm-quyết-định-chất-lượng"
+        },
+        {
+          "depth": 3,
+          "text": "11.3. Test environments và bằng chứng",
+          "line": 377,
+          "slug": "113-test-environments-và-bằng-chứng"
+        },
+        {
+          "depth": 3,
+          "text": "11.4. SLO đề xuất để nghiệm thu nội bộ",
+          "line": 388,
+          "slug": "114-slo-đề-xuất-để-nghiệm-thu-nội-bộ"
+        },
+        {
+          "depth": 2,
+          "text": "12. Tầm nhìn scale và công suất",
+          "line": 399,
+          "slug": "12-tầm-nhìn-scale-và-công-suất"
+        },
+        {
+          "depth": 3,
+          "text": "12.1. Tách bốn giới hạn",
+          "line": 401,
+          "slug": "121-tách-bốn-giới-hạn"
+        },
+        {
+          "depth": 3,
+          "text": "12.2. Số liệu đã có và giới hạn suy luận",
+          "line": 410,
+          "slug": "122-số-liệu-đã-có-và-giới-hạn-suy-luận"
+        },
+        {
+          "depth": 3,
+          "text": "12.3. Lộ trình mở rộng có trigger",
+          "line": 428,
+          "slug": "123-lộ-trình-mở-rộng-có-trigger"
+        },
+        {
+          "depth": 2,
+          "text": "13. Quan sát, đối soát, cutover và rollback",
+          "line": 440,
+          "slug": "13-quan-sát-đối-soát-cutover-và-rollback"
+        },
+        {
+          "depth": 3,
+          "text": "13.1. Quan sát và thao tác",
+          "line": 442,
+          "slug": "131-quan-sát-và-thao-tác"
+        },
+        {
+          "depth": 3,
+          "text": "13.2. Triển khai tăng dần",
+          "line": 454,
+          "slug": "132-triển-khai-tăng-dần"
+        },
+        {
+          "depth": 3,
+          "text": "13.3. Dừng và quay lui",
+          "line": 463,
+          "slug": "133-dừng-và-quay-lui"
+        },
+        {
+          "depth": 2,
+          "text": "14. Đầu vào còn cần chốt — không chặn việc đọc/lập kế hoạch",
+          "line": 471,
+          "slug": "14-đầu-vào-còn-cần-chốt-không-chặn-việc-đọclập-kế-hoạch"
+        },
+        {
+          "depth": 3,
+          "text": "14.1. Bản đồ bàn giao IR-07 D-01…D-19",
+          "line": 489,
+          "slug": "141-bản-đồ-bàn-giao-ir-07-d-01d-19"
+        },
+        {
+          "depth": 2,
+          "text": "15. Điều kiện bắt đầu và điều kiện hoàn tất",
+          "line": 515,
+          "slug": "15-điều-kiện-bắt-đầu-và-điều-kiện-hoàn-tất"
+        },
+        {
+          "depth": 2,
+          "text": "16. Danh mục bằng chứng và nguồn để triển khai",
+          "line": 525,
+          "slug": "16-danh-mục-bằng-chứng-và-nguồn-để-triển-khai"
+        },
+        {
+          "depth": 3,
+          "text": "16.1. Hash các đầu vào hợp đồng đã đọc",
+          "line": 558,
+          "slug": "161-hash-các-đầu-vào-hợp-đồng-đã-đọc"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "bộ kế hoạch0.2 trong repo BP",
+          "rawTarget": "../../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md",
+          "line": 3
+        },
+        {
+          "kind": "markdown",
+          "text": "PostgreSQL 17 SELECT",
+          "rawTarget": "https://www.postgresql.org/docs/17/sql-select.html",
+          "line": 119
+        },
+        {
+          "kind": "markdown",
+          "text": "Spring transaction-bound events",
+          "rawTarget": "https://docs.spring.io/spring-framework/reference/data-access/transaction/event.html",
+          "line": 121
+        },
+        {
+          "kind": "markdown",
+          "text": "Microsoft HTTP resilience",
+          "rawTarget": "https://learn.microsoft.com/en-us/dotnet/core/resilience/http-resilience",
+          "line": 123
+        },
+        {
+          "kind": "markdown",
+          "text": "OpenTelemetry context propagation",
+          "rawTarget": "https://opentelemetry.io/docs/concepts/context-propagation/",
+          "line": 444
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-06",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/06-module-3-api-handover.md",
+          "line": 538
+        },
+        {
+          "kind": "markdown",
+          "text": "OpenAPI IVR",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/ivr-order-confirmation.v1.yaml",
+          "line": 539
+        },
+        {
+          "kind": "markdown",
+          "text": "OpenAPI callback",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/order-core-ivr-callback.target-v1.yaml",
+          "line": 540
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-08",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/08-module-3-sandbox-guide.md",
+          "line": 542
+        },
+        {
+          "kind": "markdown",
+          "text": "quy ước module",
+          "rawTarget": "../../../../ginsengfood-business-platform/docs/docs-ginsengfood-project/repo-structure-convention.en.md",
+          "line": 545
+        },
+        {
+          "kind": "markdown",
+          "text": "ARI ownership",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/operations/ari-controller-ownership.md",
+          "line": 546
+        },
+        {
+          "kind": "markdown",
+          "text": "5.000 đơn bắt máy sớm21/10",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/reports/21-10-ket-qua-5000-don-phan-bo-bat-may-som.md",
+          "line": 547
+        },
+        {
+          "kind": "markdown",
+          "text": "bộ20/10",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/reports/20-10-ket-qua-5000-75-phut-va-7-phut-du-phong.md",
+          "line": 547
+        },
+        {
+          "kind": "markdown",
+          "text": "secrets/access",
+          "rawTarget": "../../../../ginsengfood-ivr/deploy/rollouts/production-window-20261027/secrets-and-access.md",
+          "line": 548
+        },
+        {
+          "kind": "markdown",
+          "text": "production operating model",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/operations/production-operating-model.md",
+          "line": 551
+        },
+        {
+          "kind": "markdown",
+          "text": "IR-07",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/07-module-3-decision-sheet.md",
+          "line": 552
+        },
+        {
+          "kind": "markdown",
+          "text": "policy hiện hành",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/functional/03-scheduler-attempt-policy.md",
+          "line": 553
+        }
+      ],
+      "lines": 569,
+      "words": 9480,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 3,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 538,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/06-module-3-api-handover.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 539,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/ivr-order-confirmation.v1.yaml"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 540,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/order-core-ivr-callback.target-v1.yaml"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 542,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/08-module-3-sandbox-guide.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 545,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-business-platform/docs/docs-ginsengfood-project/repo-structure-convention.en.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 546,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/operations/ari-controller-ownership.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 547,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/reports/21-10-ket-qua-5000-don-phan-bo-bat-may-som.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 547,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/reports/20-10-ket-qua-5000-75-phut-va-7-phut-du-phong.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 548,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/deploy/rollouts/production-window-20261027/secrets-and-access.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 551,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/docs/operations/production-operating-model.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 552,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/07-module-3-decision-sheet.md"
+        },
+        {
+          "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+          "line": 553,
+          "kind": "markdown",
+          "rawTarget": "../../../../ginsengfood-ivr/specs/functional/03-scheduler-attempt-policy.md"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-10-31.md",
+      "title": "2026 10 31",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 4,
+      "words": 64,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "nhat-ky/2026-11-02.md",
+      "title": "2026 11 02",
+      "frontmatter": {},
+      "headings": [],
+      "links": [],
+      "lines": 8,
+      "words": 496,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "PHIEN.md",
+      "title": "Phiên `m34` — rà soát M3 và M4 trong business-platform",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Phiên `m34` — rà soát M3 và M4 trong business-platform",
+          "line": 1,
+          "slug": "phiên-m34-rà-soát-m3-và-m4-trong-business-platform"
+        },
+        {
+          "depth": 2,
+          "text": "Repo và nguồn",
+          "line": 11,
+          "slug": "repo-và-nguồn"
+        },
+        {
+          "depth": 2,
+          "text": "Ba mảng và phạm vi mã",
+          "line": 23,
+          "slug": "ba-mảng-và-phạm-vi-mã"
+        },
+        {
+          "depth": 2,
+          "text": "Lệnh (chỉ chạy trong worktree tách rời khi rà soát cần)",
+          "line": 34,
+          "slug": "lệnh-chỉ-chạy-trong-worktree-tách-rời-khi-rà-soát-cần"
+        },
+        {
+          "depth": 2,
+          "text": "Danh mục kiểm khi rà soát",
+          "line": 41,
+          "slug": "danh-mục-kiểm-khi-rà-soát"
+        },
+        {
+          "depth": 2,
+          "text": "Rà soát (`/ra-soat`)",
+          "line": 65,
+          "slug": "rà-soát-ra-soat"
+        },
+        {
+          "depth": 2,
+          "text": "Kiểm đầu phiên",
+          "line": 71,
+          "slug": "kiểm-đầu-phiên"
+        },
+        {
+          "depth": 2,
+          "text": "Tracker",
+          "line": 78,
+          "slug": "tracker"
+        },
+        {
+          "depth": 2,
+          "text": "Báo cáo tuần",
+          "line": 86,
+          "slug": "báo-cáo-tuần"
+        }
+      ],
+      "links": [],
+      "lines": 89,
+      "words": 1141,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "QUYET_DINH.md",
+      "title": "Quyết định — m34",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Quyết định — m34",
+          "line": 1,
+          "slug": "quyết-định-m34"
+        }
+      ],
+      "links": [],
+      "lines": 13,
+      "words": 613,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [],
+      "incomingLinks": []
+    },
+    {
+      "path": "SAN_SANG.md",
+      "title": "Sẵn sàng — M3 và M4 (business-platform)",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Sẵn sàng — M3 và M4 (business-platform)",
+          "line": 1,
+          "slug": "sẵn-sàng-m3-và-m4-business-platform"
+        },
+        {
+          "depth": 2,
+          "text": "Kết luận nhanh",
+          "line": 6,
+          "slug": "kết-luận-nhanh"
+        },
+        {
+          "depth": 2,
+          "text": "Hạng mục (điền khi `/ke-hoach`)",
+          "line": 15,
+          "slug": "hạng-mục-điền-khi-ke-hoach"
+        },
+        {
+          "depth": 2,
+          "text": "Việc lớn còn mở đã biết",
+          "line": 25,
+          "slug": "việc-lớn-còn-mở-đã-biết"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "bộ kế hoạch0.2 trong BP",
+          "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md",
+          "line": 13
+        }
+      ],
+      "lines": 36,
+      "words": 640,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "SAN_SANG.md",
+          "line": 13,
+          "kind": "markdown",
+          "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+        }
+      ],
+      "incomingLinks": []
+    },
+    {
+      "path": "TRANG_THAI.md",
+      "title": "Trạng thái — m34",
+      "frontmatter": {},
+      "headings": [
+        {
+          "depth": 1,
+          "text": "Trạng thái — m34",
+          "line": 1,
+          "slug": "trạng-thái-m34"
+        },
+        {
+          "depth": 2,
+          "text": "Quyết định đã áp",
+          "line": 7,
+          "slug": "quyết-định-đã-áp"
+        },
+        {
+          "depth": 2,
+          "text": "Phần Lead code: M3 → M8 (Sheet M3-023, hạn mốc B 10/11)",
+          "line": 15,
+          "slug": "phần-lead-code-m3-m8-sheet-m3-023-hạn-mốc-b-1011"
+        },
+        {
+          "depth": 2,
+          "text": "Tình hình",
+          "line": 25,
+          "slug": "tình-hình"
+        },
+        {
+          "depth": 2,
+          "text": "Việc chặn",
+          "line": 36,
+          "slug": "việc-chặn"
+        },
+        {
+          "depth": 2,
+          "text": "Cần Lead quyết",
+          "line": 43,
+          "slug": "cần-lead-quyết"
+        },
+        {
+          "depth": 2,
+          "text": "Đề xuất kế",
+          "line": 55,
+          "slug": "đề-xuất-kế"
+        }
+      ],
+      "links": [
+        {
+          "kind": "markdown",
+          "text": "kế hoạch0.2 trong BP",
+          "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md",
+          "line": 22
+        }
+      ],
+      "lines": 60,
+      "words": 1126,
+      "encodingNameAnomaly": false,
+      "resolvedLinks": [],
+      "unresolvedLinks": [
+        {
+          "file": "TRANG_THAI.md",
+          "line": 22,
+          "kind": "markdown",
+          "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+        }
+      ],
+      "incomingLinks": []
+    }
+  ],
+  "edges": [],
+  "issues": {
+    "unresolvedLinks": [
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 3,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 538,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/06-module-3-api-handover.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 539,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/ivr-order-confirmation.v1.yaml"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 540,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/specs/api/openapi/order-core-ivr-callback.target-v1.yaml"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 542,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/08-module-3-sandbox-guide.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 545,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-business-platform/docs/docs-ginsengfood-project/repo-structure-convention.en.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 546,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/docs/operations/ari-controller-ownership.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 547,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/docs/reports/21-10-ket-qua-5000-don-phan-bo-bat-may-som.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 547,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/docs/reports/20-10-ket-qua-5000-75-phut-va-7-phut-du-phong.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 548,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/deploy/rollouts/production-window-20261027/secrets-and-access.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 551,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/docs/operations/production-operating-model.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 552,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/integration-requirements/07-module-3-decision-sheet.md"
+      },
+      {
+        "file": "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+        "line": 553,
+        "kind": "markdown",
+        "rawTarget": "../../../../ginsengfood-ivr/specs/functional/03-scheduler-attempt-policy.md"
+      },
+      {
+        "file": "SAN_SANG.md",
+        "line": 13,
+        "kind": "markdown",
+        "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+      },
+      {
+        "file": "TRANG_THAI.md",
+        "line": 22,
+        "kind": "markdown",
+        "rawTarget": "../../../ginsengfood-business-platform/docs/integration/m3-m8/README.md"
+      }
+    ],
+    "duplicateTitles": [],
+    "encodingNameAnomalies": [],
+    "orphanCandidates": [
+      "ke-hoach/ket-noi-m3-m8-2026-11-02.md",
+      "nhat-ky/2026-10-31.md",
+      "nhat-ky/2026-11-02.md",
+      "PHIEN.md",
+      "QUYET_DINH.md",
+      "SAN_SANG.md",
+      "TRANG_THAI.md"
+    ]
+  }
+}

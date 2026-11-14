@@ -1,0 +1,13 @@
+{
+ "_luc": "2026-11-05 10:42",
+ "ginsengfood-business-platform": {
+  "origin/PhucApu": "3cbf857de7e90c6092c9d4db78a68baa3a436762",
+  "origin/dev": "3c9993b36808532e806ed2d08a00d6101a66de77",
+  "origin/dev015": "0711249b8910a58c8b11ec200e5e3611a630bd64",
+  "origin/master": "0621b0b2692fa0bff23ecee1ce13d89d3d20fda8",
+  "origin/toandeptrai": "c45c64fe73496cc8fecaf9ccafe7eec4a58de128"
+ },
+ "M4-PLAN": {
+  "origin/main": "8295db5754dba1d21113546ac643ae88b2589097"
+ }
+}

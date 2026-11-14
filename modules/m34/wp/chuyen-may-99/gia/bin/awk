@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# awk GIẢ (bọc awk thật): GIA_HONG_AWK=1 làm chương trình đổi giờ cron (doi_cron_99, có chữ LOI_DOI_GIO) chết mã 2 như awk hỏng.
+# Mọi lệnh awk khác chạy awk thật.
+if [ -n "${GIA_HONG_AWK:-}" ]; then
+  for a in "$@"; do
+    case $a in *LOI_DOI_GIO*) echo "awk giả: hỏng" >&2; exit 2 ;; esac
+  done
+fi
+exec /usr/bin/awk "$@"

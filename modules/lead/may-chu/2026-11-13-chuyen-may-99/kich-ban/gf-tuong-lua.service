@@ -1,0 +1,12 @@
+[Unit]
+Description=Ginsengfood: chi mo cong Docker cho dung IP noi bo (DOCKER-USER)
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/gf-tuong-lua.sh
+
+[Install]
+WantedBy=docker.service multi-user.target

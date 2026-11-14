@@ -1,0 +1,196 @@
+
+===== 19:10:12 · A0 bản vá đường .99 có trên toandeptrai (nhánh cục bộ) =====
+có (toandeptrai c1c8ad279)
+
+===== 19:10:13 · A1 .99: /data/ginsengfood-business-platform thư mục thật rỗng của ssv, /data/sao-luu/ginsengfood-business-platform, Docker /data/docker, cổng 80/8445 trống =====
+compose 5.7.1 (cần >= 2.23.1)
+đĩa /data còn 257 GiB
+A1_XONG
+
+===== 19:10:13 · A2 .60 ~/m34 -> .99 /data/ginsengfood-business-platform: chép tệp máy (gồm .env, secrets/, m8-that/bi-mat/, .docker/: đi trong ống ssh, không ghi đĩa máy Toàn, không in) =====
+A2_XONG
+danh sách tệp (tên, loại, cỡ tệp, quyền) .60 096d77fdf29dccf6fc3cadf62438a8781016ae9d92585f797c38df57039f2254 · .99 096d77fdf29dccf6fc3cadf62438a8781016ae9d92585f797c38df57039f2254
+
+===== 19:10:15 · A3 .99: .env đổi M34_BIND_IP, M3_CB_BIND_IP, CORS sang .99 (bí mật giữ nguyên, không in) =====
+  M34_BIND_IP=192.168.1.99
+  M3_CB_BIND_IP=192.168.1.99
+  CORS_ALLOWED_ORIGINS=http://192.168.1.99
+  M8_ALLOW_IP=
+  M8_ORIGIN=
+  OPS_CORE_BASE_URL=
+  COMPOSE_FILE=compose.yml:compose.override.yml:compose.m8-that.yml
+  khoá đổi so với .60: CORS_ALLOWED_ORIGINS M34_BIND_IP M3_CB_BIND_IP 
+  CÒN dòng chứa 192.168.1.60: # Trình duyệt vào bằng http://192.168.1.60 (không TLS) nên cookie không Secure 
+  CÒN 192.168.1.60 trong compose.override.yml (ngoài repo) ở dòng: 18 — xem pha 0; trỏ M7/.60 thật thì giữ, gắn cổng/IP máy thì sửa trước A8
+A3_XONG
+
+===== 19:10:15 · A4 .99: sao-luu/hang-ngay -> /data/sao-luu/ginsengfood-business-platform/hang-ngay, nhat-ky, _chuyen-may =====
+A4_XONG
+
+===== 19:10:16 · A5 .99: script bản đường .99 từ toandeptrai (canh-bao.sh cong-tac-khan.sh m8-gia-lap/lam-moi-ton-thu.sh cd-entry.sh trien-khai.sh sao-luu/sao-luu.sh) =====
+bỏ qua canh-bao.sh (không có trên .60)
+bỏ qua cong-tac-khan.sh (không có trên .60)
+thay m8-gia-lap/lam-moi-ton-thu.sh
+thay cd-entry.sh
+thay trien-khai.sh
+thay sao-luu/sao-luu.sh
+
+===== 19:10:18 · A5b .99: nginx/m34.conf bản toandeptrai (realip LAN 192.168.0.0/23, Toàn chốt 13/11; khối by-code M3-181); bản .60 giữ ở nginx/m34.conf.tu-60 =====
+A5B_XONG
+
+===== 19:10:19 · A6 .99: chứng thư cầu .99, kéo image đúng SHA .60, compose create =====
+COMPOSE_FILE=compose.yml:compose.override.yml:compose.m8-that.yml
+-- chứng thư cầu M3 cho 192.168.1.99 (m8-that/tao-chung-thu-cau.sh, chỉ in vân tay/ngày hết hạn)
+Thư mục bí mật: /data/ginsengfood-business-platform/m8-that/bi-mat (0700)
+  be.env                     99 byte  600
+  ca-m3-key.pem            2484 byte  600
+  ca-m3.pem                1517 byte  600
+  ca-m8.pem                1375 byte  600
+  m3-cb-key.pem            1704 byte  600
+  m3-cb.pem                1367 byte  600
+  order-core-secret          64 byte  600
+SAN của chứng thư cầu: IP:192.168.1.99
+Chứng thư cầu hết hạn: Feb 15 12:10:12 2029 GMT
+CA M8 sha256 (be ghim, đã ghi vào be.env; đối chiếu với vân tay Lead M8 báo): 0cf2fe51f69f808fc6445b017b6081a71646b22b570ad43b165c72c3147f1871
+CA cầu sha256 (gửi kèm ca-m3.pem cho Lead M8): d5e67d24e8216dc98ab9106720c51e645095398ee65761d95711e55e1783ed51
+-- kéo be/fe f9e179a450915ff2fafa69ca55484a6f47f55101
+ghcr.io/phucapu/ginsengfood-business-platform/bp-backend:f9e179a450915ff2fafa69ca55484a6f47f55101
+ghcr.io/phucapu/ginsengfood-business-platform/bp-frontend:f9e179a450915ff2fafa69ca55484a6f47f55101
+-- kéo dịch vụ còn lại (be/fe pull_policy: never nên compose bỏ qua)
+ Image ghcr.io/phucapu/ginsengfood-business-platform/bp-backend:f9e179a450915ff2fafa69ca55484a6f47f55101 Skipped 
+ Image ghcr.io/phucapu/ginsengfood-business-platform/bp-frontend:f9e179a450915ff2fafa69ca55484a6f47f55101 Skipped 
+ Image clamav/clamav:1.5.2_base@sha256:3aa0c6d6a966dc062899e070fb13f87485acf0cbb710fccaae9a848cd5f5b09a Pulling 
+ Image nginx:stable-alpine Pulling 
+ Image nginx:1.27-alpine Pulling 
+ Image postgres:17 Pulling 
+ Image redis:7.4-alpine Pulling 
+ Image nginx:1.27-alpine Pulled 
+ Image redis:7.4-alpine Pulled 
+ Image nginx:stable-alpine Pulled 
+ Image postgres:17 Pulled 
+ Image clamav/clamav:1.5.2_base@sha256:3aa0c6d6a966dc062899e070fb13f87485acf0cbb710fccaae9a848cd5f5b09a Pulled 
+  clamav/clamav:1.5.2_base@sha256:3aa0c6d6a966dc062899e070fb13f87485acf0cbb710fccaae9a848cd5f5b09a
+  ghcr.io/phucapu/ginsengfood-business-platform/bp-backend:f9e179a450915ff2fafa69ca55484a6f47f55101
+  ghcr.io/phucapu/ginsengfood-business-platform/bp-frontend:f9e179a450915ff2fafa69ca55484a6f47f55101
+  nginx:1.27-alpine
+  nginx:stable-alpine
+  postgres:17
+  redis:7.4-alpine
+ Network m34_app Creating 
+ Network m34_proxy Creating 
+ Volume m34_clamav Creating 
+ Volume m34_m8that-bm-be Creating 
+ Volume m34_m8that-bm-cb Creating 
+ Volume m34_mail Creating 
+ Volume m34_pg Creating 
+ Volume m34_redis Creating 
+ Volume m34_uploads Creating 
+ Volume m34_clamav Created 
+ Volume m34_m8that-bm-cb Created 
+ Volume m34_m8that-bm-be Created 
+ Container m34-m8that-bi-mat-1 Creating 
+ Volume m34_uploads Created 
+ Volume m34_redis Created 
+ Volume m34_mail Created 
+ Volume m34_pg Created 
+ Network m34_app Created 
+ Container m34-clamav-1 Creating 
+ Container m34-redis-1 Creating 
+ Container m34-pg-1 Creating 
+ Network m34_proxy Created 
+ Container m34-fe-1 Creating 
+ Container m34-m8that-bi-mat-1 Created 
+ Container m34-m8that-cb-1 Creating 
+ Container m34-clamav-1 Created 
+ Container m34-pg-1 Created 
+ Container m34-redis-1 Created 
+ Container m34-be-1 Creating 
+ Container m34-fe-1 Created 
+ Container m34-m8that-cb-1 Created 
+ Container m34-be-1 Created 
+ Container m34-nginx-1 Creating 
+ Container m34-nginx-1 Created 
+  bp-backend Id sha256:4ed6e32e71308fa369f47031469af0e8b41489a97016bfd55c09d8c13671168b
+  bp-frontend Id sha256:413e42ad2194e4e81af1adc3a449920466dc958953cbad167e0d40e7b88d3425
+A6_XONG
+
+===== 19:18:26 · A7 .60 -> .99: chép chữ ký ClamAV (m34_clamav) để clamav .99 khoẻ ngay =====
+A7_XONG
+
+===== 19:18:39 · A8 .99: chạy thử trên CSDL rỗng, health, rồi tắt nginx/cầu/fe/be =====
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-pg-1 Starting 
+ Container m34-redis-1 Starting 
+ Container m34-fe-1 Starting 
+ Container m34-clamav-1 Starting 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-pg-1 Started 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Started 
+ Container m34-redis-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-m8that-cb-1 Starting 
+ Container m34-fe-1 Started 
+ Container m34-fe-1 Waiting 
+ Container m34-clamav-1 Started 
+ Container m34-m8that-cb-1 Started 
+ Container m34-pg-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-be-1 Starting 
+ Container m34-be-1 Started 
+ Container m34-be-1 Waiting 
+ Container m34-fe-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-nginx-1 Starting 
+ Container m34-nginx-1 Started 
+ Container m34-nginx-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-m8that-cb-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-clamav-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-fe-1 Healthy 
+ Container m34-clamav-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-m8that-cb-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-nginx-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+/nginx-health 200 · /api/health/ready 200 · /vi 200 · /admin 200
+dòng ERROR trong log be: 0
+2026-11-13T19:18:55.021+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 318 migrations to schema "public", now at version v349 (execution time 00:02.940s)
+2026-11-13T19:19:12.685+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] c.g.p.ivr.config.IvrAuthConfigValidator  : [IVR-AUTH-CONFIG] tls=PINNED token-client=ON callback-verifier=ON
+-- be gọi M12 (OPS_CORE_ENABLED=, GATE_ENFORCE=); pha A chỉ báo:
+  m34_app 172.24.2.0/24 · OPS_CORE_BASE_URL chưa đặt
+ Container m34-nginx-1 Stopping 
+ Container m34-nginx-1 Stopped 
+ Container m34-fe-1 Stopping 
+ Container m34-be-1 Stopping 
+ Container m34-fe-1 Stopped 
+ Container m34-be-1 Stopped 
+clamav running
+m8that-cb running
+pg running
+redis running
+A8_XONG
+
+===== 19:19:33 · A9 .60 (chỉ đọc): cron gói m34 sẽ cài lên .99 ở B7 (giờ UTC, đường mới) =====
+dòng cron gói m34 trên .60: 3
+  .99: 30 15 * * * PATH=/usr/local/bin:/usr/bin:/bin /data/ginsengfood-business-platform/sao-luu/sao-luu.sh >>/data/ginsengfood-business-platform/nhat-ky/sao-luu-cron.log 2>&1
+  .99: */5 * * * * bash /data/ginsengfood-business-platform/m8-gia-lap/lam-moi-ton-thu.sh >> /data/ginsengfood-business-platform/nhat-ky/lam-moi-ton-thu.log 2>&1
+  .99: * * * * * cd /data/ginsengfood-business-platform && /usr/bin/timeout 45s /usr/bin/python3 m8-gia-lap/monitor/m34_mock_agent.py once >> /data/ginsengfood-business-platform/nhat-ky/m3-112-monitor.log 2>&1 # M3-112-MONITOR
+  đổi được hết
+CRON_THU_XONG
+
+===== 19:19:35 · PHA A XONG: .99 sẵn, tối đường vào; .60 vẫn phục vụ =====

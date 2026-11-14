@@ -1,0 +1,65 @@
+{
+  "source_base": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+  "authorization": "D-m8-015; local implementation/integration/commits only",
+  "wp02e": {
+    "archive": "C:\\Projects\\_wt\\m8\\m8-wp02e",
+    "coder": "m8_voice_carrier_plan",
+    "evidence": "docs/evidence/W-0492/",
+    "write_scopes": [
+      "deploy/operations/migration/",
+      "deploy/release-candidate/operations_upgrade.py and tests only if needed after impact"
+    ],
+    "prohibited": [
+      "backup/db/secrets tools",
+      "sealed candidate",
+      "main checkout"
+    ],
+    "risk": "R3",
+    "independent_test_and_verifier_pending": true
+  },
+  "wp03a": {
+    "archive": "C:\\Projects\\_wt\\m8\\m8-wp03a",
+    "coder": "m8_deploy_ops_plan",
+    "evidence": "docs/evidence/W-0493/",
+    "write_scopes": [
+      "deploy/backup/offhost.py",
+      "deploy/backup/capture_host.py",
+      "deploy/backup/secret_archive.py",
+      "associated backup tests and README",
+      "deploy/production-window/secrets/secret_stage.py and tests/README",
+      "deploy/production-window/db/db_provision.py and tests/README"
+    ],
+    "production_register_access_table": "no writes without parent review of proposed narrow metadata diff",
+    "risk": "R3",
+    "independent_test_and_verifier_pending": true
+  },
+  "wp01a": {
+    "archive": "C:\\Projects\\_wt\\m8\\m8-wp01a",
+    "coder": "m8_core_gates_plan",
+    "evidence": "docs/evidence/W-0494/",
+    "write_allowlist": [
+      "tests/Ivr.IntegrationTests/TaskIntakeApiTests.cs",
+      "tests/Ivr.IntegrationTests/OperationsApiTests.cs",
+      "docs/evidence/W-0494/"
+    ],
+    "temporary_mutations": "private copies and build injection only; no runtime/shared build edits; exclude temporary files from delivery",
+    "risk": "R2",
+    "verifier_pending": true
+  },
+  "parent_exclusive": [
+    "work-register and NEXT_WORK_ID",
+    "generated gate-status/readiness/traceability",
+    "cutover consumer integration if demonstrated necessary",
+    "main integration/test/commit",
+    "tracker once near final",
+    "shutdown once after tests"
+  ],
+  "invariants": [
+    "REAL_CUSTOMER_CALL_ALLOWED=NO",
+    "no push/PR/deploy/SSH",
+    "no M3 writes or outbound integration work",
+    "no private values or hashes in evidence",
+    "no historical evidence overwrite",
+    "no shared CI/build/lockfile edits by agents"
+  ]
+}

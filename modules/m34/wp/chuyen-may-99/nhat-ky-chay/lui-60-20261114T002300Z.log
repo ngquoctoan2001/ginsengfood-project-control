@@ -1,0 +1,78 @@
+
+===== 07:23:00 · L0a .60 (chỉ đọc): đã qua pha D chưa, dấu B6/pha C =====
+  .60 chưa qua pha D; có crontab đã lưu ở B1
+
+===== 07:23:01 · L0b .99 (chỉ đọc): đã nhận ghi sau cắt chưa (số dòng từng bảng so với .60 lúc cắt) =====
+  be .99 chưa chạy trên dữ liệu .60 (chưa tới B6): không có gì để mất
+
+===== 07:23:02 · L1 .99: tắt đường vào, gỡ cron gói m34 =====
+ Container m34-nginx-1 Stopping 
+ Container m34-m8that-cb-1 Stopping 
+ Container m34-nginx-1 Stopped 
+ Container m34-fe-1 Stopping 
+ Container m34-be-1 Stopping 
+ Container m34-m8that-cb-1 Stopped 
+ Container m34-fe-1 Stopped 
+ Container m34-be-1 Stopped 
+  crontab .99 còn 0 dòng gói m34
+clamav running
+pg running
+L1_XONG
+
+===== 07:23:03 · L2 .60: khôi phục crontab, bật lại ~/m34 =====
+crontab khôi phục đúng bản lưu ở B1
+crontab: 3 dòng gói m34
+time="2026-11-14T07:22:57+07:00" level=warning msg="Found orphan containers (m34-m8-api-1, m34-m8-worker-1, m34-m8-bi-mat-1, m34-m8-seed-1, m34-m8-migrate-1, m34-m8-pg-1, m34-m8-cb-1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+ Container m34-clamav-1 Running 
+ Container m34-pg-1 Running 
+ Container m34-fe-1 Starting 
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-redis-1 Starting 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-redis-1 Started 
+ Container m34-pg-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-fe-1 Started 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-m8that-cb-1 Starting 
+ Container m34-m8that-cb-1 Started 
+ Container m34-pg-1 Healthy 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-redis-1 Healthy 
+ Container m34-be-1 Starting 
+ Container m34-be-1 Started 
+ Container m34-be-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-fe-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-nginx-1 Starting 
+ Container m34-nginx-1 Started 
+ Container m34-clamav-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-nginx-1 Waiting 
+ Container m34-m8that-cb-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-m8that-cb-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-clamav-1 Healthy 
+ Container m34-fe-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-nginx-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+/api/health/ready 200 · /vi 200
+LUI_XONG
+
+===== 07:23:47 · ĐÃ LUI VỀ .60 =====

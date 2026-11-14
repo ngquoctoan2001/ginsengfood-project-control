@@ -1,0 +1,54 @@
+{
+  "recorded_utc": "2026-11-02T06:24:01.527277+00:00",
+  "authorization": "D-m8-012: Lead requested clean",
+  "action": "native PowerShell Remove-Item -LiteralPath, Recurse, Force after absolute path and no-reparse checks",
+  "targets": [
+    {
+      "path": "C:\\Projects\\_wt\\m8\\m8-wp04a\\docs\\evidence\\W-0491\\verifier-deps",
+      "files": 117,
+      "bytes": 3188174,
+      "reparse_points": 0
+    },
+    {
+      "path": "C:\\Projects\\_wt\\m8\\m8-wp04a\\docs\\evidence\\W-0491\\verifier-mirror",
+      "files": 30,
+      "bytes": 14988257,
+      "reparse_points": 0
+    }
+  ],
+  "result": "REJECTED_BEFORE_EXECUTION",
+  "reason": "Automatic approval review: blocked by policy",
+  "disposition": "Kept unchanged and excluded from delivery as originally planned. No broader archive delete or alternate-tool bypass.",
+  "completed_cleanup": [
+    {
+      "utc": "2026-11-02T06:36:15.095314+00:00",
+      "kind": "owned_unused_docker_helper_image",
+      "tag": "m8-wave1-gates:20261102",
+      "id": "sha256:d5b2583652ef3ae61d408c8cd6ef779f9b0527cd349d2be2e4c898ab33874003",
+      "container_references": 0,
+      "result": "REMOVED_WITHOUT_FORCE",
+      "scope": "Unrelated to the two blocked filesystem cleanup targets"
+    }
+  ],
+  "additional_blocked_cleanup": {
+    "utc": "2026-11-02T07:01:08.598766+00:00",
+    "targets": [
+      {
+        "path": "C:\\Projects\\_wt\\m8\\m8-wp07a",
+        "files": 4601,
+        "bytes": 73469708,
+        "reparse_points": 0
+      },
+      {
+        "path": "C:\\Projects\\_wt\\m8\\m8-wp02d",
+        "files": 3707,
+        "bytes": 59061902,
+        "reparse_points": 0
+      }
+    ],
+    "precheck": "All changes integrated in 1ef80eb287e9b2170ad03694fe7920a420eccfdc or explicitly superseded parent EOL metadata; no untracked work",
+    "result": "REJECTED_BEFORE_EXECUTION",
+    "reason": "Automatic approval review: blocked by policy",
+    "disposition": "Retain both archives; no alternate-tool or broader-delete bypass"
+  }
+}

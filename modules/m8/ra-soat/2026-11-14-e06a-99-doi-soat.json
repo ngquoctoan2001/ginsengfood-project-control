@@ -1,0 +1,64 @@
+{
+  "phien_ban": 1,
+  "cong_cu": "doi_soat_m3",
+  "ket_qua": "KHOP",
+  "gio_chay": "2026-11-14T10:10:33+07:00",
+  "gio_db": "2026-11-14T10:10:33+07:00",
+  "tu": "2026-11-14T09:30:00+07:00",
+  "so_ca": 1,
+  "so_khop": 1,
+  "so_lech": 0,
+  "toan_cuc": {
+    "callback_khong_task": 0,
+    "pham_vi": "callback tạo từ 2026-11-14T09:30:00+07:00 (tính vào mã thoát)"
+  },
+  "canh_bao": [],
+  "ca": [
+    {
+      "dong": 2,
+      "ca": "E06",
+      "khoa": "correlation=m3-ivr-578-14",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=1",
+        "thu_hoi=co",
+        "dong_job=TASK_REVOKED",
+        "so_luot_goi=0",
+        "so_callback=0"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [
+        {
+          "task_an": "h:fdd8-ed77-0390",
+          "correlation_id": "m3-ivr-578-14",
+          "don_an": "h:b2cc-86ae-48fd",
+          "nhan_luc": "2026-11-14T09:53:43+07:00",
+          "chap_nhan_luc": "2026-11-14T09:53:43+07:00",
+          "tu_choi_luc": null,
+          "ly_do_tu_choi": null,
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "chinh_sach": "mock-lab-v4",
+          "chuong_trinh": "TWENTY_FOUR_SEVEN",
+          "thu_hoi_luc": "2026-11-14T10:10:13+07:00",
+          "ly_do_thu_hoi": "IVR_WATCHDOG_EXPIRED"
+        }
+      ],
+      "job": [
+        {
+          "job_an": "h:9727-9262-9e2f",
+          "task_an": "h:fdd8-ed77-0390",
+          "trang_thai": "CLOSED",
+          "hang_doi": "BLOCKED",
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "tao_luc": "2026-11-14T09:53:43+07:00",
+          "dong_luc": "2026-11-14T10:10:13+07:00",
+          "ly_do_dong": "TASK_REVOKED"
+        }
+      ],
+      "luot_goi": [],
+      "ket_qua_ivr": [],
+      "callback": []
+    }
+  ]
+}

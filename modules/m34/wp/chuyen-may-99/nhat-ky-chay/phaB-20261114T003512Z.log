@@ -1,0 +1,159 @@
+
+===== 07:35:12 · B0 .99 đủ điều kiện nhận (chỉ đọc; hỏng thì .60 chưa đổi gì) =====
+  .99 sẵn: /data/ginsengfood-business-platform, pg chạy, đường vào tắt, /data còn 252 GiB
+  compose.override.yml còn 192.168.1.60 (loại dòng / tên khoá, không giá trị):
+  dòng 18: chú thích
+B0_99_XONG
+hai máy cùng bản: .60 f9e179a450915ff2fafa69ca55484a6f47f55101 · .99 f9e179a450915ff2fafa69ca55484a6f47f55101
+OPS_CORE_BASE_URL trên .60: (chưa đặt)
+
+===== 07:35:15 · B0b volume m34_uploads/m34_mail .99 so với .60 (chỉ đọc; danh sách giữ trong biến, không in) =====
+  .99 có 94 tệp, 60 tệp .60 không có y hệt: làm rỗng theo cờ M34_XOA_VOL_99=co (tệp chạy thử A8) rồi chép lại
+
+===== 07:35:19 · B1 .60: BẢO TRÌ: lưu + gỡ cron gói m34, dừng nginx, cầu M8, fe, be (từ giờ khách/admin/M8 không vào được) =====
+crontab đã lưu: 3 dòng, 3 dòng gói m34
+ Container m34-nginx-1 Stopping 
+ Container m34-m8that-cb-1 Stopping 
+ Container m34-nginx-1 Stopped 
+ Container m34-be-1 Stopping 
+ Container m34-fe-1 Stopping 
+ Container m34-m8that-cb-1 Stopped 
+ Container m34-fe-1 Stopped 
+ Container m34-be-1 Stopped 
+clamav running
+pg running
+redis running
+B1_XONG 2026-11-14T00:35:16Z
+
+===== 07:35:22 · B2 .60: pg_dump, kiểm, sha256, đếm bảng; dừng redis =====
+ Container m34-redis-1 Stopping 
+ Container m34-redis-1 Stopped 
+TEP=chuyen-may-99-20261114T003516Z-f9e179a4.dump
+SHA=91b964a942d343fdc6edd46d240b7d107a7d568a5de1745e024121d0bda9ad05
+CO=3006929
+MUC=4379
+DEM=d1584a62a037657eb036658cd67410bccfe11d016600a4a70d0d6716feb93a1d · 335 bảng · 13591 dòng
+B2_XONG
+
+===== 07:35:26 · B3 .60 -> .99: dump, số đếm, crontab đã lưu =====
+sha256 .60 91b964a942d343fdc6edd46d240b7d107a7d568a5de1745e024121d0bda9ad05 · .99 91b964a942d343fdc6edd46d240b7d107a7d568a5de1745e024121d0bda9ad05
+
+===== 07:35:27 · B3b .60 -> .99: chép lại .env + secrets/ (m12 cắt trước có thể đã đổi OPS_CORE_BASE_URL, bí mật client ops-core), áp lại A3 =====
+đã chép .env + secrets/ (không in)
+  M34_BIND_IP=192.168.1.99
+  M3_CB_BIND_IP=192.168.1.99
+  CORS_ALLOWED_ORIGINS=http://192.168.1.99
+  M8_ALLOW_IP=
+  M8_ORIGIN=
+  OPS_CORE_BASE_URL=
+  COMPOSE_FILE=compose.yml:compose.override.yml:compose.m8-that.yml
+  khoá đổi so với .60: CORS_ALLOWED_ORIGINS M34_BIND_IP M3_CB_BIND_IP 
+  CÒN dòng chứa 192.168.1.60: # Trình duyệt vào bằng http://192.168.1.60 (không TLS) nên cookie không Secure 
+  CÒN 192.168.1.60 trong compose.override.yml (ngoài repo) ở dòng: 18 — xem pha 0; trỏ M7/.60 thật thì giữ, gắn cổng/IP máy thì sửa trước A8
+A3_XONG
+
+===== 07:35:28 · B4 .60 -> .99: volume m34_uploads (tệp khách tải lên), m34_mail, m34_redis =====
+ Container m34-redis-1 Stopping 
+ Container m34-redis-1 Stopped 
+m34_uploads .99: đã làm rỗng 94 tệp (B0b cho phép)
+m34_redis .99: đã làm rỗng
+B4_XONG
+đã chép m34_uploads
+đã chép m34_mail
+đã chép m34_redis
+.60:
+m34_uploads so_tep=104 ac8708c1e885a48139f4fe453754db502c48c3058e8557a30f899897dc92dca7
+m34_mail so_tep=0 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+m34_redis so_tep=4 5fe65bf584b13ad561c4005ccbf0a9d17a26836fa38ebcf49d255e171a3a2793
+.99:
+m34_uploads so_tep=104 ac8708c1e885a48139f4fe453754db502c48c3058e8557a30f899897dc92dca7
+m34_mail so_tep=0 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+m34_redis so_tep=4 5fe65bf584b13ad561c4005ccbf0a9d17a26836fa38ebcf49d255e171a3a2793
+
+===== 07:35:43 · B5 .99: nạp dump, so số dòng từng bảng với .60 =====
+
+real	0m2.800s
+user	0m0.271s
+sys	0m0.052s
+số dòng KHỚP: 335 bảng, 13591 dòng
+B5_XONG
+
+===== 07:35:50 · B6 .99: bật cả gói, health, Flyway, log =====
+ Container m34-pg-1 Running 
+ Container m34-clamav-1 Running 
+ Container m34-fe-1 Starting 
+ Container m34-pg-1 Waiting 
+ Container m34-m8that-bi-mat-1 Starting 
+ Container m34-redis-1 Starting 
+ Container m34-pg-1 Healthy 
+ Container m34-fe-1 Started 
+ Container m34-fe-1 Waiting 
+ Container m34-m8that-bi-mat-1 Started 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-redis-1 Started 
+ Container m34-redis-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-m8that-cb-1 Starting 
+ Container m34-m8that-cb-1 Started 
+ Container m34-fe-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-be-1 Starting 
+ Container m34-be-1 Started 
+ Container m34-be-1 Waiting 
+ Container m34-be-1 Healthy 
+ Container m34-nginx-1 Starting 
+ Container m34-nginx-1 Started 
+ Container m34-clamav-1 Waiting 
+ Container m34-be-1 Waiting 
+ Container m34-fe-1 Waiting 
+ Container m34-nginx-1 Waiting 
+ Container m34-m8that-cb-1 Waiting 
+ Container m34-m8that-bi-mat-1 Waiting 
+ Container m34-pg-1 Waiting 
+ Container m34-redis-1 Waiting 
+ Container m34-m8that-bi-mat-1 Exited 
+ Container m34-clamav-1 Healthy 
+ Container m34-m8that-cb-1 Healthy 
+ Container m34-be-1 Healthy 
+ Container m34-pg-1 Healthy 
+ Container m34-redis-1 Healthy 
+ Container m34-fe-1 Healthy 
+ Container m34-nginx-1 Healthy 
+be running healthy
+clamav running healthy
+fe running healthy
+m8that-cb running healthy
+nginx running healthy
+pg running healthy
+redis running healthy
+/nginx-health 200 · /api/health/ready 200 · /vi 200 · /admin 200
+-- be gọi M12 (OPS_CORE_ENABLED=?, GATE_ENFORCE=?):
+  m34_app 172.24.2.0/24 · OPS_CORE_BASE_URL chưa đặt
+flyway (tổng, hỏng, bản cuối): 318 0 349
+dòng ERROR trong log be từ lúc bật: 0
+2026-11-14T07:36:17.324+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] c.g.p.ivr.config.IvrAuthConfigValidator  : [IVR-AUTH-CONFIG] tls=PINNED token-client=ON callback-verifier=ON
+B6_XONG
+
+===== 07:36:36 · B7 .99: cron gói m34 (giờ UTC, đường /data/ginsengfood-business-platform) + sao lưu hằng ngày chạy thử =====
+-- dòng gói m34 trong crontab .99:
+  M34_HOST_IP=192.168.1.99
+  M34_HOME=/data/ginsengfood-business-platform
+  30 15 * * * PATH=/usr/local/bin:/usr/bin:/bin /data/ginsengfood-business-platform/sao-luu/sao-luu.sh >>/data/ginsengfood-business-platform/nhat-ky/sao-luu-cron.log 2>&1
+  */5 * * * * bash /data/ginsengfood-business-platform/m8-gia-lap/lam-moi-ton-thu.sh >> /data/ginsengfood-business-platform/nhat-ky/lam-moi-ton-thu.log 2>&1
+  * * * * * cd /data/ginsengfood-business-platform && /usr/bin/timeout 45s /usr/bin/python3 m8-gia-lap/monitor/m34_mock_agent.py once >> /data/ginsengfood-business-platform/nhat-ky/m3-112-monitor.log 2>&1 # M3-112-MONITOR
+-- sao lưu hằng ngày chạy thử một lần
+2026-11-14T00:36:30Z Sao lưu ngày 20261114 (giờ VN) vào sao-luu/hang-ngay/m34-20261114.dump; hạn 1800 s, giữ 14 bản
+2026-11-14T00:36:32Z Đạt: sao-luu/hang-ngay/m34-20261114.dump (4379 mục, 3016047 byte, sha256 ac830e4785e0688751cb9068230f28adc18f23de77859480ebb3a47703e77542)
+  total 2952
+  -rw------- 1 ssv ssv 3016047 Nov 14 00:36 m34-20261114.dump
+  -rw------- 1 ssv ssv      84 Nov 14 00:36 m34-20261114.dump.sha256
+B7_XONG
+
+===== 07:36:39 · B8 kiểm khói từ máy Toàn (LAN) =====
+  http://192.168.1.99/nginx-health 200
+  http://192.168.1.99/api/health/ready 200
+  http://192.168.1.99/vi 200
+  http://192.168.1.99/admin 200
+dấu cổng vào ghi trên .60: từ giờ lui-60.sh đòi M34_LUI_SAU_GHI=co (Anh Tuấn có thể trỏ cổng vào bất cứ lúc nào)
+
+===== 07:36:41 · PHA B XONG: .99 phục vụ trên 192.168.1.99:80; .60 dừng be/fe/nginx (dữ liệu nguyên). Kế: Anh Tuấn trỏ cổng vào (pha C) =====

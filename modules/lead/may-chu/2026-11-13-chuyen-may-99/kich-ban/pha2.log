@@ -1,0 +1,218 @@
+== 0. ufw truoc khi doi (chi in)
+Status: inactive
+== 1. thu muc /data
+/data:
+total 44
+drwxr-xr-x  8 root root  4096 Nov 13 07:48 .
+drwxr-xr-x 21 root root  4096 Nov 12 03:37 ..
+drwx--x--x  2 root root  4096 Nov 13 07:48 docker
+drwx------  2 root root 16384 Nov 12 03:38 lost+found
+drwxr-x---  2 ssv  ssv   4096 Nov 13 07:48 m12
+drwxr-x---  2 ssv  ssv   4096 Nov 13 07:48 m34
+drwxr-x---  2 ssv  ssv   4096 Nov 13 07:48 m8
+drwxr-x---  5 ssv  ssv   4096 Nov 13 07:48 sao-luu
+
+/home/ssv:
+total 36
+drwxr-x--- 5 ssv  ssv  4096 Nov 13 07:48 .
+drwxr-xr-x 3 root root 4096 Nov 12 03:45 ..
+-rw------- 1 ssv  ssv   325 Nov 13 07:26 .bash_history
+-rw-r--r-- 1 ssv  ssv   220 Jan  6  2022 .bash_logout
+-rw-r--r-- 1 ssv  ssv  3771 Jan  6  2022 .bashrc
+drwx------ 2 ssv  ssv  4096 Nov 12 03:55 .cache
+lrwxrwxrwx 1 ssv  ssv     9 Nov 13 07:48 m12 -> /data/m12
+lrwxrwxrwx 1 ssv  ssv     8 Nov 13 07:48 m8 -> /data/m8
+drwx------ 2 ssv  ssv  4096 Nov 13 07:48 nen-99
+-rw-r--r-- 1 ssv  ssv   807 Jan  6  2022 .profile
+drwx------ 2 ssv  ssv  4096 Nov 13 07:24 .ssh
+-rw-r--r-- 1 ssv  ssv     0 Nov 12 03:56 .sudo_as_admin_successful
+== 2. daemon.json (dat truoc khi cai de Docker khoi dong lan dau da dung /data/docker)
+== 3. Docker CE + Compose tu kho chinh thuc download.docker.com
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3,718 kB]
+Hit:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3,982 kB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1,057 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,291 kB]
+Fetched 10.3 MB in 8s (1,259 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260816ubuntu0.22.04.2).
+ca-certificates set to manually installed.
+curl is already the newest version (7.81.0-1ubuntu1.30).
+The following NEW packages will be installed:
+  jq libjq1 libonig5
+0 upgraded, 3 newly installed, 0 to remove and 89 not upgraded.
+Need to get 359 kB of archives.
+After this operation, 1,087 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 libonig5 amd64 6.9.7.1-2build1 [172 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjq1 amd64 1.6-2.1ubuntu3.2 [135 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 jq amd64 1.6-2.1ubuntu3.2 [52.5 kB]
+Fetched 359 kB in 2s (149 kB/s)
+Selecting previously unselected package libonig5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 111834 files and directories currently installed.)
+Preparing to unpack .../libonig5_6.9.7.1-2build1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.7.1-2build1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../libjq1_1.6-2.1ubuntu3.2_amd64.deb ...
+Unpacking libjq1:amd64 (1.6-2.1ubuntu3.2) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../jq_1.6-2.1ubuntu3.2_amd64.deb ...
+Unpacking jq (1.6-2.1ubuntu3.2) ...
+Setting up libonig5:amd64 (6.9.7.1-2build1) ...
+Setting up libjq1:amd64 (1.6-2.1ubuntu3.2) ...
+Setting up jq (1.6-2.1ubuntu3.2) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+NEEDRESTART-VER: 3.5
+NEEDRESTART-KCUR: 5.15.0-94-generic
+NEEDRESTART-KEXP: 5.15.0-203-generic
+NEEDRESTART-KSTA: 3
+NEEDRESTART-SVC: cron.service
+NEEDRESTART-SVC: dbus.service
+NEEDRESTART-SVC: getty@tty1.service
+NEEDRESTART-SVC: irqbalance.service
+NEEDRESTART-SVC: ModemManager.service
+NEEDRESTART-SVC: multipathd.service
+NEEDRESTART-SVC: networkd-dispatcher.service
+NEEDRESTART-SVC: packagekit.service
+NEEDRESTART-SVC: polkit.service
+NEEDRESTART-SVC: rsyslog.service
+NEEDRESTART-SVC: snapd.service
+NEEDRESTART-SVC: ssh.service
+NEEDRESTART-SVC: systemd-journald.service
+NEEDRESTART-SVC: systemd-logind.service
+NEEDRESTART-SVC: systemd-manager
+NEEDRESTART-SVC: systemd-networkd.service
+NEEDRESTART-SVC: systemd-resolved.service
+NEEDRESTART-SVC: systemd-timesyncd.service
+NEEDRESTART-SVC: systemd-udevd.service
+NEEDRESTART-SVC: udisks2.service
+NEEDRESTART-SVC: unattended-upgrades.service
+NEEDRESTART-SVC: upower.service
+NEEDRESTART-SVC: user@1000.service
+Get:1 https://download.docker.com/linux/ubuntu jammy InRelease [48.5 kB]
+Get:2 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [93.2 kB]
+Hit:3 http://archive.ubuntu.com/ubuntu jammy InRelease
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:6 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Fetched 142 kB in 1s (106 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  docker-ce-rootless-extras pigz
+Suggested packages:
+  cgroupfs-mount | cgroup-lite docker-model-plugin
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli
+  docker-ce-rootless-extras docker-compose-plugin pigz
+0 upgraded, 7 newly installed, 0 to remove and 89 not upgraded.
+Need to get 102 MB of archives.
+After this operation, 389 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 2.4.2-4~ubuntu.22.04~jammy [23.3 MB]
+Get:2 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:29.9.3-1~ubuntu.22.04~jammy [17.6 MB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63.6 kB]
+Get:4 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:29.9.3-1~ubuntu.22.04~jammy [24.6 MB]
+Get:5 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.39.0-1~ubuntu.22.04~jammy [18.0 MB]
+Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:29.9.3-1~ubuntu.22.04~jammy [10.2 MB]
+Get:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 5.7.1-1~ubuntu.22.04~jammy [8,484 kB]
+Fetched 102 MB in 2s (51.1 MB/s)
+Selecting previously unselected package containerd.io.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 111851 files and directories currently installed.)
+Preparing to unpack .../0-containerd.io_2.4.2-4~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking containerd.io (2.4.2-4~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../1-docker-ce-cli_5%3a29.9.3-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-cli (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../2-docker-ce_5%3a29.9.3-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package pigz.
+Preparing to unpack .../3-pigz_2.6-1_amd64.deb ...
+Unpacking pigz (2.6-1) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../4-docker-buildx-plugin_0.39.0-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-buildx-plugin (0.39.0-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-rootless-extras.
+Preparing to unpack .../5-docker-ce-rootless-extras_5%3a29.9.3-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../6-docker-compose-plugin_5.7.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-compose-plugin (5.7.1-1~ubuntu.22.04~jammy) ...
+Setting up docker-buildx-plugin (0.39.0-1~ubuntu.22.04~jammy) ...
+Setting up containerd.io (2.4.2-4~ubuntu.22.04~jammy) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up docker-compose-plugin (5.7.1-1~ubuntu.22.04~jammy) ...
+Setting up docker-ce-cli (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Setting up pigz (2.6-1) ...
+Setting up docker-ce-rootless-extras (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Setting up docker-ce (5:29.9.3-1~ubuntu.22.04~jammy) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Processing triggers for man-db (2.10.2-1) ...
+NEEDRESTART-VER: 3.5
+NEEDRESTART-KCUR: 5.15.0-94-generic
+NEEDRESTART-KEXP: 5.15.0-203-generic
+NEEDRESTART-KSTA: 3
+NEEDRESTART-SVC: cron.service
+NEEDRESTART-SVC: dbus.service
+NEEDRESTART-SVC: getty@tty1.service
+NEEDRESTART-SVC: irqbalance.service
+NEEDRESTART-SVC: ModemManager.service
+NEEDRESTART-SVC: multipathd.service
+NEEDRESTART-SVC: networkd-dispatcher.service
+NEEDRESTART-SVC: packagekit.service
+NEEDRESTART-SVC: polkit.service
+NEEDRESTART-SVC: rsyslog.service
+NEEDRESTART-SVC: snapd.service
+NEEDRESTART-SVC: ssh.service
+NEEDRESTART-SVC: systemd-journald.service
+NEEDRESTART-SVC: systemd-logind.service
+NEEDRESTART-SVC: systemd-manager
+NEEDRESTART-SVC: systemd-networkd.service
+NEEDRESTART-SVC: systemd-resolved.service
+NEEDRESTART-SVC: systemd-timesyncd.service
+NEEDRESTART-SVC: systemd-udevd.service
+NEEDRESTART-SVC: udisks2.service
+NEEDRESTART-SVC: unattended-upgrades.service
+NEEDRESTART-SVC: upower.service
+NEEDRESTART-SVC: user@1000.service
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+== 4. ssv vao nhom docker (co hieu luc tu lan dang nhap sau)
+== 5. chan cong Docker: chi mo cho dung IP trong /etc/ginsengfood/cong-noi-bo.conf
+Created symlink /etc/systemd/system/docker.service.wants/gf-tuong-lua.service → /etc/systemd/system/gf-tuong-lua.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/gf-tuong-lua.service → /etc/systemd/system/gf-tuong-lua.service.
+-N DOCKER-USER
+-A DOCKER-USER -m conntrack --ctstate RELATED,ESTABLISHED -j RETURN
+-A DOCKER-USER ! -i eth0 -j RETURN
+-A DOCKER-USER -s 192.168.0.0/23 -i eth0 -p tcp -m conntrack --ctorigdstport 80 -j RETURN
+-A DOCKER-USER -s 192.168.0.0/23 -i eth0 -p tcp -m conntrack --ctorigdstport 8012 -j RETURN
+-A DOCKER-USER -s 192.168.1.60/32 -i eth0 -p tcp -m conntrack --ctorigdstport 5000 -j RETURN
+-A DOCKER-USER -s 192.168.1.98/32 -i eth0 -p tcp -m conntrack --ctorigdstport 5000 -j RETURN
+-A DOCKER-USER -s 192.168.0.64/32 -i eth0 -p tcp -m conntrack --ctorigdstport 8443 -j RETURN
+-A DOCKER-USER -s 192.168.1.60/32 -i eth0 -p tcp -m conntrack --ctorigdstport 8443 -j RETURN
+-A DOCKER-USER -s 192.168.1.61/32 -i eth0 -p tcp -m conntrack --ctorigdstport 8445 -j RETURN
+-A DOCKER-USER -i eth0 -m conntrack --ctstate NEW -j DROP
+-A DOCKER-USER -j RETURN
+== 5b. ufw: container goi dich vu chay mang host (M8 Asterisk S5: ARI 18088 tren gateway sandbox 172.29.0.1)
+Rules updated
+Status: inactive
+== 6. kiem
+Docker version 29.9.3, build 5457199
+Docker Compose version v5.7.1
+root=/data/docker driver=overlayfs live-restore=true cgroup=2
+active
+active
+active
+uid=1000(ssv) gid=1000(ssv) groups=1000(ssv),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd),999(docker)
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/group0-data  275G  268K  261G   1% /data
+PHA2 XONG 2026-11-13T07:49:23+00:00

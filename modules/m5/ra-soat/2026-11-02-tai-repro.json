@@ -1,0 +1,181 @@
+{
+  "sourceSha": "650f8a55204b29faf108fd63e1d4fcfcd56c3e44",
+  "observations": [
+    {
+      "case": "json_logger_secret_key",
+      "objectValueLeaked": true,
+      "stringControlMasked": true
+    },
+    {
+      "case": "rollback_audit_concurrency_fake_db",
+      "finalEnabled": false,
+      "audits": [
+        {
+          "actor": "operator:review-a",
+          "decision": "OFF->ON"
+        },
+        {
+          "actor": "operator:review-b",
+          "decision": "OFF->OFF"
+        }
+      ],
+      "secondAuditCorrect": false,
+      "limitation": "Deterministic fake transaction interleaving; no PostgreSQL run."
+    },
+    {
+      "case": "text_set_current_guard",
+      "total": 20,
+      "pass": 20,
+      "results": [
+        {
+          "mode": "SEED",
+          "name": "ACK_GENERIC",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "ACK_MOVED_PRIVATE",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "FALLBACK_INVITE_INBOX",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "FALLBACK_HUMAN_CSKH",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_1",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_2",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_3",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_1_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_2_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "SEED",
+          "name": "PRIVATE_3_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "ACK_GENERIC",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "ACK_MOVED_PRIVATE",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "FALLBACK_INVITE_INBOX",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "FALLBACK_HUMAN_CSKH",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_1",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_2",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_3",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_1_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_2_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        },
+        {
+          "mode": "V1",
+          "name": "PRIVATE_3_FIRST",
+          "status": "PASS",
+          "publicSafe": true,
+          "sensitive": false
+        }
+      ],
+      "limitation": "Current MockFinalGuard and outbound masker only; not owner approval, full send pipeline, Meta, or future real guard."
+    },
+    {
+      "case": "admin_page_invalid_enum_http",
+      "httpStatus": 200,
+      "returnedInvalidMode": true,
+      "registryResolved": false,
+      "expectation": "400 INVALID_ENUM before mutation"
+    }
+  ]
+}

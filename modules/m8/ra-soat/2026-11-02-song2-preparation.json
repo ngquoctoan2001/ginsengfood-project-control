@@ -1,0 +1,47 @@
+{
+  "utc": "2026-11-02T07:29:56.927337+00:00",
+  "source_sha": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+  "branch": "main",
+  "clean": true,
+  "archive_sha256": "20365611b5a64a727ccb80cd4b970a189390ee4c79f5076426229c37d6e21109",
+  "excluded": [
+    "**/sheet.json",
+    "**/.env*",
+    ".env*"
+  ],
+  "copies": [
+    {
+      "wp": "m8-wp02e",
+      "path": "C:\\Projects\\_wt\\m8\\m8-wp02e",
+      "archive_base": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+      "temporary_goc": "700d969a7aec951e8c546cf5f8ac0a45e878b0a8",
+      "files": 3950
+    },
+    {
+      "wp": "m8-wp03a",
+      "path": "C:\\Projects\\_wt\\m8\\m8-wp03a",
+      "archive_base": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+      "temporary_goc": "875bd8595e8c11cbd0ac303b63a5ec304eb906a3",
+      "files": 3950
+    },
+    {
+      "wp": "m8-wp01a",
+      "path": "C:\\Projects\\_wt\\m8\\m8-wp01a",
+      "archive_base": "a625d6943dff9d4736422c71484bcf2c4765aef7",
+      "temporary_goc": "8cb2d20359ec465582560b2fa8c567bb2f9c8e62",
+      "files": 3950
+    }
+  ],
+  "coordination": {
+    "code_waves": [
+      "M8 wave2",
+      "M34 WP01"
+    ],
+    "M7": "idle after review",
+    "M12": "audit, not code wave",
+    "heavy_agent_limit": 3,
+    "docker_heavy_slot": "WP03A first; WP02E/01A request before Docker lab",
+    "gitnexus": "index-only refresh a625d694 successful; unchanged 3651 rows +6 evidence files;219.1s",
+    "tracking": "Parent only, once near final"
+  }
+}
