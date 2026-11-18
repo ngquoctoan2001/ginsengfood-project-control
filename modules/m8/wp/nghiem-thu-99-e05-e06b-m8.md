@@ -1,4 +1,4 @@
-# E05 / E06-B trên .99 — phần M8 và trình tự chung (m8 chính soạn 14/11 10:45) · CHƯA CHẠY
+# E05 / E06-B trên .99 — phần M8 và trình tự chung (m8 chính soạn 14/11 10:45) · ĐÃ CHẠY: E05 ĐẠT, E06-B ĐẠT 14/11 13:36 (thứ tự đổi, xem `ra-soat/2026-11-14-e05-e06b-e10-99.md`)
 
 Chờ: Toàn duyệt riêng ở phiên m8 (bật lịch + replay bằng token quyền nguy hiểm). Phần M3 ở `modules/m34/wp/nghiem-thu-99-e05-e06b.md` (m34 phụ). Đã có E02 lặp, E01, E06-A, E03 trên .99 (`ra-soat/2026-11-14-*-99.md`).
 

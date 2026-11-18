@@ -28,7 +28,7 @@
 - Sổ (D-m7-053): mỗi bước chỉ ghi phiếu (Diễn biến) + Sheet; `SAN_SANG.md`, `TRANG_THAI.md`, nhật ký ghi một lần khi xong sóng hoặc khi Lead hỏi.
 - Tracker: phiên chính chạy `node tools/task-tracker/sheet-sync.mjs log …` sau mỗi lệnh có chạm repo (subagent không chạy).
 - ID Sheet: M7-T001…M7-T175 = M7-(006+n) (T007 = M7-013); M7-T176…M7-T181 = M7-186…M7-191 (tạo 03/11/2026); gói WP06 M7-182, WP14 M7-183,
-  WP15 M7-184, WP16 M7-185, WP17 M7-192, WP18 M7-193, WP19 M7-194; M7-T183…T186 = M7-199…202, T188 = M7-203, T189…T192 = M7-207…210 (07/11). Task, gói mới: `log --module M7 --title …` lấy số kế tiếp, ghi lại ở đây.
+  WP15 M7-184, WP16 M7-185, WP17 M7-192, WP18 M7-193, WP19 M7-194; M7-T183…T186 = M7-199…202, T188 = M7-203, T189…T192 = M7-207…210 (07/11). T220 = M7-242, T221 = M7-243 (tạo 15/11); T190a = M7-244, T190b = M7-245 (16/11), T190c = M7-246 (17/11). Task, gói mới: `log --module M7 --title …` lấy số kế tiếp, ghi lại ở đây; ở máy Lead ghi Sheet cho commit .63 bằng `upsert` (không ghi tệp tuần trong repo).
 - Tracker local: giữ nguyên `tools/task-tracker/sheet.json` (ignore, đã bỏ khỏi git ở `056639b`, D-m7-051; máy khác pull sẽ mất tệp, phải tạo lại từ mẫu);
   mẫu `sheet.example.json` rỗng, hướng dẫn ở `tools/task-tracker/README.md`. Không đọc/chép/in cấu hình thật.
 - **D-m7-024: giữ token hiện tại.** Không tiếp tục thu hồi/xử lý finding lịch sử hoặc nhắc lại nếu Lead chưa yêu cầu mới.
@@ -87,10 +87,19 @@ L0 đang làm lần lượt T001–T005 (D-m7-016); mỗi task kiểm độc l�
 
 ## Báo cáo tuần
 
-`M7-video-gio-vang`, tuần đầu BÀN GIAO (đọc thêm repo cũ `module7`) — `/bao-cao-tuan`.
+Phiên m7 không tự viết báo cáo tuần (D-m7-090, D-lead-045). Phiên lead hỏi bằng tin nhắn phiên thì trả dữ kiện ≤ 30 dòng kèm SHA, tệp: đã làm · còn lại tới mốc gần nhất và 30/11 · kế hoạch tuần tới · khó khăn và cách giải quyết · ghi `CHƯA CHẠY` cho phần chưa chạy.
 
 ## Quyết định phiên 09/11/2026
 
 D-m7-067: 26 đề xuất m7.113–124, m7.127, m7.131–143 đã được Lead duyệt; không hỏi lại các phương án này. Danh sách đầy đủ ở `QUYET_DINH.md`, sổ kỹ thuật DL-294…DL-319 ở `docs/00-overview/DECISION_LOG.md` của repo. CI tiếp tục tắt. Dùng Claude thuê bao và Muse trả phí; đăng nhập/cấp tài khoản, CTA, hồ sơ sản phẩm vẫn là việc cần thực hiện. Việc ghi nhận quyết định chưa làm T013/T025/T039 hoàn tất. T013 phải có kết luận verifier R3 và diff cuối trước bước gộp theo D-m7-053.
 
 D-m7-068/m7.144 A: Lead đã duyệt lưu dấu băm đầy đủ ngữ cảnh, triển khai DL-320 trong T039; không còn chờ lựa chọn này. Kiểm cuối đêm 09–10/11 đã đạt; T013 vẫn cần “ok gộp” m7.145 theo D-m7-053. CI giữ tắt, chưa push.
+
+## Bàn giao sang .63 (14/11/2026, D-m7-083, D-lead-039/040)
+
+- Máy Lead quá tải: M7 (mã và test) chạy trên .63 (`/home/ssv/dev/ginsengfood-golden-hour-video`). Từ sau lần push `9e8ad9f` chỉ phiên M7 chạy trên .63 được sửa mã M7; phiên m7 ở máy Lead giữ sổ `modules/m7/` (TRANG_THAI, SAN_SANG, QUYET_DINH, nhật ký, bằng chứng `ra-soat/`), KHÔNG sửa mã M7, KHÔNG chạy coder/agent M7, KHÔNG push.
+- Việc dở: xem `TRANG_THAI.md`. Phiên .63 hiện tại: Claude CLI `9b228a48-18f2-4f89-a565-0d017ccdc4ab` (mở 16/11 20:5x, chế độ quyền `auto`), repo `~/dev/ginsengfood-golden-hour-video`. Từ 17/11 (D-m7-110) phiên m7 máy Lead điều khiển nó qua ssh `ssv@` địa chỉ .63: đọc bản ghi `~/.claude/projects/-home-ssv-dev-ginsengfood-golden-hour-video/<id>.jsonl`; giao lượt bằng tệp lệnh `~/m7-drive/p-NN.txt` rồi `cd` repo và `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 setsid -f bash -c "claude --resume <id> -p --permission-mode auto --output-format text < p-NN.txt > o-NN.log 2>&1"` (thiếu biến này thì 10 phút sau khi lượt kết thúc, trình chạy dừng mọi agent nền: 17/11 mất 4 coder sóng 1; dặn phiên .63 giữ lượt tới khi xong sóng) (đưa lệnh qua stdin; gửi tệp bằng `scp`, không `cat` qua ssh vì Git Bash làm rỗng tệp); chờ bằng một ssh nền `while kill -0 <pid>`. Mỗi lúc chỉ một tiến trình của phiên đó chạy; Toàn không gõ vào cửa sổ CLI cũ khi đang giao lượt. Kiểm tách rời trên .63 dùng clone `--no-local` ở SHA (D-m7-056), không `git worktree` (luật repo DL-054, D-m7-013; 17/11 máy Lead giao nhầm worktree cho bộ đủ `cf6a954`). `SendMessage` không tới được phiên này (khác chế độ quyền).
+- T190 và mọi lượt chạy M7 (cả công cụ thật: VieNeu, faster-whisper, Chrome, Muse) ở .63 (D-m7-084); Toàn đăng nhập Muse lại trên .63 qua màn hình ảo, không chép hồ sơ từ máy Lead. Stack `m7-m7-*` và hồ sơ Muse ở máy Lead không còn dùng.
+- Công cụ viết mã ở .63: subagent Claude và `codex exec` (D-m7-088, task ngoài đường găng, cùng luật kiểm độc lập). Ngưỡng ASR 0,90 chỉ máy dev, 0,95 cho Mốc 2 (D-m7-086). Toàn ký nghiệm thu Mốc 1, 2 (D-m7-087).
+- Sheet: .63 không có `sheet.json`; phiên máy Lead ghi Sheet cho commit .63 khi nhận SHA.
+- 16/11: .63 hỏng, mọi việc cần .63 GÁC tới khi Toàn báo (D-m7-098); không canh, không hỏi lại. Máy chạy thật M7 = máy ảo Ubuntu 22.04 không card Toàn xin 16/11, thay .60; DL-306 sửa khi .63 lên (D-m7-099).

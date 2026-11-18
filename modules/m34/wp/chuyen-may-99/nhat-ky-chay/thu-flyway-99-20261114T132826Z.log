@@ -1,0 +1,38 @@
+
+===== 20:28:26 · chép 2 tệp SQL đơn thử (bản toandeptrai) lên .99 =====
+
+===== 20:28:27 · thử Flyway + đơn thử trên bản sao (.99) =====
+T1 kéo image be a1fc34ba5ff1331baba5cae048d70bb15c6f36f0
+T2 pg_dump CSDL thật (chỉ đọc)
+  dump 3040979 byte
+T3 pg tạm (postgres:17, tmpfs, mạng internal)
+  pg_restore: 0 dòng lỗi
+  trước: flyway 318|0|349
+T4 be mới trỏ pg tạm (không redis, IVR/ops-core tắt)
+  ket_qua: FLYWAY_XONG
+  log: 2026-11-14T20:30:08.247+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://pg:5432/thu?TimeZone=UTC (PostgreSQL 17.12)
+  log: 2026-11-14T20:30:08.568+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 326 migrations (execution time 00:00.276s)
+  log: 2026-11-14T20:30:08.597+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 349
+  log: 2026-11-14T20:30:08.657+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "350 - golden hour session time slot two state lifecycle"
+  log: 2026-11-14T20:30:08.684+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "351 - program 24 7 recommendation rule description and ver
+  log: 2026-11-14T20:30:08.699+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "352 - sku price audit logs request origin"
+  log: 2026-11-14T20:30:08.714+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "353 - audit logs actor snapshot and permission trail"
+  log: 2026-11-14T20:30:08.763+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "354 - audit logs source channel and subject label"
+  log: 2026-11-14T20:30:08.777+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "355 - audit logs block truncate and sku price append only"
+  log: 2026-11-14T20:30:08.792+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "356 - audit request origin retention exception"
+  log: 2026-11-14T20:30:08.801+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "357 - config audit logs single truncate guard"
+  log: 2026-11-14T20:30:08.849+07:00  INFO [rid=] 1 --- [ginsengfood] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v357 (execution time 00:00.
+  be tạm: chạy=true · dòng ERROR=0
+T5 kiểm sau Flyway
+  flyway (tổng|hỏng|bản cuối): 326|0|357
+  V350-V357 đã chạy: 8/8
+  trigger chặn TRUNCATE nhật ký: config_audit_logs:trg_config_audit_logs_block_truncate finance_accounting_postings:trg_finance_accounting_postings_no_truncate finance_ad_cost_entries:trg_finance_ad_cost_entries_no_truncate finance_audit_logs:trg_finance_audit_logs_no_truncate finance_bank_matches:trg_finance_bank_matches_no_truncate finance_bank_statement_imports:trg_finance_bank_statement_imports_no_truncate finance_bank_statement_lines:trg_finance_bank_statement_lines_no_truncate finance_bank_transfer_items:trg_finance_bank_transfer_items_no_truncate finance_bank_transfers:trg_finance_bank_transfers_no_truncate finance_clawback_resolutions:trg_finance_clawback_resolutions_no_truncate finance_commission_adjustments:trg_finance_commission_adjustments_no_truncate finance_commission_intake_skips:trg_finance_commission_intake_skips_no_truncate finance_commission_payables:trg_finance_commission_payables_no_truncate finance_commission_periods:trg_finance_commission_periods_no_truncate finance_kpi_programs:trg_finance_kpi_programs_no_truncate finance_kpi_results:trg_finance_kpi_results_no_truncate finance_kpi_runs:trg_finance_kpi_runs_no_truncate finance_kpi_tiers:trg_finance_kpi_tiers_no_truncate finance_misa_mappings:trg_finance_misa_mappings_no_truncate finance_misa_sync_jobs:trg_finance_misa_sync_jobs_no_truncate finance_misa_sync_logs:trg_finance_misa_sync_logs_no_truncate finance_payout_batch_lines:trg_finance_payout_batch_lines_no_truncate finance_payout_batches:trg_finance_payout_batches_no_truncate finance_payout_evidence:trg_finance_payout_evidence_no_truncate finance_pit_declarations:trg_finance_pit_declarations_no_truncate finance_revenue_entries:trg_finance_revenue_entries_no_truncate finance_sync_runs:trg_finance_sync_runs_no_truncate finance_tax_policies:trg_finance_tax_policies_no_truncate finance_voucher_cost_policies:trg_finance_voucher_cost_policies_no_truncate finance_voucher_entries:trg_finance_voucher_entries_no_truncate ops_core_link_audit:trg_ocla_block_truncate ops_core_sku_links:trg_ocsl_block_truncate ops_core_warehouse_links:trg_ocwl_block_truncate sku_master_codes_audit:trg_smca_block_truncate audit_logs:trg_audit_logs_no_truncate sku_price_audit_logs:trg_sku_price_audit_logs_no_truncate
+T6 nạp rồi gỡ 4 đơn thử GF-TEST trên bản sao
+  nap: GF-TEST-0001|CONFIRMING|UNPAID|COD|0|2026-11-13 02:00:00+00
+  nap: GF-TEST-0002|CONFIRMING|PAID|ONLINE|2|2026-11-13 02:05:00+00
+  nap: GF-TEST-0003|CONFIRMED|PAID|ONLINE|3|2026-11-13 02:10:00+00
+  nap: GF-TEST-0004|CONFIRMED|UNPAID|COD|1|2026-11-13 02:15:00+00
+  go (phải 0|0): 0|0
+T7 CSDL thật không đổi: flyway 318|0
+THU_FLYWAY_XONG FLYWAY_XONG
+DON_XONG container/mạng/tệp tạm

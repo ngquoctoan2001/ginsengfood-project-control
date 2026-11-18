@@ -3,13 +3,24 @@
 > **BẢN NHÁP**, cập nhật sau rà 16 task 12/11 (`c8cdd47`) + 4 task 13/11 (`2f733b2`, ghi Sheet 13/11 08:06). Hạng mục/trọng số chấm lại khi `/ke-hoach`.
 > Mốc rà tuần 31/10 ghi 11%; chưa phải mức sẵn sàng hiện tại. Không lấy số task Đạt hay DONE làm % sẵn sàng.
 > D-m5-002: đã duyệt 7 mẫu M5-105, giờ CSKH 8:00–20:00. D-m5-005/DL-197 + D-m5-040: một môi trường trên máy mkt 192.168.1.98 (thay .60), khoá chạy thật tắt tới họp Go/No-go (HTTPS `mkt.` trên .98 + 2 ngày làm việc, chậm nhất 20/11). D-m5-025: M6 gộp vào repo `m6/`.
-> M3 + M4 sang .99 sau giờ cắt 14/11 22:45: M5 gọi `M4_ADVISOR_BASE_URL`, `M3_ORDER_STATE_*` qua `http://192.168.1.99:80` (`chung/MAY_CHU.md`).
+> M3 + M4 chạy trên .99 từ 14/11 07:36: M5 gọi `M4_ADVISOR_BASE_URL`, `M3_ORDER_STATE_*` qua cửa TLS nội bộ trên .99 (cổng + CA Lead/m34 gửi), không http (`chung/MAY_CHU.md`).
+> D-m5-041/048/051: thư mục .98 `/data/ginsengfood-marketing`; `mkt.ginsengfood.vn` qua proxy Caddy trên .98 (phiên lead dựng, chứng chỉ Mắt Bão) chỉ chuyển `/api/admin/ads/` → `.98:6600`, `/admin/`, `/api/admin/`, `/api/channel/meta/` → `.98:3000`, còn lại 404 (mong cắt 18/11).
+> D-m5-052: khoá JWT quản trị bên mình tự sinh, tự phát token (không chờ Anh Tuấn); Tài đề xuất chỗ sinh + người phát, Toàn duyệt.
+> D-m5-044…047 (16/11): deploy key chỉ đọc cho .98; M6 dùng chung JWT M5; T5 đóng image trên .98 theo commit tới khi có kho image; SMK pilot tính trên luồng P0 chạy thật ở chế độ phạm vi. 14/11 11:20 M5 + M6 đã chạy trên .98 (6 container healthy, chưa HTTPS).
+> D-m5-049 (16/11 20:37): Toàn duyệt DL-230 (danh sách "ngoài phạm vi pilot", SMK-008/014 ngoài phạm vi, `CSKH_SINK` rate-moderation phải thật); còn Tài ký + task code roll-up.
+> D-m5-050 (16/11 20:37): Tài gỡ 2 route admin cũ trước HTTPS `mkt.`; T4 (chữ ký webhook sai ghi DB) và T6 (JWT dán tay) thành điều kiện Go/No-go.
 > D-m5-018 (DL-200/DL-194): giữ pilot 14/11; nộp App Review khi đủ HTTPS `mkt.` trên .98 + token Page + M5-101; Meta chưa duyệt → pilot chỉ
 > người có vai trò; pilot chỉ chạy giờ có người trực. D-m5-021: M5-104 bắt buộc trước pilot.
 > D-m5-034…037 (13/11 08:40): pilot M4 dùng Claude API trả lời tin riêng, bật khi có văn bản pháp chế đợt 2 + NCC A1–A6 + P0 M4 + chữ M5-101 khai AI; báo giá vẫn chặn (D-m5-015);
 > No-go lượt 13/11, họp lại HTTPS + 2 ngày làm việc (≤ 20/11); production cần `ORDER_STATE_READER` thật (M3 Phúc + M5 Tài, trước 30/11).
 
 ## Kết luận nhanh
+
+Rà 16/11 tối (`6ee2bedc`): 12 task → **2 Đạt (055, 142)**, 10 Cần sửa ([bảng](ra-soat/2026-11-16-tai-2.md)); 10/12 không đổi mã, sửa sổ ở nhánh A chưa PR. PR #123 xử lý 4/5 lỗi Cao
+của #118, còn thiếu bước dời dữ liệu đang chạy trong runbook. Không năng lực nào lên bậc mới: chưa có sink thật, chưa chạy gì trên .98 ngoài bản 14/11.
+
+Rà 16/11 (`2eef3dab`): M5-142 **Cần sửa** (mã đúng, thiếu PR + GATE); PR #118 bộ triển khai .98 gộp khi CI_LOCAL KHÔNG ĐẠT, còn `/data/m5`, `/data/m6`,
+containerd chưa dời, chưa có bước dời dữ liệu ([bảng](ra-soat/2026-11-16-tai.md)). Go/No-go: 0/16 điều kiện có bằng chứng chạy thật ([bảng](ra-soat/2026-11-16-go-no-go-dieu-kien.md)).
 
 Rà 12/11: 16 task, **2 Đạt** (124, 136), **14 Cần sửa** ([bảng](ra-soat/2026-11-12-tai.md)). Rà 13/11: 017, 103, 114, 121 đều **Cần sửa** ([bảng](ra-soat/2026-11-13-tai.md)).
 6 chờ Tài sửa từ trước (002, 043, 055, 074, 104, 133).
@@ -20,7 +31,7 @@ Còn chặn: (1) gửi thử trên .98 của 042/043/051/053/056 bị cổng kh�
 (3) mật khẩu/OTP gõ bằng lời còn lọt 9/9 mẫu (126, chưa sửa); (4) DL-222/224/225 còn chờ Tài ký (chữ 3.4 đã duyệt 13/11, D-m5-030).
 Probe tự chạy 12–13/11 tại `c8cdd47`: không DB 179/28/3, DB 205/0/5, `web/` 386/15 (chạy lại riêng: xem bảng rà §4). Dockerfile: Tài build khi triển khai .98 (D-m5-029).
 Chưa năng lực nào lên bậc 75: M5 chưa chạy trên .98, chưa gọi Meta thật, chưa SMK.
-Đường găng: Tài dựng nền + app trên máy mkt .98 (CI → registry → CD) + Anh Tuấn trỏ HTTPS `mkt.` về .98 → sink CSKH thật (M5-081B/M5-104) → token Page thật (053) + khoá JWT (016) → trả lời thật (042/043/056) → App Review (102) cùng M5-101 + URL hướng dẫn xoá.
+Đường găng: Tài dựng nền + app trên máy mkt .98 (CI → registry → CD) + proxy HTTPS `mkt.` trên .98 (phiên lead, D-m5-051) → sink CSKH thật (M5-081B/M5-104) → token Page thật (053) + khoá JWT tự sinh (016, D-m5-052) → trả lời thật (042/043/056) → App Review (102) cùng M5-101 + URL hướng dẫn xoá.
 Kịp 15/11: **ĐỎ** (máy mkt .98 mới cấp 13/11, chưa nhận webhook). Go/No-go lượt 13/11: **No-go** (D-m5-035), họp lại 2 ngày làm việc sau HTTPS `mkt.` trên .98, chậm nhất 20/11.
 Production không khởi động khi `ORDER_STATE_READER` còn giả (M5-017) → M5-115 chờ API đọc trạng thái đơn M3 (Phúc) + reader thật (Tài), trước 30/11 (D-m5-036;
 gói task + sơ đồ: [giao-viec/2026-11-13-order-state-reader.md](giao-viec/2026-11-13-order-state-reader.md), phiên `lead` tạo trên Sheet).
@@ -38,10 +49,11 @@ Pilot có AI (Claude API, D-m5-034) thêm đường găng: pháp chế đợt 2 
 | AI + chuyển người thật | G070–074 | 070/071/072/073 Đạt; 074 chờ sửa (D-m5-020) | M4-004 (luồng `m34`); Page pilot bật AI tin riêng bằng Claude API khi có pháp chế đợt 2 (D-m5-034/037); DL thay DL-200 (4), sửa luật 10 `scoped-send-posture.ts:61` |
 | Vận hành + bằng chứng | H080–084, B024, M5-112, 133, 136 | 024/080/082/084 Đạt; **136 Đạt 12/11** (D1 DB PASS, thoát 0); 112 Cần sửa (H1/H2, rà 3 PR sau, mục `audit_log` lên Cao); 133 chờ sửa | M5-081 sink thật; GitHub Actions dừng; điều kiện gộp: khối CI_LOCAL `GATE=ĐẠT` trong PR, không cần status (D-m5-032); Dockerfile: Tài build khi triển khai .98 (D-m5-029) |
 | Quy tắc làm việc | M5-007 | Cần sửa: bạn duyệt §5 bản `f774f759` 13/11 (D-m5-033); chờ Tài sửa §5.4 điều 4 theo D-m5-032 | Tài |
-| Hạ tầng | I090–094, M5-004 | 093 bộ triển khai/quay lui đã gộp (PR #61), chưa chạy; ghi chú/hạn trên Sheet (004, 090–094) còn ghi .60, Tài sửa theo .98 | Tài dựng máy mkt .98; Anh Tuấn trỏ HTTPS `mkt.` |
+| Hạ tầng | I090–094, M5-004 | 093 bộ triển khai/quay lui đã gộp (PR #61), chưa chạy; ghi chú/hạn trên Sheet (004, 090–094) còn ghi .60, Tài sửa theo .98 | Tài dựng máy mkt .98; proxy HTTPS `mkt.` trên .98 (phiên lead, D-m5-051) |
 | Meta, pháp lý, thí điểm | J100–105 | 105 Đạt; 101 Cần sửa (D1 PA1/PA2; chữ Tài chốt, bạn đối chiếu P01/P02 + đọc câu AI D-m5-038; purge, P04/P22); 103 Cần sửa (nháp khớp mã; chưa gửi pháp chế; B1 Có, B3 Không, chia 2 đợt D-m5-037) | App Review sau HTTPS `mkt.` .98 + token + 101 (D-m5-018) |
 | Đăng bài nhiều Page | M5-123 | phiếu 1 trang có, chờ bạn duyệt; ngoài Go/No-go (D-m5-012) | sau App Review; quyền Tiêu chuẩn (D-m5-016); link tên miền công ty (D-m5-017) |
 | UI quản trị (làn Lead, D-m5-024) + UI-kit | M5-137, M5-138, M5-139 | 137/138 Đạt (`da306af` 09/11, [duyệt R3](ra-soat/2026-11-09-ui-quan-tri-duyet-r3.md)); 139 Cần sửa (bước 1–3 đạt; bước 4 AppShell chưa làm; PR #95 thiếu CI_LOCAL) | chạy trên .98 + JWT vai OPS/ADMIN (Anh Tuấn); Tài triển khai ([tin](ra-soat/2026-11-09-tin-tai-ui-quan-tri.md)) |
+| YouTube (D-m5-053…057, mới 17/11) | M5-150…161 | chưa bắt đầu; thiết kế [giao-viec/2026-11-17-youtube-binh-luan.md](giao-viec/2026-11-17-youtube-binh-luan.md), tin Tài đã gửi 17/11 10:12 | spike Google Cloud; contracts kích hoạt gói YouTube (phiên lead); M4 advise v2 `PUBLIC_REPLY`; pháp chế đợt 2 cho bình luận thật; App Review cho referral khách thường |
 | QA + phát hành | K110–115, L121, B025 | 114 Cần sửa (hồ sơ 0.5 trung thực; Toàn chọn A No-go D-m5-035, chờ bản 0.6 + DL); 121 Cần sửa (khớp mã; 57 mục "Chưa chắc", RELEASE_NOTES) | tuần tự cuối; M5-115 cần `ORDER_STATE_READER` thật (D-m5-036) |
 
 ## Việc chờ Lead

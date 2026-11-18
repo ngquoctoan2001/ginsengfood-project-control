@@ -1,6 +1,6 @@
 # M8-WP07E — Ma trận lối vào 401/403/429 cho mọi endpoint, chạy được trên .61
 
-Trạng thái: ĐÃ GỘP W-0526 `d8e1050f` (đã lên GitLab + GitHub 12/11 11:09, không do phiên này; chưa chạy trên .61) · Rủi ro: R3 · Chế độ: A · Mốc: 13/11
+Trạng thái: **ĐẠT trên .99 17/11** (D-m8-126, D-m8-127): 401/403 178/178 (184 yêu cầu); 429: lượt đầu 38/38 không đạt vì hạn mức tắt → bật `Ivr:ServiceQuota` (đo ở 20/60 s: 275 đạt, lối token đo riêng 6/6), để chạy 600/60 s, kiểm lại 178/178 · trước đó: ĐÃ GỘP W-0526 `d8e1050f` (đã lên GitLab + GitHub 12/11 11:09, không do phiên này; chưa chạy trên .61) · Rủi ro: R3 · Chế độ: A · Mốc: 13/11
 Hạng mục nâng: Bảo mật G3 (lối vào đã có client_credentials + RS256 + 429 và test, chưa thử trên host) · Sheet: M8-002 · Ước lượng: 5 giờ
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP07E` (bản sao archive, repo tạm commit `goc` eb753e1) · Base SHA: `10f335de` · Chỗ kiểm: cùng bản sao
 Quyết định: không gọi .61 khi chưa có lệnh Lead; xoay token Sheet là việc phiên lead (hộp thư), không thuộc gói này.

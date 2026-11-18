@@ -1,0 +1,15 @@
+
+===== 21:24:45 · gọi thử từ .98 qua cửa (không token) =====
+  GET by-code (mong 503): 000000
+  POST advise (mong 403): 000000
+  GET đường khác (mong 404): 000000
+
+===== 21:25:10 · nhật ký cửa trên .99: IP nguồn + mã (5 phút qua) =====
+      2 10-listen-on-ipv6-by-default.sh: 
+      1 192.168.1.99 
+     10 2026/11/14 
+      1 2026/11/14 (Alpine
+      1 2026/11/14 method
+      1 2026/11/14 rule,
+      6 /docker-entrypoint.sh: 
+      1 /docker-entrypoint.sh: perform

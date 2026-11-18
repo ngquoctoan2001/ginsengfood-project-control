@@ -1,13 +1,45 @@
 {
- "_luc": "2026-11-13 14:23",
+ "_luc": "2026-11-16 20:32",
  "ginsengfood-ops-core": {
-  "gitlab/main": "d114b52deddafcc5112d468dc06fef9dfc934147",
-  "origin/main": "d114b52deddafcc5112d468dc06fef9dfc934147"
+  "gitlab/main": "668b29e0d5ee87c461cf7831b2ad06727629f374",
+  "origin/chudung/m12-15112026-an-gia-frm-12-frm-14-theo-vai-tro-giu-ha": "ea8f8d5d209a17b1e1be1f09f99ce35a279483c0",
+  "origin/chudung/m12-15112026-kho-chi-cong-ton-khi-kiem-dat-an-gia-phi": "27e322c1ffbdc57d1758fbcb63980a5399549e4f",
+  "origin/chudung/m12-16112026-ke-toan-dong-phieu-nhap-an-gia-phieu-bao": "f6000082b9dab136ea2ee3eb3a61fbbb1006fa32",
+  "origin/main": "668b29e0d5ee87c461cf7831b2ad06727629f374"
  },
  "ginsengfood-business-platform": {
-  "origin/PhucApu": "7053c148be421f7d99bb7a47faa98cada69ad8ee",
-  "origin/dev": "675df21bda88647bb3be9e0cfbb66be38ac5b92f",
-  "origin/dev015": "1169c79ad15d71d0c1a69bed5764093f359846a9",
+  "origin/PhucApu": "b2568a319d7f458165b8899d7bb37cce0c4a216d",
+  "origin/chudung/m3-14112026-chon-hop-phi-ship-giam-2-phan-tram": "5e9c2e002fbca232914071f39c6b4a4744067440",
+  "origin/chudung/m3-14112026-don-hang-thu-tien-xac-nhan-m8": "a4c90821058e60bd4f919f93c632de7c17b7e423",
+  "origin/chudung/m3-14112026-gan-nguoi-gioi-thieu-lau-dai": "caa277e45baba7c660daf6e58e7cb1f2e8010b3f",
+  "origin/chudung/m3-14112026-gio-vang-38-va-gioi-han-gia-diamond": "e2b07b20ddddb420c6219d1d4e8494123aef4547",
+  "origin/chudung/m3-14112026-gop-cac-nhanh-sua-ngay-14-11": "c69697eef563417f37e16958d0d5dce4508392c1",
+  "origin/chudung/m3-14112026-hoa-hong-lam-tron-dong-va-ty-le": "f42b414a149600c980f040651f93e676c0501b89",
+  "origin/chudung/m3-14112026-mo-lai-link-thanh-vien": "bf36b707393dd9957a358af9ec919ca463b403de",
+  "origin/chudung/m3-14112026-nhan-dien-khach-va-chan-link-nha-khoi-ng": "e6d9ee9e9ec926bfef39ad5699af9128684b7692",
+  "origin/chudung/m3-14112026-sua-loi-kiem-tra-cau-truc": "0f1162b9e0cd2bb8740aaab5551762945a174501",
+  "origin/chudung/m3-15112026-duyet-nha-khoi-nghiep-va-dieu-kien-gia-d": "e6ef40283196a7d0657f74bba2e7fa2ccc1f7f5b",
+  "origin/chudung/m3-15112026-gio-vang-cau-hinh-giu-hang-lich-goi-cong": "0c83bc4a5b2ab4d9a5e46e712521006d7897663f",
+  "origin/chudung/m3-15112026-gio-vang-ngay-le-canh-bao-zalo-nut-start": "608532e4bd44cb8564aeb14521708284809f6c1e",
+  "origin/chudung/m3-15112026-giu-don-24-gio-goi-lai-va-thong-ke-khach": "4dd26016d23677469b322115559f668a733cf108",
+  "origin/chudung/m3-15112026-khu-chinh-sach-chu-he-thong-duyet-buoc-t": "52901cb58827166a706ce5f0a403bbe5f6f5b742",
+  "origin/chudung/m3-15112026-mot-nguon-cho-cac-con-so-bao-cao-theo-ch": "bca971fee567d8133f7f6873f2f5baac6f176615",
+  "origin/chudung/m3-15112026-nha-khoi-nghiep-tu-van-m4-hieu-luc-12-th": "acd8cdeef7b4f75032ea6036f48c62ffa5eed735",
+  "origin/chudung/m3-15112026-sua-loi-kiem-thu-co-san-tren-dev-va-cho": "e30944f20c27df009994ed14fc13a201bf8b33c3",
+  "origin/chudung/m3-15112026-sua-theo-ra-soat-toan-he-thong-thu-hoi-g": "6fc6b4c6dd1221881f909fd129b01818d1d71346",
+  "origin/chudung/m3-15112026-xu-ly-don-m8-theo-phuong-an-4-1-va-gia-d": "59af590ae30e2f55cfc38b02797b723337a2c05c",
+  "origin/chudung/m3-16112026-dot-6-co-cam-duyet-hieu-luc-hom-sau-quye": "3457ef501b6e6b4250c6940b965b6aa9ff81caa9",
+  "origin/chudung/m4-15112026-ai-m4-nhan-dien-khach-moi-cu-khach-mua-q": "431a7e523a2ec0087ed5180d1fe0ccc01eccb234",
+  "origin/chudung/m4-16112026-ai-m4-khach-new-ma-gioi-thieu-ngan-bao-n": "e7ffe58b640f18e75c529b214b40771dc12179f9",
+  "origin/chudung/m9-14112026-bao-cao-chon-theo-ngay": "df0ddc5ae1975c911f95451a8ee07af80d5f5fa9",
+  "origin/chudung/m9-14112026-he-thong-tich-diem-doi-voucher": "64722b3d954085c57a49e2343f2ba88261337e54",
+  "origin/chudung/m9-14112026-nha-phan-phoi-va-cong-no": "bb9d59481007883bc4de68b98768c578c9c19026",
+  "origin/chudung/m9-14112026-so-m9-ky-thang-but-toan-voucher-gia-von": "e992a18b1d1cacf4a8258b2764d5c5269d34d085",
+  "origin/chudung/m9-15112026-bao-cao-loi-lo-thang-du-khoan-tu-chot-ho": "f2802cf58ac6a377ce8d970ef32eb3c9f01436b0",
+  "origin/chudung/m9-15112026-voucher-co-3388-an-so-tai-chinh-theo-vai": "9f67acda1196dad17295c64ecc33fd5434103fa6",
+  "origin/chudung/m9-16112026-trang-thai-don-cho-cham-soc-khach-doi-so": "10e6461ee438748f03f0a5989fbdf8feb00e0d86",
+  "origin/dev": "b2568a319d7f458165b8899d7bb37cce0c4a216d",
+  "origin/dev015": "d8202cc3101e76d8e2ce106b9202ae72bb5b6c85",
   "origin/feat/m9-finance": "cb2226c0b87a05b89152d347c31e58d4ebef5e8f",
   "origin/feat/m9-loi-0611": "fa5f214559d4852603e5974ad79d16404d7789e5",
   "origin/feat/m9-loi-0911": "6836a0ed9d2b3f6eea28c474f7562935e919afac",
@@ -15,10 +47,10 @@
   "origin/fix/m9-ra-soat-0511": "df1f82e6c8de3eb31ea6f45999973597c5b62493",
   "origin/fix/m9-ra-soat-2": "01d255cf1ece59a44306ba9c29cb4bd5c83b02ae",
   "origin/master": "0621b0b2692fa0bff23ecee1ce13d89d3d20fda8",
-  "origin/toandeptrai": "c4ce6790277458381f4ebf922f3f9327ce2ec309"
+  "origin/toandeptrai": "d3d91686d5c92a7d2d8df28f7eaa7b29f22caf37"
  },
  "M4-PLAN": {
-  "origin/main": "f00900065548e55a1e3f83ea8741828cdd7404e1"
+  "origin/main": "fdc7e78ba807d61fbd166d0b6f55c3df8f7db34f"
  },
  "module5": {
   "origin/docs/dl-tai-uy-quyen-1011": "366ba72cf1951ad813b4c2d78f7e695a8626dbc0",
@@ -87,6 +119,8 @@
   "origin/m5/M5-082-health-log": "3101d94986b48234e997eaedce0a36f91c563908",
   "origin/m5/M5-082-sua-lead": "3beff2b75e813ee25100d2ae163ab2b04aa66083",
   "origin/m5/M5-084-gom-bang-chung-done-gate": "1f6b8348dd6ed7b8cfe39c72ac0254d0bd89e677",
+  "origin/m5/M5-091-may-98": "b37ed0db477f6c67886e5e0f762cc472d79453a3",
+  "origin/m5/M5-091-runbook-hien-trang-98": "3770c2d260e156f7ea3751d0949e36039134d1a7",
   "origin/m5/M5-093-trien-khai-quay-lui": "9cf2a3ae54e4484e4f7157f115090664227d5c2c",
   "origin/m5/M5-101-chinh-sach": "482936dcf0bdfac746788d81ef05445c73c0ef1f",
   "origin/m5/M5-101-dien-trang-chinh-sach": "9ec8bb34af64096c8772c4a90d610f75a38c438b",
@@ -114,16 +148,22 @@
   "origin/m5/M5-136-a2-probe-thoat-sach": "e385505e34f4b41c47cec486e2748c8a09b99dea",
   "origin/m5/M5-136-viec-nho-ra-lead-0711": "248a51ab8382037ae91bbf1fd8b84644d46db8e2",
   "origin/m5/M5-139-ui-kit-theo-m3": "c08ed0f7a1f1ec37ff8cb9fd4d3a7d71b75625bc",
-  "origin/m5/M5-142-probe-thoat-sach": "2c601a20bab34e3282c9e93dedf2ba2d28632830",
+  "origin/m5/M5-141-role-xoa-du-lieu": "4636c1e48640d73c4e37cdafab98e5a2af0d9def",
+  "origin/m5/M5-142-probe-thoat-sach": "740827e772e85d1ded649a9423c9582158baf907",
+  "origin/m5/M5-144-order-state-reader": "28b632f90d8142e575cb808cf5c158a235164d82",
   "origin/m5/M5-DOCS-1111-sua-theo-ra-lead-10-11": "c345a71b01b0c60812e5b3ed6a08952fafd5d735",
   "origin/m5/M5-docs-dl187-ngoai-le-pilot": "cec8884cce4737c362cc538aebdcdafb63ccec94",
   "origin/m5/M5-docs-review-lead": "b45a78b82091553964c0943c6ef89b625b2d4278",
+  "origin/m5/M5-sua-ra-1311-so": "30eec6b10e60735bddff1b01b005646fa99c07bd",
   "origin/m5/dl-tai-ky-2026-11-07": "5bb46a751fa67098d967ca569cfa9e7cd59e1134",
   "origin/m5/dl-tai-ky-2026-11-10": "297f88a44e595a28ff738189f1905446d2444eea",
   "origin/m5/docs-can-sua-ra-07-11": "17d0b5c26b074dfea92d997794d2288220e90911",
   "origin/m5/docs-dl-own320-326": "96de0b26dcac84050f45ea2c421373f281fb1c62",
   "origin/m5/gop-m6-vao-repo": "3aa55e0287596b6833acc4c0a6f4e37a5e0a798e",
-  "origin/m6/M6-082-hook-dq-that": "e4ca89375abbf134a3f1b1eb3519ea222965c726",
+  "origin/m6/M6-024-a2-decision-log": "2939797e1985d8c392ee102290047f9ca06e5c17",
+  "origin/m6/M6-042-jwt-that": "1f57a5540db931e537fb0ad39433508f75e74afa",
+  "origin/m6/M6-082-hook-dq-that": "c386cf1aa4c34f3cec3699ff2db5cbfe05732b60",
+  "origin/m6/M6-120-a2-smoke-p0-016": "e932ccd0b3772996339b1ad6f77c7b0a617f4c27",
   "origin/m6/M6-120-smoke-go-no-go": "f87af24697ff7c22a8e069428cf9c571c727ec17",
   "origin/m6/M6-125-ho-so-go-no-go": "693b53b38deecabd6b2851a64d8ee769619dc000",
   "origin/m6/M6-131-dong-bo-docs": "0029a9e64fbdd71a6c71563fde8da74214351e5f",
@@ -140,8 +180,10 @@
   "origin/m6/M6-153-dead-letter-audit-ui": "18b39b8f1355906a6d5acfd0def70f69a1a3daa7",
   "origin/m6/M6-155-scale-postgres": "55104fe5d3e281054c04f2016a60e386fd405cb5",
   "origin/m6/M6-156-deploy-sau-gop-repo": "05ad9b1be3931ac39eddb0e2a4f4f123bb1e0bdd",
-  "origin/m6/M6-157-compose-bien-app": "c40be123403ffbd8b382bcc342217e8b06d1fd18",
-  "origin/main": "2f733b21b5b94ac00b9d3517f5825ca2df501ff8"
+  "origin/m6/M6-157-compose-bien-app": "154977215ca5b47a7b266912370aa9551d1d26d6",
+  "origin/m6/M6-sua-ra-0511": "49aba6071b2d2e597357417385312994f3ee5cf3",
+  "origin/m6/M6-sua-ra-1311": "d96211ce81f7d36cbc05bf5ed4e40e24bc26bdbf",
+  "origin/main": "6ee2bedcdfd2810ce58123af2321cee066646047"
  },
  "module6": {
   "origin/m6/M6-003-approved-deps": "353cb25fce9f45aa07dcb52be5ffb644cc83765d",
@@ -192,16 +234,18 @@
   "origin/master": "2ffa505b0ffe288a338c108998a7382a80c10d49"
  },
  "ginsengfood-golden-hour-video": {
-  "origin/main": "9e28adffeee457261789bb240237e5f49eb58742"
+  "origin/main": "765eaa61eaef84b0193b6d65acd0a6ebfbcadc48"
  },
  "ginsengfood-ivr": {
-  "github/main": "af93ca4252e8a494dca935bc0790303de62f9857",
-  "origin/main": "af93ca4252e8a494dca935bc0790303de62f9857"
+  "github/chudung/m8-15112026-gio-bam-phim-doc-ket-qua-cuoi-goi-lai-th": "306e0f2cd0dd0e255d7cf21663d68545738487e1",
+  "github/chudung/m8-16112026-khung-goi-lai-8-9-13-14-20-21-chi-goi-la": "a9dc08f7f894d2fa6b59a275cc735857dff3b415",
+  "github/main": "680508c720c991963a6ffbbd32c1512c824e2d97",
+  "origin/main": "680508c720c991963a6ffbbd32c1512c824e2d97"
  },
  "ginsengfood-contracts": {
   "origin/codex/x03i-integrate-external-contracts-20260903": "fb5464b975ffcd77f63368a4d9b6669ccdd8c617",
   "origin/lead/order-channel-state-v1": "2d6807dc5c6b8491562fc7acd75247d6d4101c7c",
-  "origin/m12-noi-m3": "5b078ae8a154c47c5cf24027efe891029affd9eb",
+  "origin/m12-noi-m3": "5b90c0b62108a9726f77301a2b1faaed4470dacf",
   "origin/main": "a7832a49f49c430128f5013a6ddce773b138b7df"
  }
 }

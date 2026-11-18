@@ -1,6 +1,13 @@
-# E05 / E06-B trên .99 — phần M3 (m34 phụ soạn 14/11 10:35) · CHƯA CHẠY
+# E05 / E06-B trên .99 — phần M3 (m34 phụ soạn 14/11 10:35) · ĐẠT CẢ HAI PHÍA 14/11 13:38 (E10 cũng ĐẠT, M3 không thu dọn)
 
-Chờ: trình tự của M8 + Toàn duyệt riêng ở phiên phụ. Lịch gọi do M8 bật/tắt; m34 không bật lịch.
+Kết quả (Toàn duyệt D-m34-070 ở phiên chính, xác nhận trong phiên phụ 13:12; đổi thời điểm bật cầu D-m34-071 / m34.102 A):
+m8 bật lịch 13:13:03 (đổi thứ tự: bat-lich trước vì `bat-lich` kiểm TLS tới 8445) → cầu dừng 13:16:57 → đơn B (E06-B) **580** `m3-ivr-580-16` 13:18:46 (dòng 5;
+lượt đầu lỗi thư mục receipt + 429 OTP cooldown 60 s, không tạo đơn) → B cạn sau 12 s → đơn E05 **581** `m3-ivr-581-17` 13:19:29 (dòng 4) → cả hai RETRY_EXHAUSTED, lịch tắt
+06:21:27Z → cầu bật 13:21:45 (sớm, vì hạn B 13:35:09 và E05 13:35:52 chỉ cách 43 s; RETRY_EXHAUSTED không tự gửi lại) → replay E05 → **581 `AP_DUNG_MOT_LAN`**
+(CONFIRMED 06:21:56Z) → watchdog huỷ B 06:35:13Z (REVOKE `TASK_ALREADY_CLOSED`) → replay B → M3 409 → **580 `KHONG_AP_DUNG_(CHAN)`** (inbox REJECTED_STALE, đơn giữ CANCELLED).
+Cầu 8445: đúng 2 POST từ 172.24.2.1 (200, 409). Bản đọc: `_wt/m34/len60-notes/receipt-99-e05/`, `receipt-99-e06b/`. Bài học: tạo thư mục receipt trước; ước lượng cạn của M8 (12 s) ngắn hơn phiếu (1–2 phút) → đặt E05 cách B đủ xa hoặc bật cầu sớm như lượt này.
+
+Lịch gọi do M8 bật/tắt; m34 không bật lịch.
 
 ## Lệnh phía M3 (đã soạn, chưa chạy)
 

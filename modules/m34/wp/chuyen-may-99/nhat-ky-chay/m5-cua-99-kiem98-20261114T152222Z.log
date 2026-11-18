@@ -1,0 +1,8 @@
+
+===== 22:22:22 · gọi thử từ .98 qua cửa (không token) =====
+  GET by-code (mong 503): 503
+  POST advise (mong 403): 403
+  GET đường khác (mong 404): 404
+
+===== 22:22:23 · nhật ký cửa trên .99: IP nguồn + mã (5 phút qua) =====
+      3 192.168.1.98 

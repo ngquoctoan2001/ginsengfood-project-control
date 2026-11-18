@@ -4,7 +4,8 @@ Lead dùng phiên này để **giám sát tiến độ sprint, rà đủ task c�
 phần rà không sửa mã/commit vào repo Tài.
 `/ra-soat tai` bao gồm cập nhật Lead duyệt + Ghi chú Lead trên Sheet và soạn tin nháp theo quy trình chung, không tự gửi.
 Lead muốn tự nhận một làn (ví dụ hạ tầng — làn I) → `/quyet` ghi rõ làn nào, báo Tài, rồi mới chạy `/song` (chế độ W).
-Làn Lead đang nhận: **UI quản trị** (D-m5-024) — M5-137 API đọc quản trị, M5-138 UI Next.js `web/`; phiên này code, đứng tên Nguyễn Quốc Toàn.
+Làn Lead đang nhận: **UI quản trị** (D-m5-024) — M5-137 API đọc quản trị, M5-138 UI Next.js `web/`, M5-162 đăng nhập bằng mã gửi mail công ty (D-m5-065, R3);
+phiên này code, đứng tên Nguyễn Quốc Toàn.
 Màn M6 trong `web/` chung do Tài code (D-m6-012, DL-220); phiên này không code phần `m6/`.
 
 Quyết định đã áp từ phiên `lead` (31/10, D-m5-001; D-lead-005/006): Tài đã có quyền quản trị Page; nếu Sheet còn báo thiếu
@@ -16,14 +17,31 @@ chỉ gửi khi bạn ra lệnh rõ cho đúng người/nội dung.
 D-m5-002 (02/11 11:14): bạn đã duyệt cả 7 mẫu M5-105 và xác nhận giờ CSKH 8:00–20:00 hằng ngày (m5.4 B).
 D-m5-025–028 (10/11): M6 gộp vào repo này (`m6/`, DL-220), repo module6 lưu trữ; giữ tên `module5` tới sau 30/11; PM của Tài chốt được
 lựa chọn kỹ thuật có đề xuất sẵn trong docs (phạm vi pilot, Go/No-go, dữ liệu khách, bảo mật vẫn do Tài/Lead); Go/No-go dời theo HTTPS `mkt.`.
-D-m5-040 (13/11, D-lead-034/035/036): M5 + M6 chạy ở máy mkt 192.168.1.98 (`/data/m5`), không còn .60; M3 + M4 sang .99 (M5 gọi `http://192.168.1.99:80`
-sau giờ cắt 14/11 22:45). `mkt.` do nginx 443 của Anh Tuấn trỏ về .98. Bảng máy: `chung/MAY_CHU.md`. Nhắc .60 chỉ khi nói đường lui hoặc M7.
+D-m5-040…043 (13–16/11, D-lead-034/037/038/049): M5 + M6 chạy ở máy mkt 192.168.1.98, thư mục `/data/ginsengfood-marketing` (không `/data/m5`, `/data/m6`);
+`mkt.ginsengfood.vn` (D-m5-048 tuyến, D-m5-051 cổng): proxy Caddy trên chính .98 (phiên `lead` dựng, compose `edge` riêng ngoài M5/M6, chứng chỉ wildcard Mắt Bão; Anh Tuấn chỉ chuyển cổng router)
+làm HTTPS và chỉ chuyển `/api/admin/ads/` → `.98:6600`; `/admin/`, `/api/admin/`,
+`/api/channel/meta/` (webhook + callback xoá dữ liệu) → `.98:3000`; `/` 301 → `/admin/`; còn lại 404. Đường nội bộ M5 chỉ qua LAN; Tài không dựng nginx :80; tường lửa LAN /23.
+Vì `/api/admin/` ra Internet: Tài gỡ 2 route admin cũ (`/api/admin/gateway/evidence`, `/api/admin/facebook/events`) khỏi mã trước HTTPS (D-m5-050); trong lúc chờ,
+proxy .98 trả 404 tạm hai đường này (kế hoạch `modules/lead/may-chu/2026-11-17-ke-hoach-ten-mien-public.md` §4). Trang chính sách + trang công khai M5 (D-m5-064):
+`https://mkt.ginsengfood.vn/policy/`, tuyến tĩnh Caddy edge-98 (phiên lead), Tài đặt HTML trên .98; một trang chung Facebook + YouTube, cùng URL cho Meta và Google.
+Triển khai .98 (D-m5-044/046): deploy key chỉ đọc, đóng image trên .98 theo commit tới khi có kho image; tự quay lui chỉ khi bản mới không có migration.
+Đăng nhập UI (D-m5-065, thay D-m5-052): đăng nhập bằng mã một lần gửi về mail @ssavigroup.com trong danh sách Toàn duyệt (kèm vai); M5 tự ký JWT 8 giờ (`iat`, `jti`, vai)
+bằng khoá riêng trên .98 (không vào repo/sổ); M6 dùng chung JWT, kiểm bằng khoá công khai (D-m5-045). Phiên này code (làn UI quản trị), R3, Toàn duyệt diff. Tạm thời phát mã tay 8 giờ bằng cùng khoá.
+Pilot (D-m5-063): có URL chính sách thì Tài phát hành app Meta, gắn Page pilot + token thật, nộp App Review song song; trước Go/No-go chỉ người có vai trò trên app thử.
+Kênh CSKH + cảnh báo thật: Telegram, một bot hai nhóm (D-m5-066).
+M3 + M4 chạy trên .99 từ 14/11 07:36; M5 gọi M4 `/advise` và M3 by-code qua cửa TLS nội bộ trên .99 (cổng riêng, chỉ .98, CA nội bộ; Lead/m34 gửi cổng + CA),
+không gọi `http://192.168.1.99:80` (`http-m4-advisor.ts:83-84` bắt https). Bảng máy: `chung/MAY_CHU.md`. Nhắc .60 chỉ khi nói đường lui hoặc M7.
 D-m5-018 (05/11, DL-200/DL-194 module5): giữ pilot 14/11; App Review nộp khi đủ HTTPS `mkt.` trên .98 + token Page + M5-101; Meta chưa duyệt thì pilot
 chỉ người có vai trò trên app; pilot chỉ chạy giờ có người trực.
 D-m5-034–037 (13/11): trên Page pilot M4 dùng Claude API soạn câu trả lời tin riêng, qua cửa gửi chung + FinalGuard, người trực nhận chuyển tiếp;
 bật chỉ khi có văn bản pháp chế đợt 2 (`AI_ADVISOR_MODE` trống trên .98 tới lúc đó), NCC A1–A6, P0 M4, chữ M5-101 khai AI được duyệt.
-Báo giá/nháp đơn chặn suốt pilot (D-m5-015, D-m5-039). Chữ M5-101 do Tài chốt, bạn đối chiếu P01/P02 + đọc câu AI (D-m5-038). Go/No-go: No-go lượt 13/11, họp lại HTTPS + 2 ngày làm việc, chậm nhất 20/11.
+Báo giá/nháp đơn chặn suốt pilot (D-m5-015, D-m5-039). Chữ M5-101 do Tài chốt; phần của bạn (P01/P02, câu AI, mục YouTube) đã duyệt 18/11 (D-m5-062). Go/No-go: No-go lượt 13/11, họp lại HTTPS + 2 ngày làm việc, chậm nhất 20/11.
 Pilot chạy chế độ phạm vi; production cần `ORDER_STATE_READER` thật (M3 API đọc trạng thái đơn của Phúc + reader của Tài, trước 30/11).
+YouTube (D-m5-053…057, 17/11): M5 thêm nhiều kênh YouTube, gom bình luận, M4 hiểu ngữ cảnh rồi soạn câu trả lời công khai + M5 nối đuôi tên + link `m.me` Fanpage
+(ngoại lệ BR-018, BR-040 chỉ cho YouTube; Facebook giữ nguyên), Fanpage đích theo kênh/ghi đè theo video, người duyệt mặc định, tự đăng Toàn bật từng kênh sau 7 ngày ≥ 90%
+duyệt không sửa; làm cả 3 giai đoạn ngay (12 task M5-150…161), tệp nóng luồng gửi gộp sau PR pilot; bình luận thật sang Claude chờ pháp chế đợt 2. Thiết kế: `giao-viec/2026-11-17-youtube-binh-luan.md`.
+D-m5-058…062 (18/11): trang chính sách một trang chung Facebook + YouTube (chỗ đặt theo D-m5-064; Toàn đã duyệt chữ phần của mình, D-m5-062); bình luận thử
+nhân viên tự viết được qua Claude trước pháp chế đợt 2 (ngoại lệ hẹp B3, chỉ YouTube); Fanpage đích không phải Hub thì không chốt đơn, hỏi mua chuyển người; Q1/Q6/Q7/Q10 theo đề xuất.
 D-m5-019–022 (05/11): chữ M5-101 theo bảng P01–P23 (bỏ câu "tư vấn sản phẩm"; Tài sửa 3 câu vượt mã; câu khai AI theo D-m5-034/038);
 M5-074 tách phần chạy M4 thật thành task riêng; M5-104 kênh CSKH thật bắt buộc trước pilot; M5-060 sửa luật chung trước 10/11.
 D-m5-015–017 (04/11): Page pilot không báo giá/nháp đơn (gộp vào D-m5-018); M5-123 dùng quyền Tiêu chuẩn của Meta,
@@ -86,7 +104,7 @@ J 100–105 · K 110–115 · L 120–121. Mốc riêng M5: 31/10 nền + CI · 
 nộp Meta App Review · 10/11 SMK-001–016 đạt · 13/11 Go/No-go · 14/11 thí điểm 1 Page.
 D-m5-028/035/040: Go/No-go họp 2 ngày làm việc sau khi `mkt.` trên máy mkt .98 có HTTPS, chậm nhất 20/11 (lượt 13/11 No-go);
 pilot theo Go/No-go; hạn chạy thật 30/11 (D-lead-025). Khoá chạy thật (D-m5-005) tắt tới họp Go/No-go.
-Go/No-go cần: SMK 16/16 trên .98, UAT nội bộ, soát bảo mật, diễn tập khôi phục sao lưu, kết luận pháp lý, kênh CSKH thật M5-104 và
+Go/No-go cần: SMK 16/16 trên .98 theo DL-230 Toàn đã duyệt (D-m5-047/049: luồng P0 chạy thật ở chế độ phạm vi; danh sách "ngoài phạm vi pilot" gồm 6 port giả + bộ ẩn bình luận + `AI_ADVISOR`, `SPOTLIGHT_SINK`, 3 nguồn suppression; SMK-008/014 ngoài phạm vi; sink CSKH, cảnh báo và `CSKH_SINK` rate-moderation phải thật), UAT nội bộ, soát bảo mật (gồm gỡ 2 route admin cũ trước HTTPS, T4 webhook chữ ký sai không phình DB, T6 JWT mỗi người một khoá hạn ngắn + thu hồi khẩn — D-m5-050), diễn tập khôi phục sao lưu, kết luận pháp lý, kênh CSKH thật M5-104 và
 khởi động từ chối kênh báo giả (D-m5-021), Meta Advanced Access (chưa có thì pilot chỉ người có vai trò trên app, D-m5-018), **Lead duyệt**; chỉ khi đó M5-115 mới bật `PRODUCTION_ENABLED`. Trễ thì cắt P1 theo thứ tự M5-065, 044, 025, 037, 120.
 
 Trạng thái thật: đọc trực tiếp Sheet tab M5, đối chiếu `docs/weekly-tracking/nguyen-phat-tai.md` và `WORK_TRACKING.md` tại SHA đã ghim.

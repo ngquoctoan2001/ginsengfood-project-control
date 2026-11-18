@@ -1,0 +1,188 @@
+{
+  "phien_ban": 1,
+  "cong_cu": "doi_soat_m3",
+  "ket_qua": "KHOP",
+  "gio_chay": "2026-11-14T13:21:10+07:00",
+  "gio_db": "2026-11-14T13:21:10+07:00",
+  "tu": "2026-11-14T13:12:50+07:00",
+  "so_ca": 2,
+  "so_khop": 2,
+  "so_lech": 0,
+  "toan_cuc": {
+    "callback_khong_task": 0,
+    "pham_vi": "callback tạo từ 2026-11-14T13:12:50+07:00 (tính vào mã thoát)"
+  },
+  "canh_bao": [],
+  "ca": [
+    {
+      "dong": 2,
+      "ca": "E05",
+      "khoa": "correlation=m3-ivr-581-17",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=1",
+        "so_job=1",
+        "so_luot_goi=1",
+        "so_callback=1",
+        "ket_qua=IVR_CONFIRMED",
+        "giao=RETRY_EXHAUSTED",
+        "so_lan_gui>=2"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [
+        {
+          "task_an": "h:1137-fc33-b025",
+          "correlation_id": "m3-ivr-581-17",
+          "don_an": "h:4299-da74-66df",
+          "nhan_luc": "2026-11-14T13:19:22+07:00",
+          "chap_nhan_luc": "2026-11-14T13:19:22+07:00",
+          "tu_choi_luc": null,
+          "ly_do_tu_choi": null,
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "chinh_sach": "mock-lab-v4",
+          "chuong_trinh": "TWENTY_FOUR_SEVEN",
+          "thu_hoi_luc": null,
+          "ly_do_thu_hoi": null
+        }
+      ],
+      "job": [
+        {
+          "job_an": "h:f9ee-42ff-c1c1",
+          "task_an": "h:1137-fc33-b025",
+          "trang_thai": "RESULT_READY_FOR_CALLBACK",
+          "hang_doi": "HELD_CALLBACK",
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "tao_luc": "2026-11-14T13:19:22+07:00",
+          "dong_luc": "2026-11-14T13:19:25+07:00",
+          "ly_do_dong": "IVR_CONFIRMED"
+        }
+      ],
+      "luot_goi": [
+        {
+          "job_an": "h:f9ee-42ff-c1c1",
+          "lan": 1,
+          "trang_thai": "NORMALIZED_FINAL",
+          "ket_qua": "IVR_CONFIRMED",
+          "disposition": "ANSWERED",
+          "phim": "1",
+          "chinh_sach": "mock-lab-v4",
+          "che_do_sim": "MOCK",
+          "bat_dau": "2026-11-14T13:19:24+07:00",
+          "ket_thuc": "2026-11-14T13:19:24+07:00"
+        }
+      ],
+      "ket_qua_ivr": [
+        {
+          "job_an": "h:f9ee-42ff-c1c1",
+          "loai": "IVR_CONFIRMED",
+          "cuoi": true,
+          "hanh_dong_goi_y": "REVALIDATE_AND_CONFIRM_ORDER",
+          "tao_luc": "2026-11-14T13:19:25+07:00"
+        }
+      ],
+      "callback": [
+        {
+          "callback_an": "h:92b0-24da-fe28",
+          "task_an": "h:1137-fc33-b025",
+          "ket_qua": "IVR_CONFIRMED",
+          "giao": "RETRY_EXHAUSTED",
+          "so_lan_thu_lai": 3,
+          "so_lan_gui_uoc": 4,
+          "http": null,
+          "ack": "CALLBACK_TRANSPORT_FAILURE",
+          "tao_luc": "2026-11-14T13:19:24+07:00",
+          "gui_luc": "2026-11-14T13:19:26+07:00",
+          "ack_luc": null,
+          "thu_lai_luc": null,
+          "co_task": true
+        }
+      ]
+    },
+    {
+      "dong": 3,
+      "ca": "E06B",
+      "khoa": "correlation=m3-ivr-580-16",
+      "ket_qua": "KHOP",
+      "mong_doi": [
+        "so_task=1",
+        "so_job=1",
+        "so_luot_goi=1",
+        "so_callback=1",
+        "ket_qua=IVR_CONFIRMED",
+        "giao=RETRY_EXHAUSTED",
+        "so_lan_gui>=2"
+      ],
+      "lech": [],
+      "bat_thuong": [],
+      "task": [
+        {
+          "task_an": "h:44c7-76c2-0075",
+          "correlation_id": "m3-ivr-580-16",
+          "don_an": "h:de00-23e3-9811",
+          "nhan_luc": "2026-11-14T13:18:39+07:00",
+          "chap_nhan_luc": "2026-11-14T13:18:39+07:00",
+          "tu_choi_luc": null,
+          "ly_do_tu_choi": null,
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "chinh_sach": "mock-lab-v4",
+          "chuong_trinh": "TWENTY_FOUR_SEVEN",
+          "thu_hoi_luc": null,
+          "ly_do_thu_hoi": null
+        }
+      ],
+      "job": [
+        {
+          "job_an": "h:6956-ee70-2307",
+          "task_an": "h:44c7-76c2-0075",
+          "trang_thai": "RESULT_READY_FOR_CALLBACK",
+          "hang_doi": "HELD_CALLBACK",
+          "eligibility": "ELIGIBLE_FOR_IVR",
+          "tao_luc": "2026-11-14T13:18:39+07:00",
+          "dong_luc": "2026-11-14T13:18:42+07:00",
+          "ly_do_dong": "IVR_CONFIRMED"
+        }
+      ],
+      "luot_goi": [
+        {
+          "job_an": "h:6956-ee70-2307",
+          "lan": 1,
+          "trang_thai": "NORMALIZED_FINAL",
+          "ket_qua": "IVR_CONFIRMED",
+          "disposition": "ANSWERED",
+          "phim": "1",
+          "chinh_sach": "mock-lab-v4",
+          "che_do_sim": "MOCK",
+          "bat_dau": "2026-11-14T13:18:41+07:00",
+          "ket_thuc": "2026-11-14T13:18:41+07:00"
+        }
+      ],
+      "ket_qua_ivr": [
+        {
+          "job_an": "h:6956-ee70-2307",
+          "loai": "IVR_CONFIRMED",
+          "cuoi": true,
+          "hanh_dong_goi_y": "REVALIDATE_AND_CONFIRM_ORDER",
+          "tao_luc": "2026-11-14T13:18:42+07:00"
+        }
+      ],
+      "callback": [
+        {
+          "callback_an": "h:727c-728e-26d6",
+          "task_an": "h:44c7-76c2-0075",
+          "ket_qua": "IVR_CONFIRMED",
+          "giao": "RETRY_EXHAUSTED",
+          "so_lan_thu_lai": 3,
+          "so_lan_gui_uoc": 4,
+          "http": null,
+          "ack": "CALLBACK_TRANSPORT_FAILURE",
+          "tao_luc": "2026-11-14T13:18:41+07:00",
+          "gui_luc": "2026-11-14T13:18:43+07:00",
+          "ack_luc": null,
+          "thu_lai_luc": null,
+          "co_task": true
+        }
+      ]
+    }
+  ]
+}

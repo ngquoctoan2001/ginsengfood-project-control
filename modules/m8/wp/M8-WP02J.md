@@ -1,6 +1,6 @@
 # M8-WP02J — Diễn tập tắt khẩn + cảnh báo thử trên Prometheus .61 (phần tắt khẩn)
 
-Trạng thái: ĐÃ GỘP W-0525 `64bd51ba` (đã lên GitLab + GitHub 11/11 15:17, không do phiên này; chưa chạy trên .61) · Rủi ro: R2 · Chế độ: A · Mốc: 13/11
+Trạng thái: **ĐẠT trên .99 17/11** (D-m8-126): `canh-bao` 10:50–10:54 (FIRING sau 101 s, RESOLVED sau 92 s) + `tat-khan` 10:58:18–10:59:25 (sau khi sửa `X-Service-Scope`, W-0546 `fb20f6c3`) · trước đó: ĐÃ GỘP W-0525 `64bd51ba` (đã lên GitLab + GitHub 11/11 15:17, không do phiên này; chưa chạy trên .61) · Rủi ro: R2 · Chế độ: A · Mốc: 13/11
 Hạng mục nâng: Vận hành/giám sát G6 (chỉ phần tắt khẩn + cảnh báo nổ; người nhận cảnh báo gác lại, D-m8-075) · Sheet: M8-002 · Ước lượng: 6 giờ
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP02J` (bản sao archive, repo tạm commit `goc` bb8b251) · Base SHA: `10f335de` · Chỗ kiểm: cùng bản sao
 Quyết định: D-m8-075 (m8.73 gác lại: không cấu hình kênh/người nhận cảnh báo). Chạy trên .61 cần lệnh Lead riêng.

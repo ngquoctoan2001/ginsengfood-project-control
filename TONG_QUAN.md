@@ -1,25 +1,24 @@
 # Tổng quan hệ thống Ginsengfood M1–M9
 
-Mốc dữ liệu: 07/11/2026 11:00 (`/tong-hop-tuan` 02–07/11) · chỉ phiên `lead` sửa tệp này.
-Máy chủ chính thức từ 13/11: .99 nhà máy + bán hàng, .98 mkt, .60 chỉ còn M7 tạm + đường lui (`chung/MAY_CHU.md`, D-lead-034/035/036).
-**Hạn dự án 30/11/2026, 15/11 là mốc giữa kỳ (D-lead-025).** Số sẵn sàng theo bản rà báo cáo tuần 02–07/11
-(`C:\Projects\bao-cao-tuan\2026-11-02_2026-11-07\*-ra-soat.md`), kiểm chéo `modules/lead/ra-soat/2026-11-07-kiem-cheo-tuan.md`;
-chưa có bậc nào lên 75. Thang: `chung/CONG_PRODUCTION.md`. Báo cáo gửi Chú: `…\bao-cao-tong-hop-2026-11-02_2026-11-07.md` + `.docx`.
+Mốc dữ liệu: 14/11/2026 15:15 (`/tong-hop-tuan` 09–14/11) · chỉ phiên `lead` sửa tệp này.
+Máy chủ chính thức từ 13/11: .99 nhà máy + bán hàng (M1–M2 13/11 19:15, M3/M4/M9 14/11 07:36, M8 07:46), .98 mkt (M5 + M6, chế độ tắt), .63 máy dev + CI; .60/.61 đường lui (`chung/MAY_CHU.md`).
+**Hạn dự án 30/11/2026, 15/11 là mốc giữa kỳ (D-lead-025).** Màu theo bản tổng hợp 09–14/11 (`C:/Projects/bao-cao-tuan/2026-11-09_2026-11-14/bao-cao-tong-hop-2026-11-09_2026-11-14.md` + `.docx`, 13 trang),
+số đã đối chiếu ở các bản `-ra-soat.md` cùng thư mục và `modules/lead/ra-soat/2026-11-14-kiem-cheo-tuan.md`. Chưa bậc nào lên 75 (trừ N5 M3→M8 có bằng chứng trên .99, giả lập).
 
 ## Bảng 10 dòng
 
-| Module | Làm gì | Người | Phiên | Sẵn sàng | 15/11 | 30/11 | Tình hình một câu |
-|---|---|---|---|---|---|---|---|
-| M1–M2 | nhà máy, kho, truy xuất, QC | Toàn | `m12` | 44% | VÀNG | VÀNG | 79 commit trên `main` `e81a56017`; .61 vẫn bản 19/10, 3 bước chuẩn bị của Toàn chặn; token Sheet còn sống; sao lưu đêm lỗi từ 02/11 |
-| M3 bán hàng | giao diện + backend | Phúc | `m34` | ~34% (báo cáo 35%) | ĐỎ | VÀNG | 59 commit vào `dev` qua 3 lần đẩy thẳng, 0 PR/CI; XII R3 chạy trên .60 chưa rà; `proxy.test.ts` 24 đỏ; huỷ đơn 0 commit |
-| M3 vận chuyển + thanh toán | VNPAY, GHN, SPX, VTP | Tài | `m34` | 43% | VÀNG | VÀNG | PR #146 gộp 06/11; .60 compose tắt VNPAY; Giờ Vàng cấm COD → chỉ COD thì không bán Giờ Vàng |
-| M3 nối M8 + .60 | M3 → M8, máy chạy thử .60, CI | Toàn | `m34` | 40% | VÀNG | VÀNG | .60 chạy `9a4690574` từ 07/11 09:14, sao lưu đêm; cờ IVR tắt; M3-091, UAT m34.52 chưa làm; M3-083 mở; M34-VH chưa có task |
-| M4 | AI tư vấn | Tài | `m34` | ~36% (báo cáo 37%) | VÀNG | VÀNG | 8 việc vào `dev` 06/11 + #152; tự hại gián tiếp lọt 8/24; .60 compose khoá AI |
-| M5 | cổng Facebook | Tài | `m5` | ~25% (báo cáo 26%) | ĐỎ | VÀNG | 47 PR + 032/036/051 gộp 07/11 không chờ rà; chưa .60 HTTPS, token Page, App Review; Actions dừng (lỗi thanh toán) |
-| M6 | đo quảng cáo / ROAS | Tài | `m6` | ~21% (báo cáo 26,5%) | VÀNG (bản chạy thử) | VÀNG | 68 PR, 2.781 test đạt; chưa máy, chưa image; M6-015b cho qua phát hiện bí mật (trái D-m6-010) |
-| M7 | video Giờ Vàng | Toàn | `m7` | 9% | VÀNG nghiêng ĐỎ | ĐỎ | 38 commit `303ec9c`, 955 test đạt; dựng video còn mock; D-m7-063 hai mốc |
-| M8 | gọi xác nhận đơn | Toàn | `m8` | 47% | ĐỎ | VÀNG | 29 commit; GitLab chưa xanh trọn; 4 yêu cầu ra ngoài chưa gửi 2 tuần; S5 .61 vẫn bản 27/10 |
-| M9 | hoa hồng, chi trả, kế toán | anh Mạnh | `lead` rà | — | hạn 09/11 | VÀNG | PR #149, #150 gộp 06/11; còn MISA, ngân hàng, đối soát; menu 2 màn, quyền soát thuế trước khi mở |
+| Module | Làm gì | Người | Phiên | 15/11 | 30/11 | Tình hình một câu |
+|---|---|---|---|---|---|---|
+| M1–M2 | nhà máy, kho, truy xuất, QC | Toàn | `m12` | nghiệm thu + ký trên .99 | VÀNG | .99 chạy bản 11/11; bản mới (bảo mật, nối M3) chờ CI Linux; UAT tới 10/11 1.643/14/121/58/466 |
+| M3 bán hàng | giao diện + backend | Phúc | `m34` | code lên nhánh chung | ĐỎ | 55 commit đẩy thẳng `dev` không PR, ~400 mục chưa commit, 47 ca đỏ, 10/11 cam kết trượt, chưa chạy thử .99 |
+| M3 vận chuyển + thanh toán | VNPAY, GHN, SPX, VTP | Tài | `m34` | COD | VÀNG | 2 lỗi VNPAY sửa xong; SPX chỉ máy Tài; chưa thử trên máy chủ |
+| M3 nối M8 + M12, máy chủ | M3 → M8, M3 ↔ M12, .99 | Toàn | `m34` | gọi xác nhận .99 giả lập | VÀNG | 6/10 ca E01–E10 đạt .99; nối kho xong code, tắt |
+| M4 | AI tư vấn | Tài | `m34` | chưa | VÀNG | 8 tình huống an toàn sửa; đo 150 tình huống 16/76/58 trước sửa; test chính thức .99 18–19/11 |
+| M5 | cổng Facebook | Tài | `m5` | chưa (No-go pilot 13/11) | ĐỎ | 21 PR gộp, 23 việc Cần sửa; .98 chạy chế độ tắt, chưa tường lửa; App Review chưa nộp |
+| M6 | đo quảng cáo / ROAS | Tài | `m6` | màn quản trị chi phí | ĐỎ | giao diện quản trị Đạt 18 việc; 27 P0 chưa bắt đầu gồm lõi doanh thu/ROAS; M3 → M6 chưa chốt (DL-O10) |
+| M7 | video Giờ Vàng | Toàn | `m7` | video thử 15–16/11 | ĐỎ | 62 commit, T085 xong `d743c88`; clip Muse thật 10 giây; T190 chưa chạy (cài công cụ .63) |
+| M8 | gọi xác nhận đơn | Toàn | `m8` | gọi giả lập .99 | VÀNG | W-0513…W-0540 trên remote `21e8f958`; MobiFone 400 cuộc/10 s/IP, gọi thử ~24/11; giấy định danh ~20/11 |
+| M9 | tài chính: hoa hồng, chi trả, kế toán, kết nối MISA | chú Dũng (tài liệu, mã), Phúc (rà, gộp, test), Tài (MISA) — từ 17/11 | `m9` | giữ chạy .99 | VÀNG | 17/11 mở luồng `m9` (D-lead-059); chú đưa tài liệu kết nối MISA bản 2 (17 loại chứng từ) cho Tài; chưa có mã MISA |
 
 ## Luồng khách đầu-cuối
 

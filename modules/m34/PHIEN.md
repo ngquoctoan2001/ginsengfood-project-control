@@ -1,7 +1,7 @@
 # Phiên `m34` — rà soát M3 và M4 trong business-platform
 
 Lead dùng phiên này để **đọc, kiểm tra, rà soát, báo cáo** ba mảng việc chạy song song, và để **code phần kết nối đơn hàng
-M3 → M8** (D-m34-003). Khi rà việc Phúc/Tài: đồng bộ checkout an toàn theo quy trình rồi đọc/kiểm; không sửa mã, commit, push hay tạo merge commit trừ khi Lead lệnh rõ
+M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh chú Dũng vào `dev`; code của Toàn trên `toandeptrai` Toàn tự gộp vào `dev` (PR). Khi rà việc Phúc/Tài: đồng bộ checkout an toàn theo quy trình rồi đọc/kiểm; không sửa mã, commit, push hay tạo merge commit trừ khi Lead lệnh rõ
 (và báo người làm trước). Phần M3 → M8: commit trên nhánh `toandeptrai`, push/PR/merge vẫn hỏi Lead từng lần.
 
 **Trên máy này, mọi việc ghi vào repo (Claude, Codex, mọi phiên) chỉ trên nhánh `toandeptrai`** (D-m34-004): trước khi sửa/commit

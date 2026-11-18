@@ -1,0 +1,42 @@
+
+===== 21:24:30 · bật cửa 8446 (.99) =====
+M1 sinh chứng thư cửa (không in khoá)
+  Thư mục bí mật: /data/ginsengfood-business-platform/m5-cua/bi-mat (0700)
+    ca-m5-cua-key.pem      2488 byte  600
+    ca-m5-cua.pem          1525 byte  600
+    m5-cua-key.pem         1704 byte  600
+    m5-cua.pem             1367 byte  600
+  SAN của chứng thư cửa: IP:192.168.1.99
+  Chứng thư cửa hết hạn: Feb 16 14:24:24 2029 GMT
+  CA cửa sha256 (DER; Tài đối chiếu sau khi nhận tệp): 3ba12510f2050031bb156da7cd87c2b5e65950743a29f11fdd230fa313cc3114
+  Tệp CÔNG KHAI duy nhất gửi Tài (M5 đặt NODE_EXTRA_CA_CERTS): /data/ginsengfood-business-platform/m5-cua/bi-mat/ca-m5-cua.pem
+  CA MỚI: gửi ca-m5-cua.pem (chỉ tệp này, công khai) cho Tài; không gửi khoá. M5 phải khởi động lại để nạp CA.
+M2 thêm compose.m5-cua.yml vào COMPOSE_FILE (.env)
+  trước: compose.yml:compose.override.yml:compose.m8-that.yml
+  sau:   compose.yml:compose.override.yml:compose.m8-that.yml:compose.m5-cua.yml
+M3 up m5cua-nginx
+   Container m34-m5cua-nginx-1 Starting 
+   Container m34-m5cua-nginx-1 Started 
+   Container m34-m5cua-nginx-1 Waiting 
+   Container m34-m5cua-bi-mat-1 Waiting 
+   Container m34-m5cua-bi-mat-1 Exited 
+   Container m34-m5cua-nginx-1 Healthy 
+m5cua-bi-mat exited Exited (0) 6 seconds ago
+m5cua-nginx running Up 6 seconds (healthy)
+  cổng 192.168.1.99:8446: đang nghe
+M4 kiểm TLS trên máy .99 (không qua LAN)
+  chuỗi chứng thư: Verify return code: 0 (ok)
+  GET từ máy .99 (không phải .98, phải 403): 403
+  vân tay SHA-256 CA: 3B:A1:25:10:F2:05:00:31:BB:15:6D:A7:CD:87:C2:B5:E6:59:50:74:3A:29:F1:1F:DD:23:0F:A3:13:CC:31:14
+  tệp CA công khai: /data/ginsengfood-business-platform/m5-cua/bi-mat/ca-m5-cua.pem (1525 byte)
+  tường lửa: dòng có 8446 trong cong-noi-bo.conf: 0
+?
+M5_CUA_BAT_XONG (sao lưu .env: _chuyen-may/env.tu-truoc-m5cua-20261114T142424Z)
+
+===== 21:24:39 · Toàn làm (sudo, trên .99): thêm cổng 8446 cho nguồn 192.168.1.98 vào bảng cổng nội bộ rồi khởi động lại bộ lọc =====
+  ssh -t ssv@192.168.1.99
+  sudo cp -p /etc/ginsengfood/cong-noi-bo.conf /etc/ginsengfood/cong-noi-bo.conf.truoc-8446
+  echo '192.168.1.98     8446   M5 may mkt goi cua TLS m5cua (M3 by-code, M4 advise; m34.100)' | sudo tee -a /etc/ginsengfood/cong-noi-bo.conf
+  sudo systemctl restart gf-tuong-lua && sudo iptables -S DOCKER-USER | grep -- '--ctorigdstport 8446'
+  sudo iptables -S DOCKER-USER | grep -c -- '--ctstate NEW -j DROP'    # phải ra 1; ra 0 = bảng hỏng, chép lại bản .truoc-8446 rồi restart
+  rồi chạy: bash m5-cua-99.sh kiem98

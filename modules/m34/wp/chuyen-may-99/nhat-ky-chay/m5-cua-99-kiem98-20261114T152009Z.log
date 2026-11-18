@@ -1,0 +1,7 @@
+
+===== 22:20:09 · gọi thử từ .98 qua cửa (không token) =====
+  GET by-code (mong 503): 000000
+  POST advise (mong 403): 000000
+  GET đường khác (mong 404): 000000
+
+===== 22:20:34 · nhật ký cửa trên .99: IP nguồn + mã (5 phút qua) =====

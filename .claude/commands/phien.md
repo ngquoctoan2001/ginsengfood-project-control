@@ -1,9 +1,9 @@
 ---
 description: Nhận vai một luồng việc và lập bảng đầu phiên - thay đổi, % sẵn sàng, việc chặn, cần Lead quyết, đề xuất sóng việc song song
-argument-hint: <m12|m34|m5|m6|m7|m8|lead>
+argument-hint: <m12|m34|m5|m6|m7|m8|m9|lead>
 ---
 
-Luồng: `$ARGUMENTS`. Trống hoặc không thuộc `m12 m34 m5 m6 m7 m8 lead` → hỏi Lead đúng một câu rồi dừng.
+Luồng: `$ARGUMENTS`. Trống hoặc không thuộc `m12 m34 m5 m6 m7 m8 m9 lead` → hỏi Lead đúng một câu rồi dừng.
 
 1. **Nhận vai.** Chạy `date`. Đọc `chung/CACH_LAM.md`, `modules/$ARGUMENTS/PHIEN.md`, `modules/$ARGUMENTS/SAN_SANG.md`,
    `modules/$ARGUMENTS/TRANG_THAI.md`. Phiên đã mở từ hôm trước (không phải phiên mới) → đọc lại cả `CLAUDE.md` (phiên `lead`

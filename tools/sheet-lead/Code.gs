@@ -9,10 +9,11 @@
  * Cài đặt và cập nhật: xem tools/task-tracker/README.md.
  */
 
-const VERSION = '1.5.0';
+const VERSION = '1.5.2';
 const TZ = 'Asia/Ho_Chi_Minh';
-// Tên Lead hiện trên Sheet ở mọi ô người (người phụ trách, người làm, Nhật ký, Báo cáo tuần). Chữ "Lead" chỉ còn ở tiêu đề
-// cột vai trò ("Lead duyệt", "Ghi chú Lead", "Đánh giá của Lead"); giá trị người "Lead" gửi tới web app được đổi bằng personName_.
+// Tên Lead hiện trên Sheet ở mọi ô người (người phụ trách, người làm, Nhật ký, Báo cáo tuần) và ở tiêu đề cột đánh giá
+// của tab "Báo cáo tuần" ("Đánh giá của <LEAD_NAME>", lead.87 14/11; tiêu đề cũ "Đánh giá của Lead" vẫn được nhận).
+// Chữ "Lead" còn ở tiêu đề cột vai trò của tab task ("Lead duyệt", "Ghi chú Lead"); giá trị người "Lead" đổi bằng personName_.
 const LEAD_NAME = 'Nguyễn Quốc Toàn';
 
 const TAB_OVERVIEW = 'Tổng quan';
@@ -39,7 +40,7 @@ const MODULES = [
   { key: 'M6', tab: 'M6', name: 'M6', owner: 'Nguyễn Phát Tài' },
   { key: 'M7', tab: 'M7', name: 'M7', owner: LEAD_NAME },
   { key: 'M8', tab: 'M8', name: 'M8', owner: LEAD_NAME },
-  { key: 'M9', tab: 'M9', name: 'M9', owner: 'Chưa phân công' },
+  { key: 'M9', tab: 'M9', name: 'M9', owner: 'Trương Công Phúc' }, // D-lead-052 16/11: M9 giao Phúc (thay lead.88)
 ];
 
 const STATUS = {
@@ -119,7 +120,7 @@ const WEEKLY_FIELDS = [
   { key: 'blocked', header: 'Bị chặn / Rủi ro', width: 240 },
   { key: 'next', header: 'Kế hoạch tuần tới', width: 260 },
   { key: 'file', header: 'Báo cáo của dev (file .md)', width: 220 },
-  { key: 'review', header: 'Đánh giá của Lead', width: 260 },
+  { key: 'review', header: 'Đánh giá của ' + LEAD_NAME, aliases: ['Đánh giá của Lead'], width: 260 },
   { key: 'sent', header: 'Gửi sếp', width: 90 },
 ];
 const WEEKLY_SENT = ['Chưa gửi', 'Đã gửi'];
@@ -435,7 +436,7 @@ function setupGuideTab_(ss) {
   const lines = [
     ['GINSENGFOOD · HƯỚNG DẪN BẢNG QUẢN LÝ TASK M1–M9'],
     [''],
-    ['1. Mỗi module một tab: M1-M2 (Nguyễn Quốc Toàn), M3 (Trương Công Phúc; vận chuyển, thanh toán: Nguyễn Phát Tài; kết nối đơn hàng với M8: Nguyễn Quốc Toàn), M4, M5, M6 (Nguyễn Phát Tài), M7, M8 (Nguyễn Quốc Toàn), M9 (chưa phân công). "Tổng quan" tính task theo cột "Người phụ trách", nên M3 có ba dòng Phúc, Tài và Toàn.'],
+    ['1. Mỗi module một tab: M1-M2 (Nguyễn Quốc Toàn), M3 (Trương Công Phúc; vận chuyển, thanh toán: Nguyễn Phát Tài; kết nối đơn hàng với M8: Nguyễn Quốc Toàn), M4, M5, M6 (Nguyễn Phát Tài), M7, M8 (Nguyễn Quốc Toàn), M9 (Trương Công Phúc). "Tổng quan" tính task theo cột "Người phụ trách", nên M3 có ba dòng Phúc, Tài và Toàn.'],
     ['2. Mã task: <module>-<3 chữ số>, ví dụ M3-001. Tab M1-M2 dùng tiền tố M12-, ví dụ M12-001.'],
     ['3. Trạng thái: Chưa bắt đầu → Đang làm → Chờ review → Hoàn thành. "Bị chặn" = đang vướng, ghi lý do và người cần gỡ ở cột "Ghi chú / Vướng mắc". "Hủy" = không làm nữa.'],
     ['4. Ưu tiên: P0 khẩn (đang chặn việc khác) · P1 cao · P2 trung bình · P3 thấp.'],
@@ -743,7 +744,7 @@ function isLeadOwner_(owner) {
 /* ───────────────────────────── Báo cáo tuần ───────────────────────────── */
 
 // Ghi 1–WEEKLY_MAX_ROWS dòng vào tab "Báo cáo tuần". Đã có dòng cùng khoá thì chỉ ghi các trường được gửi, cột khác
-// giữ nguyên (kể cả "Đánh giá của Lead", "Gửi sếp" Lead điền tay); chưa có thì thêm vào cuối tab.
+// giữ nguyên (kể cả cột đánh giá, "Gửi sếp" Lead điền tay); chưa có thì thêm vào cuối tab.
 // Kiểm hết đầu vào trước khi ghi: sai một dòng là không ghi dòng nào.
 function upsertWeekly_(ss, body) {
   const input = body.rows;
@@ -922,7 +923,9 @@ function checkWeeklyHeader_(sh) {
   const got = sh.getMaxColumns() >= n ? sh.getRange(1, 1, 1, n).getValues()[0] : [];
   for (let i = 0; i < n; i++) {
     const h = String(got[i] === undefined ? '' : got[i]).normalize('NFC').trim();
-    if (h !== WEEKLY_FIELDS[i].header) {
+    const ok = [WEEKLY_FIELDS[i].header].concat(WEEKLY_FIELDS[i].aliases || [])
+      .map(function (a) { return a.normalize('NFC'); });
+    if (ok.indexOf(h) < 0) {
       return 'WEEKLY_HEADER_MISMATCH: cột ' + colLetter_(i + 1) + ' của tab "' + TAB_WEEKLY + '" là "' + h + '", cần "'
         + WEEKLY_FIELDS[i].header + '". Trả cột về đúng chỗ rồi chạy Task Tracker → Khởi tạo / cập nhật cấu trúc.';
     }

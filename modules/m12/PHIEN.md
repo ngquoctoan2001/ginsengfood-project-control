@@ -75,4 +75,5 @@ Nguồn: `docs/reviews/19-10-11-37-pilot-g1-local-readiness-review.md` §23.64, 
 
 ## Báo cáo tuần
 
-`M12-van-hanh-nha-may`, THƯỜNG — `/bao-cao-tuan` (prompt `tools/task-tracker/bao-cao-tuan/prompt-1-Lead-M12-van-hanh-nha-may.md`).
+D-m12-064 (D-lead-045): phiên m12 KHÔNG tự viết báo cáo tuần nữa. Phiên `lead` lập báo cáo của Toàn (`/bao-cao-tuan toan`); khi phiên lead
+hỏi qua tin nhắn phiên, trả dữ kiện ≤ 30 dòng kèm SHA/tệp: đã làm · còn lại tới mốc gần nhất và 30/11 · kế hoạch tuần tới · khó khăn + cách giải quyết · CHƯA CHẠY.

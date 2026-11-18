@@ -1,58 +1,49 @@
 # Trạng thái — m7
 
-Mốc: 14/11/2026 10:27 (UTC+7) · main `9e8ad9f` (origin/main ở `8e0cd7b`; 8 commit local chưa push: T083 `cb76ab2`, T189a `192fdc5`, T076b `f361b22`, T076c `5d6f654`, T220 `9051ef7`, DL-325/326 `0a2b266`, T189b `cc8473b`, T084 `9e8ad9f`) · CI giữ tắt.
-Sẵn sàng **15%** (10/11: 11%), chấm lại sau bộ kiểm đủ; chi tiết `SAN_SANG.md`. Kịp 15/11: **ĐỎ** (dữ liệu sản phẩm dùng MẪU theo D-m7-080; Toàn đã đăng nhập Muse, còn địa chỉ trang Muse và câu "chạy T189"; T083, T076 đang chờ verifier vòng 2, T084, T085 chưa mở); nhịp làn .NET đã đạt (khoảng 115 giờ ước/ngày so với 50 cần cho 175 giờ ước còn lại của Mốc 1).
-- Đường găng Mốc 1: T085 (coder, 3,5 giờ) → T190; T221 (đang ghép) → ghi `muse.ui_map` + dữ liệu MẪU → T190 thật (Muse thật + `-RealTools`); m7.166 (ngưỡng ASR); T076d (đang chạy, nhỏ).
+Mốc: 18/11/2026 08:30 (UTC+7, thứ Tư) · origin/main = main máy Lead = `68c9100` (push 08:28, D-m7-118), sạch · .63 main `68c9100` + việc lượt 04 đang làm · CI giữ tắt.
+**Tài khoản mới (18/11):** Toàn chuyển tài khoản Claude sáng 18/11, đã `/login` trên .63 lúc 08:08. Phiên CLI .63 `9b228a48-18f2-4f89-a565-0d017ccdc4ab` chạy tiếp được ở tài khoản mới.
+**Điều khiển .63 (D-m7-110):** phiên m7 máy Lead đọc bản ghi, giao lượt qua ssh (`claude --resume … -p`, `auto`, tệp lệnh, log ở `~/m7-drive/`, cách làm ở `PHIEN.md`). Phiên máy Lead không tự sửa mã M7. Toàn không gõ vào phiên `9b228a48` khi đang có lượt (phiên Claude tương tác Toàn mở ở `~` là phiên khác, được).
+Sẵn sàng **15%** (chấm 11/11, chưa chấm lại). Mốc 1: **TRỄ, ĐỎ**, đóng khi T232 ra video (D-m7-101, DL-337). Mốc 2 (30/11, còn 12 ngày): ĐỎ (748 giờ ước).
 
-## Đã xong từ 10/11 chiều (đã commit trên main, origin cùng SHA)
+## Đang chạy trên .63
 
-Mỗi task có verifier độc lập ĐẠT:
-T183, T184, T185 (web nền) · T040, T041, T188, T042 · T026, T029, T030 (guard, hồ sơ) · T054, T055, T049, T048, T063, T062, T062b, T050, T053, T056, T058 (Studio) · T060 (TTS), T068 (RENDER phần 1) · T079, T043, T080, T081 (video ngắn) · T069 (RENDER phần 2), T061 (ASR_VERIFY), T082 (guard video ngắn), T065a (ui_map vào lease), T064 (Muse trên trang giả lập), T087 (web SCR-10/11) · T036 (mẫu prompt) · T014 (công tắc dừng, Lead "Ok gộp" D-m7-071) · T034 (adapter Claude), T035 (kiểm lược đồ, chống chèn lệnh, PII; Lead chốt m7.160 A, m7.161 A, D-m7-072).
-Commit mới nhất: T060 `6e6bb1f`, T068 `ced8094`, T081 `43cbcf1`, T087 `683cb8b`, T069 `132e82c`, T061 `b39d585`, T082 `ff6f330`, T064 `ca4320c`, T065a `7cce181`, T076 `8e0cd7b`, T083 `cb76ab2`, T189a `192fdc5`, T076b `f361b22`, T076c `5d6f654`, T220 `9051ef7`, T189b `cc8473b`, T084 `9e8ad9f`.
-Bộ kiểm đủ trên `a6011c4` (11/11, một lần): .NET xanh (Integration 4.784; T011/T030 đỏ 1 ca lúc máy kín, chạy riêng đạt); web xanh (vitest 1.167, build). Sheet: "Lead duyệt" Đạt đã ghi cho 24 task. Chưa có verdict cho T043, T058, T080, T035, T060, T068, T081, T087, T069, T061, T082, T064, T065a (sau SHA bộ đủ): ghi sau lần bộ đủ kế tiếp.
+- **Lượt 04** (giao 08:12, PID 3896123, biến chờ nền = 0 đã kiểm, `~/m7-drive/p-04.txt` → `o-04.log`): sóng 2 WP31 = T226 ‖ T233 trên nền `68c9100` (brief `~/m7-drive/wave2/`, clone `~/_wt/m7/T226`, `T233`), cuối sóng bật bộ đủ tách rời. Lượt này giao trước khi Toàn trả lời nên không push, không gộp, không migration, không gọi Claude/Codex/Muse thật. Máy Lead có ssh nền chờ.
+- **Lượt 05 đã soạn** (`~/m7-drive/p-05.txt`), giao ngay khi lượt 04 xong: D-m7-119…124 (gộp T223, nối Claude thật + EN_IMAGE_PROMPT, T224 theo C, migration 5b3 trên dev, RU-16 vào T233, nhập 6 ảnh với nguồn AI dựng), rồi T227 → T228 → T229 → T230 khi đủ phụ thuộc; dừng trước mọi lượt Muse thật và báo số lượt cần; bộ đủ cuối lượt; không push.
+- Bộ đủ `68c9100` XANH (17/11 17:55–20:53): build, Contract 56, Architecture 1.153, Domain 5.399, GuardCorpus 1.975, StudioWorker 1.835 (89 bỏ qua), Integration 56 namespace 0 hỏng, docs, web. Log `~/m7-drive/full-68c9100/`. Bộ đủ `cf6a954` XANH.
+- Stack dev `m7-m7-*` 6/6 healthy. RAM .63 trống 31/38 GB (07:53).
 
-## Đang chạy
+## WP31 (T222…T233)
 
-| Việc | Trạng thái |
-|---|---|
-| T076 chạy trọn dây chuyền Studio (gồm T076b, T076c) | ĐÃ GHÉP vào main: T076 `8e0cd7b`, T076b `f361b22` (ảnh chụp T083 → timeline: `scene_index`, `rule_code`, câu SHOW, `max_ms`, khoá nhạc, bọc lease; E2E ảnh chụp thật → worker thật → `AUTO_CHECK` 13/13), T076c `5d6f654` (chuỗi âm lượng bền; chế độ B THẬT `SUCCEEDED`, ASR 0,9583). Kiểm nhanh trên main: Architecture 1114, StudioWorker Render+Asr 645, Integration T076+T076b 24/1 bỏ qua, T076b+T076+T083+T054+T065a 215/1. Sheet M7-082 Hoàn thành. Mở: min_display_ms/min_font_px từ luật chưa tới ảnh chụp (T076b.2, task nhỏ 3 tệp), nhạc khoá chặn muộn ở RENDER (T076b.4), T076.8 (TPBVSK hiện suốt phần nói về sản phẩm), T076.10, điểm ASR sát 0,95 (m7.166) |
-| T189 đo và chạy Muse thật | XONG ở mức adapter: ĐÃ GHÉP T189b `cc8473b`; `muse-clip` THẬT thành công 09:19 (Toàn duyệt D-m7-081): mp4 h264 720×1280 24 fps 10 giây có tiếng AAC, 3,3 MB, sha256 `f96b0400…`, gửi → thẻ clip 79 giây, tải 7,5 giây, khung hình đúng yêu cầu (bát cháo hạt sen, bàn gỗ, nắng sớm), khoá mạng chặn 0 (cần `M7_MUSE__EXTRAHOSTS=hatch.metaaivm.com`; lượt đầu dừng mã 10 vì host này). Clip và ảnh bằng chứng ở `ra-soat\2026-11-14-t189b\evidence-real\`. Kiểm trên main: build 0/0, Architecture 1115, `Steps.Visual` 606, Domain Muse 110, Integration T065a 61. Tốn 2 lượt tạo clip (1 khảo sát explore2 + 1 `muse-clip` thành công; lượt `muse-clip` đầu dừng trước khi gửi). Còn: ghi `muse.ui_map` vào DB stack (EP-177, cùng T221), `evidence_region` chụp quá nhỏ (608×100, 608×8: chỉnh), hết phiên giữa lượt chưa phát hiện (không có `login_marker`), Muse tự chọn thời lượng (10 giây). Sheet M7-207 Hoàn thành |
-| T076d vòng thử lại âm lượng nâng trần (từ F1 của verifier T076c) | TẠM DỪNG lúc 07:45 (nhường chỗ agent cho T189b; clone `code-T076d` mới tạo, chưa có mã); nhỏ, không chặn; mở lại khi có chỗ |
-| T085 gói xuất video ngắn (EP-136…139, bảng `gh_short_video_package`) | coder đang làm ở `code-T085` (nền `9e8ad9f`, brief `brief-T085.md`, 3,5 giờ): migration một bảng, xuất gói từ video APPROVED (tệp, caption qua guard, thumbnail, nhãn AI, checksum, `manifest.json` có `ai_disclosure.required = true`), tải có quyền, thu hồi, kiểm lúc xuất (video hết hạn, SKU thu hồi), ≤ 8 đột biến. T084 ĐÃ GHÉP `9e8ad9f` (EP-131…135, 237; Integration 303/303 trên main; Sheet M7-090 Hoàn thành; mở: danh mục mã lý do lưu trữ, `blocking_codes` EP-119 cho T090, hạn giấy phép nhạc cuối ngày hay đúng mốc, `caption.txt` chưa có cột trỏ) |
-| T220 stack dev (đã ghép `9051ef7`) + T221 bộ chạy video và dữ liệu mẫu | T221 coder ĐẠT (`T221.patch` sha `d27c06aa…`, nền `9051ef7`, chưa ghép): `AUTO_CHECK` trên stack PASS 13/13 với `-RealTools -AsrOverall 0.90` (lượt `SUCCEEDED` 10 phút 36 giây; video 1080×1920 109,6 giây −13,5 LUFS; TTS VieNeu 1:37, VISUAL ×7 2:39 (Muse `mock`), RENDER ffmpeg 1:19, ASR 3:34, AUTO_CHECK 1:19). Toàn `mock` KHÔNG qua (ASR `mock` lệch nhịp TTS `mock`). Điểm ASR tiếng THẬT 0,907 (39 lỗi/422 từ) dưới ngưỡng 0,95: lượt PASS phải hạ tạm 0,90 bằng SQL (`asr.thresholds` chưa có trong danh mục cài đặt API) = m7.166. Ảnh phái sinh `m7-worker-dev` 940 MB có ffprobe 6.1.1; dữ liệu MẪU nạp qua API (sản phẩm, hồ sơ MẪU, 3 CTA, loại `PRODUCT_INTRO`); kịch bản mẫu 7 cảnh CLIP ~118,5 giây EP-123/EP-126 PASS. Ba vá mã sản phẩm có test đỏ trước: fixture AI `mock` dựng 7 clip, `SubtitleInputReader` đưa câu SHOW vào guard (lỗi THẬT của main: mọi video có SKU bị `SUBTITLE` chặn `GH_TRANSCRIPT_GUARD_FAILED`), Muse `mock` ghi clip giải mã được (`M7_MOCKVIDEO__DECODABLE`). Chờ ghép sau T084 |
-| T066 phiên nhà cung cấp | verifier vòng 2 CẦN SỬA (không chặn; F2, F3, F6, F9 đúng, F1 mới sửa một phần): `mk` và `pass` vẫn lọt vào audit (F1′-1, sửa trước ghép), từ chen giữa kiểu "mật khẩu của Muse là …" và "mã xác nhận …" lọt (F1′-2), chuỗi trần lọt (F1′-3), chặn nhầm 9/60 mẫu (câu "nhập sai mật khẩu 3 lần", giờ, UUID; 0/29 câu tiếng Việt thường; F1′-4). Dán nguyên Cookie, Bearer, URL có token, email, số điện thoại: lọt 0/39. Số: Domain 4528, Architecture 869, GuardCorpus 1975, Contract 56, Integration T066 97, T056 + halt 193, web 1613; 46 đột biến riêng, 3 sống (2 khoảng trống test). Coder vòng 3 nhỏ (F1′-1, F1′-2, hai khoảng trống test) xếp hàng sau đường găng. Khi ghép: CHANGELOG và api-schemas (2.24 trùng, đổi 2.26) xung đột; sinh lại OpenAPI, schema.d.ts. Sheet M7-072 |
-| T062b → vận hành | Bản luật tiếng Anh đã vào main nhưng CHƯA nạp vào DB nào; mẫu prompt v1 CHƯA kích hoạt; E3 với Claude thật cần khoá (m7.158); nhãn corpus tiếng Anh và 126 nhãn EVS-02/03 đã duyệt (D-m7-076, 077); nạp bản luật khi có E3 |
-| Chưa mở | T085 (sau T084; cần migration `gh_short_video_package`), T088…T090 (T088 chờ T082 đã xong: mở được); T044 (cảnh báo GlobalHaltOn); T065 phần còn lại (sau T064, T066; gồm ảnh đệm trung tính khi hết phiên, D-m7-078); T189 (sau T064, T065a, và Toàn đăng nhập Muse trước lượt thật) |
+- Trên origin (`68c9100`): T222 thiết kế + đo Muse (`6d7eb2c`, `68c9100`) · T231 `02b1330` (R1 ĐẠT) · T225 `8dce70a` kho ảnh + nhân vật, có migration 5b3 (R2 ĐẠT, 20 đột biến) · DL-340…343 `b2dab53`.
+- Toàn đã chốt, lượt 05 làm: T223 `bfcf956` ok gộp (R3) + Claude thật · T224 `2192d48` theo C.
+- Đang làm (lượt 04): T226, T233. Còn: T227 (cần T223, T226, ảnh: đã có), T228 (sau T233), T229 (cần T224), T230, T232 (lượt thật, cần Muse).
+- Đo Muse 4/4, đã tiêu 11/13: số giây đúng xin (8–20 giây), nhận ảnh đính làm khung đầu, giữ ngữ cảnh cùng cuộc trò chuyện; clip 720x1280, 24/30 khung/giây, có tiếng → T229 phải chuẩn hoá.
+- Câu mở phiên .63 nêu, chưa hỏi Toàn: DL-332 có áp master không, chữ caption DL-O09, cài worker Ubuntu (đề xuất T059).
 
-## Lưu ý vận hành
+## Quyết định 18/11 08:2x (D-m7-118…124, "Oke, cứ theo đề xuất của bạn và tiếp tục nhé")
 
-- Máy hay cạn cổng TCP tạm khi nhiều tiến trình test chạy song song hay một lớp mở nhiều kết nối: đỏ giả `Only one usage of each socket address`. Đợi, chạy lại riêng ca đỏ, mỗi lúc một `dotnet test`. Bộ kiểm đủ chạy 4 giờ 13 phút vì máy kín CPU; lần sau chạy khi ít agent. (m7.156)
-- Bộ kiểm đủ chạy MỘT lần cuối sóng trên SHA cuối, worktree riêng (`_wt/m7/full-<sha>`), rồi `don_may.ps1 -Dung` (D-lead-030, 031). `sheet_lead.mjs can-ra` hay hết thời gian chờ mạng: lấy danh sách bằng `sheet-sync list`, ghi bằng `ghi`; reviewedAt dùng giờ thật (`date`).
-- Nợ ghi ở phiếu: T049 (AUTO_CHECK phụ thuộc RENDER), T029 (lịch COMPLIANCE_REVIEW_DUE), T055 N1–N4, T056 nợ 17–20, T034 N2, T043, T014 (cảnh báo GlobalHaltOn → T044, audit mỗi lần xin lease bị chặn → T176), T080 (L4 ký tự điều khiển đã đóng ở `dfa0591`; created_at cần migration trước T088), T058 (os-store T059/T177), T060 (taskkill 5 s → Job Object; TTS không tất định), T068 (true-peak sớm, gộp ToolProcess), T081 (RECRUIT_CTV/PRODUCT_INTRO guard BLOCKED nhưng content_level GREEN tới T082; EP-127 phải guard lại; nhãn EVS-09 thiếu nhóm), T061 (ngưỡng 0,95/0,98/0,80 chưa đo; hai bộ chuẩn hoá chữ cùng tồn tại).
-- Giảm tải máy (D-m7-079, m7.165 a–e): lệnh nặng đi qua `modules/m7/tools/m7-heavy.ps1` (tối đa 2 cùng lúc, BelowNormal, đợi khi TIME_WAIT từ 4000 hoặc RAM trống dưới 3 GB); luật đầy đủ `modules/m7/tools/LUAT_TAI_NGUYEN.md`. Toàn đã nới dải cổng tạm bằng `netsh` (kiểm 12:37: bắt đầu 10000, 55535 cổng; hoàn tác: `netsh int ipv4 set dynamicport tcp start=49152 num=16384`).
-- Máy chủ chính thức (D-lead-034/035/036, `chung/MAY_CHU.md`): M7 tạm ở .60; M7 gọi M1–M2 qua `M7_OPSCORE__BASEURL` = .99:5000 từ 13/11 22:30, M3 + M4 qua `M7_M3__BASEURL` = .99:80 từ 14/11 22:45, M5 ở máy mkt .98; `video.` không đổi; .61 là đường lui của M1–M2, M8 (dọn .61 chỉ phần M7 cũ). Chưa ảnh hưởng Mốc 1.
-- `_wt/m7/` có hơn 70 thư mục clone; dọn ở `/cuoi-phien` (giữ clone sóng 5 và `full-a6011c4`).
+Push 5 commit: xong 08:28, máy Lead chạy qua ssh trên repo .63 tới đúng `68c9100` · T223 ok gộp · T223 Claude thật + EN_IMAGE_PROMPT · T224 phương án C · migration 5b3 `--approve` chỉ DB dev .63 · RU-16 gộp T233 · ảnh: máy Lead chép 6 PNG (thư mục chỉ có 6, không phải 5) vào `~/dev/m7-input/chao-sam/chao-sam-diem-mach-hat-sen-1…6.png`, sha256 khớp 6/6; đều là ảnh hộp dựng bằng ChatGPT, nhập với nguồn AI. Câu cũ không chặn: m7.164, m7.153–159.
 
-## Việc của Toàn (không phải câu hỏi)
+## Việc tay của Toàn
 
-- Dữ liệu sản phẩm cho T190: Toàn bảo dùng dữ liệu MẪU (D-m7-080, thay D-m7-074): phiên m7 tự nhập qua API ở T191 từ ảnh nhãn `Y:\NGHIÊN CỨU SẢN PHẨM MỚI\...\A1. Diêm mạch hạt sen`; video T190 là video thử, không dùng để phát. Toàn không phải gửi gì; có Giấy xác nhận và câu công dụng đã duyệt thì gửi sau để thay.
-- Muse: Toàn đã đăng nhập tay vào hồ sơ Chrome riêng của worker lúc ~14:52 (phiên m7 đóng cửa sổ êm; hồ sơ 78 MB, chưa đọc gì trong đó). Địa chỉ trang Muse Toàn đã cho: `https://muse.ai/` (đặt `M7_MUSE__BASEURL`; host phụ đo ở T189 bằng nhật ký host bị chặn; tiêu đề cửa sổ đăng nhập "Chat — Muse", trang chủ công khai "Muse — Your Personal AI Agent from Meta"). CÒN CẦN câu "chạy T189" của Toàn khi công cụ đo bản đồ giao diện sẵn sàng (phiên m7 báo lệnh cụ thể và những gì nó làm: mở Chrome hồ sơ riêng, chỉ đọc cấu trúc trang, rồi một clip thật tiêu một lượt hạn mức của tài khoản trả phí).
+1. Codex: `codex login status` trên .63 trả 0 lúc 07:53 (có vẻ đã đăng nhập; phiên .63 kiểm khi cần gọi thật).
+2. Báo phiên m7 khi Anh Tuấn giao máy ảo M7 hoặc máy staging.
+3. Sắp tới: duyệt số lượt Muse thật cho T228/T232 (lượt 05 sẽ báo số cần).
 
-## Cần Lead quyết
+## Sheet (18/11 08:1x)
 
-| Mã | Câu hỏi | Đề xuất | Hạn |
-|---|---|---|---|
-| m7.166 | Điểm khớp ASR thật dưới ngưỡng 0,95: 0,9687 (T076 vòng 1), 0,9583 (T076c), 0,907 (T221, kịch bản mẫu 118 giây, 39 lỗi/422 từ). T190 có thể hỏng `ASR_VERIFY` | A: giữ 0,95, chỉnh lời kịch bản mẫu (từ dễ nghe, bớt tên riêng và số) rồi chạy lại; B: hạ 0,90 chỉ cho máy dev, nhãn trong báo cáo | 14/11 chiều (T190) |
-| m7.164 | EP-236 (mở lại hàng) chạy với phiên ở mọi trạng thái (ACTIVE, EXPIRED, CHECKING), không đòi phiên ACTIVE; bộ nhận lease vẫn đòi cả phiên ACTIVE lẫn hàng không tạm dừng. Giữ nguyên hay đòi ACTIVE? | Giữ nguyên (khớp api-schemas, MEDIA_PIPELINE §4.2, RU-16); đổi thì sửa ở T065 | không chặn |
-| m7.148 | Thêm làn Codex ngoài đường găng? | A (phiên m7 tự gọi `codex exec`) | quá hạn |
-| m7.150 | Toàn ký nghiệm thu Mốc 1, 2 thay mọi vai (DL-O75)? | Có | 14/11 |
-| m7.151 | Mốc 2 thiếu giờ: giữ phạm vi hay dời WP29? | Quyết 16/11 | 16/11 |
-| m7.153–159 | Ngưỡng T026; chủ cho "xem tiến độ không chặn duyệt"; ưu tiên máy; khung bảng cuộn dọc (A/B); gói Anthropic NuGet (cần cho `claude-api`); xác nhận lại audit mỗi giờ (đề xuất B) | Xem `QUYET_DINH.md` và nhật ký 10/11 | rải 11–13/11 |
+- Ghi 18/11: M7-251 T225 Hoàn thành `8dce70a` + Lead Đạt; M7-257 T231 Lead Đạt; M7-249 T223, M7-250 T224 Chờ review; M7-248 T222 thêm đo Muse. Lead Đạt qua `sheet_lead.mjs`, đọc lại 2/2 (`ra-soat/2026-11-18-sheet/`).
+- 09:0x: auditor rà 23 task R1/R2 sau `a6011c4` (đều là tổ tiên `68c9100`, bộ đủ XANH) → ghi Lead Đạt 13 task đủ bằng chứng verifier ĐẠT (M7-049, 064, 066, 067, 070, 074, 086, 091, 093, 244…247), đọc lại 13/13 (`ra-soat/2026-11-18-sheet/dat-13.json`).
+- 10 task CHƯA đủ bằng chứng verifier cho bản cuối, giữ nguyên; kiểm bù trên .63 sau khi T232 ra video (D-m7-125): M7-041 T035 (phiên chính tự vá sau vòng 2 CẦN SỬA), M7-075 T069 (verifier kiểm v1, commit là v2: đổi test), M7-087 T081 (test thêm chưa ai xem), M7-088 T082 (vá `IsSafeText` ở `dfa0591`), M7-089 T083 (sửa F1′ không có vòng verifier 3), M7-090 T084 (không verifier), M7-082 T076 (T076b, T076d không verifier), M7-207 T189 (vòng 2 T189a, T189b không verifier), M7-242 T220, M7-243 T221 (không verifier). Sheet M7-041 và nhật ký 12/11 (T081) ghi "verifier ĐẠT" sai so với báo cáo.
+- R3 M7-014 T008, M7-019 T013 chờ Toàn. M7-252 T226, M7-259 T233, M7-249/250 ghi khi lượt 04, 05 báo.
+- M7-009 (T003 CI) Bị chặn do CI tắt (rủi ro đã nhận).
 
-## Bước tiếp
+## Máy và vận hành
 
-1. Coder T083 vòng 2, T076 vòng 2 báo (coder T066 vòng 3 mở khi có chỗ trống) → verifier xem lại phần sửa → ghép (T065a: thêm test thoả thuận `LeaseParamsUiMapSource.ParamsKey == "ui_map"`) → tạo `kiem-<task>` → verifier độc lập → ghép → kiểm nhanh → commit → Sheet ngay → nhật ký. Máy tối đa 3 agent và 2 lệnh nặng (D-m7-079).
-2. Sau T083: T084, T085; T088 (web chi tiết/brief/kịch bản) mở được từ nay; sau T061 + T069: T076; web T088…T090 sau T087.
-3. Bộ đủ kế tiếp trên SHA cuối khi nhóm này vào main, rồi ghi `sheet_lead` Đạt cho T043, T058, T080, T035, T060, T068, T081, T061, T082, T069, T087; `don_may.ps1 -Dung`; tính lại %.
+- Máy chạy thật M7: máy ảo Ubuntu 22.04 không card (D-m7-099, DL-338); máy staging giống .99; Anh Tuấn chưa giao cả hai.
+- .63: máy ảo Hyper-V 10 vCPU, 38 GB; runner CI `may-63` dùng chung. Máy Lead vào bằng `ssv@` địa chỉ .63. Kiểm tách rời dùng clone `--no-local`, không `git worktree`.
+- Máy Lead: `_wt/m7/` hơn 70 clone, dọn ở `/cuoi-phien`.
+- Mở sau Mốc 1: T066 vòng 3, T076b.2, T076b.4, T076.8, T076.10, `evidence_region` Muse, T088…T090, T044, T065 còn lại, T062b; nợ T085, T190b (tệp phụ đề tạm), ngưỡng ASR 20 kịch bản (Mốc 2).
+- Báo cáo tuần: phiên m7 không tự viết (D-m7-090).
 
-Ranh giới không đổi: push chỉ khi Lead nói (origin đã bằng main khi kiểm 12/11), không migration lên DB dùng chung, không UAT hay production nếu Lead chưa nói rõ. D-m7-067, D-m7-069, D-m7-070, D-m7-071, D-m7-072, D-m7-073…077 vẫn hiệu lực.
+Ranh giới: push và Muse thật chỉ theo lời Toàn từng lần; không migration DB dùng chung, không UAT hay production nếu Lead chưa nói rõ. D-m7-067, 069…097, 099…125 vẫn hiệu lực.

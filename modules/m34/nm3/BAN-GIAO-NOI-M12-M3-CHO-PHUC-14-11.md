@@ -94,3 +94,21 @@ Kiểm độc lập (verifier) cho gói R2/R3; test theo từng gói, không ch�
 3. **Tài khoản riêng cho máy dev:** `.99` chưa có công cụ tạo principal; bộ chạy cục bộ của m12 sẽ kèm một principal thử chỉ dùng localhost. Bí mật chỉ qua tệp (`secrets/ops_core_client_secret`), không dán chat.
 4. **http hay https:** M3 → M12 trong LAN chạy http với `OPS_CORE_ALLOW_PLAIN_HTTP=true`. M12 → M3 (webhook) khi chạy thật bắt buộc https, cổng 443, tên miền. Chuyển M3 → M12 sang https khi có tên miền thật: chưa chốt, chưa cần cho giai đoạn này.
 5. **`.60` đang ở mức nào:** `f9e179a4`, ops-core TẮT (không quan sát, không chặn), theo sổ 13/11; tối 14/11 gói M3 sang `.99` với bản mới ở chế độ quan sát (`ENABLED=true`, `GATE_ENFORCE=false`).
+
+## 10. Cập nhật 14/11 18:20 (sau khi gửi): hợp đồng M12 đã chốt, NM3-34 mở
+
+- **Hợp đồng chốt:** m12 đã push nhánh `m12-noi-m3` của `ginsengfood-contracts` lên GitHub, `5b078ae..1e73bc1` (39 commit; Toàn duyệt D-m12-067, 18:15).
+  Đây là **lượt chốt** cho M3: đổi gì sau này m12 báo trước. Chỉ là nhánh, chưa PR, chưa merge `main` của hợp đồng (`origin/main` vẫn `a7832a4`).
+- **m34 đã so 1e73bc1 với client M3** (chỉ đọc, `origin/toandeptrai`): không đổi đường nào M3 đang gọi. Các token giữ hàng (`HOLD_LIMIT_REACHED`,
+  `HOLD_SHARE_LIMIT_REACHED`, `EXPIRES_AT_LIMIT_EXCEEDED`, `IDEMPOTENCY_KEY_REUSED`), `decision` đóng an toàn, `recall_case_open`, `X-Correlation-Id`,
+  `expiry_date`, `warehouse_type` đóng, webhook `stock-alert` đóng và `reason` ≤ 200 đều đã tương thích.
+- **Việc 5 (NM3-34 + NM3-15b) hết chờ:** ghim `1e73bc1` thay `a7832a49`, rồi làm theo `nm3/NM3-32c-ra-lai-hop-dong-m12-final-draft.md` mục D, bước 6–9
+  (fixture allocation + skus, đối soát link ↔ danh sách, `NAP_LINK.md`/`chk_ocsl_uom`, `NOI_M12.md`/`SKU_MOI.md`). Bộ đọc `GET /v1/skus` theo bước 5.
+- **Số lượng lẻ — Toàn đã chốt 18:21 (D-m34-074, m34.104 A), Phúc sửa trước ENFORCE ≥ 20/11:** hợp đồng ghi rõ M12 có thể trả `sellable_quantity` lẻ
+  cho hộp/thùng (KHO-Q1 chưa áp; m12 không áp trước 20/11, D-m12-058). `OpsCoreVerdictMapper` hiện coi số lẻ là `OPS_CORE_RESPONSE_INVALID` → `UNKNOWN_BLOCKED`
+  (SKU không bán). Sửa: làm tròn XUỐNG số nguyên (vẫn giữ kiểm `available_quantity` ≥ `sellable_quantity` trên số gốc); làm tròn ra 0 thì SKU phải hiện hết hàng,
+  không hiện bán được. Test tối thiểu: "150.5" → 150, "0.5" → 0 (hết hàng), "150" giữ nguyên, "-1"/sai dạng vẫn `UNKNOWN_BLOCKED`. Đính chính 20:26: `dong-bo-ton.py` CHƯA làm tròn (bỏ qua cặp lẻ); phần script do Toàn sửa trong M3-129, Phúc chỉ sửa cổng bán.
+- **Đính chính mục 9 câu 5:** `.99` đang chạy image `f9e179a45` và ops-core **TẮT** (log pha B 07:36: `OPS_CORE_BASE_URL` chưa đặt), chưa ở chế độ quan sát.
+  Bật quan sát cần: tường lửa `.99` cho dải `m34_app` 172.24.2.0/24 tới `:5000` (phiên lead), đo bằng `docker run --network m34_app` tới `/health/live`,
+  rồi `.env` theo README mục 12.1 + `secrets/ops_core_client_secret`, qua `trien-khai.sh` với bản mới. Allowlist M12 trên `.99` hiện không giới hạn nguồn (WP16).
+  Webhook M12 → M3 nên chờ image có NM3-32b/32c (`a1fc34ba5` trở đi).

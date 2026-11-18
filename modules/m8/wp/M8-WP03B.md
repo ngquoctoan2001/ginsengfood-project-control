@@ -1,6 +1,8 @@
 # M8-WP03B — Khôi phục thật trên .61 vào DB tách riêng
 
-Trạng thái: ĐÃ GỘP local W-0522 (`e74e2ed9`, chưa push) · Rủi ro: R3 · Chế độ: A · Mốc: 12/11
+Trạng thái: ĐÃ CHẠY trên .99 14/11 22:36 — khôi phục ĐẠT (RTO 9,7 s), công cụ kết luận `LECH` chỉ vì schema từ DB rỗng khác chữ ở CHECK `ARRAY` (cùng nghĩa, cấu trúc khớp); bằng chứng W-0541 `143c9c79` (đã push 15/11); cron 02:30 lần đầu XONG 15/11 (957860 byte, 335 mục); còn kho ngoài máy · Rủi ro: R3 · Chế độ: A · Mốc: 14/11
+
+**Trên .99 (D-m8-105, Lead "Có, làm 03B" 14/11): CHẠY 15/11** (không chạy trong ngày mốc D 14/11). Kiểm trước chỉ đọc 14/11 13:58 ĐẠT: RAM trống ~24 GB, đĩa /data trống 253 GB, DB sống 18 MB / 37 bảng / 45 migration (cuối `20261020022600_CapacityRechecksAndGoldenHourTwoCalls`), image `ivr-migrate:10f335de` có sẵn, `db.env` 600, không còn tài nguyên `m8dt-*`; cron sao lưu .99 (19:30 UTC = 02:30 VN) chưa chạy lần nào sau cắt. Công cụ `main` sha256 `43c94b0a…` (W-0522). Kịch bản: `ra-soat/kich-ban-99-03b/chay_03b_99.sh` (chép công cụ lên `/data/ginsengfood-ivr/dien-tap-khoi-phuc.py`, so sha256, rồi `tren_99_03b.sh`: `--thu-muc-m8 /data/ginsengfood-ivr --so-migration 45`, tóm tắt biên bản, kiểm dọn sạch + cron 02:30).
 Hạng mục nâng: Sao lưu và khôi phục 50 → 75 (khi chạy trên .61 đạt) · Sheet: M8-003 · Ước lượng: 8 giờ
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP03B` (bản sao archive, repo tạm commit `goc` ceb9bf9) · Base SHA: `005bc43d` · Chỗ kiểm: cùng bản sao
 Quyết định: D-m8-070 (được restore vào DB tách riêng trên .61). Kho ngoài máy vẫn chờ Anh Tuấn (M8-003), không thuộc lượt này.
@@ -48,8 +50,9 @@ Quyết định: D-m8-070 (được restore vào DB tách riêng trên .61). Kho
 - 11/11 07:21 Lead "ok gộp 03B" → ghép `main` W-0522 `e74e2ed9` (43 tệp, +10.728): bản vá áp sạch sau W-0521, bằng chứng đổi tên `W-0522`, biên bản verifier chép vào `verifier-r3.md`. Bộ đủ trên bản ghép: test cũ `deploy/backup` đạt (`test_recovery` CHƯA CHẠY: thiếu `cryptography`), `dien-tap` 84 OK, lab coder 5/5 (111 s), tester không lab 10 OK, tester lab 207 OK (733 s), Docker sạch; selftest + gate-status PASS; PII container 39 tệp PASS + đối chứng FAIL; gitleaks thử trước commit + sau commit (toàn lịch sử, `16135c72..e74e2ed9`) sạch. Sheet M8-003 IN_PROGRESS 60. Không push.
 
 ## Bước kế tiếp chính xác
-1. Push cùng W-0521 khi Lead lệnh (pre-push-scan trước push).
-2. Diễn tập thật trên .61 theo `deploy/backup/README.md` mục "Diễn tập khôi phục CSDL M8 trên .61": cần lệnh Lead và cách chạy lệnh trên .61; ghi RTO .61, `flock`, tín hiệu, quyền 600 trên Linux.
+1. XONG 14/11 22:36 (Toàn: "làm càng sớm càng tốt"): `chay_03b_99.sh` chạy, biên bản `/data/ginsengfood-ivr/nhat-ky/dien-tap-khoi-phuc-20261114t153626z-f676.json` (sha256 `f8c5a05a…`), bản chép + diff schema ở `ra-soat/kich-ban-99-03b/` và `docs/evidence/W-0541/`.
+1b. Kế: 15/11 sáng kiểm tệp sao lưu cron 02:30 đầu tiên trong `/data/sao-luu/ginsengfood-ivr/`; chuẩn hoá tiêu chí h (so schema bỏ khác biệt dạng `ARRAY[...]::text` vs `(ARRAY[...])::text[]`) hoặc ghi miễn có lý do; nối kho ngoài khi Anh Tuấn có.
+2. Ghi biên bản `ra-soat/2026-11-15-03b-99.md` (RTO, `flock`, quyền 600, tài nguyên tạm đã dọn, tệp sao lưu 02:30 đầu tiên trong `/data/sao-luu/ginsengfood-ivr/`); gói bằng chứng W mới (kèm câu E04/E07–E09 `NOT_RUN` còn thiếu ở README W-0540); cập nhật SAN_SANG (Sao lưu 50 → 75 nếu đạt), TRANG_THAI, Sheet M8-003.
 
 ## Còn lại / CẦN QUYẾT
 - Kho ngoài máy + RPO/RTO duyệt: Anh Tuấn/Lead (ngoài lượt này).

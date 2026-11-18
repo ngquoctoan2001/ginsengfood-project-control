@@ -1,0 +1,61 @@
+
+===== 21:18:30 · chép 14 tệp bộ triển khai bản afb6d404c lên .99/_cap-nhat =====
+14
+
+===== 21:18:31 · cài + trien-khai.sh + kiểm (.99) =====
+U1 sao lưu tệp cũ vào _chuyen-may/tu-truoc-cap-nhat-20261114T141824Z + liệt kê khác biệt (chỉ tên)
+  ĐỔI  README.md
+  MỚI  compose.m5-cua.yml
+  ĐỔI  compose.yml
+  ĐỔI  crontab.mau
+  MỚI  don-thu/README.md
+  MỚI  don-thu/go-don-thu.sql
+  MỚI  don-thu/nap-don-thu.sql
+  ĐỔI  env.mau
+  MỚI  m5-cua/.gitignore
+  MỚI  m5-cua/tao-chung-thu-m5-cua.sh
+  ĐỔI  m8-that/BANG_CHUNG_M3.md
+  ĐỔI  m8-that/M8_THAT.md
+  ĐỔI  m8-that/kiem-m3-chi-doc.sh
+  ĐỔI  nginx/m34.conf
+U2 cài tệp mới (ghi đè tại chỗ, giữ inode cho bind mount)
+  compose config: OK · biến mới trong be: 6/6 khoá
+U3 ./trien-khai.sh afb6d404c61adfd4ce15995890dcda5501ce15a4 (bản đang chạy: f9e179a450915ff2fafa69ca55484a6f47f55101)
+  | Nhật ký: /data/ginsengfood-business-platform/nhat-ky/trien-khai-20261114T141825Z-afb6d404.log
+  | Bản mới afb6d404c61adfd4ce15995890dcda5501ce15a4, đang chạy f9e179a450915ff2fafa69ca55484a6f47f55101
+  | Hạn: kéo 1800 s, sao lưu 1800 s, up 1800 s; SIGKILL sau 30 s; kiểm http://192.168.1.99 bằng curl
+  | [1/5] Kéo image afb6d404
+  | [2/5] Sao lưu CSDL (bản đang chạy f9e179a450915ff2fafa69ca55484a6f47f55101)
+  |       sao-luu/truoc-trien-khai-20261114T142300Z-afb6d404.dump (4379 mục)
+  | [3/5] Không có migrate riêng: Flyway chạy khi BE khởi động; CSDL không tự lùi — muốn lùi dùng dump bước 2 (sao-luu/truoc-trien-khai-20261114T142300Z-afb6d404.dump)
+  | [4/5] Đổi container sang afb6d404
+  |       ops-core: tắt
+  |       webhook: tắt
+  | [5/5] Xong: đang chạy afb6d404c61adfd4ce15995890dcda5501ce15a4, bản trước f9e179a450915ff2fafa69ca55484a6f47f55101
+U4 khởi động lại nginx :80 (nhận nginx/m34.conf mới)
+ Container m34-nginx-1 Restarting 
+ Container m34-nginx-1 Started 
+  nginx: healthy · khối chặn /api/v1/internal/: 0 · by-code: 1
+U5 kiểm sau đổi
+be running Up 45 seconds (healthy)
+clamav running Up 26 hours (healthy)
+fe running Up 46 seconds (healthy)
+m8that-bi-mat exited Exited (0) 46 seconds ago
+m8that-cb running Up 8 hours (healthy)
+nginx running Up 7 seconds (healthy)
+pg running Up 26 hours (healthy)
+redis running Up 14 hours (healthy)
+  image be: afb6d404c61adfd4ce15995890dcda5501ce15a4 · M34_BAN=afb6d404c61adfd4ce15995890dcda5501ce15a4
+  /nginx-health 200
+  /api/health/ready 200
+  /vi 200
+  /admin 200
+  /api/v1/internal/ai/x (phải 404): 404
+  by-code từ máy .99 (phải 403, chỉ .98): 403
+  /api/v1/internal;x/ai/x (phải 404): 404
+  advise qua :80 (phải 404, M5 chỉ đi cửa 8446): 404
+  flyway (tổng|hỏng|bản cuối): 326|0|357
+  be từ lúc khởi động: ERROR 0 · dòng IVR (tls/token/callback): tls=PINNED token-client=ON callback-verifier=ON 
+  tên biến môi trường be có ADMIN_*: 2/2
+  cầu M8 8445: healthy
+CAP_NHAT_XONG afb6d404c61adfd4ce15995890dcda5501ce15a4 (sao lưu tệp cũ: _chuyen-may/tu-truoc-cap-nhat-20261114T141824Z)

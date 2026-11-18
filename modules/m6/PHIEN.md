@@ -9,7 +9,7 @@ Lead nhận một lát việc → `/quyet` ghi rõ, báo Tài, rồi mới `/son
 - Từ 10/11 (DL-096 của M6, DL-220 của M5, D-m5-025): **`C:\Projects\module5` thư mục `m6/`**, GitHub `sasamviet-ai/module5`, nhánh `main`.
   `module6` (`master` `e5e8cca` 10/11) nằm trọn trong đó, ngừng nhận commit, Lead lưu trữ: chỉ đọc.
 - Checkout `module5` dùng chung với phiên `m5` (worktree rà của m5 ở `C:\Projects\_wt\m5\`). Phiên `m6` chỉ đọc/rà phần M6.
-- Mã M6 ở `m6/app/`, `m6/tests/`, `m6/migrations/` (0001–0028), `m6/pyproject.toml`, build bằng `m6/Dockerfile` (M5 build bỏ `m6/`).
+- Mã M6 ở `m6/app/`, `m6/tests/`, `m6/migrations/` (0001–0029), `m6/pyproject.toml`, build bằng `m6/Dockerfile` (M5 build bỏ `m6/`).
   Pack cũ ở `m6/_archive/pack-v1/`. FastAPI + Postgres `m6` (DL-O05).
 - UI quản trị chung ở `web/` gốc repo (Next.js, M5-138); màn M6 gọi `/api/admin/ads/*` cùng origin theo hợp đồng `m6/web/contract/`
   (M6-141, DL-096, DL-097). Tài code UI M6 (D-m6-012).
@@ -29,7 +29,16 @@ Lead nhận một lát việc → `/quyet` ghi rõ, báo Tài, rồi mới `/son
   D-m6-007. Không chạm `m6/04-artifacts/state/`.
 - CH21 (thư mục `M6/`) chỉ nằm ở `C:\Projects\module6\M6\` (lưu trữ, gitignore ở module6): để nguyên. `module5` **chưa** ignore `m6/M6/`
   → không được chép CH21 sang `module5`.
-- Máy chủ M6: .60, Postgres riêng cổng 66xx (D-m6-004). Không triển khai trước khi xong L1 CH21 (DL-013, SPRINT_PLAN:81 tag `m6-l1-done`).
+- Máy chủ M6: máy mkt **192.168.1.98**, thư mục `/data/ginsengfood-marketing` chung M5, Postgres riêng (D-m6-015, D-m6-016; thay .60 của D-m6-004).
+  `mkt.` vào qua proxy Caddy trên chính .98 (compose `edge`, phiên `lead` dựng, ngoài compose M5/M6; HTTPS chạy thật từ 17/11 ~16:3x, D-m6-026),
+  chia đường: `/api/admin/ads/` → `.98:6600` (M6); `/admin/`, `/api/admin/`, `/api/channel/meta/` → `.98:3000` (M5); `/` 301 → `/admin/`;
+  còn lại 404; Tài không dựng gì ở 80/443 (D-m6-020). M6 nghe 6600 trên LAN, chỉ tin `X-Forwarded-*` từ proxy `.98/32` (D-lead-057).
+  Bảng máy: `chung/MAY_CHU.md`.
+- Đăng nhập UI quản trị: M6 dùng chung JWT của M5; bên mình tự sinh cặp khoá + tự phát token (D-m6-027; Tài đề xuất chỗ sinh + người phát,
+  Toàn duyệt, D-m5-052); token có `iat`, vai, exp − iat ≤ 30 ngày (D-m6-021); mỗi người một `sub`, thu hồi khẩn = đổi khoá công khai → cả khu
+  M5 lẫn Quảng cáo cùng đăng xuất (D-m5-050); M6 vẫn kiểm vai từng route (D-m6-018).
+  .98 kéo mã bằng deploy key chỉ đọc, đóng image theo commit (D-m6-019, D-m5-046); 18/11 Tài báo khoá đang có quyền ghi (TRK-93) → Toàn gắn lại.
+  Tag `m6-l1-done` đã gắn ở `d7fe04e` (14/11, OWN-368) → deploy không còn dừng mã 11.
 - Phiên mở ở Project Control không nạp `.claude/settings.json` của repo: tự giữ rào bí mật và `04-artifacts/state/`.
 - `TRACEABILITY.md` là tệp sinh, không sửa tay. Quy trình nhiều cửa sổ vai cũ là lịch sử (`_archive/pack-v1/`, DL-040).
 
@@ -45,7 +54,7 @@ Lead nhận một lát việc → `/quyet` ghi rõ, báo Tài, rồi mới `/son
 
 `m6/docs/04-sdlc/SPRINT_PLAN_2026-11-15.md` v1.6 (UI quản trị §4.15); `m6/docs/04-sdlc/GO_NO_GO_2026-11-13.md`; `ROADMAP.md` giữ lát L0–L8.
 - **Hạn chạy thật 30/11/2026** (D-lead-025). 15/11 là mốc giữa kỳ, không còn là đích release của M6.
-- **Go/No-go** họp 2 ngày làm việc sau khi `mkt.` trên .60 có HTTPS, **chậm nhất 20/11**; release M6 theo Go/No-go (D-m6-013, D-m5-028).
+- **Go/No-go** họp 2 ngày làm việc sau khi `mkt.` trên .98 có HTTPS (có từ 17/11 ~16:3x → 19/11), **chậm nhất 20/11**; release M6 theo Go/No-go (D-m6-013, D-m6-015).
   Lịch phía Tài (OWN-342, 12/11): Go/No-go 20/11, chuẩn bị production 26–27/11, chạy thật 30/11.
 - Không theo dõi quỹ giờ trong sổ/báo cáo của phiên (D-m6-001).
 - Chưa nối M3 thật: doanh thu/ROAS null kèm lý do; client ops-core thật tắt tới khi đủ ca chấp nhận (DL-052).

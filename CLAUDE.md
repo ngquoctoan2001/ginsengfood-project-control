@@ -20,11 +20,12 @@ Ngày giờ hiện tại: chạy `date`, không đoán.
 | Mã | Luồng | Repo chính (`C:\Projects\…`) | Người làm | Lead dùng phiên để |
 |---|---|---|---|---|
 | `m12` | M1–M2 Operational Core | `ginsengfood-ops-core` | Lead | code |
-| `m34` | M3 bán hàng (Phúc) · M3 vận chuyển + thanh toán (Tài) · M4 AI tư vấn (Tài) · M3 → M8 (Lead) | `ginsengfood-business-platform` (+ `M4-PLAN` để đối chiếu) | Phúc, Tài, Lead | rà soát, báo cáo; code kết nối đơn hàng M3 → M8 trên `toandeptrai` (D-m34-003) |
+| `m34` | M3 bán hàng (Phúc) · M3 vận chuyển + thanh toán (Tài) · M4 AI tư vấn (Tài) · M3 → M8 + gói NK-b (Lead) · nhánh chú Dũng: Phúc rà + gộp vào `dev` (D-lead-054) | `ginsengfood-business-platform` (+ `M4-PLAN` để đối chiếu) | Phúc, Tài, Lead | rà soát, báo cáo; code M3 → M8 + gói NK-b trên `toandeptrai`, tự gộp vào `dev`; giữ `dev` GitHub có code mới nhất của Lead và `toandeptrai` có code mới nhất của `dev` (D-m34-003, D-lead-054) |
 | `m5` | M5 Facebook Gateway | `module5` (gốc; UI quản trị `web/` chung với M6) | Tài | giám sát, rà soát, quyết |
 | `m6` | M6 Đo quảng cáo / ROAS | `module5` thư mục `m6/` (từ 10/11, D-m5-025; `module6` = lưu trữ, chỉ đọc) | Tài | giám sát, rà soát, quyết |
 | `m7` | M7 Video Giờ Vàng | `ginsengfood-golden-hour-video` (`module7`, `module7-qa` = lưu trữ, chỉ đọc) | Lead | code |
 | `m8` | M8 IVR gọi xác nhận đơn | `ginsengfood-ivr` | Lead | code |
+| `m9` | M9 Tài chính: hoa hồng, chi trả, kế toán, kết nối MISA (D-lead-059) · chú Dũng tài liệu + sửa mã, Phúc rà + gộp + sửa test, Tài kết nối MISA | `ginsengfood-business-platform` (`finance/`, `commission/`, `docs/m9/`; + `M4-PLAN` để đối chiếu) | chú Dũng, Phúc, Tài | giám sát, rà soát, quyết, giao việc |
 | `lead` | Toàn hệ thống: tổng quan, nối liên module, báo cáo Chú | đọc mọi repo | Lead | điều phối |
 
 Repo dùng chung: `ginsengfood-contracts` (hợp đồng API/sự kiện), `deploy` (bộ triển khai chung, `MODULE_DEPLOY_CONTRACT.md`),
@@ -69,7 +70,7 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
   nhà mạng) — **trừ khi Lead nói rõ cho đúng việc đó trong phiên này**. Lời đồng ý không chuyển sang việc khác.
 - Khi `/ra-soat`, phiên chính đồng bộ repo nguồn bằng `git pull --ff-only --no-rebase` sau khi kiểm checkout sạch, đúng nhánh/upstream
   và không có phiên đang dùng checkout; ghim SHA rồi rà trong môi trường tách biệt. Không tự đổi nhánh, stash/reset hoặc tạo merge commit.
-  Phần rà của `m34`, `m5`, `m6` không sửa mã/commit vào repo Phúc/Tài; muốn sửa mã phải có lệnh Lead và báo người đó trước.
+  Phần rà của `m34`, `m5`, `m6`, `m9` không sửa mã/commit vào repo Phúc/Tài/chú Dũng; muốn sửa mã phải có lệnh Lead và báo người đó trước.
 - Không sửa tệp đang dở của người khác; thấy dirty lạ thì báo, không stash/revert.
 
 ## 5. Lead nói ngắn — hiểu thế nào
@@ -90,7 +91,7 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
 | `/ra-soat [đối tượng]` | pull an toàn + ghim SHA; rà đủ DONE/REVIEW; task Lead cập nhật H/J/W + X, task người khác W/X; soạn tin nháp theo người phụ trách; `bao-cao`/`lien-module` giữ khuôn riêng |
 | `/quyet <nội dung>` | ghi quyết định Lead, sửa luật/kế hoạch bị ảnh hưởng |
 | `/cuoi-phien` | chốt phiên: trạng thái, sẵn sàng, nhật ký, tracker |
-| `/bao-cao-tuan [kỳ]` | báo cáo tuần của luồng, hoặc bản rà soát, vào `C:\Projects\bao-cao-tuan\<kỳ>\` |
+| `/bao-cao-tuan [toan] [kỳ]` | phiên `lead` + `toan`: báo cáo tuần của Toàn (một tệp, D-lead-045); phiên `m34`/`m5`/`m6`: rà báo cáo Phúc/Tài; vào `C:\Projects\bao-cao-tuan\<kỳ>\` |
 | `/tong-hop-tuan [kỳ]` | (phiên `lead`) báo cáo tổng hợp gửi Chú |
 
 Lệnh không hiện trong app thì gõ: "đọc `.claude/commands/<lệnh>.md` và làm theo, đối số: …".

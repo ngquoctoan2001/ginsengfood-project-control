@@ -1,5 +1,7 @@
 # nghiem-thu-tren-99 — Nghiệm thu M3 ↔ M8 (E02 lại, E01, E03, E05, E06, E10) trên .99 sau khi app M8 chuyển máy
 
+**ĐẠT 14/11 13:39: mọi ca thuộc bản 15/11 trên .99** — E02 lặp, E01, E06-A, E03, E05, E06-B, E10 đều KHỚP (6/10 ca của phiếu; E04, E07, E08, E09 `NOT_RUN` theo lý do trong phiếu, như bảng dưới) (biên bản `ra-soat/2026-11-14-*-99.md`, `ra-soat/2026-11-14-e05-e06b-e10-99.md`); bằng chứng repo W-0540 `565490cd`. Còn: hợp đồng draft.45 `DRAFT` (m8.81), chữ ký M3/Tech Lead; tự nghiệm thu.
+
 Trạng thái (08:34 14/11): M8 ĐÃ CẮT .99 (07:43–07:46, phiên phụ `chuyen-may-99`); thứ tự dưới đây được Toàn duyệt qua tin m34 (D-m34-068, "m34.95 A"); E02 lặp ĐẠT 14/11 08:49 (đơn 577; đối soát `ra-soat/2026-11-14-e02-lap-99-doi-soat.json`, lịch tắt 08:50:52); E01 ĐẠT 14/11 09:36 (`ra-soat/2026-11-14-e01-99.md`); E06-A ĐẠT 14/11 10:10 (`ra-soat/2026-11-14-e06a-99.md`); E03 ĐẠT 14/11 10:23 (`ra-soat/2026-11-14-e03-99.md`); còn E05/E06-B, E10, mỗi lượt Toàn duyệt riêng. Soạn 13/11 bởi phiên m8 chính (D-m8-099, D-m34-065). Chỉ là kế hoạch và danh sách bài học từ lượt .61; không chứa việc nào đã chạy trên .99, không đụng `deploy/m8` hay `wp/chuyen-may-99.md` của phiên phụ.
 
 ## Điều kiện trước (chặn nếu thiếu)

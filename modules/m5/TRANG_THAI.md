@@ -1,47 +1,49 @@
 # Trạng thái — m5
 
-Cập nhật 13/11/2026 15:10 (Asia/Bangkok; rà 16 + 4 task của Tài; Lead chốt m5.21, m5.30–34; máy chủ D-m5-040). module5 ghim `2f733b2` (13/11 07:47); M4-PLAN `a56d077`.
-Máy: M5 + M6 ở máy mkt 192.168.1.98 (`/data/m5`), M3 + M4 sang .99 sau 14/11 22:45 (`chung/MAY_CHU.md`). M5 chưa chạy trên máy chủ nào; `PRODUCTION_ENABLED=false`. Sẵn sàng: **25% theo rà báo cáo tuần** (`SAN_SANG.md` BẢN NHÁP, chấm lại ở `/ke-hoach`).
-Kịp 15/11: **ĐỎ** (máy mkt .98 mới cấp 13/11, chưa HTTPS `mkt.`, chưa nhận webhook). Go/No-go lượt 13/11: **No-go** (D-m5-035), họp lại HTTPS `mkt.` trên .98 + 2 ngày làm việc, chậm nhất 20/11.
+Cập nhật 18/11/2026 08:55 (Asia/Bangkok; phiên m5 ở tài khoản Claude mới, `/phien` 07:58). module5 `main` `aa6d55d4`
+(17/11 22:06, PR #152; 08:33 lên `f6887c64` PR #153 M6; checkout sạch, bằng origin); M4-PLAN `origin/main` `3ff48a75` (18/11 07:46; checkout `fdc7e78b`, chưa pull).
+Máy .98: **M5 lên `aa6d55d4` 18/11 07:54** (Tài báo 08:2x, có C6; M6 vẫn `43d96da4`, chờ M6-159), dữ liệu ở `/data/ginsengfood-marketing` (bản cũ `/data/m5` còn).
+`mkt.ginsengfood.vn` HTTPS chạy từ 17/11 ~16:3x; webhook Meta xác minh đạt 18/11 sáng. Quyết định tới D-m5-066.
+Sẵn sàng: **25% theo rà báo cáo tuần** (`SAN_SANG.md` BẢN NHÁP, chưa chấm lại). Go/No-go chậm nhất **20/11** (còn 2 ngày); chạy thật 30/11.
 
-## 1. Rà task
+## 1. Thay đổi từ 16/11 20:34 (mốc git)
 
-- **12/11** (`c8cdd47`, 16 task): **2 Đạt (124, 136) · 14 Cần sửa**. [Bảng](ra-soat/2026-11-12-tai.md). Sheet 13/11 07:08, 16/16 khớp.
-- **13/11** (`2f733b2`, 4 task Tài gộp tối 12/11): **017, 103, 114, 121 Cần sửa**. [Bảng](ra-soat/2026-11-13-tai.md). Sheet 08:06, 4/4 khớp.
-- Chờ Tài sửa: 20 task (18 trên + 002, 043, 055, 074, 104, 133 từ trước). Sheet: kết quả ở cột W/X; cột Trạng thái (J) là của Tài, công cụ không đổi.
-- Tin nháp cho Tài (một tin cho 20 task): [2026-11-12-tai-tin-nhan-nhap.md](ra-soat/2026-11-12-tai-tin-nhan-nhap.md), chưa gửi.
-- Test 13/11 @`2f733b2`: typecheck sạch; không DB 182/28/3 (ngoài 4 task; `main-process` chạy riêng PASS); DB tạm 209/0/4 (chạy riêng: 2 PASS; còn E4/E5 của 135 và `prisma-m4-conversation` ngoài phạm vi).
-  12/11 @`c8cdd47`: `prisma-data-deletion-erasure-db` E4/E5 đỏ 5 lượt (135).
+- module5: 26 PR gộp (#127…#152, 4 PR M6). Mã đã vào main: gỡ 2 route admin cũ (#131), JWT bắt `iat` (#142), tuổi token 8 giờ + `jti` + thu hồi (#150, C7),
+  webhook chữ ký sai không ghi DB (#149, C6), sink cảnh báo thật Telegram (#145, M5-081B), che mật khẩu/OTP gõ bằng lời (#140, #148), role `m5_erasure` (#141),
+  reader đơn M3 (#144), tự quay lui (#143), runbook dời dữ liệu (#133), sổ YouTube (#151, chỉ tài liệu; `src/` chưa có YouTube).
+- Hồ sơ Go/No-go `GO_NO_GO_2026-11-13.md` bản 0.15: Done Gate 0/11 ĐẠT (3 CHƯA ĐẠT, 8 NOT_RUN); C1/C3/C4/C5 còn ghi "chưa gộp main", lệch git.
+- Sheet M5 (07:53): 114 task · Hoàn thành 46 · Chờ review 30 · Đang làm 14 · Chưa bắt đầu 23 · Huỷ 1; 32 task quá hạn; 12 dòng YouTube M5-150…161 đã tạo.
+- `can-ra`: 16 cần rà (002, 007, 016, 017, 074, 101, 103, 114, 121, 122, 126, 133, 141, 145, 146, 151); 6 chờ Tài sửa (036, 042, 051, 053, 104, 135).
 
-## 2. Phát hiện chính
+## 2. Việc chặn
 
-- **Xoá dữ liệu theo người (135) sẽ quay lui trên máy chạy thật** (`db-setup.sql:29` thu UPDATE `audit_log` của `m5_app`); gói pháp chế, FR-OPS-022, TRACKING, Go/No-go chưa xếp đúng mức.
-- **Gửi thử trên .98 của 042/043/051/053/056 bị cổng khởi động chặn** khi sink CSKH/cảnh báo còn giả → M5-081B/M5-104 là đường găng.
-- **Production không khởi động khi `ORDER_STATE_READER` còn giả** (M5-017, đúng thiết kế); lớp thật + hợp đồng M3→M5 chưa có → D-m5-036: Phúc làm API M3,
-  Tài viết reader, trước 30/11; gói task + sơ đồ [giao-viec/2026-11-13-order-state-reader.md](giao-viec/2026-11-13-order-state-reader.md). Phiên `lead` đã tạo
-  **M3-181** (Phúc) và **M5-144** (Tài, deps M3-181); cột "Xong khi" của cả hai còn ghi ".60", cần sửa thành .98 → .99.
-- **Pilot có AI (D-m5-034):** Claude API soạn câu tin riêng; bật khi có pháp chế đợt 2 (D-m5-037) + NCC A1–A6 + P0 M4 + chữ M5-101 khai AI. Luật 10
-  `scoped-send-posture.ts:61` hiện từ chối khởi động khi AI tự trả lời bật → Tài sửa + DL thay DL-200 (4). Báo giá chặn suốt pilot (D-m5-039).
-- 126 chưa sửa (mật khẩu/OTP lọt 9/9); 112 chưa đạt lỗi Cao; pháp chế chưa gửi; probe một cửa gửi (017) hở với bí danh/lớp con.
+- **Meta (Tài báo 18/11 sáng):** webhook `mkt.` xác minh đạt (chỉ `feed`), sự kiện thử qua kiểm chữ ký, URL xoá dữ liệu đã lưu; 7 quyền mức chuẩn. Chặn: **thiếu URL
+  chính sách** → app chưa phát hành (chỉ sự kiện thử) → chưa gắn Page pilot/token thật, chưa App Review (M5-102). Webhook bản cũ đã hết (3 tin rác không thêm dòng DB, Tài tự kiểm).
+- **Sink CSKH + cảnh báo thật** (D-m5-021): Toàn chọn Telegram một bot hai nhóm (D-m5-066); mã có (#145), chưa có bot/nhóm, DL-234 chưa ký. Thiếu thì không SMK, không pilot.
+- **URL chính sách:** chờ phiên lead thêm tuyến `/policy/` trên Caddy edge-98 — phiên lead đã trình Toàn **lead.101** (duyệt lượt ghi .98); xong thì có `hop-thu/m5-2026-11-18-tuyen-policy-xong.md`, rồi Tài đặt HTML.
+  .98 ra ngoài đã thông (phiên lead thử TCP 10:4x): `api.telegram.org:443`, `pro56.emailserver.vn:465/587`, `graph.facebook.com:443`.
+- Khoá deploy .98 đang có quyền ghi (TRK-93, Cao, trái DL-227) → Toàn gắn lại khoá chỉ đọc. CA cổng 8446 .99: Toàn gửi Tài (chờ từ 14/11).
+- Tài chưa ký: DL-217, 222, 225, 227–231, 233, 234, 235, 237, 242, 243…247. M5-060 a3 đang chạy (2 lỗi Cao: treo chuỗi lặp, che nhầm "tiểu đường").
 
-## 3. Việc chặn
+## 3. Quyết định 18/11 + việc của bạn
 
-- Tài dựng máy mkt .98 (nền + app, CI → registry → CD; D-m5-040). Anh Tuấn: trỏ HTTPS `mkt.` về .98, lối ra graph.facebook.com, khoá JWT → chặn 016/042/043/053/056/093 chạy thật, App Review.
-- Tài: quyền `audit_log` + DL-217 + E4/E5 (135); vá 126/H2; M5-081B/M5-104; token System User; DL-163 tin riêng (017); B1–B5 + gửi pháp chế 2 đợt; Go/No-go 0.6;
-  DL thay DL-200 (4) + luật 10 + chữ khai AI (D-m5-034); reader thật (D-m5-036).
-- Phúc (M3-181): API đọc trạng thái đơn + review hợp đồng M3→M5 trong `ginsengfood-contracts` (D-m5-036), hạn 21/11.
-- Bạn: các câu dưới; lưu trữ module6; HTTPS `mkt.` với Anh Tuấn; P22 M5-101.
+- 08:0x m5.48–51 → D-m5-058…061. 08:41 "ok 56 B, 54, 55, 47 A, 53 có" → **D-m5-062** chữ trang chính sách (phần Toàn) duyệt · **D-m5-063** hướng pilot
+  (phát hành app, Page pilot + token thật, App Review song song, trước họp chỉ người có vai trò) · **D-m5-064** trang ở `mkt.ginsengfood.vn/policy/` (thay GitHub Pages)
+  · **D-m5-065** đăng nhập bằng mã gửi mail @ssavigroup.com, M5 tự ký JWT, phiên m5 code M5-162 (thay D-m5-052) · **D-m5-066** Telegram. m5.52 đóng theo sự việc.
+- Tin Tài bản cuối `ra-soat/2026-11-18-tin-tai-meta-youtube.md` (gộp mọi chốt 18/11 + YouTube) **chưa gửi**; kèm lại tệp DL-230 ngày 16/11.
+- Việc tay của bạn: gửi tin Tài; tạo hộp mail gửi đi cho M5-162 (vd `noreply@ssavigroup.com`) + danh sách mail/vai được vào; gắn lại deploy key chỉ đọc; gửi CA 8446;
+  M5-150 (danh sách kênh YouTube, người giữ đăng nhập, Owner Google Cloud, TXT DNS Mắt Bão).
+- Không còn câu hỏi mở. Đã đóng: m5.40–56 (trừ số không dùng); m5.20 giữ như cũ.
 
-## 4. Cần bạn quyết
+## 4. Đang chạy + đề xuất kế
 
-- **m5.20** D-m5-023: M5-032 xong khi qua V1–V9, P1–P8, dòng 1–12; dòng 13–14 + kiểm DB .98 thành điều kiện bật `M5_PSID_READ_MODE=on`.
-- Việc của bạn: gửi tin nháp cho Tài (sẵn gửi, không còn câu đề xuất); đối chiếu P01/P02 + đọc câu AI khi Tài gửi chữ M5-101 (D-m5-038); hỏi pháp chế;
-  người giữ Haravan; tab người ngoài cho Chú; phiếu M5-123.
-- Đã đóng: m5.21, m5.34 (D-m5-038, D-m5-039, 13/11 09:11); m5.30–33 (D-m5-034…037, 13/11 08:40); m5.27–29, m5.6 (D-m5-030…033, 13/11 07:39); m5.26 (D-m5-029); m5.22–25 (D-m5-025…028); m5.13–19; m5.7; m5.1, 3, 4, 5, 8–12.
+- **M5-162** (R3, `wp/M5-162.md`): coder v1 chạy nền từ 08:5x ở `_wt\m5\M5-162-dang-nhap-mail` (nhánh `m5/M5-162-dang-nhap-mail`, base `f6887c64`);
+  18/11 11:30: v1–v4 + tester độc lập (≈340 ca, M6 thật 16/16) xong, nhánh @ `91a86495` chưa push; verifier CẦN SỬA (probe Redis store) — **chặn: máy Lead không có `redis-server`**.
+  Tiếp: chạy probe Redis + M16/M17 ở máy có Redis → verifier vòng 2 → Toàn duyệt diff → CI_LOCAL → hỏi push. Sheet M5-162 Đang làm 60%.
+- `/ra-soat tai`: 16 task `can-ra` (145, 146, 141, 126 chạm bảo mật — rà kỹ), cập nhật bảng Go/No-go.
+- Dự báo Go/No-go 20/11: SMK, UAT, diễn tập khôi phục, pháp chế đợt 1, App Review chưa chạy → khả năng No-go lượt 2. `/ke-hoach` sau Go/No-go.
 
 ## 5. Bàn giao
 
-- Worktree rà 12/11, 13/11 (`C:\Projects\_wt\m5\rv1211-*`, `rv1311-*`) đã gỡ (junction gỡ trước, không `--force`); container tạm đã dừng; `_wt\m5` trống.
-  Bằng chứng: `ra-soat/evidence/2026-11-12-tai/`, `ra-soat/evidence/2026-11-13-tai/`.
-- Rà task: không sửa code của Tài, không gửi tin. Nhánh cục bộ làn Lead `m5/M5-137-*`, `m5/M5-138-*` còn (không xoá nhánh).
-- Lượt rà sau: task Tài cập nhật → `can-ra --module M5 --owner Tài`; ưu tiên 135, 126, 104, 114 bản 0.6.
+- `_wt\m5\M5-162-dang-nhap-mail` đang dùng (junction `node_modules` → checkout chính; `web/node_modules` riêng). Hộp thư `hop-thu/m5-*` không có tệp mới. `hop-thu/m6-2026-11-16-m5-jwt-t6.md` là của phiên `m6`.
+- Nguồn câu hỏi Tài: M4-PLAN `02_PROJECT_CONTROL/04_REPORTS/M5/M5-151/CAU_HOI_LEAD.md`, `bao-cao-dau-ngay-2026-11-18.md`, `_MEMORY/NHAT_KY.md` (đều ở `origin/main`).

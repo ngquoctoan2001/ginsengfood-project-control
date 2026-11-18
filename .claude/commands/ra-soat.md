@@ -3,7 +3,7 @@ description: Pull an toàn, rà task Hoàn thành/Chờ review chưa Đạt, ch�
 argument-hint: [phuc|tai-m3|tai-m4|tai|all|lien-module|bao-cao] [từ ngày dd/mm]
 ---
 
-Dùng trong mọi phiên module (`m12`, `m34`, `m5`, `m6`, `m7`, `m8`) hoặc `lead`. Đối số: `$ARGUMENTS`.
+Dùng trong mọi phiên module (`m12`, `m34`, `m5`, `m6`, `m7`, `m8`, `m9`) hoặc `lead`. Đối số: `$ARGUMENTS`.
 Luật trong tệp này thắng mọi câu tóm tắt cũ về rà soát trong `PHIEN.md` của luồng (D-lead-020).
 Phiên chính đồng bộ checkout bằng fast-forward trước khi rà; phần rà không sửa mã hoặc commit vào repo của người được rà.
 Chỉ kiểm trong worktree/bản sao tách biệt theo luật repo, không dùng DB chung. Không tự push, tạo merge commit, rebase,

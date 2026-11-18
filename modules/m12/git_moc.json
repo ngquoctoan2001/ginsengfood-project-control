@@ -1,7 +1,11 @@
 {
- "_luc": "2026-11-05 10:38",
+ "_luc": "2026-11-18 07:56",
  "ginsengfood-ops-core": {
-  "gitlab/main": "a5dec72d016caad86a9ce0c4c00959db876482e3",
-  "origin/main": "a5dec72d016caad86a9ce0c4c00959db876482e3"
+  "gitlab/main": "cef6861db16b466f32df2d9ca823c5aa42a081b7",
+  "origin/chudung/m12-15112026-an-gia-frm-12-frm-14-theo-vai-tro-giu-ha": "ea8f8d5d209a17b1e1be1f09f99ce35a279483c0",
+  "origin/chudung/m12-15112026-kho-chi-cong-ton-khi-kiem-dat-an-gia-phi": "27e322c1ffbdc57d1758fbcb63980a5399549e4f",
+  "origin/chudung/m12-16112026-ke-toan-dong-phieu-nhap-an-gia-phieu-bao": "f6000082b9dab136ea2ee3eb3a61fbbb1006fa32",
+  "origin/chudung/m12-17112026-app-hien-truong-tao-nha-cung-cap-phieu-d": "b49a97c8a622c4ed7887b09a56ecc27f4f7c95dc",
+  "origin/main": "cef6861db16b466f32df2d9ca823c5aa42a081b7"
  }
 }

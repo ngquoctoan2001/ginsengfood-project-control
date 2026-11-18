@@ -1,5 +1,5 @@
 ---
-description: (phiên lead) Kiểm chéo (rà 4 báo cáo của Lead, commit sau giờ rà, chỗ nối liên module) rồi gộp 9 báo cáo module thành báo cáo tuần gửi Chú theo prompt 3
+description: (phiên lead) Kiểm commit sau giờ báo cáo và chỗ nối liên module, rồi gộp báo cáo của Toàn + 5 báo cáo Phúc/Tài thành báo cáo tổng hợp M1–M8 gửi Chú theo prompt 3
 argument-hint: [kỳ yyyy-mm-dd_yyyy-mm-dd]
 ---
 
@@ -9,22 +9,17 @@ Thư mục tuần: `C:\Projects\bao-cao-tuan\<từ>_<đến>\`. Mã báo cáo (`
 1. **Kiểm đủ đầu vào** trong thư mục tuần:
    - 5 báo cáo Phúc/Tài (`M3-ban-hang`, `M3-van-chuyen-thanh-toan`, `M4-tu-van-ai`, `M5-cong-facebook`, `M6-do-luong-quang-cao`),
      mỗi cái có bản `-ra-soat` (phiên `m34`, `m5`, `m6` đã rà; chưa có thì giao auditor rà ngay ở bước 2).
-   - 4 báo cáo của Lead (`M12-van-hanh-nha-may`, `M7-video-gio-vang`, `M8-ivr`, `M3-ket-noi-trien-khai` do phiên `m34` viết); bản rà soát do bước 2 làm.
-   Thiếu báo cáo nào → liệt kê, hỏi Lead một câu: chờ hay phiên tự lập phần đó từ mã và sổ. Vẫn chạy bước 2 với những gì đã có.
+   - Báo cáo của Toàn `bao-cao-tuan-<từ>_<đến>-Toan.md` (D-lead-045, `/bao-cao-tuan toan`, Toàn đã duyệt). Báo cáo này đã có 3 auditor rà commit
+     lúc lập nên không rà lại bằng prompt 2; chỉ kiểm commit vào sau giờ báo cáo ở bước 2.
+   Thiếu báo cáo nào → liệt kê, hỏi Toàn một câu: chờ hay phiên tự lập phần đó từ mã và sổ. Vẫn chạy bước 2 với những gì đã có.
    Không có vòng trả lại, không soạn tin nhắn cho người nộp (D-lead-005).
-2. **Kiểm chéo — chạy nền ngay, một message, 5 `auditor` chỉ đọc** (phiên khác đang chạy nhiều agent thì chia 3 + 2):
-   - **Rà M12, M7, M8, M3 của Lead** — mỗi báo cáo một auditor (M3 của Lead: đối chiếu từng task tab M3 có người phụ trách Nguyễn Quốc Toàn
-     với commit trên `toandeptrai`/`dev` và phiếu `modules/m34/wp/`, không lẫn việc Phúc/Tài), làm đúng `<repo>\tools\task-tracker\bao-cao-tuan\prompt-2-lead-ra-soat.md`
-     với khung THÔNG TIN điền sẵn: đường dẫn báo cáo, báo cáo kỳ trước (thư mục tuần trước), người = Lead (tên, email git lấy từ
-     `git log`), kỳ; kèm phiếu `modules/<mã luồng>/wp/` và `SAN_SANG.md` để đối chiếu. Đã có bản `-ra-soat` (từ `/ra-soat bao-cao`)
-     và repo không có commit mới sau giờ của bản đó → dùng lại, bỏ auditor đó.
-   - **Sau giờ rà và chỗ nối** — một auditor: (a) `python "C:\Projects\Project Control\tools\git_tong_quan.py" --fetch --tu "<giờ
-     bản rà soát sớm nhất>"`, với mỗi module có commit mới vào nhánh chung: commit đó có làm sai câu nào trong báo cáo hay bản rà
-     soát không (gộp, hoàn tác, sửa chức năng đã báo xong); (b) gom các câu trong 9 báo cáo nói về chỗ nối hai module (đặt hàng → gọi
+2. **Kiểm chéo — chạy nền ngay, một `auditor` chỉ đọc** (thêm auditor rà báo cáo Phúc/Tài nào chưa có bản `-ra-soat`):
+   - **Sau giờ báo cáo và chỗ nối**: (a) `python "C:\Projects\Project Control\tools\git_tong_quan.py" --fetch --tu "<giờ
+     báo cáo hoặc bản rà soát sớm nhất>"`, với mỗi module có commit mới vào nhánh chung: commit đó có làm sai câu nào trong báo cáo hay bản rà
+     soát không (gộp, hoàn tác, sửa chức năng đã báo xong); (b) gom các câu trong 6 báo cáo nói về chỗ nối hai module (đặt hàng → gọi
      xác nhận, Messenger → AI tư vấn, đơn → giữ/trừ kho, video → cổng Facebook, sự kiện → đo quảng cáo, thanh toán, vận chuyển),
      đối chiếu `C:\Projects\ginsengfood-contracts` và mã ở **cả hai phía**; mỗi câu: khớp / lệch / chưa kiểm chứng, kèm `tệp:dòng` hoặc SHA.
-   - Auditor trả nội dung, không tự ghi. Phiên chính ghi `…-<mã BC>-ra-soat.md` của M12, M7, M8, M3 của Lead vào thư mục tuần và phần kiểm chéo
-     vào `modules/lead/ra-soat/<yyyy-mm-dd>-kiem-cheo-tuan.md` (≤ 60 dòng).
+   - Auditor trả nội dung, không tự ghi. Phiên chính ghi phần kiểm chéo vào `modules/lead/ra-soat/<yyyy-mm-dd>-kiem-cheo-tuan.md` (≤ 60 dòng).
 3. **Ghi chú điều hành** (làm trong lúc chờ bước 2): đọc `modules/lead/GHI_CHU_DIEU_HANH.md` và `modules/lead/VIEC_NGOAI.md`;
    hỏi Lead có gì mới tuần này (một câu), cập nhật tệp.
 4. **Xử lý kết quả kiểm chéo** (trình Lead một lần, đánh số `lead.<n>`):
@@ -32,7 +27,8 @@ Thư mục tuần: `C:\Projects\bao-cao-tuan\<từ>_<đến>\`. Mã báo cáo (`
    - Commit sau giờ rà hoặc chỗ nối lệch → mỗi mục một câu hỏi: ghi vào báo cáo gửi Chú thế nào (sửa số, thêm vào "việc còn lại",
      hay bỏ qua). Không sửa báo cáo hay bản rà soát của Phúc/Tài; dùng số đã đối chiếu trong bản gửi Chú.
    **M3 ba người (D-lead-024):** bảng tổng quan và phần từng module tách M3 thành ba dòng, ba mục: Phúc (giao diện + backend bán hàng),
-   Tài (vận chuyển, thanh toán), Toàn (nối M3 → M8, máy chạy thử .60, CI lên máy chủ). Không gộp số, không ghi việc của người này cho người kia.
+   Tài (vận chuyển, thanh toán), Toàn (nối M3 → M8 và M1–M2 ↔ M3, máy chủ .99). Không gộp số, không ghi việc của người này cho người kia.
+   Phần M1–M2, M7, M8, phần M3 của Toàn và máy chủ lấy từ báo cáo của Toàn (giữ các bảng tách nhóm lý do của con số chưa đạt).
 5. Đọc `C:\Projects\bao-cao-tuan\prompt-3-bao-cao-tong-hop.md` và làm đúng theo đó, với khung THÔNG TIN điền từ kỳ, thư mục,
    báo cáo tổng hợp kỳ trước (thư mục tuần trước), ghi chú điều hành ở bước 3 và các mục Lead đã quyết ở bước 4.
 6. Đối chiếu bảng tổng quan với `TONG_QUAN.md`, `modules/*/TRANG_THAI.md` và tệp kiểm chéo; lệch thì tin bản rà soát, ghi lại cho Lead.
@@ -43,7 +39,7 @@ Thư mục tuần: `C:\Projects\bao-cao-tuan\<từ>_<đến>\`. Mã báo cáo (`
    và dấu tiếng Việt. Trả theo mục "Lưu và trả lời" của prompt 3 (đường dẫn .md và .docx), thêm một dòng kết quả kiểm chéo;
    cập nhật `TONG_QUAN.md`.
 9. **Ghi tab "Báo cáo tuần" của Sheet** khi Lead chốt bản gửi (Lead sửa tay bản Word → đồng bộ .md theo Word trước, rồi mới ghi).
-   Soạn `sheet-bao-cao-tuan-<kỳ>.json` trong thư mục tuần: 9 dòng, mỗi báo cáo module một dòng (M3 ba dòng: Phúc, Tài, Nguyễn Quốc Toàn), trường
+   Soạn `sheet-bao-cao-tuan-<kỳ>.json` trong thư mục tuần: 9 dòng, mỗi module một dòng (M3 ba dòng: Phúc, Tài, Nguyễn Quốc Toàn; dòng của Toàn lấy từ báo cáo của Toàn), trường
    `week` (`yyyy-Www`, tuần ISO), `from`, `to` (`yyyy-mm-dd`), `module` (tên tab `M1-M2`, `M3`…`M8`), `owner` (họ tên đầy đủ, Lead =
    `Nguyễn Quốc Toàn`; khoá có tên người nên luôn viết y hệt), `done`, `doing`, `blocked`, `next`, `file` (tên tệp báo cáo module),
    `review` (ý "Nhận xét" của bản gửi). **Không gửi `sent`** (dòng mới tự "Chưa gửi"; Lead tự đổi "Đã gửi"). Chữ lấy từ bản gửi Chú,

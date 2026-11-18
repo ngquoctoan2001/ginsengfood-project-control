@@ -30,10 +30,12 @@ REPO = [
     ("m6", "module5", ["origin/main"]),  # M6 ở module5/m6/ từ 10/11 (D-m5-025); module6 lưu trữ
     ("m7", "ginsengfood-golden-hour-video", ["origin/main"]),
     ("m8", "ginsengfood-ivr", ["origin/main"]),
+    ("m9", "ginsengfood-business-platform", ["origin/dev", "origin/dev015", "origin/PhucApu"]),  # M9 tài chính/MISA (D-lead-059)
+    ("m9", "M4-PLAN", ["origin/main"]),
     ("chung", "ginsengfood-contracts", ["origin/main"]),
     ("chung", "deploy", []),
 ]
-LUONG = {"m12", "m34", "m5", "m6", "m7", "m8", "chung", "lead"}
+LUONG = {"m12", "m34", "m5", "m6", "m7", "m8", "m9", "chung", "lead"}
 FMT = ["--format=%h %cd %an · %s", "--date=format:%d/%m %H:%M"]
 
 
@@ -117,7 +119,7 @@ def mot_repo(luong, ten, refs, moc, tu):
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("luong", nargs="*", help="m12 m34 m5 m6 m7 m8 chung lead (trống hoặc lead = tất cả)")
+    p.add_argument("luong", nargs="*", help="m12 m34 m5 m6 m7 m8 m9 chung lead (trống hoặc lead = tất cả)")
     p.add_argument("--fetch", action="store_true", help="git fetch --all --prune trước (song song)")
     p.add_argument("--luu", action="store_true", help="lưu SHA hiện tại làm mốc mới")
     p.add_argument("--tu", help='so theo giờ thay vì mốc SHA, dạng "yyyy-mm-dd hh:mm"')

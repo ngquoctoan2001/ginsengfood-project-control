@@ -1,8 +1,10 @@
 # chuyen-may-99 — Chuyển app M8 từ .61 sang 192.168.1.99 (D-lead-035)
 
-Trạng thái: ĐANG LÀM — **đã cắt xong 14/11 08:50**: M8 chạy trên .99 (bản `10f335de`), M3 ↔ M8 trọn vòng đơn MOCK 577
-ACCEPTED, sao lưu cron chạy, .61 dừng hẳn giữ dữ liệu làm lối lui. Còn: CD `deploy_m8_99` chưa chạy lần nào (biến CI + khoá
-.99 do Toàn đặt), Retry pipeline `eca6670f`. Trước đó: pha a, `mo-64`, kiểm ARI ĐẠT 13/11 16:31; cả chuỗi
+Trạng thái: **ĐẠT 17/11** (đóng 18/11): job CI `deploy_m8_99` chạy đạt 17/11 08:57–08:58 đưa .99 lên `0f1a9eb5` (D-m8-120), job `deploy_m8_61` gỡ (W-0545), khoá CD .61 thu hồi (D-m8-125). Lịch sử: **đã cắt xong 14/11 08:50**: M8 chạy trên .99, M3 ↔ M8 trọn vòng đơn MOCK 577
+ACCEPTED, sao lưu cron chạy, .61 dừng hẳn giữ dữ liệu làm lối lui. **14/11 20:47: .99 lên `e9976810` (runtime .NET 10.0.15)**
+bằng `trien-khai.sh` qua khoá CD mới, ssh từ máy Lead vì runner .63 chết (Toàn chọn). Biến `M8_99_*` + khoá .99 đã đặt. Còn:
+job CI `deploy_m8_99` chưa chạy đạt lần nào (lần 1 khoá hỏng định dạng, lần 2 huỷ vì .63 chết) → chạy lại khi .63 lên,
+phải ra "đang chạy rồi, không đổi gì". Trước đó: pha a, `mo-64`, kiểm ARI ĐẠT 13/11 16:31; cả chuỗi
 commit **đã lên `origin/main` = `eca6670f`** (reflog: `c80528db` 16:31, `eca6670f` 19:11, không do phiên này push) ·
 Rủi ro: R3 (cắt chuyển máy chủ, bí mật, CSDL) · Chế độ: A (bản sao `git archive`) · Phiên: phụ "m8 phụ · chuyển app M8"
 Mã: **W-0533** `7f12ddaf` (kịch bản + CD), **W-0535** `c80528db` (sửa `anh` sau lần pha a thật đầu), **W-0537**
@@ -59,7 +61,7 @@ dòng đúng từng bảng trước khi lên .99; mọi bước hỏng sau khi d
 
 1. ~~.64 cho .99 vào cầu ARI~~: xong 16:08 (Toàn tự chạy, không cần Anh Tuấn).
 2. `sudo mv` để có `/data/ginsengfood-ivr` và `/data/sao-luu/ginsengfood-ivr` (D-lead-037); `kiem` báo thiếu thì dừng.
-3. Không gấp, không chặn cắt: biến CI `M8_99_DEPLOY_SSH_KEY`, `M8_99_DEPLOY_KNOWN_HOSTS` (File, Protected, `main`),
+3. **XONG 14/11 19:58** (xem "Chạy trên máy"): biến CI `M8_99_DEPLOY_SSH_KEY`, `M8_99_DEPLOY_KNOWN_HOSTS` (File, Protected, `main`),
    environment `m8-99`, dòng `authorized_keys` trên .99 (`may-99/README.md` mục 4) cho các bản sau. Pha a/b chuyển image
    bằng `docker save | ssh | docker load`, không cần CD.
 
@@ -120,6 +122,17 @@ bản chụp trước lúc dừng app vì bản đó thiếu những đơn ghi g
   `M3AdminReasonKestrelTests…(bare-cr, 400)`: `Connection reset by peer` khi ghi — test ghi yêu cầu thành 4 lần, Kestrel trả
   400 và đóng ngay khi thấy CR lẻ, lần ghi sau bị RST (đua thời gian, test chưa đổi từ 06/11 W-0507, không do W-0536). Đề
   xuất phiên riêng sửa test (thẻ "M8: sửa test chập chờn bare-cr"); trước mắt Retry lại `dotnet`.
+- 14/11 10:42 (phiên lead, D-lead-039): CI ivr chạy trên runner `may-63` (.63, 1 job/lúc); runner máy Lead tạm dừng.
+  Pipeline `eca6670f` (3064454228): `dotnet` 18027170148 và `governance` XANH; còn đỏ `publish_images`, `publish_aux_images`,
+  `pii_scan` — chưa xem log (phiên phụ không có quyền đọc GitLab); quét PII cục bộ trên `eca6670f` đã PASS 13/11.
+  Phiên lead đọc log: `publish_images` 18008649756 + `publish_aux_images` 18008649297 = `runner_system_failure` (Docker máy
+  Lead treo 13/11) → Retry trên .63; `pii_scan` 18003546898 = `script_failure` 20 s (14/11 03:33 UTC). Job này chỉ chạy
+  `scan-pii.sh ci-artifacts` (artifact của `dotnet`). **14/11 13:01 đính chính:** không thể là artifact `dotnet` hỏng 09:22 —
+  `pii_scan` chỉ chạy sau `dotnet` đạt (`needs`, không `when: always`), nên nó đã đọc artifact của 18027170148 XANH. 13:15
+  đọc log (Toàn đăng nhập trong app): khớp ở `Ivr.ChaosTests-test-result.xml` dòng 60/93 = log Testcontainers in mã mạng
+  Docker 12 hex ngẫu nhiên trùng luật số điện thoại (~5% lượt); không PII; Retry vô ích; sửa ở m8.88 (nhật ký 13:15).
+  Quét trước push không phủ artifact CI (`ci-artifacts/` máy Lead cũ 02–07/11). Bước `d` đã xong 08:50, kiểm lại 13:00:
+  .61 10/10 `Exited`, volume giữ.
 - Pipeline GitLab của `eca6670f` (Toàn dán log 20:2x): **2 job đỏ, không do mã**. `governance` dừng ở bước
   `deploy/m8/tests`: dind kéo `docker:29.6.2-cli` từ Docker Hub bị `TLS handshake timeout` (exit 125, test chưa chạy).
   `dotnet`: mọi test và cổng đạt (JUnit 2542 + 1654 + 25 ca, `JUNIT_SUBSET_GATE_PASS` 6/6), job chạm hạn 1h lúc tải
@@ -173,6 +186,9 @@ prometheus), trivy 8/8, `refresh-locks --check`, PII (3397 tệp), gate-sweep; g
 | 14/11 08:49 | phiên m8 chính giữ lịch (bật 08:41:17, đồng bộ cụm từ sang .64 lắng 08:46:06); m34 đặt đơn MOCK 577 (`m3-ivr-577-13`) | **ĐẠT trọn vòng**: callback M8 qua cầu `.99:8445` (nguồn `172.24.2.1`) → 200 ACCEPTED 08:49:32, đơn CONFIRMED, áp đúng một lần (m34 ghi cuối `hop-thu/m34-2026-11-13-m8-sang-99-dia-chi.md`); phiên m8 chính: 0 retry, `doi_soat_m3` KHỚP, **lịch tắt 08:50:52** (cửa sổ ~9 phút), gọi thật NO. `kiem-sau` báo `kenh_asterisk` hỏng vì tìm container Asterisk cục bộ (trên .99 Asterisk ở .64) — lỗi công cụ, phiên chính ghi cho E10 |
 | 14/11 08:50 | n8 `chuyen.sh d` (Toàn "Duyệt cả hai", sau đơn MOCK đạt) | ĐẠT: .61 dừng hết 10 dịch vụ M8 (api, ari, asterisk lab, https, ops-agent, ops-metrics, phrase-tts, postgres, prometheus, worker); volume, du-lieu, image giữ; lui bằng `chuyen.sh quay-lui` |
 | 14/11 08:10 | n7 `chuyen.sh sao-luu` (Toàn "Duyệt cả hai": sao-luu ngay, `d` sau đơn MOCK) | ĐẠT: cron `30 19 * * *` UTC (02:30 giờ VN) chạy `/data/ginsengfood-ivr/may-99/sao-luu.sh`; lần thử `ivr-20261114T011009Z-10f335deb611.dump` 938943 byte, 335 mục |
+| 14/11 19:46–19:48 | Khoá CD .99 (Toàn "Làm ngay hôm nay"): khoá `~/.ssh/gfivr_ci_m8_99_ed25519` trên máy Lead; dòng `restrict,command=` (README `may-99` mục 4) vào `authorized_keys` của `ssv` .99, sao lưu `authorized_keys.cu-20261114T124659Z`; `M8_99_DEPLOY_KNOWN_HOSTS` (phiên tạo) + `M8_99_DEPLOY_SSH_KEY` (Toàn dán), File, Protected, raw, scope `m8-99` | ĐẠT: vân tay máy `SHA256:zTo/9BJ8…` khớp; khoá chỉ gọi được `trien-khai.sh` (tên sai, không lệnh → thoát 2). Lỡ một lượt thử `id; hostname` → bản `hostname` không có image, dừng ở [1/5], không đổi gì |
+| 14/11 19:55 / 19:58 | job `deploy_m8_99` 18028884754 rồi retry 18032101028 (pipeline `e9976810`) | lần 1 ĐỎ `error in libcrypto` (giá trị khoá hỏng định dạng, không tới .99), Toàn sửa; lần 2 chờ runner, **huỷ 20:38** khi .63 mất kết nối để khỏi trùng lượt m34 |
+| 14/11 20:46–20:48 | `trien-khai.sh e9976810…` qua khoá CD, ssh từ máy Lead (Toàn "Ssh từ máy Lead"; m34 phụ "M8 ĐI TRƯỚC") | **ĐẠT** 90 s: kéo image, sao lưu `ivr-20261114T134711Z-10f335de….dump` 335 mục, migrate (45, không đổi), đổi container, kiểm. 9 container restart 0, `/health/live` + `/health/ready` 200, `DOTNET_VERSION=10.0.15`, log 3 phút 0 lỗi, gọi thật NO, lịch gọi tắt. Đã nhắn m34 "M8 .99 XONG" |
 
 ## Diễn biến
 

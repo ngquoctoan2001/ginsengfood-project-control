@@ -5,8 +5,9 @@
 - `C:\Projects\ginsengfood-ivr`, **chỉ nhánh `main`**; `git push origin main` đẩy cùng lúc GitLab và GitHub (push chỉ khi Lead bảo).
 - Dịch vụ .NET 10 độc lập (SDK 10.0.201): `src/Ivr.{Api,Worker,Infrastructure,Domain,Contracts,MediaReceiver}`; test
   `tests/{Unit,Integration,Contract,MediaReceiver}` + `tests/chaos`. Không có màn hình vận hành — M3 làm màn hình.
-- Tổng đài: Asterisk trên máy `.64` (`deploy/telephony-s5`, `telephony-vm`) nối trunk SIP MobiFone; ứng dụng M8 chạy trên S5 `192.168.1.61` tới giờ cắt và trên `192.168.1.99` từ giờ cắt (D-lead-035/036, `chung/MAY_CHU.md`, dự kiến 15–16/11); `.61` sau đó chỉ là đường lui, giữ `.64`.
-- Hợp đồng hiện hành với M3: `specs/api/openapi/ivr-order-confirmation.v1.yaml` draft.45 + `order-core-ivr-callback.target-v1.yaml` + IR-06/07/08 (kiểm 02/11 tại `c9f0cd18`). M8 **không** dùng `ginsengfood-contracts`; baseline draft.44 ghim hash vẫn giữ nguyên.
+- Tổng đài: Asterisk trên máy `.64` (`deploy/telephony-s5`, `telephony-vm`) nối trunk SIP MobiFone; ứng dụng M8 chạy trên `192.168.1.99` từ 14/11 07:45 (D-lead-035/036, `chung/MAY_CHU.md`); `.61` chỉ là đường lui, giữ `.64`.
+- Hợp đồng hiện hành với M3: `specs/api/openapi/ivr-order-confirmation.v1.yaml` draft.47 (`main` `680508c7`, 16/11; .99 còn chạy draft.45 tới khi `deploy_m8_99`) + `order-core-ivr-callback.target-v1.yaml` + IR-06/07/08. M8 **không** dùng `ginsengfood-contracts`; baseline draft.44 ghim hash vẫn giữ nguyên.
+- Nhánh chú Dũng (`github/chudung/m8-*`, D-lead-051): rà, sửa cho xanh, gộp `main` (tua nhanh + một commit W của Toàn ở đầu để cổng `tts-provenance` thấy tác giả HEAD có trong `m8-builders.json`), giữ luật chú.
 - Lead đang tự xử lý M3 → M8 ở phiên m34; phiên m8 chỉ đọc để biết, không chủ động soạn/gửi gói hợp đồng hoặc theo việc phía M3 (D-m8-008).
 - D-m8-012: lấy JSON tỉnh/thành phố và phường/xã từ repo M3 chỉ đọc, ghim nguồn mới tại M8 và giữ namespace mã nội bộ M3 (không ghép mã hành chính trùng số); không sửa tích hợp M3 hoặc dùng nguồn mới để tự xác nhận audio L26 cũ.
 - D-m8-010: dùng máy chạy app M8 (`.61` tới giờ cắt, sau đó `.99`) tạm cho khóa/bí mật LAB; không dùng custody production làm việc chặn code/lab. Kho khóa/người giữ/khôi phục production chốt trước bước cấp production và release; không tự đổi register/cờ gọi thật.
@@ -82,4 +83,4 @@ Nguồn: `plan/ke-hoach-trien-khai-quy-trinh-goi-2026-09-30.md` §9–§11, `doc
 
 ## Báo cáo tuần
 
-`M8-ivr`, THƯỜNG — `/bao-cao-tuan` (prompt `tools/task-tracker/bao-cao-tuan/prompt-1-Lead-M8-ivr.md`; đã được theo dõi từ8bca14bd).
+D-m8-107 (D-lead-045, 14/11): phiên m8 **không** tự viết báo cáo tuần theo prompt 1 nữa (prompt `tools/task-tracker/bao-cao-tuan/prompt-1-Lead-M8-ivr.md` chỉ còn để tham khảo). Khi phiên `lead` hỏi qua tin nhắn phiên → trả dữ kiện ≤ 30 dòng kèm SHA/tệp: đã làm · còn lại tới mốc gần nhất và 30/11 · kế hoạch tuần tới · khó khăn + cách giải quyết · việc CHƯA CHẠY.

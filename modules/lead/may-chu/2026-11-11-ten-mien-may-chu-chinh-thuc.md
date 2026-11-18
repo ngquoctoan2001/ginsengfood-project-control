@@ -83,6 +83,14 @@ qua 1.1.1.1 lúc 14:44. Cổng vào theo hướng 11/11 (máy nginx của Anh Tu
 Toàn vào được trang DNS Mắt Bão, tạo bản ghi được; hiện không cần tạo thêm. Việc còn lại là của máy nginx Anh Tuấn (chuyển theo tên + HTTPS).
 Trỏ tên **không phải bước của cửa sổ cắt**: các luồng cắt bằng IP LAN; Anh Tuấn chuyển thẳng về đích mới khi sẵn sàng.
 
+**Kiểm lại 14/11 12:57–13:02** (DNS qua 1.1.1.1 có dấu chấm cuối; từ ngoài bằng check-host.net): 7 tên (@, www, ops, pwa, trace, mkt, video) → 14.224.139.101, serial 2026111303.
+TCP 443 từ ngoài **mở** 10/10 điểm; TCP 80 hết giờ 3/3. HTTPS mọi tên trả **302** giống nhau (cả `video.` chưa có đích), `ginsengfood.vn/admin` **404**;
+trong LAN `.99:80` trả `/` 307 → `/vi`, `/admin` 200 và `trace.` ở `.99:8012` trả 200 → máy nginx Anh Tuấn **đã nghe 443, chưa chuyển tên nào về máy mình**.
+crt.sh chưa thấy chứng chỉ còn hạn cho `ginsengfood.vn`. Một lượt từ máy chủ WebFetch bị từ chối 443 (lọc theo nguồn hoặc đang làm dở).
+.98: chưa có gì nghe cổng 80 (nginx của Tài theo D-lead-041 chưa dựng). Tin gộp cho Tài + Anh Tuấn: `2026-11-14-tin-mkt-ram-63.md`; 20:15 bản cuối tin Anh Tuấn (hạn `mkt.` trước 18/11, D-lead-046):
+`2026-11-14-tin-anh-tuan-ban-cuoi.md` (bản 2 20:40: chỉ tin, không tệp kèm). 20:33 .98: M5 nghe `192.168.1.98:3000`, M6 `192.168.1.98:6600`
+(LAN), vẫn không có gì ở cổng 80 → tin bản 2 xin Anh Tuấn chia đường thẳng vào 3000/6600 (khác D-lead-041, chờ Toàn chốt).
+
 **Đụng cổng:** trên .99, nginx gói `ginsengfood-business-platform` và Caddy gói `ginsengfood-ops-core` đều nghe :80 → Caddy dời sang **8012** (biến `M12_HTTP_PORT`, phiên m12 đã thêm).
 
 ### Bảng cổng vào
@@ -106,8 +114,20 @@ Trỏ tên **không phải bước của cửa sổ cắt**: các luồng cắt 
 | LAN 192.168.0.0/23 | 8012 | Caddy `ginsengfood-ops-core`: `ops.`, `pwa.`, `trace.` |
 | .60, .98 | 5000 | API M1–M2: M7 (+ M3 lúc còn ở .60), M6 máy mkt |
 | 192.168.0.64 (máy Lead) | 8443 | M8: công cụ nghiệm thu M3–M8 (nginx M8 trên .61 đang cho máy này) |
-| .60 (tạm) | 8443 | M3 còn ở .60 gọi M8 đã sang .99 (m34 đã sang .99 14/11: giữ cho đường lui `lui-60`, xoá sau 15/11) |
-| .61 (tạm) | 8445 | M8 còn ở .61 gọi lại cầu callback M3 đã sang .99 (m8 đã sang .99 14/11: giữ cho đường lui `quay-lui`, xoá sau 15/11) |
+| ~~.60 (tạm)~~ | ~~8443~~ | **đã gỡ 16/11 11:02** (M3 còn ở .60 gọi M8; đường lui `lui-60` hết từ đây) |
+| ~~.61 (tạm)~~ | ~~8445~~ | **đã gỡ 16/11 11:02** (M8 còn ở .61 gọi lại cầu callback M3; đường lui `quay-lui` hết từ đây) |
+| 192.168.1.98 | 8446 | M5 máy mkt gọi cửa TLS `m5cua` (M3 by-code, M4 advise; m34.100, thêm 14/11 22:21) |
+
+Gỡ hai dòng tạm (lead.h1, D-lead-046): ngày 16/11, không sớm hơn (15/11 nghiệm thu M1-2 trên .99, M8 diễn tập 03B). Ba bước, kịch bản trong `kich-ban/`:
+(1) máy Lead `bash kiem-go-tam-99.sh truoc` phải ra `DU DIEU KIEN` · (2) chép `go-dong-tam-99.sh` lên .99, **Toàn** chạy `sudo bash ~/go-dong-tam-99.sh`
+· (3) máy Lead `bash kiem-go-tam-99.sh sau` phải ra `DAT`. Kịch bản gỡ chỉ bỏ đúng 2 dòng tạm + dòng tiêu đề, sửa ghi chú dòng `.60 → 5000`; khác biệt
+nào khác (vd dòng 8446 M5 gọi M3 TLS của m34 phụ) → tự trả bản cũ, không khởi động lại tường lửa. 14/11 20:13 chạy `truoc` thật: DU DIEU KIEN
+(.60 chỉ còn `m34-pg`, `m34-clamav`; .61 chỉ còn `audit_m9_testpg`; 22 container m12/m34/m8 trên .99 khoẻ); `sau` trước khi gỡ báo đúng 3 HONG
+(dòng tạm còn, .60 → 8443 = 200, .61 → 8445 = 403); chạy thử kịch bản gỡ trên bản sao 3 ca (có 8446 · chạy lần 2 · lỡ xoá 8446) đều đúng.
+**Đã gỡ 16/11:** 10:15 `truoc` = DU DIEU KIEN; ~11:02 Toàn chạy `sudo bash ~/go-dong-tam-99.sh` (lượt 10:1x đầu không chạm .99): bỏ đúng 2 dòng tạm + tiêu đề,
+sửa ghi chú `.60 → 5000`, giữ dòng 8446, `gf-tuong-lua` active; bản cũ `/etc/ginsengfood/cong-noi-bo.conf.bak-20261116-040227` (giờ UTC). 11:02 `sau` = **DAT**:
+M3 :80 + ready, M1-2 :8012 + :5000 từ .98, M8 :8443 từ máy Lead, cầu callback 8445 trong máy, 22 container khoẻ; .60 → 8443 và .61 → 8445 bị chặn.
+Lui (nếu cần): `sudo cp <bản .bak> /etc/ginsengfood/cong-noi-bo.conf && sudo systemctl restart gf-tuong-lua`. Dòng `.60 → 5000` (M7 tạm ở .60) còn giữ; M7 không còn ở .60, gỡ khi Toàn nói.
 
 Không mở cho LAN: 5432/6379/3000–3002 (chỉ trong máy). Ra ngoài Internet: không cổng nào (router chưa chuyển). Asterisk .64 hiện **chặn .99**
 (18089 đóng; ufw .64 chỉ cho .61), phải nhờ Anh Tuấn mở trước khi cắt m8. ufw .99 thêm một luật: dải container → cổng 18088 trên máy

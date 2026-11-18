@@ -14,8 +14,11 @@ Mốc 1 thành **VÀNG** nếu có đủ cả ba điều kiện:
 
 Đích (D-m7-063, m7.113 A):
 - **Mốc 1 · 15/11:** luồng tự động tạo video ngắn chạy trọn bằng bộ máy thật: Claude thuê bao, VieNeu, faster-whisper, ảnh/clip Muse, ffmpeg. Kết quả là một video thật 95–120 giây ghép nhiều clip; dưới 91 giây thì không đạt.
-- **Mốc 2 · 30/11:** chương trình 70 phút và mọi phần còn lại: xu hướng, phát, nối thật M3/M2/M1/Kho Media/M6/IdP, lên .60, nghiệm thu, kho ảnh/nhân vật (WP29). Bật chạy thật do Lead quyết riêng.
-  - Kịp Mốc 2: **ĐỎ**. Cần 942 giờ ước trong 15 ngày, tức 63/ngày. 110/135 task phải chờ Mốc 1 xong.
+- **Mốc 2 · 30/11:** chương trình 70 phút và mọi phần còn lại: xu hướng, phát, nối thật M3/M2/M1/Kho Media/M6/IdP, lên máy chủ, nghiệm thu. Bật chạy thật do Lead quyết riêng. Kho ảnh/nhân vật (WP29) dời sau 30/11 (D-m7-095, 15/11).
+  - Kịp Mốc 2: **ĐỎ**. Sau khi dời WP29: 108 task, khoảng 748 giờ ước trong 15 ngày (16–30/11), tức khoảng 50/ngày, ngang nhịp cao đã đo; vẫn ĐỎ vì Mốc 1 trễ (T190 BLOCKED) và .63 chết từ 20:14 14/11.
+- Cập nhật 15/11 (không chấm lại %): T221, T076d, T085 `d743c88`, T190 `765eaa6` (BLOCKED ở ASR) đã lên origin; chi tiết `TRANG_THAI.md`, `wp/T190-chay-lai.md`.
+- Cập nhật 16/11 20:37 (không chấm lại %): T190 làm lại từ ASR thành công trên .63 (0,906), video chờ Toàn duyệt QA; WP31 (T222 làm lại luồng video ngắn, khoảng 98 giờ ước) vào Mốc 1, Mốc 1 đóng khi WP31 xong (D-m7-101).
+- Cập nhật 16/11 sáng (không chấm lại %): Toàn gác mọi việc cần .63 tới khi Anh Tuấn sửa xong (D-m7-098): T190, Mốc 1, bộ kiểm đủ đứng. Chỗ chạy thật M7 đổi từ .60 sang máy ảo Ubuntu 22.04 bản server, không card, Toàn xin Anh Tuấn 16/11, chưa giao; Toàn xin thêm một máy staging giống .99 (D-m7-099).
 
 Nguồn: 4 scout `/ke-hoach` ngày 10/11 (Mốc 1; Mốc 2 + G2; câu mở + G3–G6; L0, kiểm thử, nhịp đo) và kế hoạch repo `docs/04-sdlc/IMPLEMENTATION_PLAN.md` (219 task, 1.535 giờ ước; đã xong 38–40 task).
 Thang `chung/CONG_PRODUCTION.md` §1: chưa có gì chạy trên máy chủ nên trần là 50.
@@ -48,7 +51,7 @@ Kiểm tự động chạy lúc 11/11 13:44–19:11 trên `a6011c4` (bộ kiểm
 
 | Hạng mục | Task | Bậc | Mốc | Ghi chú |
 |---|---|---|---|---|
-| E1 Kho ảnh tham chiếu, kho nhân vật, cổng ảnh, Muse nhiều tài khoản (D-m7-064…066) | T193–T219 | 0 | 2 | WP29, 27 task, 194 giờ, Sheet M7-213…239. Thêm sau ngày chốt trọng số |
+| E1 Kho ảnh tham chiếu, kho nhân vật, cổng ảnh, Muse nhiều tài khoản (D-m7-064…066) | T193–T219 | 0 | sau 30/11 (D-m7-095) | WP29, 27 task, 194 giờ, Sheet M7-213…239. Thêm sau ngày chốt trọng số. Ảnh tham chiếu Muse (T210) cũng theo WP29 (D-m7-096) |
 
 ## Nhịp đo thật (Sheet `doneDate` + `git log`)
 
@@ -67,12 +70,12 @@ Kiểm tự động chạy lúc 11/11 13:44–19:11 trên `a6011c4` (bộ kiểm
 |---|---|---|
 | G1 Chức năng lõi | chưa | Mốc 1: luồng video ngắn thật (WP07–WP11, WP22). Mốc 2: 70 phút, phát, xu hướng |
 | G2 Liên module | chưa | 3/11 điểm nối đã có mã phía láng giềng: M3 phiên Giờ Vàng (`PublicGoldenHourController.java:30` @`67f358ed9`; nay bắt buộc `?locale=`, adapter phải bỏ giá), ops-core availability, M1 ProductPublicView. 8 điểm chưa có: M3 snapshot và số bán SKU, claim M1, Kho Media `usable-ranges`, tín hiệu và chỉ số M6, IdP, hợp đồng contracts. Tài khoản `availability-v1` và `SVC-M7` chưa tạo. Hạn 17–24/11 |
-| G3 Bảo mật | chưa | **Có:** OIDC/BFF, RBAC, quyền duyệt dùng chung (T008), audit HMAC (T011), bí mật bắt buộc (T013), quét PII (T012), CSRF trả 403. **Thiếu:** T176 giới hạn tần suất, T177 bí mật dạng thư mục, T180 mã hoá khoá DataProtection; tất cả trước T103 (18/11). Lỗi CSRF trả 500 chưa có task (`docs/04-sdlc/tasks/M7-T015.md:195`). Quét bí mật có cấu hình nhưng chưa chạy lần nào (CI tắt). IdP .60 |
-| G4 Dữ liệu | chưa | **Có:** 10 migration, vai DB tách (`deploy/db/init-roles.sql`), seed thử, `m7-migrate`. **Thiếu:** test nâng từ bản đang chạy, sao lưu T179, khôi phục T161 (chờ DL-O56), xoá theo hạn T153/T178 (chờ DL-O52), ổ kho .60 |
-| G5 Triển khai | chưa | **Có:** Dockerfile nhiều tầng chạy non-root, compose `m7` 7 dịch vụ, health, kiểm khói 15/15 (T015 `23961bb`). **Thiếu:** phụ lục 9 điểm deploy contract (`deploy@225c586` còn mô tả M7 cũ), chỗ và cổng .60, chứng chỉ `m7-edge`, khoá audit .60, kho S3 T175, registry/CD theo D-lead-017/018, ảnh `worker` thiếu ffmpeg và Claude CLI (`deploy/docker/Dockerfile:12`). Hạn 18/11 |
+| G3 Bảo mật | chưa | **Có:** OIDC/BFF, RBAC, quyền duyệt dùng chung (T008), audit HMAC (T011), bí mật bắt buộc (T013), quét PII (T012), CSRF trả 403. **Thiếu:** T176 giới hạn tần suất, T177 bí mật dạng thư mục, T180 mã hoá khoá DataProtection; tất cả trước T103 (18/11). Lỗi CSRF trả 500 chưa có task (`docs/04-sdlc/tasks/M7-T015.md:195`). Quét bí mật có cấu hình nhưng chưa chạy lần nào (CI tắt). IdP máy M7 |
+| G4 Dữ liệu | chưa | **Có:** 10 migration, vai DB tách (`deploy/db/init-roles.sql`), seed thử, `m7-migrate`. **Thiếu:** test nâng từ bản đang chạy, sao lưu T179, khôi phục T161 (chờ DL-O56), xoá theo hạn T153/T178 (chờ DL-O52), ổ kho máy M7 (xin ổ 1 TB, D-m7-099) |
+| G5 Triển khai | chưa | **Có:** Dockerfile nhiều tầng chạy non-root, compose `m7` 7 dịch vụ, health, kiểm khói 15/15 (T015 `23961bb`). **Thiếu:** phụ lục 9 điểm deploy contract (`deploy@225c586` còn mô tả M7 cũ), máy chạy thật M7 (máy ảo Toàn xin 16/11, chưa giao, D-m7-099) và cổng, chứng chỉ `m7-edge`, khoá audit máy M7, kho S3 T175, registry/CD theo D-lead-017/018, ảnh `worker` thiếu ffmpeg và Claude CLI (`deploy/docker/Dockerfile:12`). Hạn 18/11 |
 | G6 Vận hành | chưa | **Có:** log có mã tương quan và che dữ liệu, OTLP, metric `m7_audit_chain_ok`, runbook RU-10…RU-45 (chưa diễn tập). **Thiếu:** công tắc dừng T014 (Mốc 1), cảnh báo T044, diễn tập runbook (Mốc 2) |
 | G7 Kiểm thử | chưa | CI tắt (D-m7-023, D-m7-067 m7.112 không duyệt bật lại). Thay bằng build/test/docs/trace chạy tay, verifier độc lập và đột biến. Web test CHƯA CHẠY. TC-UAT: 34 dòng TODO (`TEST_STRATEGY.md` §14). TC-NPERF-001…005 TODO |
-| G8 Ngoài code | chưa | Máy dev đủ cho Mốc 1 (T192 vòng 4: ffmpeg 8.1.2, VieNeu, faster-whisper, Claude CLI đã đăng nhập). Còn Muse và CTA/hồ sơ SP (chặn Mốc 1); .60, IdP, láng giềng (chặn Mốc 2). Chi tiết ở bảng dưới |
+| G8 Ngoài code | chưa | Máy dev đủ cho Mốc 1 (T192 vòng 4: ffmpeg 8.1.2, VieNeu, faster-whisper, Claude CLI đã đăng nhập). Còn Muse và CTA/hồ sơ SP (chặn Mốc 1); máy chạy thật M7 (máy ảo Toàn xin 16/11, chưa giao, D-m7-099), IdP, láng giềng (chặn Mốc 2). .63 hỏng từ 14/11, việc cần .63 gác (D-m7-098). Chi tiết ở bảng dưới |
 
 ## Gói việc
 
@@ -90,18 +93,19 @@ Luật làn (D-m7-056, D-m7-061, m7.117):
 | M7-WP10 Studio thật | T048–T050, T053–T056, T058, T060–T064, T068, T069, T076, T189 · 133 | Một lượt Studio trên máy dev: giọng VieNeu, kiểm lời faster-whisper, ảnh/clip Muse, phụ đề, ffmpeg dựng, nhãn AI trên hình. AUTO_CHECK ffprobe đạt | `Studio/**`, `VideoToolkit/**`, `Worker/**`, worker Python mới · `StudioEngineRegistration.cs`, `WorkerHost.cs` | R2 | T040 → T048; Muse (X8) cho T064, T189 | 14/11 | T045–T047, T052, T073 xong; Muse chưa có mã |
 | M7-WP11 Video ngắn tới gói xuất | T043, T079–T085, T087–T090, T191, T190 · 113 | Đi trọn brief → kịch bản → guard → Studio → duyệt → gói xuất. T190 ra một video 95–120 giây ghép nhiều clip | `ShortVideo/**` (mới), các màn web video ngắn · menu web | R2 | WP08, WP09, WP10; CTA/hồ sơ SP (X12) cho T191 | 14/11 · T190 14–15/11 | T077, T078 xong |
 | M7-WP22 Nền giao diện | T183 (4), T184 (4), T185 (5) · 13 | Có thành phần nhập liệu, lớp phủ và dữ liệu theo kho giao diện | `web/src/components/ui/**` | R2 | — | 11/11 | Dở trong `_wt/m7/code-T183…T185` từ 06/11 |
+| M7-WP31 Làm lại luồng video ngắn (T222) | 11 task · khoảng 98 (danh sách ở thiết kế `0137486` trên .63, DL-330…335) | Video ngắn ra từ luồng mới; Mốc 1 đóng ở đây (D-m7-101) | theo thiết kế T222, chỉ phiên .63 ghi mã | theo task | Toàn duyệt thiết kế T222 và trần Muse 4; 5 ảnh sản phẩm trong `~/dev/m7-input/chao-sam/` trên .63; phiên .63 mở lại ở tài khoản mới | sớm nhất 19–20/11 | Thiết kế T222 Toàn duyệt 17/11 (D-m7-112, video thử MẪU, không nhạc, 4 lượt Muse đo); thêm T233 (73 test Muse trên Ubuntu) trước T228; Sheet M7-248…259; sóng 1 (T225 ‖ T223 ‖ T224 ‖ T231) chạy từ 17/11 09:3x |
 
-**Mốc 2 (135 task, 942 giờ ước):**
+**Mốc 2 (108 task, 748 giờ ước sau khi dời WP29 theo D-m7-095; trước đó 135 task, 942 giờ ước):**
 
 | WP | Task · giờ ước | Tiêu chí đạt | Rủi ro | Phụ thuộc · mở được ngay | Mở | Trạng thái |
 |---|---|---|---|---|---|---|
 | M7-WP12 Xu hướng | T093–T102, T107, T108, T120 · 96 | Nhập tay xu hướng, chấm điểm, bảng xu hướng dùng cho chương trình | R2 | 12/13 task chờ Mốc 1 · T093 mở được ngay | 16/11 | Thiết kế T092 |
 | M7-WP25 Chương trình 70 phút | T109–T135 trừ T120 · 188 | Một bản master 4.200 giây thật | R2 | T194, T110 (chờ T014) · T109, T116, T123, T131 | 16/11 | Chưa |
 | M7-WP26 Phát, lịch, M6, đợt 2 | T136–T163 · 182 | Lịch phát, gói phát, tín hiệu M6, nghiệm thu đợt 2 | R2 | T136, T144, T149, T156 | 16/11 | Chưa |
-| M7-WP13 .60, nghiệm thu đợt 1 | T057, T059, T103–T105, T175–T177 · 56, cộng sửa CSRF 500 (chưa có mã task) và ảnh worker | Lên .60, kiểm khói, TC-UAT đợt 1 | R3 | Chỗ .60 cần trước 18/11 · T175, T176 | 16/11 | Chưa |
+| M7-WP13 máy chạy thật, nghiệm thu đợt 1 | T057, T059, T103–T105, T175–T177 · 56, cộng sửa CSRF 500 (chưa có mã task) và ảnh worker | Lên máy M7 (máy ảo, D-m7-099), kiểm khói, TC-UAT đợt 1 | R3 | Máy M7 cần trước 18/11, chưa giao · T175, T176 | 16/11 | Chưa |
 | M7-WP27 Nối thật, IdP | T164–T173 · 70 (T174 chờ Lead quyết) | Adapter thật thay giả, chạy được với láng giềng | R3 | Láng giềng 20–24/11, IdP 17/11 · T164, T165, T167–T170 | 16/11 | Chưa |
 | M7-WP28 Vận hành, bảo mật, mở rộng | T017–T019, T028, T031, T037, T044, T065–T067, T070–T072, T074, T075, T086, T091, T106, T178–T181 · 156 | Cảnh báo, sao lưu, xoá theo hạn, mã hoá khoá | R2 | T180 | 16/11 | Chưa |
-| M7-WP29 Kho ảnh, nhân vật | T193–T219 · 194 | Như phần E1 ở trên | R2 (7 task R3) | T193 | 16/11 | Sheet M7-213…239 |
+| M7-WP29 Kho ảnh, nhân vật | T193–T219 · 194 | Như phần E1 ở trên | R2 (7 task R3) | T193 | sau 30/11 | DỜI khỏi Mốc 2 (D-m7-095); Sheet M7-213…239 |
 | Đóng | WP01–06, WP14–21, WP23, WP24 `250873a`, WP30 `1cb3a52` | — | — | — | — | ĐÓNG |
 
 Tệp nóng và cách chia (đã kiểm chéo):
@@ -127,8 +131,8 @@ Tệp nóng và cách chia (đã kiểm chéo):
 |---|---|---|---|
 | A Xong chức năng | 07/11 | Chức năng Mốc 1 xong 14/11 (T085) | Trễ: từ 07/11 mới xong 11/56 task Mốc 1 |
 | B Nối liên module | 10/11 | Mốc 1 dùng adapter ops-core giả (T043); nối thật làm ở Mốc 2, 20–24/11 | Không áp dụng cho 15/11 |
-| C Nghiệm thu | 12/11 | Mốc 1: Toàn chạy một lượt 15/11 và ký (chờ m7.150). TC-UAT đợt 1 chạy trên .60 ở Mốc 2 | Chưa |
-| D Chạy bản tối thiểu | 14/11 | T190: một video 95–120 giây từ luồng thật trên máy dev | Chưa; nằm cuối sóng 3 |
+| C Nghiệm thu | 12/11 | Mốc 1: Toàn chạy một lượt và ký (D-m7-087). TC-UAT đợt 1 chạy trên máy M7 (D-m7-099) ở Mốc 2 | Chưa |
+| D Chạy bản tối thiểu | 14/11 | T190: một video 95–120 giây từ luồng thật trên máy dev .63 (D-m7-084); ngưỡng ASR 0,90 chỉ máy dev, ghi nhãn (D-m7-086) | Chưa; .63 còn phải dựng VieNeu, faster-whisper, Chrome và đăng nhập Muse |
 
 - **Mốc 1, 79 giờ ước (khoảng 37 giờ thật):** T014 → T034 → T035 → T081 → T082 → T083 → T084 → T085 → T190.
   - Nhánh Studio, 70 giờ: T054 → T055 → T056 → T058 → T068 → T069 → T076 → T190.
@@ -137,36 +141,37 @@ Tệp nóng và cách chia (đã kiểm chéo):
   - Đường găng không phải điểm nghẽn; khối lượng mới là điểm nghẽn.
 - **Mốc 2, master 70 phút, 94 giờ ước:** T093 → T194 → T111 → T112 → T113 → T117 → T125 → T126 → T127 → T128 → T132 → T133. T111 còn chờ T110, mà T110 chờ T014.
 - **Mốc 2, tất cả, 188 giờ ước:** … T133 → T134 → T138 → T139 → T140 → T150 → T152 → T154 → T162 → T163 → T171 → T172 → T173.
-  - Nhánh WP29 tới T218: 88 giờ. Chuỗi lên .60 tới T105: 87 giờ.
-- **Sức chứa Mốc 2:**
-  - Ở nhịp 50/ngày còn thiếu 192 giờ ước; ở nhịp 35/ngày thiếu 417.
-  - Phần Mốc 1 trượt qua 15/11 cộng thẳng vào số thiếu.
-  - Chọn giữ đủ phạm vi hay dời WP29: m7.151, hạn 16/11.
+  - Chuỗi lên máy chủ tới T105: 87 giờ. Nhánh WP29 (88 giờ) đã dời sau 30/11 (D-m7-095).
+- **Sức chứa Mốc 2 (sau khi dời WP29):**
+  - 748 giờ ước: ở nhịp 50/ngày vừa đủ; ở nhịp 35/ngày thiếu khoảng 220.
+  - Từ 16/11 tối WP31 (khoảng 98 giờ ước) chen trước Mốc 2 (D-m7-101): Mốc 2 còn khoảng 12 ngày cho 748 giờ ước, tức khoảng 62/ngày, ngang mức cao nhất đã đo trong một ngày.
+  - Phần Mốc 1 trượt qua 15/11 (T190, các task a, b, c) và thời gian .63 chết cộng thẳng vào số thiếu.
 
 | Lịch Mốc 2 | Việc |
 |---|---|
-| 16–19/11 | T093, T194, T109–T112; bảo mật trước T103 (T175, T176, T177, T180); T057, T059; T193 |
-| 20–25/11 | Master T113–T133; T103 lên .60; T104; xu hướng; adapter thật T164–T170 khi láng giềng sẵn sàng |
-| 26–30/11 | T134–T163; T171–T173; nghiệm thu T105, T163; WP29 xong |
+| 16–19/11 | T190 nếu chưa xong (cùng task ASR theo câu, sửa `AssetRegistrar`, ffmpeg ≥ 8.1); WP31 làm lại luồng video ngắn, đóng Mốc 1 (D-m7-101); sau đó T093, T109–T112; bảo mật trước T103 (T175, T176, T177, T180); T057, T059 |
+| 20–25/11 | Master T113–T133; T103 lên máy M7; T104; xu hướng; adapter thật T164–T170 khi láng giềng sẵn sàng |
+| 26–30/11 | T134–T163; T171–T173; nghiệm thu T105, T163 |
+| Sau 30/11 | WP29 kho ảnh, nhân vật, ảnh tham chiếu Muse T210 (D-m7-095, D-m7-096) |
 
 ## Việc ngoài code (phiên `lead` gom về `modules/lead/VIEC_NGOAI.md`)
 
 | Việc | Ai gỡ | Cần trước | Trạng thái |
 |---|---|---|---|
 | Claude thuê bao, ffmpeg/ffprobe, VieNeu, faster-whisper, ổ trống trên máy dev | Toàn | 09–10/11 | **XONG**: T192 vòng 4 (`ra-soat/2026-11-09-t192/vong4/T192-v4-kiem-may.txt`), exit 0 |
-| Tài khoản Muse trả phí, đăng nhập tay vào hồ sơ Chrome của worker (m7.114 A) | Toàn | 12/11 (T064, sóng 2) | **XONG** 13/11 ~14:52: Toàn đã đăng nhập tay vào hồ sơ riêng (`%LOCALAPPDATA%\M7\muse-profile`); còn địa chỉ trang Muse và câu "chạy T189" cho lượt thật |
+| Tài khoản Muse trả phí, đăng nhập tay vào hồ sơ Chrome của worker (m7.114 A) | Toàn | 12/11 (T064, sóng 2) | Máy Lead XONG 13/11 (T189b chạy thật 14/11). Từ D-m7-084 (14/11) T190 chạy trên .63: Toàn đăng nhập lại vào hồ sơ worker trên .63 qua màn hình ảo khi phiên .63 dựng xong; chưa |
 | Danh sách CTA cho phép (DL-O26), hồ sơ SP mẫu (Giấy xác nhận, câu công dụng) | Toàn | 11/11 tối (T191, sóng 1) | 13/11 Toàn bảo dùng dữ liệu MẪU (D-m7-080, thay D-m7-074): phiên m7 tự nhập ở T191 từ ảnh nhãn; thay bằng dữ liệu thật khi có |
-| Thêm tài khoản Muse cho chạy song song; Codex gói ChatGPT Pro trên máy chạy nền | Toàn | 20/11 (WP29) | Codex đã đăng nhập ChatGPT; chưa rõ có phải gói Pro. Muse thêm: chưa |
-| Phụ lục 9 điểm deploy contract; thư mục, cổng `m7` trên .60 | phiên `lead`, Anh Tuấn | 18/11 | Hộp thư 03/11, chưa phản hồi |
-| Chứng chỉ bền `m7-edge`, tên `video.` (D-lead-029); khoá audit `M7_AUDIT__*` .60 | phiên `lead`, Anh Tuấn; Toàn | 18/11 | Hộp thư 06/11; 3 câu chưa có trả lời |
-| Ổ đĩa kho tệp .60 (còn ~500 GB, cần ~630 GB) hoặc NAS | Anh Tuấn | 18/11 | Chưa |
-| IdP cho .60 (bộ phát JWT dev bị cấm, SRS IR-IDP-01; DL-O24 của M5 còn mở) | phiên `lead` | 17/11 | Chưa có chủ |
-| Đổi địa chỉ nội bộ M7 gọi theo giờ cắt máy chủ (D-lead-034/035/036, `chung/MAY_CHU.md`): `M7_OPSCORE__BASEURL` = `http://192.168.1.99:5000` (M1–M2, từ 13/11 22:30; cổng 5000 mở cho .60), `M7_M3__BASEURL` = `http://192.168.1.99:80` (M3 + M4, từ 14/11 22:45), M5 ở máy mkt 192.168.1.98 (cổng Tài báo) | phiên `lead`, Anh Tuấn (đặt biến ở .60); phiên m7 không ssh | 13/11 22:30; 14/11 22:45 | Biến chưa có giá trị mặc định ở repo (env-reference §4); tới giờ cắt giữ cấu hình cũ. M7 dev local chưa gọi M1/M3 thật (T110, T164…) nên chưa ảnh hưởng Mốc 1 |
+| Thêm tài khoản Muse cho chạy song song; Codex gói ChatGPT Pro trên máy chạy nền | Toàn | 20/11 (WP29) | Codex đã đăng nhập ChatGPT ở máy Lead; từ D-m7-088 Codex chạy ở .63 (cài và đăng nhập trên .63: chưa). Muse thêm: chưa |
+| Phụ lục 9 điểm deploy contract; thư mục, cổng `m7` trên máy M7 (máy ảo Ubuntu 22.04 bản server, không card, ~8 nhân, RAM ≥ 16 GB, ổ 1 TB, ra Internet; Toàn xin Anh Tuấn 16/11, D-m7-099) | phiên `lead`, Anh Tuấn | 18/11 | Hộp thư 03/11, chưa phản hồi; máy chưa giao |
+| Chứng chỉ bền `m7-edge`, tên `video.` (D-lead-029); khoá audit `M7_AUDIT__*` máy M7 | phiên `lead`, Anh Tuấn; Toàn | 18/11 | Hộp thư 06/11; 3 câu chưa có trả lời |
+| Ổ đĩa kho tệp (cần ~630 GB): máy ảo M7 xin ổ 1 TB (D-m7-099) | Anh Tuấn | 18/11 | Chưa giao |
+| IdP cho máy M7 (bộ phát JWT dev bị cấm, SRS IR-IDP-01; DL-O24 của M5 còn mở) | phiên `lead` | 17/11 | Chưa có chủ |
+| Đổi địa chỉ nội bộ M7 gọi theo giờ cắt máy chủ (D-lead-034/035/036, `chung/MAY_CHU.md`): `M7_OPSCORE__BASEURL` = `http://192.168.1.99:5000` (M1–M2, từ 13/11 22:30; cổng 5000 mở cho .60, phải mở thêm cho máy M7), `M7_M3__BASEURL` = `http://192.168.1.99:80` (M3 + M4, từ 14/11 22:45), M5 ở máy mkt 192.168.1.98 (cổng Tài báo) | phiên `lead`, Anh Tuấn (đặt biến ở máy M7); phiên m7 không ssh | 13/11 22:30; 14/11 22:45 | Biến chưa có giá trị mặc định ở repo (env-reference §4); tới giờ cắt giữ cấu hình cũ. M7 dev local chưa gọi M1/M3 thật (T110, T164…) nên chưa ảnh hưởng Mốc 1 |
 | M3: snapshot sản phẩm (không thấy `CommerceRuntimeSnapshot` ở cả 3 nhánh), số bán SKU (chưa có endpoint) | Phúc, phiên `m34` | 20/11, 24/11 | Chưa |
 | M6: tín hiệu lần phát (DL-O17, luật `source` contracts), DL-O21 ghi "sau 15/11" | Tài, phiên `m6`, `lead` | 20/11 | Chưa |
 | M2/M1: tài khoản `availability-v1` (m12 hạn 14/11), `SVC-M7`, endpoint claim M1; Kho Media `usable-ranges` (mới có spec) | Toàn, phiên `m12` | 20–22/11 | Chưa |
 | Hợp đồng M7 trong `ginsengfood-contracts` | phiên `lead` | 20/11 | Chưa |
-| Người ký UAT từng mốc (DL-O75) | Toàn | 14/11 | Chưa chốt (m7.150) |
+| Người ký UAT từng mốc (DL-O75) | Toàn | 14/11 | **XONG** 14/11: Toàn chạy thay mọi vai còn thiếu và ký Mốc 1, Mốc 2 (D-m7-087) |
 | Pháp chế DL-048, DL-049, DL-O52; page thử Meta, nhãn AI (X16); người trực (DL-O62) | pháp chế, Toàn, Chú | trước bật chạy thật | Chưa; bộ chặn giữ mức chặt; Toàn giữ vai tới 30/11 |
 
 Hộp thư: cả 4 thư M7 (03/11 deploy contract và mã lỗi, 06/11 chứng chỉ, 07/11 hạn mới) vẫn nằm ở `hop-thu/`, chưa thư nào có phản hồi. Sổ lead còn ghi "01–02/2027" (`modules/lead/SAN_SANG.md:33`).

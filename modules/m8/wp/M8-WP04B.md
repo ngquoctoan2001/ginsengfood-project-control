@@ -1,6 +1,6 @@
 # M8-WP04B — Làm nóng tên phường/xã và gói duyệt cho Chú
 
-Trạng thái: ĐANG LÀM (đã ghép local `16135c72`, chờ push) · Rủi ro: R2 · Chế độ: A · Mốc: 11/11 (chạy máy đêm 10–11/11)
+Trạng thái: SẴN SÀNG — công cụ đã lên remote (`16135c72` có trên `main` GitLab/GitHub, kiểm 18/11); lô làm nóng CHƯA CHẠY, hẹn trên .99 đêm 19/11 sau buổi sếp thử M4 (D-m8-132; .61 không còn dùng) · Rủi ro: R2 · Chế độ: A · Mốc: 11/11 (chạy máy đêm 10–11/11)
 Hạng mục nâng: Giọng đọc, lời thoại 3 miền, tên địa bàn — giữ 50 (lên 75 khi kho trên .61 đủ và phát thử qua .64) · Sheet: M8-004 · Ước lượng: 12 giờ
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP04B` (bản sao archive, repo tạm commit `goc` f437d4e) · Base SHA: `005bc43d` · Chỗ kiểm: cùng bản sao
 Quyết định: D-m8-071 (m8.63: làm nóng đủ 3.321 phường/xã × 3 miền trên .61, chạy ngoài giờ), D-m8-012 (nguồn địa bàn M3 ghim tại M8).
@@ -41,9 +41,10 @@ Quyết định: D-m8-071 (m8.63: làm nóng đủ 3.321 phường/xã × 3 mi�
 - 10/11 13:08 verifier R2 vòng 3: ĐẠT (runbook mục 5 bash Linux 14/14, `awk` đọc count đúng 3.318, đột biến 6/6, 68 + 80 test, 3 selftest PASS; lưu ý thấp: `awk` dựa thứ tự khoá `file`→`count`). Ghép W-0520 trên checkout chính (chưa commit): bản vá áp sạch, 5 tệp sửa `cmp` khớp; bằng chứng → `docs/evidence/W-0520` + `verifier-r2.md`; `deploy/m8/README.md` thêm `ivr-ops`. Hai lỗi chỉ lộ trên Windows: (1) tệp mới `lam-nong/` CRLF → thêm `deploy/tts/lam-nong/.gitattributes` LF; (2) `goi_duyet.py` băm byte trên đĩa của kế hoạch W-0457 (hash gói `fc41ebe1…` ở bản sao, đúng là `9b63cf12…` của byte commit) → bỏ CR trước khi băm, sinh lại gói (chỉ dòng hash đổi). Sau sửa 68/68 + 80/80, gate-status PASS; đang chạy `deploy/m8/tests`.
 - 10/11 13:16 ghép xong local: W-0520 = `fa8b4a89` + `16135c72` (sửa một câu bằng chứng khớp mẫu địa chỉ "đường"). `deploy/m8/tests` 88 OK; clone Linux: MANIFEST khớp, lam-nong 68 + ward-review OK, PII `docs/evidence` 3.257 tệp PASS, gitleaks `005bc43d..HEAD` 0; tracker M8-004 đã ghi. `pre-push-scan.sh` đang chạy (bỏ 3 image phụ không đổi đầu vào).
 - 10/11 14:00 Lead duyệt push + deploy; `main` GitLab + GitHub = `16135c72`; pipeline `3048379552` đang dựng `ivr-ops`.
+- 18/11 08:5x phiên chính: đóng dòng "chờ push" (đã có trên remote); lô làm nóng chuyển sang .99, chạy đêm 19/11 (D-m8-132). Cần soạn lại lệnh chạy theo đường `/data/ginsengfood-ivr` (project compose `m8`) trước giờ chạy.
 
 ## Bước kế tiếp chính xác
-pre-push-scan xong → trình Lead push `main` (W-0519 + W-0520) lên GitLab + GitHub → pipeline dựng `ivr-ops` → deploy SHA mới lên .61 (02H) → rồi phiên chính chạy lô làm nóng trên .61 tối 10/11 theo runbook.
+Đêm 19/11 (D-m8-132): phiên chính soạn lệnh làm nóng trên .99 (`/data/ginsengfood-ivr`, project `m8`), Toàn duyệt, chạy ngoài giờ, đo CPU; gói 455 tên gửi Chú là việc riêng.
 
 ## Còn lại / CẦN QUYẾT
 - Gửi gói duyệt cho Chú: Lead gửi (tin nháp do phiên chính soạn).

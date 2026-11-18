@@ -10,6 +10,8 @@ trong checkout BP và 3 tệp trong `ginsengfood-ivr` `main` (overlay FE M3-112 
 Nguồn: 4 scout + 1 auditor 10/11, chỉ đọc, không chạy test; số test tự khai chưa chạy lại không dùng để nâng bậc. Tự khai: Phúc 35%, Tài M3 43%, M4 37%.
 Hạn (D-lead-025, D-m34-044): 30/11 M3 chạy thật, xong hết; 15/11 mốc giữa kỳ = bản tối thiểu, chạy thử trên .60 tới giờ cắt 14/11 22:45 rồi trên .99 (D-lead-036); .60 chỉ còn đường lui. M4: 15/11 pilot nội bộ, khách thật chưa có ngày (m34.75).
 
+Bổ sung bằng chứng 17/11 (rà Phúc, `ra-soat/2026-11-17-phuc.md`, không chấm lại %): hạng mục 4 (quản trị XII) 0/16 task Đạt — mã không đổi từ 10/11, R3 vào dev không PR; đăng nhập/IAM 2/10 Đạt; nối M12 phía Phúc = màn quản trị ĐỌC kho/tồn theo lô/SKU khớp hợp đồng `a57a11f` (306/306 test) nhưng chưa bật .99 (thiếu 3 cờ); G3 Bảo mật thêm: 404 dò email ở mã đăng nhập, tài khoản mẫu vào được .99.
+
 ## Hạng mục lõi (tổng trọng số 100)
 
 | # | Hạng mục (người ngoài hiểu được) | Người | Trọng số | Bậc 03/11 → 10/11 | Bằng chứng |
@@ -101,6 +103,15 @@ Mốc A 07/11 và B 10/11 **trượt**. B chưa đạt vì chưa có lượt ch�
 - 28/11: WP11, lô gọi nhà mạng thật.
 - 29/11: chuẩn bị release (VNPAY thật nếu có thông số).
 - 30/11: chạy thật.
+
+## Đổi DB M2 sang DB sạch 29–30/11 (D-m12-092/093, kế hoạch phía M3: D-m34-095)
+- Tới 29/11: M2 chạy Production trên DB hiện tại của .99 (bản sao .61, dữ liệu thử); M3 quan sát → ENFORCE 21–22/11, S01–S18 như kế hoạch.
+- **Trước giờ đổi DB (M2 báo giờ T, trước ≥ 1 ngày):** lượt .99 của M3 (Toàn duyệt) tắt giữ hàng (`app.inventory.ops-core.allocation.enabled=false`), `OPS_CORE_GATE_ENFORCE=false`, rồi `OPS_CORE_ENABLED=false` trước T.
+  Lý do (mã nhánh chú): hold cũ mất cùng DB cũ; nếu giữ hàng còn bật, `OrderIvrRecallService.keepStock` sẽ giữ lại trên DB mới tồn 0 → `OUT_OF_STOCK` → huỷ đơn đang chờ IVR.
+- **Sau khi M2 đổi DB:** đặt tệp secret mới cho principal `SVC-M3-SELLABLE` (tệp, không qua chat) → `OPS_CORE_ENABLED=true` QUAN SÁT (không ENFORCE, không giữ hàng) khi M2 có kho.
+- **Khi M2 đã có kho (Toàn nhập qua giao diện):** M2 giao CSV 19 SKU (`sku_code,ops_core_sku_id,uom_code`) + kho mặc định (`ops_core_warehouse_id`, `ops_core_warehouse_code`) → `ops-core/nap-link.sh --thay-the` chạy khô rồi ghi (Toàn duyệt), kiểm `ket_luan=DAT`.
+- **Khi có tồn đầu kỳ:** kiểm bán được cho 19 SKU ở chế độ quan sát → dọn dòng `ops_core_reservations` còn mở trỏ hold DB cũ (cách xử lý 404 của bộ đối soát: CHƯA KIỂM) → bật lại giữ hàng + ENFORCE (Toàn duyệt). Trước đó M3 bán như chưa nối M12.
+- Cần M2: giữ nguyên 19 `sku_code` và đơn vị (khoá đơn vị V347) để nạp lại chỉ đổi UUID; báo giờ T trước ≥ 1 ngày; báo nếu secret ký webhook M12 → M3 đổi theo DB mới.
 
 ## Việc ngoài code (phiên `lead` gom về `modules/lead/VIEC_NGOAI.md`)
 

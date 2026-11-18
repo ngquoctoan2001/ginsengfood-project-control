@@ -1,62 +1,83 @@
-# Báo cáo tuần: dùng lại quy trình 3 bước của Lead
+# Báo cáo tuần
 
-Không viết khuôn mới. Mọi báo cáo theo bộ prompt Lead đã soạn (quyết định 31/10, README
-`tools/task-tracker/bao-cao-tuan/README.md` trong mọi repo module):
+Hai loại báo cáo, cùng văn phong cho Chú (người không chuyên IT):
 
-| Bước | Ai | Prompt | Ra |
-|---|---|---|---|
-| 1. Tự báo cáo module | người phụ trách: Phúc, Tài cho phần của họ; Lead cho M12, M7, M8 và phần M3 của Lead (nối M3 → M8, đưa lên máy chủ) | `<repo>\tools\task-tracker\bao-cao-tuan\prompt-1-<người>-<mã>.md` (+ hướng dẫn chung `prompt-1-bao-cao-module.md`) | `bao-cao-tuan-<từ>_<đến>-<mã>.md`, ≤ 200 dòng |
-| 2. Lead rà soát | báo cáo Phúc, Tài: phiên `m34`, `m5`, `m6`; báo cáo M12, M7, M8, M3 của Lead: phiên `lead` trong `/tong-hop-tuan` | `<repo>\tools\task-tracker\bao-cao-tuan\prompt-2-lead-ra-soat.md` | `…-<mã>-ra-soat.md`, ≤ 60 dòng: số khớp/lệch với git + nhận xét, **không kết luận ĐẠT/TRẢ LẠI** |
-| 3. Tổng hợp | Lead | `C:\Projects\bao-cao-tuan\prompt-3-bao-cao-tong-hop.md` | `bao-cao-tong-hop-<từ>_<đến>.md` + `.docx` khổ dọc 12–13 trang gửi Chú |
+| Loại | Ai lập | Ra |
+|---|---|---|
+| **Báo cáo tuần của Toàn** (D-lead-045, từ 14/11) | phiên `lead`: `/bao-cao-tuan toan` | `bao-cao-tuan-<từ>_<đến>-Toan.md` + `.docx` khổ dọc, ≤ 200 dòng |
+| Báo cáo tổng hợp M1–M8 | phiên `lead`: `/tong-hop-tuan` | `bao-cao-tong-hop-<từ>_<đến>.md` + `.docx` khổ dọc gửi Chú |
 
-**Không có vòng trả lại, không soạn tin nhắn** (D-lead-005): người phụ trách nộp báo cáo là xong phần của họ. Bản rà soát chỉ để Lead
-dùng số đã đối chiếu và viết "Nhận xét:" khi tổng hợp. Prompt 2 trong repo module còn phần kết luận ĐẠT/TRẢ LẠI và tin nhắn sửa:
-phiên bỏ qua hai phần đó.
+Phúc và Tài vẫn tự báo cáo phần của họ theo prompt 1 (repo module `tools/task-tracker/bao-cao-tuan/`), phiên `m34`, `m5`, `m6` rà bằng
+prompt 2 (chỉ số khớp/lệch với git + nhận xét, không kết luận ĐẠT/TRẢ LẠI). **Không có vòng trả lại, không soạn tin nhắn** (D-lead-005).
+Phần của Toàn **không** còn viết 4 báo cáo riêng `M12-van-hanh-nha-may`, `M7-video-gio-vang`, `M8-ivr`, `M3-ket-noi-trien-khai`
+theo prompt 1/2 (thay bằng báo cáo của Toàn; phiên `m12`, `m7`, `m8` không chạy `/bao-cao-tuan` nữa).
 
-Báo cáo M12, M7, M8 và M3 của Lead không do phiên viết ra tự chấm: `/tong-hop-tuan` mở đầu bằng bước **kiểm chéo**. Bước này gồm 4 agent rà
-4 báo cáo đó theo prompt 2, và 1 agent tìm commit vào sau giờ rà soát và đối chiếu chỗ nối giữa các module với mã ở cả hai phía.
-Lệch thì dùng số đã đối chiếu trong bản gửi Chú; lệch làm đổi kết luận thì hỏi Lead một câu. Muốn rà sớm hơn thì phiên `lead` chạy `/ra-soat bao-cao`; khi gộp sẽ dùng lại bản đó.
+## Báo cáo tuần của Toàn (D-lead-045)
 
-Danh sách báo cáo gốc: `C:\Projects\ginsengfood-business-platform\tools\task-tracker\bao-cao-tuan\bao-cao.json`
-(sửa ở đó rồi chạy `install.mjs` ở từng repo).
+Một tệp chung cho mọi phần Toàn trực tiếp làm. Mẫu: `C:\Projects\bao-cao-tuan\2026-11-09_2026-11-14\bao-cao-tuan-2026-11-09_2026-11-14-Toan.md`.
 
-## Mã báo cáo theo luồng
+**Quy trình** (phiên `lead`, thứ Bảy):
+1. Hỏi dữ kiện các phiên luồng đang mở bằng tin nhắn phiên (một message, chạy song song): phiên M1-2, phiên M3-4 (chỉ phần Toàn),
+   phiên M8, phiên M7, phiên hạ tầng máy chủ. Khung hỏi: đã làm + bằng chứng (SHA/tệp) · còn lại tới mốc gần nhất và 30/11 ·
+   kế hoạch tuần tới · khó khăn + cách giải quyết · chưa chạy ghi "CHƯA CHẠY". Phiên không mở thì auditor đọc sổ thay.
+2. Cùng lúc giao 3 `auditor` chỉ đọc, rà commit trong kỳ đối chiếu sổ: (a) M1–M2 + nối M1–M2 ↔ M3 (ops-core, hợp đồng, phần M3 của Toàn);
+   (b) nối M3 → M8 + M8 (`toandeptrai` phần gọi xác nhận, ivr); (c) M7. Mỗi auditor trả: số commit theo ngày, việc xong theo nghiệp vụ
+   + bằng chứng, việc chưa chạy, chỗ sổ lệch git, chất lượng và rủi ro khi chạy thật, khó khăn.
+3. Phiên `lead` viết. Số liệu lấy theo bản auditor đã đối chiếu; số nghiệm thu đếm lại từ sổ nghiệm thu. **Mọi con số chưa đạt**
+   (không đạt, bị chặn, chưa chạy, chưa xong) phải tách nhóm: số lượng · vì sao · cách giải quyết · khi nào (Toàn dặn 14/11: Chú cần hiểu
+   tại sao và cách giải quyết, không chỉ con số). Con số đối tác/thông số lấy theo lời Toàn đã chốt, không theo bản nháp cũ.
+4. Tự kiểm: ≤ 200 dòng; không `%`, mã commit/task/quyết định, tên tệp, từ tiếng Anh kỹ thuật (bảng đổi thuật ngữ trong prompt 3);
+   bảng đủ cột. Toàn đọc, góp ý, sửa; Toàn duyệt rồi mới xuất Word: `python tools/md_sang_docx.py <tệp>.md --doc` (khoảng 10 trang).
+5. Chỗ sổ lệch git mà auditor thấy: báo phiên luồng tự sửa, không sửa sổ của luồng. Ghi nhật ký `modules/lead/nhat-ky/`.
 
-| Luồng | Mã file | Người | Repo | File bước 1 tới thư mục tuần bằng cách |
+**Bố cục:**
+- Đầu: "Kính gửi: Chú Dũng" · "Người báo cáo: Nguyễn Quốc Toàn" · "Ngày" (mỗi ý một dòng) + 2 dòng mở đầu nêu phạm vi.
+- 1. Tóm tắt: bảng Phần việc · Tuần này làm được · Mốc gần nhất (15/11, …). Không cột Kịp 30/11.
+- 2…7. Mỗi phần một mục, theo thứ tự: Đưa hệ thống lên máy chủ .99 · Module 1-2 · Nối Module 1-2 ↔ Module 3 · Nối Module 3 → Module 8 ·
+  Module 8 · Module 7 (thêm Module 9 khi tuần có việc); tiêu đề dùng tên module chuẩn, không ghi màu. Mỗi mục: mục tiêu 1 dòng (với phần nối) · bảng "Việc đã làm | Kết quả" · bảng tách nhóm cho
+  con số chưa đạt · bảng "Việc còn lại | Vì sao chưa xong | Cách giải quyết | Ai | Hạn" · "Nhận xét:" từng gạch đầu dòng, nói cả điểm yếu.
+- 8. Kế hoạch tuần tới: bảng Phần · Việc · Hạn. 9. Khó khăn, vướng mắc và cách giải quyết: bảng Khó khăn · Ảnh hưởng · Cách giải quyết · Tình trạng.
+
+## Báo cáo tổng hợp M1–M8
+
+Đầu vào: báo cáo của Toàn + 5 báo cáo Phúc/Tài (mỗi cái kèm bản rà) trong thư mục tuần. Quy trình chi tiết: `.claude/commands/tong-hop-tuan.md`,
+prompt `C:\Projects\bao-cao-tuan\prompt-3-bao-cao-tong-hop.md`. M3 viết thành ba phần theo người (Phúc: giao diện + backend bán hàng;
+Tài: vận chuyển, thanh toán; Toàn: nối M3 với M8 và M1–M2, máy chủ), không gộp số (D-lead-024).
+
+## Mã báo cáo Phúc, Tài
+
+| Luồng | Mã file | Người | Repo | File tới thư mục tuần bằng cách |
 |---|---|---|---|---|
-| `m34` | `M3-ban-hang` | Phúc | business-platform | Phúc lưu + commit ở repo `docs/weekly-tracking/bao-cao/`, **gửi file cho Lead**; Lead thả vào thư mục tuần |
+| `m34` | `M3-ban-hang` | Phúc | business-platform | Phúc lưu + commit ở repo `docs/weekly-tracking/bao-cao/`, **gửi file cho Toàn**; Toàn thả vào thư mục tuần |
 | `m34` | `M3-van-chuyen-thanh-toan` | Tài | business-platform | như trên |
 | `m34` | `M4-tu-van-ai` | Tài | business-platform | như trên |
 | `m5` | `M5-cong-facebook` | Tài | module5 | như trên |
 | `m6` | `M6-do-luong-quang-cao` | Tài | module5 (`m6/`) | như trên |
-| `m34` | `M3-ket-noi-trien-khai` | Lead | business-platform | prompt 1 lưu thẳng vào thư mục tuần |
-| `m12` | `M12-van-hanh-nha-may` | Lead | ginsengfood-ops-core | prompt 1 lưu thẳng vào thư mục tuần |
-| `m7` | `M7-video-gio-vang` | Lead | ginsengfood-golden-hour-video | như trên |
-| `m8` | `M8-ivr` | Lead | ginsengfood-ivr | như trên |
 
-Thư mục tuần: `C:\Projects\bao-cao-tuan\<từ>_<đến>\` (thứ Hai → thứ Bảy). Mọi báo cáo, bản rà soát, bản tổng hợp nằm ở đây.
-Phúc/Tài chưa gửi file nhưng đã commit vào repo → phiên lấy bản trong repo, ghi rõ "lấy từ repo, chưa nhận file gửi".
+Thư mục tuần: `C:\Projects\bao-cao-tuan\<từ>_<đến>\` (thứ Hai → thứ Bảy). Phúc/Tài chưa gửi file nhưng đã commit vào repo → phiên lấy
+bản trong repo, ghi rõ "lấy từ repo, chưa nhận file gửi". Danh sách báo cáo gốc của bộ prompt module:
+`C:\Projects\ginsengfood-business-platform\tools\task-tracker\bao-cao-tuan\bao-cao.json`.
 
 ## Lịch thứ Bảy
 
-M3 có ba người, ba báo cáo: Phúc (`M3-ban-hang`: giao diện và backend bán hàng), Tài (`M3-van-chuyen-thanh-toan`),
-Toàn (`M3-ket-noi-trien-khai`: nối M3 → M8, máy chủ .99 (trước 14/11 là .60), CI lên máy chủ). Khi tổng hợp, M3 viết thành ba phần theo người, không gộp số (D-lead-024).
-
 | Giờ | Việc | Bạn gõ ở phiên |
 |---|---|---|
-| 09:00–11:00 | Phúc, Tài tự chạy prompt 1 ở máy họ, kiểm lại, gửi file cho Lead. Cùng lúc Lead tự báo cáo M12, M7, M8 (ba phiên chạy song song) | `m12`, `m7`, `m8`: `/bao-cao-tuan` |
-| khi nhận file | Thả file Phúc/Tài gửi vào thư mục tuần | — |
-| 11:00–14:00 | Lead rà 5 báo cáo của Phúc/Tài, mỗi báo cáo một agent (chỉ đối chiếu số liệu, không trả lại). Phiên `m34` cùng lượt viết luôn báo cáo M3 của Lead (task M3 trên Sheet có người phụ trách là Nguyễn Quốc Toàn) | `m34` (viết 1 + rà 3), `m5`, `m6`: `/bao-cao-tuan` |
-| 14:00–16:00 | Kiểm chéo (~30–45 phút: rà M12, M7, M8, M3 của Lead; commit sau giờ rà; chỗ nối liên module) → Lead quyết các chỗ lệch → gộp 9 báo cáo + 9 bản rà soát thành báo cáo gửi Chú | `lead`: `/tong-hop-tuan` |
+| 09:00–11:00 | Phúc, Tài tự chạy prompt 1, gửi file. Cùng lúc phiên `lead` lập báo cáo của Toàn (hỏi các phiên + 3 auditor) | `lead`: `/bao-cao-tuan toan` |
+| 11:00–14:00 | Toàn đọc, duyệt báo cáo của mình → xuất Word. Phiên `m34`, `m5`, `m6` rà 5 báo cáo Phúc/Tài (chỉ đối chiếu số liệu) | `m34`, `m5`, `m6`: `/bao-cao-tuan` |
+| 14:00–16:00 | Kiểm commit sau giờ báo cáo + chỗ nối liên module → gộp thành báo cáo tổng hợp gửi Chú | `lead`: `/tong-hop-tuan` |
 
-## Văn phong cho Chú (tóm tắt — chi tiết trong prompt 3)
+## Văn phong cho Chú (áp cho cả hai loại)
 
-- Người không chuyên đọc hiểu: không mã commit, mã task, tên tệp, từ kỹ thuật tiếng Anh; dùng bảng đổi thuật ngữ trong prompt 3.
-- Mọi việc còn lại có: vì sao chưa xong · giải pháp · ai làm · hạn.
-- Bảng là chính (xuất Word khổ A4 dọc 12–13 trang bằng `tools/md_sang_docx.py --doc`, không có phần điều hành (D-lead-027): chữ ≥ 13, tiêu đề 18 đậm, ô bảng thoáng);
-  "Nhận xét:" viết từng ý.
+- Người không chuyên đọc hiểu nhưng **không dịch gượng** (Toàn dặn 14/11): "code" thay "mã", "mã nguồn" thay "kho mã"; thuật ngữ đặc thù
+  (API, test, CI, server, HTTPS, commit, database, backend, webhook…) dùng như bình thường, giải thích ngắn lần đầu nếu cần. Không mã commit,
+  mã task, tên tệp, đường dẫn.
+- Mọi việc còn lại có: vì sao chưa xong · cách giải quyết · ai làm · hạn. Con số chưa đạt luôn tách nhóm lý do.
+- Bảng là chính (Word khổ A4 dọc, `tools/md_sang_docx.py --doc`; chữ ≥ 13, tiêu đề 18 đậm, ô bảng thoáng); "Nhận xét:" viết từng ý.
+- Tên module viết đúng và **in đậm** mỗi khi nhắc (Toàn dặn 14/11): **Module 1-2 - Vận hành sản xuất** · **Module 3 - Bán hàng** · **Module 4 - AI Tư vấn** · **Module 5 - Kết nối Meta** · **Module 6 - Đo lường quảng cáo** · **Module 7 - Sản xuất Video giờ vàng** · **Module 8 - Gọi xác nhận đơn tự động**; không viết "nhà máy", "bán hàng", "gọi xác nhận đơn", "M1–M2"… thay cho tên module. Máy chủ luôn ghi "máy chủ .99" (cũng vậy với .98, .63, .60, .61), không ghi ".99" trơn hay "máy chủ chính thức (.99)".
+- Bản tổng hợp: Kết luận tuần không có dòng "Nguy cơ lớn nhất" (rủi ro ở Phần 4); bảng tổng quan không có cột Kịp 30/11; tiêu đề module không ghi màu.
 - "backend" giữ nguyên, không dịch thành "máy chủ" (máy chủ chỉ dùng cho server thật) (D-lead-007).
-- Không ghi %; không có mục cần Chú quyết hoặc hỗ trợ; không bàn quỹ giờ; mọi module lấy hạn 30/11, 15/11 là mốc giữa kỳ (D-lead-025), trừ phần đã ghi "hoãn".
+- Không ghi %; không có mục cần Chú quyết hoặc hỗ trợ (việc chờ người khác ghi trong bảng việc còn lại, có người và hạn); không bàn quỹ giờ;
+  mọi module lấy hạn 30/11, 15/11 là mốc giữa kỳ (D-lead-025), trừ phần đã ghi "hoãn".
 - Người viết xưng "Toàn", không "con"; không dùng chữ "Lead", gọi đúng tên từng người; Chú vẫn là "Chú".
-- M5, M6, M7 (và module nào vừa đổi người) trình bày hiện trạng trước khi nhận bàn giao cạnh hiện nay.
-- Trung thực: không có bằng chứng thì ghi "chưa kiểm chứng".
+- Module nào vừa đổi người trình bày hiện trạng trước khi nhận bàn giao cạnh hiện nay.
+- Trung thực: không có bằng chứng thì ghi "chưa kiểm chứng" hoặc "chưa chạy"; nói cả điểm yếu.
