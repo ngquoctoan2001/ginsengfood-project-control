@@ -7,8 +7,8 @@ Sẵn sàng **15%** (chấm 11/11, chưa chấm lại). Mốc 1: **TRỄ, ĐỎ*
 
 ## Đang chạy trên .63
 
-- **Lượt 04** (giao 08:12, PID 3896123, biến chờ nền = 0 đã kiểm, `~/m7-drive/p-04.txt` → `o-04.log`): sóng 2 WP31 = T226 ‖ T233 trên nền `68c9100` (brief `~/m7-drive/wave2/`, clone `~/_wt/m7/T226`, `T233`), cuối sóng bật bộ đủ tách rời. Lượt này giao trước khi Toàn trả lời nên không push, không gộp, không migration, không gọi Claude/Codex/Muse thật. Máy Lead có ssh nền chờ.
-- **Lượt 05 đã soạn** (`~/m7-drive/p-05.txt`), giao ngay khi lượt 04 xong: D-m7-119…124 (gộp T223, nối Claude thật + EN_IMAGE_PROMPT, T224 theo C, migration 5b3 trên dev, RU-16 vào T233, nhập 6 ảnh với nguồn AI dựng), rồi T227 → T228 → T229 → T230 khi đủ phụ thuộc; dừng trước mọi lượt Muse thật và báo số lượt cần; bộ đủ cuối lượt; không push.
+- **Lượt 04 DỪNG vì hết hạn mức 5 giờ** của tài khoản Claude (dùng chung với các phiên khác của Toàn; mở lại 12:40). Lượt chạy 08:12–~10:4x (sóng 2 T226 ‖ T233 trên `68c9100`), không commit. Dở ở `~/m7-drive/wave2/`: patch T226, patch T233, `T225-tester` (58 ca tấn công, 13 đỏ), `T225-fix` (dở). T225 đã push và Sheet M7-251 đã ghi Lead Đạt sáng 18/11 → m7.199.
+- **Lượt 05 ĐANG CHẠY** từ 12:33 (PID 1093904, `~/m7-drive/p-05.txt` → `o-05.log`; sửa 10:5x: bước 0 kết luận 13 ca đỏ T225 + `T225-fix` trước migration và nhập ảnh; tối đa 2 tác nhân nặng; đọc sổ ở `~/dev/project-control`), D-m7-128: D-m7-119…124 (gộp T223, nối Claude thật + EN_IMAGE_PROMPT, T224 theo C, migration 5b3 trên dev, RU-16 vào T233, nhập 6 ảnh với nguồn AI dựng), rồi T227 → T228 → T229 → T230 khi đủ phụ thuộc; dừng trước mọi lượt Muse thật và báo số lượt cần; bộ đủ cuối lượt; không push.
 - Bộ đủ `68c9100` XANH (17/11 17:55–20:53): build, Contract 56, Architecture 1.153, Domain 5.399, GuardCorpus 1.975, StudioWorker 1.835 (89 bỏ qua), Integration 56 namespace 0 hỏng, docs, web. Log `~/m7-drive/full-68c9100/`. Bộ đủ `cf6a954` XANH.
 - Stack dev `m7-m7-*` 6/6 healthy. RAM .63 trống 31/38 GB (07:53).
 
@@ -19,6 +19,8 @@ Sẵn sàng **15%** (chấm 11/11, chưa chấm lại). Mốc 1: **TRỄ, ĐỎ*
 - Đang làm (lượt 04): T226, T233. Còn: T227 (cần T223, T226, ảnh: đã có), T228 (sau T233), T229 (cần T224), T230, T232 (lượt thật, cần Muse).
 - Đo Muse 4/4, đã tiêu 11/13: số giây đúng xin (8–20 giây), nhận ảnh đính làm khung đầu, giữ ngữ cảnh cùng cuộc trò chuyện; clip 720x1280, 24/30 khung/giây, có tiếng → T229 phải chuẩn hoá.
 - Câu mở phiên .63 nêu, chưa hỏi Toàn: DL-332 có áp master không, chữ caption DL-O09, cài worker Ubuntu (đề xuất T059).
+
+## 18/11: D-m7-126 (M7-251 T225 về Đang làm, W còn Đạt vì web app chặn rà lại) · D-m7-128 (Toàn đăng nhập lại .63 cùng tài khoản máy Lead 12:32; lượt 05 bật 12:33, thay hẹn giờ D-m7-127) · D-m7-129 (migration 5b4 cùng 5b3 trên DB dev .63) · D-m7-130 (V5 không làm bây giờ: 6 ảnh là ảnh ChatGPT, không người thật; nợ WP29 phương án b) · D-m7-131 (giữ nguồn AI, sửa chữ F08) · D-m7-132 (T226 ok gộp, làm ở lượt 06). Commit .63 chưa push: `3bd7833` T225 sửa sau tester R3 (verifier ĐẠT), `87a2d0d` DL-344…348
 
 ## Quyết định 18/11 08:2x (D-m7-118…124, "Oke, cứ theo đề xuất của bạn và tiếp tục nhé")
 
@@ -46,4 +48,4 @@ Push 5 commit: xong 08:28, máy Lead chạy qua ssh trên repo .63 tới đúng 
 - Mở sau Mốc 1: T066 vòng 3, T076b.2, T076b.4, T076.8, T076.10, `evidence_region` Muse, T088…T090, T044, T065 còn lại, T062b; nợ T085, T190b (tệp phụ đề tạm), ngưỡng ASR 20 kịch bản (Mốc 2).
 - Báo cáo tuần: phiên m7 không tự viết (D-m7-090).
 
-Ranh giới: push và Muse thật chỉ theo lời Toàn từng lần; không migration DB dùng chung, không UAT hay production nếu Lead chưa nói rõ. D-m7-067, 069…097, 099…125 vẫn hiệu lực.
+Ranh giới: push và Muse thật chỉ theo lời Toàn từng lần; không migration DB dùng chung, không UAT hay production nếu Lead chưa nói rõ. D-m7-067, 069…097, 099…132 vẫn hiệu lực.

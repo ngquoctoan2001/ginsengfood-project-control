@@ -77,3 +77,22 @@ Nguồn: `docs/reviews/19-10-11-37-pilot-g1-local-readiness-review.md` §23.64, 
 
 D-m12-064 (D-lead-045): phiên m12 KHÔNG tự viết báo cáo tuần nữa. Phiên `lead` lập báo cáo của Toàn (`/bao-cao-tuan toan`); khi phiên lead
 hỏi qua tin nhắn phiên, trả dữ kiện ≤ 30 dòng kèm SHA/tệp: đã làm · còn lại tới mốc gần nhất và 30/11 · kế hoạch tuần tới · khó khăn + cách giải quyết · CHƯA CHẠY.
+
+## Cập nhật 19/11/2026 — dùng chung localhost của Lead
+
+**Chỉ đạo trực tiếp của Lead tại phiên WP27:** tắt bản localhost cũ, giao lệnh để Lead tự chạy; các phiên dùng chung localhost, tránh chạy trùng nhiều bản nặng máy. Mục này thay thế hướng dẫn cổng và mở runtime song song ở các đoạn lịch sử phía trên.
+
+- Chạy từ `C:\Projects\ginsengfood-ops-core`, nhánh `main`; Lead tự bật từng cửa sổ PowerShell:
+  - API: `corepack pnpm run api:dev` → `http://localhost:5000`.
+  - Admin: `corepack pnpm --filter @ginsengfood/admin-web run dev --hostname localhost --port 3000` → `http://localhost:3000`.
+  - App xưởng, chỉ bật khi cần: `corepack pnpm run shopfloor-pwa:dev` → `http://localhost:4401`.
+- PostgreSQL local giữ cổng `55432`. Không reset, migrate hoặc chạy seed trên DB dùng chung chỉ để kiểm giao diện; cần đúng phạm vi Lead giao.
+- WP26/WP27/WP28 dùng chung các URL trên để kiểm giao diện. Không tự bật preview/API/DB preview khác, không tự chọn cổng mới khi cổng đang bận. Kế hoạch preview `3216/5216` đã hủy.
+- Bản cũ từ `anh-WP24` ở `3200/3201/5200` đã tắt theo lệnh Lead. Dòng API `5100` và các cổng lab phía trên chỉ còn là lịch sử, không phải cấu hình chạy hiện tại.
+- Test tự động cần DB dùng một lần vẫn phải tách dữ liệu khỏi DB local của Lead, chạy tuần tự và dọn sau khi xong; không mở thêm lượt build/test nặng song song. Quy tắc artifacts riêng không phải quyền mở nhiều runtime.
+- Seed Việt hóa WP27 mới được kiểm trên DB thử riêng; tại thời điểm cập nhật chưa áp dụng vào DB local dùng chung. Chạy ứng dụng từ mã mới không tự cập nhật các nhãn trong DB, và không thay thế nghiệm thu trên runtime.
+
+
+### Cập nhật 19/11/2026 11:02 — nhãn seed local đã áp dụng
+
+Theo lệnh trực tiếp của Lead tại WP27, đã áp dụng riêng nhãn Việt hóa từ 20 seed vào DB local dùng chung: 544 ô/10 bảng; sao lưu trước, kiểm cột ngoài nhãn giữ nguyên và chạy lại 0 thay đổi. Mục này cập nhật trạng thái seed local ở đoạn trên. `.99` chưa thao tác. Bằng chứng và phạm vi: `modules/m12/ra-soat/2026-11-19-wp27-codex-tiep-quan.md`, mục 11:02. Các phiên tiếp tục dùng chung localhost:3000/5000/4401; không mở bản riêng.

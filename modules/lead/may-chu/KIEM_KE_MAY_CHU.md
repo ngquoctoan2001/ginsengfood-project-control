@@ -70,7 +70,10 @@ compose `ginsengfood` ở `~/ginsengfood/module7-workspace/deploy/`.
   từ 192.168.0.85 (16/10).
 - Rác: bộ nhớ đệm build 11 GB (thu hồi 9 GB); container `elastic_taussig` (Postgres thử, đã dừng). Không có cron.
 
-## 4. Máy .63 (VPS63) — staging M3 + M4
+## 4. Máy .63 (VPS63) — staging M3 + M4 (**ĐÃ DỌN 18/11 14:3x**, D-lead-061)
+
+- 18/11: `docker compose -p stg|stg_kit|stg_m9 down` (không `-v`), `docker rm stg_m9_testpg`, xoá đích danh 14 image `stg/*`, `stg_tri_thuc:*`, mạng `stg_net`;
+  cổng 8080/8090/8091 đóng. **Giữ** 9 volume `stg_*` (~0,7 GB) và thư mục `~/staging/` tới khi Toàn bảo xoá hẳn. Bảng dưới là lịch sử.
 
 - Compose `stg` (`~/staging/edge`, `app`, `tri_thuc`): `stg_edge` nginx 8080 (chặn chỉ LAN), `stg_backend` bản `cay-0ab5e7d66`
   (16/10), `stg_frontend` bản `45549f063` (13/10), `stg_pg`, `stg_redis`, `stg_clamav`, `stg_tri_thuc` (đổi bản liên tục

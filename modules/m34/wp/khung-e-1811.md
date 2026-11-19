@@ -1,6 +1,6 @@
 # khung-e-1811 — khung đặt đơn thử M3 → M8 trên .99 tối 18/11 (E02/E03 qua web + thử lại trong task, E05/E06-B, E06-A, E10)
 
-Trạng thái: CHỜ (kế hoạch; mỗi bước ghi .99 / đặt đơn Toàn nói "chạy" lúc vào khung) · Rủi ro: R3 (ghi máy chạy thật, trang đã public) · Mốc: 18/11 19:40–21:05
+Trạng thái: DỪNG 18/11 13:4x (Toàn "tắt"; chạy sớm từ 12:37 theo D-m8-140, tới 13:48 chưa đơn nào) · làm lại hôm khác: bước `lui`/`tat` + tạo lại container do PHÚC chạy (D-m34-108), m34 báo giờ + canh đơn + đọc kết quả · Rủi ro: R3 (ghi máy chạy thật, trang đã public) · Mốc: 18/11 19:40–21:05
 Nguồn: D-m8-130 (E02/E03 qua web sau m34.130), D-m8-134 + D-m34-106 (đơn lạ: MOCK "*" = nghe máy bấm 1, m34 canh, báo Toàn), D-lead-056 (chạy lại E05, E06-A/B, gọi lại, `/result`, E10).
 Phía M8 do phiên m8 làm; phiếu này chỉ phần M3 và giờ chung.
 
@@ -46,5 +46,6 @@ Từ `lui` tới `tat`: m34 đọc đơn mới mỗi phút (chỉ đọc). Đơn
 Đơn lạ rơi vào đoạn lịch tắt (20:30–20:50) sẽ bị watchdog huỷ sau 17 phút, không cứu được ở M3 → báo Toàn ngay để nhân viên liên hệ khách đặt lại.
 
 ## Diễn biến
+- 18/11 12:34 D-m8-140 chạy ngay: N = 598; 12:36:50 m34 `lui` (Toàn "chạy"), be 12:37:17, M8 lịch bật 12:37:21. Tới 13:48 0 đơn mới. 13:4x Toàn "tắt"; `tat` của m34 dừng ở bước kiểm vì `.env` đã có lại lớp (ai đó sửa 13:39–13:43) và D-m34-108 cấm m34 ghi .99 → nhờ Phúc tạo lại `be` (tin `ra-soat/2026-11-18-phuc-tin-tao-lai-be.md`). Lượt `lui` 12:36 đụng lượt lên bản `d1039f46f` của Phúc 12:34–12:35.
 - 18/11 09:3x soạn phiếu theo nhờ của M8 (gửi kế hoạch trước 19:30).
 - 18/11 09:4x M8 trả lời: chính sách thử lại 3 lượt +0/+450/+870 s; không có kịch bản "không gọi"; ca gọi lại khung mới cần task `recall_of_task_id`. m34 chốt: E06-A dời CUỐI khung khi lịch đã tắt (giữ các ca có gọi sớm, xa giờ chặn gọi 21:08), `tat` ngay sau `TASK_REVOKED`, E10 chỉ đọc sau `tat`; ca gọi lại khung mới NOT_RUN.

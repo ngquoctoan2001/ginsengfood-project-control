@@ -12,7 +12,7 @@ cổng vào, cổng LAN, ai gọi ai, lịch cắt: `modules/lead/may-chu/2026-1
 | 192.168.1.60 | **không dùng** (14/11) | không còn app nào chạy (kiểm 14/11 20:3x: chỉ CSDL M3 cũ + clamav, giữ làm đường lui); M7 thử trên .63 | không dựng gì mới; xin Anh Tuấn để nguyên tới khi Toàn báo thu hồi |
 | 192.168.1.61 | **không dùng** (14/11) | app M1–M2, M8 đã dừng (kiểm 14/11 20:3x); dữ liệu cũ giữ làm đường lui; cụm microk8s + Prometheus chung .61/.63/.64 không phải của mình (lead.26) | không dựng gì mới; để nguyên tới khi Toàn báo thu hồi |
 | 192.168.1.64 | Asterisk M8 | giữ nguyên | đang chặn .99, Anh Tuấn mở trước khi cắt m8 |
-| 192.168.1.63 | **máy dev** (D-lead-039) | runner GitLab `may-63` cho CI ivr + ops-core (container `gitlab-runner-63`, 2 job một lúc, mỗi job 5 nhân, 12 GB từ 16/11 14:09, D-m12-078; ops-core chỉ chạy ở đây, D-lead-042); phiên M7 | bản thử cũ `stg_*` giữ nguyên, cấm `docker … prune`; không chạy thật gì ở đây |
+| 192.168.1.63 | **máy dev** (D-lead-039) — **từ 18/11 chỉ chạy CI + M7** (D-lead-061; staging `stg*` đã dọn; máy thử trước release sẽ là bản sao .99 do Anh Tuấn nhân bản) | runner GitLab `may-63` cho CI ivr + ops-core (container `gitlab-runner-63`, **3 job một lúc từ 18/11 14:45** (D-lead-062; trước đó 2), mỗi job 5 nhân, 12 GB từ 16/11 14:09, D-m12-078; ops-core chỉ chạy ở đây, D-lead-042); phiên M7 | bản thử cũ `stg_*` giữ nguyên, cấm `docker … prune`; không chạy thật gì ở đây |
 
 Máy video (M7) và máy thử: Anh Tuấn chưa giao.
 
@@ -38,7 +38,7 @@ IP ngoài của công ty: `14.224.139.101`; DNS mọi tên đã trỏ về IP n�
 **Cổng vào do bên mình giữ, đặt trên .98** (góp ý Anh Tuấn 16/11 tối, Toàn chốt 17/11): router (Anh Tuấn) chuyển 443 (xin cả 80) của IP công ty về .98;
 proxy trên .98 (Caddy, dịch vụ riêng ngoài compose M5/M6 để cập nhật app nào cũng không tắt proxy; phiên `lead` dựng) giữ chứng chỉ wildcard `*.ginsengfood.vn` kèm tên gốc mua ở Mắt Bão (Toàn mua, D-lead-058; cấp lại mỗi ≤ 200 ngày), chặng LAN chạy http,
 80 → 301 HTTPS, chia theo tên về IP LAN cố định: `ginsengfood.vn`, `www.`, `/admin` → `.99:80`; `ops.`, `pwa.`, `trace.` → `.99:8012`;
-`mkt.`: `/api/admin/ads/` → `.98:6600`; `/admin/`, `/api/admin/`, `/api/channel/meta/` → `.98:3000`; `/` → 301 `/admin/`; còn lại 404 (D-lead-050); `video.` → máy video M7 khi có; `staging.` → `.63:8080` như cũ.
+`mkt.`: `/api/admin/ads/` → `.98:6600`; `/admin/`, `/api/admin/`, `/api/channel/meta/` → `.98:3000`; `/` → 301 `/admin/`; còn lại 404 (D-lead-050); `video.` → máy video M7 khi có; `staging.` **gỡ 18/11** (rơi về 404, D-lead-061).
 **Danh sách tên giữ như cũ, mọi tên public ra Internet** (app nào cũng có đăng nhập, nhân viên ở nhà phải vào được); không đổi sang thư mục con, không giới hạn LAN/VPN.
 App sau proxy chỉ tin `X-Forwarded-For` từ `.98/32`. **Kế hoạch + checklist + tin chốt Anh Tuấn:** `modules/lead/may-chu/2026-11-17-ke-hoach-ten-mien-public.md` (pha 0–4, việc từng luồng, tiêu chí đạt, đường lui).
 **Chạy thật từ 17/11 ~16:3x:** 443 công khai → proxy .98, chứng chỉ Sectigo wildcard (hết hạn 03/06/2027, cấp lại trước ~04/05/2027), kiểm từ ngoài đạt; trong LAN gõ tên miền vào được. Cổng 80 công khai còn chuyển nhầm vào 443 của .98 (http ra 400) — nhắc Anh Tuấn khi tiện. (14/11 13:00 các lần "302" là trang quản trị router DrayTek giữ 443.) Từ LAN không vào được IP ngoài (router không quay vòng): kiểm từ ngoài (check-host.net, 4G).
@@ -48,4 +48,8 @@ Go/No-go M4/M5/M6 tính theo HTTPS `mkt.` trên .98, chậm nhất 20/11; HTTPS 
 
 - Việc mới (triển khai, cấu hình, tài liệu, kế hoạch, kiểm thử máy) nhắm **.99 / .98**. Không lập kế hoạch mới trên .60/.61; nhắc .60/.61 chỉ khi nói về đường lui hoặc M7.
 - Thư mục trên máy chủ **theo tên repo** (D-lead-037): `/data/ginsengfood-ops-core`, `/data/ginsengfood-business-platform`, `/data/ginsengfood-ivr`, `/data/ginsengfood-marketing`, `/data/ginsengfood-golden-hour-video`; sao lưu `/data/sao-luu/<repo>`; thư mục thật, không liên kết trong nhà `ssv`; không đặt `m12`, `m34`, `m56`… (.60/.61 giữ tên cũ làm đường lui).
+- **Ai đưa bản lên máy (D-lead-060, 18/11):** repo `ginsengfood-business-platform` (M3, M4, M9) trên .99 — **chỉ Phúc** (bản mới, `.env`, compose, cờ,
+  khởi động lại container), qua image CI (runner trên .63 do Phúc dựng) + `trien-khai.sh`, báo trước, giữ lớp `compose.cong-khai.yml`, gửi lại mã commit + kết quả;
+  Toàn, phiên `m34`/`m9`, Tài, chú Dũng chỉ đọc .99 và nhắn Phúc khi cần. M1–M2 (.99): phiên `m12` · M8 (.99, .64): phiên `m8` · M5 + M6 (.98): Tài ·
+  proxy `edge` (.98): phiên `lead` — mọi lượt vẫn theo lời Toàn.
 - Mật khẩu máy (Anh Tuấn gửi qua Zalo) không ghi, không in, không dùng; phiên vào bằng khoá. `ssh`/`scp` không còn hộp hỏi duyệt (14/11); việc đổi máy chủ (deploy, cắt máy, migration) vẫn theo lời Toàn trong phiên.

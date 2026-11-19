@@ -1,6 +1,6 @@
 # Buổi E02/E03 đặt đơn qua web + chạy lại các ca sau deploy (bậc 90 "Nối với M3")
 
-Trạng thái: SOẠN (18/11) · Rủi ro: R3 (bật lại nối IVR + OTP giả trên web công khai, ghi .99) · Quyết định: D-m8-130 (m8.99 A); giờ = m8.102 (đề xuất A: tối 18/11 19:45–21:15, m34 đề xuất cùng giờ; Toàn nói "tiếp tục luôn đi" 18/11 ~08:51 — phiên chuẩn bị theo A, **mỗi bước ghi .99 vẫn chờ Toàn nói "chạy" lúc vào khung**).
+Trạng thái: DỪNG 13:4x 18/11 — web chưa mua được sản phẩm, Toàn "bỏ qua"; 0 đơn vào khung; M8 `tra-lai` 13:49 (lịch TẮT). Làm lại hôm khác: `lui`/`tat` phía M3 do Phúc chạy (D-lead-060) · Rủi ro: R3 (bật lại nối IVR + OTP giả trên web công khai, ghi .99) · Quyết định: D-m8-130 (m8.99 A); giờ = m8.102 (đề xuất A: tối 18/11 19:45–21:15, m34 đề xuất cùng giờ; Toàn nói "tiếp tục luôn đi" 18/11 ~08:51 — phiên chuẩn bị theo A, **mỗi bước ghi .99 vẫn chờ Toàn nói "chạy" lúc vào khung**).
 Bên M3: m34 (`_wt/m34/_tools/cong-khai-99.sh lui|tat`, D-m34-105). Phiếu trước: [buổi 17/11](buoi-e07-e02-e03-e08.md), [E05/E06-B](nghiem-thu-99-e05-e06b-m8.md), [hướng dẫn bậc 90](huong-dan-bac-90-noi-m3.md).
 
 ## Rủi ro chính và cách chặn
@@ -39,5 +39,7 @@ Bất kỳ bước nào hỏng hoặc thấy đơn lạ bị gọi: M8 `tra-lai 
 - 18/11 08:56 Toàn "103 A, giữ bấm 1" → D-m8-134.
 - 18/11 ~09:05 thứ tự chốt với m34 (bảng trên): E06-A cuối khung khi lịch tắt (M3 không huỷ tay được đơn route IVR, chỉ watchdog 17 phút); gọi lại khung mới NOT_RUN.
 
+- 18/11 12:34 Toàn "giờ chạy luôn đi. cần gì tới 19:40" → D-m8-140; báo m34 [e07e7d] đọc N + `lui`. 12:35 kiểm trước (chỉ đọc, `e-1811-kiem-hang-truoc.log`): 0 attempt đang gọi, 0 callback đang gửi, 5 dead letter cũ (404, 13/11) + 5 job `HELD_CALLBACK` cũ y 17/11; `hien-trang` DAT; lịch TẮT; gọi thật NO.
+
 ## Bước kế tiếp chính xác
-19:30 m34 báo N → M8 `kiem_hang` + hiện trạng; chờ Toàn "chạy" → 19:41 đặt kịch bản + bật lịch theo bảng.
+Chờ m34 báo N + `lui` xong → `N=<N> GOI_LAI=<N+2> THEM="<N+3>:Answered:1 <N+4>:Answered:1" CHAY=1 e_chuan_bi_1811.sh` → `bat-lich` → báo Toàn đặt E02/E03 trên web.

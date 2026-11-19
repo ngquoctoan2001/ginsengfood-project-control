@@ -1,21 +1,21 @@
 # Trạng thái — m34
 
-Mốc: 18/11/2026 07:5x (+07), phiên mới ở tài khoản Claude mới (bàn giao `modules/lead/ban-giao/2026-11-18-chuyen-tai-khoan.md` §3.3)
-· BP `origin/dev` = `origin/toandeptrai` = local `toandeptrai` = `a48db1dc0` (ff + push 10:2x, D-m34-107, m34.132; dev thêm PR #166–#168 Tài + 14 commit Phúc đẩy thẳng 08:30–09:01, không PR)
+Mốc: 18/11/2026 13:5x (+07) · **D-m34-108 (D-lead-060): chỉ Phúc ghi .99 cho repo bán hàng; phiên m34 CHỈ ĐỌC .99**
+· BP `origin/dev` = `origin/toandeptrai` = local `dev` = local `toandeptrai` = `826aee599` (PR #170 tab Cước gọi 15:2x; trước đó `0d941de79` 14:0x; trước đó `a48db1dc0` 10:2x, D-m34-107, m34.132; dev thêm PR #166–#168 Tài + 14 commit Phúc đẩy thẳng 08:30–09:01, không PR)
 · `origin/dev015` `405939275` · `origin/PhucApu` `b2568a319` (không đổi từ 16/11) · M4-PLAN `3ff48a75` (pull ff 18/11)
-· .99: M3/M4 image `afb6d404c` (OTP giả hiện mã, nối IVR bật, profile demo) · M12 `565272e01` · M8 `0f1a9eb5` MOCK, lịch tắt.
+· .99 (đọc 14:08): M3/M4 image `d1039f46f` (Phúc lên 12:34, Flyway V358–V360); `be` Phúc tạo lại 13:51 → OTP giả + nối IVR TẮT (lớp công khai giữ), quan sát M12 BẬT (`OPS_CORE_ENABLED=true`, ENFORCE + giữ hàng tắt, `OPS_CORE_TOKEN_OK`) · M12 `565272e01` · M8 `0f1a9eb5` MOCK, lịch TẮT 13:49.
 Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc gần: buổi sếp test M4 18–19/11, cổng NK-b 20/11.
 
 ## Trang bán hàng đã ra Internet (https://ginsengfood.vn chạy thật từ 17/11 ~16:3x qua Caddy .98)
 - **XONG 18/11 08:32 (m34.128 + m34.130, D-m34-105):** OTP giả và nối M3 → M8 TẮT trên .99 bằng lớp chồng `compose.cong-khai.yml` cuối `COMPOSE_FILE`; `be` tạo lại 08:32:02, healthy sau ~31 giây, ready 200 qua nginx và qua https://ginsengfood.vn. Trước khi tắt: 0 xác nhận IVR active, 0 đơn 24 giờ. Watchdog IVR tắt theo cùng cờ; quản trị IVR giữ. Đã báo M8.
-- Lượt deploy sau phải giữ lớp này (phiếu deploy mục "Sau HTTPS"). Đặt đơn thử qua M8 = cửa sổ có hẹn (`cong-khai-99.sh lui` rồi `tat`). Chưa đưa lớp vào bộ triển khai trong repo.
-- Khung E02/E03 + E05/E06/E10 tối 18/11 19:45–21:15 (D-m8-130/134): phiếu `wp/khung-e-1811.md` đã gửi M8; mỗi bước ghi Toàn "chạy". Đồng hồ M3 đo: gọi cuối ≤ +15 phút, kết quả ≤ +17 phút. Đơn lạ trong khung: giả lập M8 tự xác nhận (D-m34-106), m34 canh và báo Toàn. `lui` bật lại cả OTP giả (IVR khách mới cần OTP SMS). Trước `tat`: 0 xác nhận IVR active (kịch bản tự chặn).
+- 12:36:50–13:51 OTP giả + nối IVR mở (m34 `lui` cho khung E, Toàn "chạy"; đụng lượt lên bản của Phúc 12:34), 0 đơn; Toàn "tắt" 13:4x, Phúc tạo lại `be` 13:51 → tắt lại. Từ nay m34 chỉ đọc .99 (D-m34-108).
+- Khung E (phiếu `wp/khung-e-1811.md`) DỪNG, làm lại hôm khác với Phúc chạy `lui`/`tat`. Đồng hồ M3: gọi cuối ≤ +15 phút, kết quả ≤ +17 phút; đơn lạ tự xác nhận (D-m34-106). Đã đính chính phiên lead: lớp công khai bị bỏ 12:36 do `lui` của m34, không do lượt của Phúc.
 
 ## Buổi sếp test M4 (phiếu `wp/deploy-m4-99-sep-test.md`, CHỜ)
 - CI GitHub repo bán hàng vẫn KẸT Billing (tài khoản PhucApu): mọi `m34-images` từ 17/11 08:42 (`9c71e37ce`, `5b92e6618`, `103036c8b`, `88d5fe01e`) hỏng ở bước bắt đầu job → không image mới. Image GHCR mới nhất có: `3627ce4f0`.
   m34.131 A (D-m34-107): nhắc Phúc sửa Billing, tin nháp [tin](ra-soat/2026-11-18-phuc-tin-billing.md) CHƯA GỬI.
-- **Chặn deploy dev (D-m34-107):** dev có V392–V395 (Phúc) mà V361–V391 nhánh gộp chú chưa vào; .99 V357, Flyway `out-of-order=false` → deploy dev trước khi nhánh chú vào = .99 kẹt về sau. Chờ Phúc gộp nhánh chú (hạn 19/11) hoặc Toàn chọn image `88d5fe01e`.
-- Tài: chưa thấy SHA cuối + bảng cờ + kịch bản kiểm trong sổ; báo cáo đầu ngày 18/11 ghi M4-SEP-TEST-KICH-BAN-001 READY_FOR_TEST "đang để", ".99 chạy SHA nào chưa kiểm, Phúc nắm máy" (sai: m34 deploy .99, D-m34-092).
+- D-m34-109 (thay chặn của D-m34-107): nhánh chú để sau; Toàn chấp nhận đưa `dev` (có V392–V395) lên .99 trước, Phúc xử lý thứ tự Flyway khi gộp chú. Kế hoạch: xong tab "Cước gọi" (`wp/ivr-cuoc-goi.md`, coder đang làm) → gộp `toandeptrai` → `dev` + push → tin để Toàn nhờ Phúc đưa `dev` mới nhất lên .99.
+- Tài: chưa thấy SHA cuối + bảng cờ + kịch bản kiểm trong sổ; báo cáo đầu ngày 18/11 ghi M4-SEP-TEST-KICH-BAN-001 READY_FOR_TEST "đang để", ".99 chạy SHA nào chưa kiểm, Phúc nắm máy" (từ 13:4x đúng: Phúc nắm máy, D-m34-108).
 - Khung chat FE bật trong image từ `3627ce4f0` → lên .99 là người ngoài Internet thấy (m34.129). P0 `FIX-CHAT-CHILD-GATE-LEAK-PUNCT-001` của Tài: "phải xong trước khi gắn Page khách thật".
 - Lượt deploy kế tiếp gồm: giao diện IVR ui-kit-v2, nginx proxy .98 (`nginx -t` trên .99 trước), ghim mạng `m34_app` (Compose tự tạo lại mạng → cửa sổ dừng M3, chạy đủ bộ), bộ ngắt mạch theo ngăn, việc "sau HTTPS": `.env` `CORS_ALLOWED_ORIGINS` thêm https://ginsengfood.vn + www (giữ http://192.168.1.99 tới pha 4), `AUTH_COOKIE_SECURE=true`.
 - Tài M3-017 (VNPAY sandbox + COD lên .99) hạn 18/11, Sheet "Chưa bắt đầu", cần lượt máy chủ.
@@ -37,6 +37,7 @@ Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc
 ## M3 → M8 (IVR)
 - Nghiệm thu 15/11: E01, E02, E03, E05, E06-A/B, E10 ĐẠT. E07/E02/E03/E08 dời; lần tới đọc lại id đơn (`_wt/m34/_tools/doc-id-don-99.sh`).
 - F1/F2 + ghim draft.47 trong dev từ `3627ce4f0`, .99 còn `afb6d404c` (chưa có F1/F2: 429/403 của M8 = lỗi cuối).
+- Hàng chờ (D-m8-135, hộp thư `m34-2026-11-18-m8-api-do-cuoc-draft48.md`): tab "Cước gọi" — ghim lại draft.48, proxy `call-usage` + `export` qua `IvrAdminController`. M8 chưa push → chưa ghim. Mở gói khi Toàn duyệt (m34.133).
 
 ## Phúc / Tài
 - Rà Phúc 17/11 ([bản rà](ra-soat/2026-11-17-phuc.md)): 3 Đạt, 36 Cần sửa; tin nháp [tin](ra-soat/2026-11-17-phuc-tin-nhan-nhap.md) CHƯA GỬI. Phúc chưa có commit mới trên origin từ 16/11 16:33.
@@ -47,7 +48,7 @@ Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc
 - `_wt/m34`: 77 thư mục (45 worktree phụ BP) cũ. `don_may -Dung` 07:52: 0 tiến trình, 0 container dừng.
 
 ## Quyết định đã áp (chi tiết `QUYET_DINH.md`)
-- D-m34-001…097 như sổ cũ · 098 rà Phúc: không bảo vệ nhánh, mã email trung lập, tài khoản mẫu cố tình · 099 ghim mạng `m34_app` · 100–102 nối M12 .99, kho, "hộp" · 103–104 gộp #164 không CI, dev = toandeptrai lúc 15:42.
-- Luật giữ: không push/PR/ssh/deploy/đổi cờ/gửi tin khi Toàn chưa nói rõ từng lần; không sửa nhánh chú, không nhắn chú. M9 thuộc luồng `m9`.
+- D-m34-001…097 như sổ cũ · 098 rà Phúc: không bảo vệ nhánh, mã email trung lập, tài khoản mẫu cố tình · 099 ghim mạng `m34_app` · 100–102 nối M12 .99, kho, "hộp" · 103–104 gộp #164 không CI · 105 tắt OTP giả + nối IVR .99 · 106 đơn lạ trong khung tự xác nhận · 107 131 A, kéo + push dev về toandeptrai, chặn deploy dev tới khi nhánh chú vào.
+- Luật giữ: KHÔNG ghi .99 (D-m34-108, cần gì soạn tin cho Toàn nhắn Phúc); không push/PR/gửi tin khi Toàn chưa nói rõ từng lần; không sửa nhánh chú, không nhắn chú. M9 thuộc luồng `m9`.
 
-## Câu hỏi mở: m34.129 (khung chat, đề xuất B)
+## Câu hỏi mở: m34.129 (khung chat, đề xuất B) · m34.133 (mở gói tab "Cước gọi", đề xuất: sau khung tối nay, làm giao diện từ tài liệu M8, ghim khi M8 push)

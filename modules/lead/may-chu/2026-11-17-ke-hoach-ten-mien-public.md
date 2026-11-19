@@ -42,7 +42,7 @@ Nhân viên trong công ty: quay vòng NAT trên router HOẶC DNS nội bộ tr
 | `trace.ginsengfood.vn/media/*` | khách xem bằng chứng nguồn gốc | tệp tĩnh `media/` trên .98 | ảnh/video/pdf vùng nguyên liệu (TRC-01, RS-8; Toàn "trace.ginsengfood.vn"), chép bằng `chep-media.sh`; m12 build `NEXT_PUBLIC_TRACE_MEDIA_ORIGINS=https://trace.ginsengfood.vn` |
 | `mkt.ginsengfood.vn` | Meta + nhân viên mkt | `.98:3000` / `.98:6600` | chia đường theo D-lead-050 |
 | `video.ginsengfood.vn` | nhân viên M7 | máy video `:6700` | chờ máy; M7 tự làm TLS nội bộ → proxy gọi https, tin CA nội bộ M7 |
-| `staging.ginsengfood.vn` | (đang dùng, → `.63:8080`) | `http://192.168.1.63:8080` | proxy chuyển tiếp như cũ, không hỏi (D-lead-058) |
+| `staging.ginsengfood.vn` | — | — | **gỡ 18/11 14:42** (D-lead-061): bản thử tháng 10 trên .63 đã dọn, tên rơi về 404 |
 | tên lạ, IP trần | — | 404 | không lộ gì |
 | `api-ops` | — | không public | M3/M6/M7 gọi `.99:5000` trong LAN |
 
@@ -215,4 +215,4 @@ Em cảm ơn anh nhiều nha.
 
 Đạt: DNS 8 tên, chứng chỉ Sectigo đủ chuỗi (hạn 03/06/2027), chỉ TLS 1.2/1.3, OCSP stapling, **SSL Labs A** cho `ginsengfood.vn` và `mkt.`;
 proxy .98 khớp bản máy Lead. Danh sách 15 việc còn lại (có chi tiết an ninh chưa sửa) để ngoài git, vì repo này công khai:
-`modules/lead/ra-soat/2026-11-18-kiem-ten-mien/ket-qua-kiem.md`. Câu chờ Toàn: lead.100, lead.101.
+`modules/lead/ra-soat/2026-11-18-kiem-ten-mien/ket-qua-kiem.md`. Câu chờ Toàn: lead.100. **lead.101 XONG 18/11 13:38** (Toàn "chạy lead.101"): tuyến `mkt.…/policy/` + 3 trang Tài, `?X-Frame-Options SAMEORIGIN` cho `ginsengfood.vn`; reload không ngắt, `kiem-cong-vao.sh` 19/19.

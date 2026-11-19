@@ -1,6 +1,6 @@
-# deploy-m4-99-sep-test — đưa bản `dev` có M4 lên .99 cho buổi sếp test (18–19/11), m34 chạy
+# deploy-m4-99-sep-test — đưa bản `dev` có M4 lên .99 cho buổi sếp test (18–19/11), Phúc chạy (D-m34-108)
 
-Trạng thái: CHỜ (chuẩn bị; lượt ghi .99 chiều 17/11, Toàn duyệt lúc chạy) · Rủi ro: R3 (ghi máy chạy thật, đổi cờ, dữ liệu giả chung CSDL) · Chế độ: lượt ssh có kịch bản · Mốc: 17/11 chiều
+Trạng thái: CHỜ · NGƯỜI CHẠY: PHÚC (D-m34-108, D-lead-060; phiên m34 chỉ chuẩn bị SHA, bảng cờ, kịch bản kiểm, đọc kết quả). 18/11 12:34 Phúc đã đưa `d1039f46f` lên .99 (Flyway V358–V360) · Rủi ro: R3 (ghi máy chạy thật, đổi cờ, dữ liệu giả chung CSDL) · Chế độ: lượt ssh có kịch bản · Mốc: 17/11 chiều
 Nguồn: m34.115 A (D-m34-092); runbook của Tài M4-PLAN `02_PROJECT_CONTROL/04_REPORTS/M4/SEP-TEST/RUNBOOK_60.md`; trả lời Q4 `ban-giao/2026-11-16-tra-loi-q4-tai.md`; log đọc .99 `C:\Projects\_wt\m34\doc-q4-99-20261116-2042.log`.
 
 ## Hiện trạng .99 (đọc 16/11 20:42)
@@ -14,8 +14,7 @@ Nguồn: m34.115 A (D-m34-092); runbook của Tài M4-PLAN `02_PROJECT_CONTROL/0
 3. Tài gửi trước trưa 17/11: SHA cuối, bảng cờ theo đợt (mục 2–3 runbook), kịch bản kiểm (mục 5).
 4. Khung chat FE: Toàn chọn bật (m34.118 A, D-m34-094) → `d1039f46f` đặt `NEXT_PUBLIC_AI_ADVISOR_WIDGET_ENABLED=true`, đi trong PR #163; image `fe` mới từ CI `m34-images` sau khi gộp. Tắt lại khi tên miền chạy thật.
 5. Kiểm từ ngoài (check-host / 4G) ngay trước khi bật cờ test: tên miền chưa vào .99. Đã vào → dừng phần OTP giả + gói test, báo Toàn.
-6. (D-m34-107) Thứ tự migration: `dev` từ `a48db1dc0` có V392–V395 (Phúc) mà V361–V391 (nhánh gộp chú) chưa vào; .99 ở V357, Flyway `out-of-order=false`. KHÔNG deploy `dev` lên .99 tới khi nhánh chú vào `dev`
-   (hoặc Toàn chọn image `88d5fe01e` — tới V360, cần CI build đúng SHA đó). Trước lượt ghi: `git ls-tree` thư mục migration của SHA image, dãy số phải liền.
+6. (D-m34-109 thay D-m34-107) Toàn chấp nhận đưa `dev` lên .99 trước khi nhánh gộp chú (V361–V391) vào; dev có V358–V360 + V392–V395. Khi gộp chú về sau, Phúc xử lý thứ tự Flyway (đổi số migration của chú lên sau số lớn nhất, hoặc bật out-of-order một lần) trước lượt lên .99 đó.
 
 ## Lượt ghi (bản nháp, viết kịch bản `_wt/m34/_tools/` khi có SHA)
 - Sao lưu CSDL + chụp `compose.override.yml`, `COMPOSE_FILE` (giữ `.tu-<giờ>`), ghi SHA image cũ để lui.

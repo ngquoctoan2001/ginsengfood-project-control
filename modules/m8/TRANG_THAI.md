@@ -1,53 +1,41 @@
 # Trạng thái — m8
 
-Mốc: 18/11/2026 07:53 +07 (đầu phiên ở tài khoản Claude mới, bàn giao `modules/lead/ban-giao/2026-11-18-chuyen-tai-khoan.md` §3.7) · `ginsengfood-ivr` `main` local = GitLab = GitHub **`aeb486eb`** (W-0548 khoá zlib; lên remote từ ngoài phiên sau 17/11 13:21, ghi SHA; pipeline GitLab của `aeb486eb` CHƯA ĐỌC) · **.99 chạy `0f1a9eb5` từ 17/11 08:58** (`deploy_m8_99`, D-m8-120; 46 migration), hạn mức `Ivr:ServiceQuota` 600/60 s (D-m8-127) · W-0545…0548 chỉ đổi CI/công cụ/tài liệu/khoá gói, không cần deploy.
+Mốc: 18/11/2026 11:59 +07 · `ginsengfood-ivr` `main` **local `4218d4eb`**, đi trước remote 6 commit, **chưa push**: W-0549 `11ed89f0`+`72c381e1` (khoá `krb5-libs`/`libxslt`), W-0550 `0da89319` (chặn gian lận cước + trần chi phí), W-0551 `feeca2ac`+`4218d4eb` (đo cước gọi + hợp đồng **draft.48** `978b0db4…`, callback không đổi). Remote = `aeb486eb` (pipeline chưa đọc: GitLab chưa đăng nhập ở phiên này). **.99 chạy `0f1a9eb5`** (MOCK, lịch TẮT, gọi thật NO). **.64 Asterisk 22.10.1** (bước 1 nâng cấp đã chuẩn bị, chưa đổi dịch vụ).
 
-## Máy chạy M8
+## Hôm nay (chi tiết: [nhật ký 18/11](nhat-ky/2026-11-18.md))
 
-- **M8 chạy trên 192.168.1.99 từ 14/11 07:45** ([phiếu](wp/chuyen-may-99.md)): 9 dịch vụ, `https://192.168.1.99:8443`; callback → cầu M3 `https://192.168.1.99:8445`; gọi thật NO; **lịch gọi TẮT** (từ 17/11 08:15).
-- .61 dừng hết, giữ đường lui thủ công (`chuyen.sh quay-lui`; job CI .61 gỡ W-0545, khoá CD .61 thu hồi D-m8-125). .64 Asterisk vẫn bản 27/10, cầu ARI mở cho .99.
-- Job CI `deploy_m8_99` chạy được (17/11, bấm tay). Custody khoá .99 XONG ([phiếu](wp/custody-khoa-m8.md), gói Toàn giữ, sha256 `f209e8ea…`).
-
-## Nghiệm thu M3 ↔ M8 trên .99 (01E) — 8/10 ca ĐẠT
-
-- 14/11: 6/10 (W-0540). 17/11 ([phiếu](wp/buoi-e07-e02-e03-e08.md)): **E07, E08 ĐẠT** (Toàn xác nhận). **02J ĐẠT, 07E ĐẠT** (401/403/429) trên .99 17/11.
-- **E02/E03 đặt qua web CHỜ khung hẹn** (D-m8-130): m34 đã tắt nối M3 → M8 trên .99 lúc 08:32 18/11 (m34.130, D-m34-105; lớp `compose.cong-khai.yml`: `APP_IVR_INTEGRATION_ENABLED=false`, watchdog IVR tắt theo, OTP giả tắt; 0 bản ghi IVR active trước khi tắt) → đơn COD do nhân viên xác nhận, không còn rủi ro huỷ oan. Buổi E02/E03 (m34 đề xuất 19:45–21:15, bọc khung gọi lại 20–21; câu m8.102 tối nay hay chờ deploy M3 `dev`): khung bật lại cả OTP giả (đơn COD chỉ vào IVR khi SĐT xác minh OTP), M3 không có danh sách khách thử → đơn lạ trong khung vào MOCK — **worker .99 đang có kịch bản mặc định `*` = nghe máy bấm 1 → đơn lạ sẽ bị tự xác nhận** (đọc 18/11) ; không nghe máy tới hết lượt ở M3 = HUỶ + hoàn tiền (không chuyển nhân viên, m34 đọc mã) nên không che bằng RingTimeout → D-m8-134 giữ `*` bấm 1 (đơn lạ tự xác nhận, nhân viên gọi lại); trước `tat` phải 0 xác nhận active; m34 canh đơn mới mỗi phút; m34 `cong-khai-99.sh lui` bật lại nối IVR trong khung, M8 bật lịch MOCK, xong tắt lại cả hai. E04 `NOT_RUN` (M3 chưa gửi lại), E09 (chưa có 9443).
-- Sau deploy 17/11 còn phải chạy lại E05, E06-A/B, gọi lại khung mới, `/result`, E10 (D-lead-056) — cần đơn đi qua M3, cùng điều kiện với E02/E03.
+- **W-0549 ĐẠT** ([phiếu](wp/W-0549-krb5.md)): ảnh `backup`/`postgres` trivy 19 → 0 HIGH. Quét trước push bản sao: 17/17 dựng + trivy đạt; `refresh-locks` đỏ lúc 09:3x vì `tokenizers 0.22.2` — 11:5x kiểm lại CLEAN (trục trặc tạm PyPI).
+- **W-0550 ĐẠT** ([phiếu](wp/W-0550-chan-cuoc.md), D-m8-137 b/138): gọi thật chỉ quay di động VN (`DESTINATION_NOT_VN_MOBILE`), trần 120 s/cuộc bắt buộc production, trần lượt/giây nghe theo ngày tự `QUEUE_PAUSE` + báo động qua ops-agent. Verifier đột biến 5/5.
+- **W-0551 ĐẠT** ([phiếu](wp/W-0551-do-cuoc.md), D-m8-135): bảng `ivr_call_usage_daily`, API `analytics/call-usage` + export CSV/JSON; hợp đồng draft.48 chỉ thêm. Verifier đột biến 6/6. Tab "Cước gọi" bên M3: thả [hộp thư m34](../../hop-thu/m34-2026-11-18-m8-api-do-cuoc-draft48.md) (tin phiên bị giữ).
+- **Bộ kiểm đủ cả sóng XANH** trên `4218d4eb` (11:21–11:54): build 0/0, unit 1759/1759, contract 24/24, media 14/14, integration 878/878, gate-sweep 50/51 (`scan-pii` đỏ chỉ do thư mục gitignore cục bộ; PII trên cây commit PASS). Sheet M8-018, M8-019: Lead Đạt. Quét trước push đầy đủ trên HEAD: bị dừng vì máy thiếu bộ nhớ (api/worker dựng PASS, migrate lỗi mạng tạm, còn lại CHƯA CHẠY) — chạy lại khi Toàn bảo, trước push.
+- **02I .64** ([phiếu](wp/M8-WP02I.md)): bước 0 (chỉ đọc) ĐẠT — 0 kênh, bí mật khớp .99; bước 1 ĐẠT — ảnh 22.11.0 nạp, `plan`/`preflight` PASS. **Bước 2** (D-m8-139: apply 22.11.0 + verify + ufw 5060 chỉ SBC MobiFone `42.1.66.131`) chép sẵn `/tmp/kiem64c/buoc2.sh`, **chờ Toàn chạy** `ssh -t ssv@192.168.1.64 "sudo bash /tmp/kiem64c/buoc2.sh 2>&1 | tee /home/ssv/buoc2-02i-1811.log"` (trước 19:40).
+- **Khung E02/E03 tối 18/11 19:40–21:05** ([phiếu](wp/buoi-e02-e03-web.md), chốt với m34 `modules/m34/wp/khung-e-1811.md`): giữ MOCK `*` bấm 1 (D-m8-134; ở M3 mọi kết quả khác "xác nhận" = huỷ + hoàn tiền); E06-A cuối khung khi lịch tắt; "gọi lại khung mới" NOT_RUN (M3 chưa gửi task gọi lại). Script `ra-soat/kich-ban-99-1811/e_chuan_bi_1811.sh` sẵn. Rủi ro còn: 20:30–20:50 nối bật mà lịch tắt → đơn lạ bị watchdog huỷ.
+- m34 tắt nối M3 → M8 trên .99 lúc 08:32 (D-m34-105) → không còn rủi ro huỷ oan đơn COD thật ngoài khung.
 
 ## Sẵn sàng và ranh giới
 
-- **55%** (phiên tự chấm 14/11, chờ phiên `lead` đối chiếu; `SAN_SANG.md` mốc 14/11 chưa ghi 02K/02J/07E/custody đã ĐẠT) ([bảng](SAN_SANG.md)). Kịp 15/11: XANH (đã đạt). Kịp 30/11: VÀNG (việc ngoài + .64 + gọi thật nội bộ 01D).
+- **55%** (phiên tự chấm 14/11, chờ phiên `lead` đối chiếu; `SAN_SANG.md` có ghi chú 18/11, chưa chấm lại). Kịp 30/11: VÀNG (việc ngoài + .64 + gọi thật nội bộ 01D + MobiFone ~24/11).
 - `REAL_CUSTOMER_CALL_ALLOWED=NO`, `production_accepted=false`, `deployable=false`.
 
 ## Quyết định đang hiệu lực
 
 - D-m8-078: một mục tiêu; kiểm theo rủi ro; không push chỉ để bảo trì; tối đa 2 agent nền. D-m8-055/037: quét trước push + gitleaks.
-- D-m8-112…115, 117 (D-lead-051): nhánh chú → rà, sửa cho xanh, gộp `main` (tua nhanh + commit W của Toàn ở đầu), giữ luật chú; báo động callback không tự thêm.
-- D-m8-122 (D-lead-058): không nhờ Anh Tuấn cho M8; 02I .64 m8 tự làm, Toàn gõ sudo; bỏ kho sao lưu ngoài máy.
-- D-m8-106: MobiFone 400 cuộc/10 giây/1 IP. D-m8-107: không tự viết báo cáo tuần. D-m34-081: bản ghi thử 8 tên xã có chữ "đường".
-- D-m8-130…133 (18/11): E02/E03 web trong khung tối với m34 sau m34.130; 02I chạy chiều 18/11 khi Toàn duyệt kịch bản; 04B đêm 19/11; sóng 18/11.
-- Số W: NEXT_WORK_ID W-0549. Quyết định tới D-m8-138.
+- D-m8-112…117 (D-lead-051): nhánh chú → rà, sửa cho xanh, gộp `main` (+ commit W của Toàn), giữ luật chú. D-m8-122: 02I m8 tự làm, Toàn gõ sudo.
+- D-m8-130…134: khung E02/E03 tối với m34, giữ `*` bấm 1; 02I chạy 18/11; 04B đêm 19/11 (không tải nặng .99 18–19/11). D-m8-135…138: đo cước, CDR tối giản .64, chống gian lận cước, trần chi phí. D-m8-139: chạy 02I bước 2.
+- D-m8-106: MobiFone 400 cuộc/10 giây/1 IP. D-m8-107: không tự viết báo cáo tuần.
+- Số W: NEXT_WORK_ID W-0552. Quyết định tới D-m8-139.
 
 ## Nợ
 
-- **Mới:** ảnh phát hành `backup`/`postgres`: 19 HIGH `krb5-libs 1.22.2-r1` của ảnh gốc `postgres:16-alpine` (sửa ở 1.22.3-r0) — nâng digest hoặc khoá `krb5-libs` trước khi dựng bản phát hành (W-0548 README).
-- nginx 8443 .99 còn dòng `allow 172.29.0.1` thừa (dải cũ) — gỡ ở lượt đổi cấu hình nginx sau.
-- Câu mô tả `recall_of_task_id` draft.47 còn ghi khung cũ (D-m8-119); test biên 08:53:30/31 cho policy 390 s; `work-register.md` dòng trống cắt đôi bảng; `noi-m3/kiem-doc-lap/test_e_tai_lieu.py` đỏ 2/7 (trích `README.md:254` cũ, CI không chạy).
-- `kiem-sau` mục `kenh_asterisk` cho .99; tiêu chí h công cụ diễn tập so schema theo chữ; 400-trước-401 ở lối nội bộ; oasdiff draft.46→47; W-0510 thân phản hồi thô trong junit; D-m8-019 `sudo python3` không `-I`; restic `x/net` v0.60.0; mật khẩu sudo .61 lộ chat 09/11 chưa có bằng chứng đã đổi.
-- Sổ: phiếu cũ còn ghi `ĐANG LÀM` dù đã xong (`wp/M8-WP04B.md` "chờ push", `wp/chuyen-may-99.md` cắt xong 14/11); 5 tin cũ `hop-thu/m8-*` (02–12/11) chưa chuyển `xong/`; `_wt/m8/` bản sao cũ.
-- Dirty không do phiên: `docs/weekly-tracking/nguyen-quoc-toan.md` (sheet-sync), `deploy/operations/m34_mock_agent.py` + test; worktree lạ `_wt/m34/m3-112/m8` (m34 gỡ).
-- Sheet: M8-003 Đang làm 90%; M8-005 (MobiFone ~24/11), M8-006 (định danh) Bị chặn.
-
-## Việc tuần 16–21/11 (D-lead-048 → D-lead-055)
-
-1. Xong 17/11: buổi E07/E08, `deploy_m8_99`, 02J, 07E, custody .99, thu hồi .61, W-0545…0548 lên remote.
-2. **02I .64** (D-m8-131): phiên soạn phiếu + kịch bản, kiểm kê .64 chỉ đọc; chạy chiều 18/11 khi Toàn duyệt kịch bản, Toàn gõ sudo.
-3. E02/E03 qua web + chạy lại E05, E06-A/B, gọi lại, `/result`, E10 trong một khung tối với m34, sau m34.130 (D-m8-130).
-4. 04B làm nóng trên .99 đêm 19/11 (D-m8-132); không tải nặng trên .99 18–19/11.
-5. D-m8-135…138 (m8.104–107 "ok"): W-0550 chặn đích không phải di động VN + trần 120 s/cuộc + trần chi phí/ngày tự dừng hàng đợi (coder nền, Sheet M8-018); W-0551 đo cước theo ngày/tháng + CSV đối soát (coder nền, Sheet M8-019; tab M3 ở m34 sau); ufw .64 chỉ cho SBC MobiFone `42.1.66.131` + CDR tối giản (W sau, làm cùng lượt sudo .64); hỏi MobiFone khối tính cước + chặn quốc tế lúc gọi thử. W-0549 krb5-libs (bản sao A, commit local, D-m8-133). Chuẩn bị gọi thử MobiFone qua trunk (~24/11), cần .64 mới.
+- **Trước push:** chạy lại quét trước push đầy đủ trên HEAD (lượt 12:0x bị dừng vì thiếu bộ nhớ); oasdiff draft.47→48 chỉ chạy trên CI.
+- **Trước gọi thật:** GRANT `ivr_capacity_incidents` cho `ivr_monitor` (`monitor-grants.sql` ghim hash); chỉ mục duy nhất một sự cố tạm dừng đang mở (API pause + tự pause cùng lúc); mẫu `closed-profile.example.json` chưa có 120 s; Toàn chốt số trần/ngày; ufw RTP 10000–10999 + nguồn SIP sau NAT kiểm ở 05; CDR tối giản .64 (D-m8-136, chưa làm); chứng thư lá ARI hết hạn 13/01/2027 (thay trước ~14/12); hỏi MobiFone khối tính cước + chặn quốc tế.
+- nginx 8443 .99 dòng `allow 172.29.0.1` thừa; test biên 08:53:30/31; `work-register.md` dòng trống; `test_e_tai_lieu.py` đỏ 2/7; `kiem-sau` `kenh_asterisk`; restic `x/net`; mật khẩu sudo .61 lộ chat 09/11.
+- Sổ: 5 tin cũ `hop-thu/m8-*` chưa chuyển `xong/`; `_wt/m8/` bản sao cũ. Dirty không do phiên: `deploy/operations/m34_mock_agent.py` + test; `docs/weekly-tracking/nguyen-quoc-toan.md` (sheet-sync ghi).
+- **Có một phiên m8 thứ hai [8c222c]** mở ~11:1x (sau đổi tài khoản), tin phiên tới nó bị giữ → Toàn chọn giữ phiên nào.
 
 ## Đang chờ
 
-- Toàn: nói "chạy" lúc vào khung E02/E03 19:45 (D-m8-130/134; m8.102 chưa trả lời riêng, chuẩn bị theo A); duyệt kịch bản 02I; hỏi chú báo động sớm khi callback lỗi kéo dài 24 giờ. Phiên m34: giờ khung E02/E03 (Toàn hẹn), lượt deploy M3 `dev` mới lên .99 (CI GitHub BP kẹt billing).
-- Việc ngoài: Chú (lời thoại 3 miền + 455 tên, pháp lý VieNeu), MobiFone (~24/11). Còn: bật `customer_input_at` khi M3 nhận trường này + lên .99.
-- Gác: m8.58/59/61, m8.50 lịch chạy đêm. Câu mới đánh từ m8.108.
+- Toàn: chạy 02I bước 2 (lệnh trên); nói "chạy" lúc 19:40 cho khung E02/E03; chọn phiên m8; hỏi chú báo động sớm khi callback lỗi kéo dài 24 giờ; đăng nhập GitLab để đọc CI.
+- m34: báo N lúc 19:30; tab "Cước gọi" sau khi M8 push draft.48; deploy M3 `dev` (billing GitHub).
+- Việc ngoài: Chú (lời thoại 3 miền + 455 tên, pháp lý VieNeu), MobiFone (~24/11).
+- Gác: m8.58/59/61, m8.50. Câu mới đánh từ m8.108.
