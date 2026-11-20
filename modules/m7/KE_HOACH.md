@@ -1,6 +1,6 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **20/11/2026 13:0x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **20/11/2026 14:2x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
@@ -9,11 +9,12 @@ Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "
 
 | Mã | Quyết gì | Đề xuất | Hệ quả |
 |---|---|---|---|
+| [x] m7.256 | Bộ kiểm đủ chạy thưa: mỗi đêm 01:30 + mốc lớn, xanh thì tự push | Đã chốt 14:1x (D-m7-145) | Đêm nay 01:30 chạy lần đầu trên main .63 |
 | [x] m7.255 | Muse thật cho video thứ hai tối đa 8 lượt, trần 25 → 33 | Đã duyệt 13:0x (D-m7-143) | — |
 
 Đã chốt gần nhất: m7.254 chạy 4 luồng, trần lệnh nặng 3 (D-m7-142, 12:4x); m7.211–250 (D-m7-141, chi tiết mục E).
 
-**Tình hình lúc 13:0x:** lượt 06 dừng 11:50 vì hết hạn mức; Toàn đăng nhập tài khoản Claude mới trên .63 lúc 12:40. **Lượt 07 (4 luồng) chạy từ 12:59.** Hết hạn mức 5 giờ thì `vong-lap.sh` tự nối lại sau giờ mở. Bộ kiểm đủ trên `7a589b0` đang chạy (bắt đầu 11:52, xong khoảng 15:30), xanh thì tự push 11 commit lên GitHub.
+**Tình hình lúc 14:0x:** lượt 07 chạy 4 luồng; tài khoản Claude đăng nhập 12:40 hết hạn mức sau khoảng **1 giờ** (4 luồng tốn rất nhanh), bạn đổi tài khoản 13:54, lượt nối lại 13:55. Từ giờ hết hạn mức thì `vong-lap.sh` cứ 3 phút thử lại: **bạn đổi tài khoản là lượt tự chạy tiếp, không cần nhắn mình**. Đã xong trong lượt 07: ghi DL-352…357, mở gói M7-WP32 (tạm dừng/sửa tay/cấu hình UI, task T234…T238), giao coder cho luồng 2, 3, 4. Bộ kiểm đủ trên `7a589b0` có 1 bước đỏ do .63 quá tải (CI của dự án khác chạy cùng lúc, tải ~100 trên 10 nhân; chạy lại thì ca khác đỏ): **sẽ không tự push**; đã thêm cổng tải cho lệnh nặng của M7. Bộ đủ đó đã dừng; từ nay kiểm mỗi đêm 01:30 (D-m7-145).
 
 Sudo trên .63: bạn đã cho (D-m7-144). AI không nhập mật khẩu: phiên .63 soạn sẵn script, khi cần bạn chạy đúng một lệnh `sudo bash ~/m7-drive/can-sudo-<việc>.sh` (mình báo khi có).
 
@@ -133,7 +134,7 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 
 | | Việc | Trạng thái | Vướng |
 |---|---|---|---|
-| [~] | Push lên GitHub khi bộ kiểm đủ xanh | Bộ đủ trên `7a589b0` chạy từ 11:52; xanh thì tự push 11 commit (D-m7-135) | Chờ bộ đủ xong (~15:30) |
+| [~] | Push lên GitHub khi bộ kiểm đủ xanh | Bộ đủ `7a589b0` đỏ (T054 chập chờn do quá tải), đã dừng, không push. Kiểm mỗi đêm 01:30, xanh thì tự push (D-m7-145) | Lần đầu: đêm 20/11 rạng sáng 21/11 |
 | [!] | Máy ảo chạy thật M7 (Ubuntu 22.04, 8 nhân, 16 GB, 1 TB) | Chưa giao | Anh Tuấn |
 | [ ] | Cài worker và stack lên máy ảo, chạy thử một video | Chưa | Cần máy ảo |
 | [ ] | Kiểm bù 10 task thiếu verifier (D-m7-125) | Chưa | Sau T232 |
