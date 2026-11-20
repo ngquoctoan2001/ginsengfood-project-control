@@ -18,7 +18,7 @@ Mốc 20/11 10:xx (T6).
   - còn 5 tài khoản: toan.nq, khanh.nk, sang.pv, dung.ptn, lan.vnm (giữ mật khẩu cũ);
   - principal M3 có 10 quyền, M6 có 1 quyền;
   - còn: 5 người đăng nhập thật, M3/M6 `kiem-token` + M3 nối lại SKU/kho (Phúc), nhập master data thật.
-- **11 góp ý 20/11** ⇒ phiếu `wp/M12-WP30-33-gop-y-20-11.md`:
+- **11 góp ý 20/11** (D-m12-129) ⇒ phiếu `wp/M12-WP30-33-gop-y-20-11.md`. ~12:3x: WP30 `b9171a3d8`+`62f6b7cec`, WP31 `e31b8ada5` commit cục bộ CHƯA push; WP31 sửa lỗi tester, WP33 P1a/P2 dở trong checkout (xem cuối phiếu):
   - WP30 giao diện (R2);
   - WP31 phiên không văng (R3);
   - WP32 quên mật khẩu (R3);

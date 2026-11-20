@@ -1,15 +1,21 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **20/11/2026 11:1x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **20/11/2026 13:0x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
 
 ## A. Cần bạn quyết
 
-Hiện **không có câu nào chờ bạn**. Đã chốt gần nhất: m7.211–250 "ok" lúc 11:08 (D-m7-141, chi tiết mục E).
+| Mã | Quyết gì | Đề xuất | Hệ quả |
+|---|---|---|---|
+| [x] m7.255 | Muse thật cho video thứ hai tối đa 8 lượt, trần 25 → 33 | Đã duyệt 13:0x (D-m7-143) | — |
 
-Còn chờ bạn một việc tay: **cho dùng sudo trên .63** để tạo tài khoản Linux riêng chạy Codex (m7.238). Có thì nhắn "có".
+Đã chốt gần nhất: m7.254 chạy 4 luồng, trần lệnh nặng 3 (D-m7-142, 12:4x); m7.211–250 (D-m7-141, chi tiết mục E).
+
+**Tình hình lúc 13:0x:** lượt 06 dừng 11:50 vì hết hạn mức; Toàn đăng nhập tài khoản Claude mới trên .63 lúc 12:40. **Lượt 07 (4 luồng) chạy từ 12:59.** Hết hạn mức 5 giờ thì `vong-lap.sh` tự nối lại sau giờ mở. Bộ kiểm đủ trên `7a589b0` đang chạy (bắt đầu 11:52, xong khoảng 15:30), xanh thì tự push 11 commit lên GitHub.
+
+Sudo trên .63: bạn đã cho (D-m7-144). AI không nhập mật khẩu: phiên .63 soạn sẵn script, khi cần bạn chạy đúng một lệnh `sudo bash ~/m7-drive/can-sudo-<việc>.sh` (mình báo khi có).
 
 Đã chốt theo đề xuất, **muốn khác thì nói** (D-m7-140):
 
@@ -25,7 +31,7 @@ Còn chờ bạn một việc tay: **cho dùng sudo trên .63** để tạo tài
 
 Mở một tab mới: `ssh ssv@192.168.1.63`, rồi chạy trong đó. Không ảnh hưởng lượt đang chạy.
 
-**1. Claude cho worker (mỗi tài khoản một bí danh, xoay vòng khi một tài khoản hết hạn mức):**
+**1. [x] Claude cho worker (mỗi tài khoản một bí danh, xoay vòng khi hết hạn mức).** Đã đăng nhập `m7-claude-01`, `m7-claude-02` (12:58). Còn tài khoản thì thêm `03`, `04` theo cùng lệnh:
 
 ```bash
 cd ~/dev/ginsengfood-golden-hour-video
@@ -40,7 +46,7 @@ Lệnh `-Login` in một địa chỉ: mở trên trình duyệt máy bạn, đ�
 
 Phiên Claude điều phối trên .63 (khác worker) dùng một tài khoản một lúc; hết hạn mức thì bạn `/login` tài khoản khác như sáng 20/11.
 
-**2. Codex (gói ChatGPT của công ty):**
+**2. [x] Codex (gói ChatGPT của công ty).** Đã đăng nhập `m7-codex-01` (12:56). Lệnh để làm lại khi cần:
 
 ```bash
 install -d -m 700 "$HOME/.m7/codex-profiles/m7-codex-01"
@@ -50,11 +56,13 @@ CODEX_HOME="$HOME/.m7/codex-profiles/m7-codex-01" codex login status
 
 Lệnh thứ hai in địa chỉ và mã thiết bị: mở địa chỉ trên trình duyệt, đăng nhập tài khoản ChatGPT công ty, nhập mã. Lệnh thứ ba in "Logged in" là xong.
 
-**3.** Cho dùng sudo trên .63 để tạo tài khoản Linux riêng chạy Codex (m7.238). Có sudo thì nhắn mình một chữ "có".
+**3.** Khi phiên .63 báo, chạy `sudo bash ~/m7-drive/can-sudo-<việc>.sh` trong tab .63 (việc đầu: tài khoản Linux riêng chạy Codex, m7.238).
 
 **4.** Xem nhanh bảng nhãn 20 brief mẫu khi phiên .63 soạn xong (m7.219).
 
 **5.** Nhắc Anh Tuấn giao máy ảo chạy thật M7 (tin đã soạn 20/11), báo mình khi có.
+
+**6.** Giữ sẵn 3–4 tài khoản Claude cho phiên điều phối trên .63. Chạy 4 luồng thì mỗi tài khoản hết hạn mức sau khoảng 1–1,5 ngày; mình báo là bạn `/login` tài khoản khác ngay. Mỗi lần chờ đăng nhập là luồng đứng.
 
 ---
 
@@ -82,9 +90,9 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 | [x] | T233 Muse chạy trên Ubuntu | Xong | `4a06f85`, `31bd18c` (chưa push) | — |
 | [x] | T226 tạo ảnh qua Codex | Gộp | `20dd57f` (chưa push) | Lượt Codex thật: chờ bạn đăng nhập Codex (B2) |
 | [~] | T223 kịch bản + storyboard mới | Gộp, cần gộp về một bản | `90da326`, `0ccd5f0`, `cbfc54e`; sửa test `7a589b0` | Gộp về một bản (m7.211, luật D-m7-139); Claude thật chờ bạn đăng nhập (B1) |
-| [~] | T227 khung hình từng shot | Sửa vòng 1 xong, verifier vòng 2 đang chạy | `b4d02ce` (bản sao) | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
-| [~] | T228 Muse một phiên cho cả video | Coder xong, verifier đang chạy | — | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
-| [ ] | T229 dựng video mới (ranh shot theo lời, karaoke, nhạc nền, khung kết) | Đang soạn giao việc | — | 14 giờ ước |
+| [~] | T227 khung hình từng shot | Sửa vòng 1 xong; verifier vòng 2 bị ngắt 11:50 (hạn mức), làm lại ở lượt 07 | `b4d02ce` (bản sao) | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
+| [~] | T228 Muse một phiên cho cả video | Coder `fc811d8` (bản sao), đang chạy đột biến thì bị ngắt 11:50; làm tiếp ở lượt 07 | — | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
+| [ ] | T229 dựng video mới (ranh shot theo lời, karaoke, nhạc nền, khung kết) | Đã soạn giao việc (`wave3/T229`) | — | 14 giờ ước |
 | [ ] | T230 kiểm tự động video mới | Chưa | — | 8 giờ ước |
 | [ ] | **T232 lượt thật: ra video** | Chưa | — | Cần B1, B2; Muse tối đa 8 lượt (đã duyệt) |
 
@@ -105,7 +113,7 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 | [ ] | JPEG tự đổi sang PNG | m7.227 | Đã giao lượt 07 |
 | [ ] | Từ điển cách đọc áp cho địa chỉ tổ chức | m7.235 | Đã giao lượt 07 |
 | [ ] | Chạy thử Codex thật 1–2 ảnh | m7.237 | Đã giao lượt 07; cần B2 |
-| [ ] | Codex chạy dưới tài khoản Linux riêng | m7.238 | Chờ B3 (sudo); phiên .63 soạn sẵn script |
+| [ ] | Codex chạy dưới tài khoản Linux riêng | m7.238 | Đã giao lượt 07; phiên .63 soạn script, bạn chạy bằng sudo (B3) |
 | [ ] | Thủ tục cài worker Ubuntu + khép kẽ hở dọn Chrome | m7.245, m7.248 | Đã giao lượt 07 |
 | [ ] | Thêm Vivaldi, Opera vào danh sách cấm | m7.249 | Đã giao lượt 07 |
 | [x] | Dọn 179 bản sao cũ trên máy bạn (4,5 GB) | m7.250 | Xong 11:2x: xoá 179, tệp vá + 7 bundle ở `C:\Projects\_wt\m7-luu-2026-11-20\` (86 MB) |
@@ -125,7 +133,7 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 
 | | Việc | Trạng thái | Vướng |
 |---|---|---|---|
-| [~] | Push lên GitHub khi bộ kiểm đủ xanh | Script trên .63 tự push sau lượt 06 (D-m7-135) | Đang chờ lượt 06 xong |
+| [~] | Push lên GitHub khi bộ kiểm đủ xanh | Bộ đủ trên `7a589b0` chạy từ 11:52; xanh thì tự push 11 commit (D-m7-135) | Chờ bộ đủ xong (~15:30) |
 | [!] | Máy ảo chạy thật M7 (Ubuntu 22.04, 8 nhân, 16 GB, 1 TB) | Chưa giao | Anh Tuấn |
 | [ ] | Cài worker và stack lên máy ảo, chạy thử một video | Chưa | Cần máy ảo |
 | [ ] | Kiểm bù 10 task thiếu verifier (D-m7-125) | Chưa | Sau T232 |
@@ -167,7 +175,40 @@ Nguồn câu: báo cáo task T223, T224, T226, T227, T228, T231, T233 trên .63.
 
 ---
 
-## F. Ghi chép
+## F. Ước lượng ngày xong (20/11 11:4x)
+
+**Cách tính.** Nhịp thật đo từ 3 lượt trước: 2 tác nhân song song làm khoảng **5 giờ ước của kế hoạch trong 1 giờ đồng hồ** (lượt 03: 8 giờ, khoảng 40 giờ ước; lượt 05: 7,5 giờ, khoảng 38 giờ ước). Cộng thêm 30% cho vòng sửa sau tester, verifier. Máy chạy khoảng 14 giờ mỗi ngày (trừ lúc chờ hạn mức, chờ đăng nhập, bộ kiểm đủ ban đêm).
+
+**Khối việc còn lại (giờ ước):**
+
+| Luồng | Việc | Giờ ước | Giờ chạy | Xong khoảng |
+|---|---|---|---|---|
+| 1. Ra video đầu | T227 xong + nối khung hình 5b5, T228 + Muse thật, T229 dựng, T230 kiểm tự động, **T232 ra video** | ~46 | ~24 | **tối 21/11 – trưa 22/11** |
+| 2. Một bản + bộ kiểm nội dung | m7.211 gộp một bản, 213 cảm xúc, 214, 215, 217 vá câu lọt, 218, 222, 235 | ~28 | ~15 | sáng 21/11 (phải xong trước T232) |
+| 3. Tạm dừng, sửa tay, chạy tiếp | Máy chủ (trạng thái tạm dừng, chạy lại phần phụ thuộc, audit), màn hình Studio, điểm dừng duyệt | ~50 | ~26 | tối 22/11 |
+| 4. Cấu hình trên UI + phần còn lại | Trang Cấu hình đủ khoá, API mẫu Studio (225), nhiều tài khoản Claude, JPEG (227), Codex thật + tài khoản riêng (237, 238), lọc mạng (224), cài worker Ubuntu (245, 248, 249), bộ chấm E3 (219) | ~63 | ~33 | sáng 23/11 |
+| Sau 4 luồng | Bộ kiểm đủ + push (3,5 giờ, chạy đêm), **video thứ hai có tạm dừng, sửa tay**, kiểm bù 10 task (D-m7-125) | ~15 | ~10 | 23/11 |
+| Máy chạy thật | Cài stack + worker lên máy ảo, bạn đăng nhập Claude, Codex, Muse trên máy mới, chạy thử 1 video | ~10 | ~6 | **1 ngày sau khi Anh Tuấn giao máy** |
+
+**Kết quả:**
+
+| Cách chạy | Video đầu (T232) | Xong chức năng trên .63 | Xong cả máy thật |
+|---|---|---|---|
+| **4 luồng, trần nặng 3 (đang chạy, D-m7-142)** | tối 21/11 – trưa 22/11 | **23/11** | **24/11** nếu có máy ngày 23/11 |
+| Nếu chỉ 2 luồng (không chọn) | 22/11 | 26–27/11 | 27–28/11 |
+
+Hạn 30/11: chạy 4 luồng thì còn đệm khoảng 5 ngày; 2 luồng thì còn 2–3 ngày.
+
+**Điều kiện để kịp (rủi ro lớn nhất trước):**
+1. **Hạn mức Claude** của phiên điều phối: hết mà không ai đăng nhập tài khoản khác thì cả 4 luồng đứng (mục B6).
+2. Đăng nhập Claude cho worker và Codex hôm nay (B1, B2); thiếu thì T232 dừng ở bước kịch bản thật hay khung hình.
+3. **Anh Tuấn giao máy ảo** chậm nhất 23/11; trễ ngày nào thì ngày xong lùi ngày đó.
+4. Muse, Codex thật chạy đúng như đo; giao diện Muse đổi thì thêm khoảng nửa ngày.
+5. Bạn duyệt kịp: bảng nhãn 20 brief (B4), xem video đầu và video thứ hai.
+
+---
+
+## G. Ghi chép
 
 - Quyết định: `QUYET_DINH.md` (mỗi quyết định một dòng, có nguyên văn lời bạn). Diễn biến từng ngày: `nhat-ky/<ngày>.md`. Trên .63, phiên M7 ghi lại vào `docs/00-overview/DECISION_LOG.md` của repo.
 - Trạng thái tóm tắt: `TRANG_THAI.md`. Tệp này (`KE_HOACH.md`) là nơi xem danh sách task và việc cần quyết.
