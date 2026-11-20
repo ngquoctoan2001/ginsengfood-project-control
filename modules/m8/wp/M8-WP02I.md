@@ -1,6 +1,6 @@
 # M8-WP02I — Tổng đài .64 lên bản mới, secret media-sync .99 → .64
 
-Trạng thái: ĐANG LÀM (soạn kịch bản; chưa ghi gì lên .64) · Rủi ro: R3 (máy tổng đài, bí mật, gián đoạn) · Chế độ: A (kịch bản trên bản sao; chạy trên máy do phiên chính, Toàn gõ sudo) · Mốc: 18–19/11
+Trạng thái: ĐẠT bước 0–2 (20/11 11:07; Asterisk .64 22.11.0, ufw 5060 chỉ SBC MobiFone; nợ RTP/NAT chuyển sang 05) · Rủi ro: R3 (máy tổng đài, bí mật, gián đoạn) · Chế độ: A (kịch bản trên bản sao; chạy trên máy do phiên chính, Toàn gõ sudo) · Mốc: 18–19/11
 Hạng mục nâng: Cài lên máy chủ (đích .99 + .64) 50 → 75; mở đường cho 01D, 05 (MobiFone ~24/11) · Sheet: M8-015 · Ước lượng: 14 giờ
 Chỗ làm: phiên chính (không subagent vào máy) · Base SHA: `aeb486eb` · Quyết định: D-m8-122 (m8 tự làm, Toàn gõ sudo), D-m8-131 (chạy chiều 18/11 khi Toàn duyệt kịch bản), D-m8-010/124 (custody).
 
@@ -39,10 +39,21 @@ Chỗ làm: phiên chính (không subagent vào máy) · Base SHA: `aeb486eb` ·
 - sha256 gói khớp; `docker load` ảnh `sha256:10625b95…` (= ID máy Lead), user 1654, `Asterisk 22.11.0`; mã `vm_deploy.py` `aeb486eb` ở `/opt/ivr/telephony-vm-src-aeb486eb` (root 700, sha256 `f9711766…`); `settings-2211.json` chỉ đổi `asterisk_image_id` + `asterisk_version`.
 - `vm_deploy plan` → `CONFIG_VALID_NO_MUTATION`; `preflight` → `PREFLIGHT_PASS`. Dịch vụ đang chạy y nguyên (Asterisk 22.10.1, `current=8c8ee050…`). `/tmp/kiem64b` đã xoá.
 
-## Bước 2 (soạn, chờ Toàn duyệt) — [`buoc2.sh`](../ra-soat/kich-ban-64-1811/buoc2.sh), đã chép `/tmp/kiem64c` (sha256 `03043e61…`)
+## Bước 2 (soạn; ĐÃ CHẠY 20/11, xem kết quả bên dưới) — [`buoc2.sh`](../ra-soat/kich-ban-64-1811/buoc2.sh), đã chép `/tmp/kiem64c` (sha256 `03043e61…`)
 
 1. Dừng nếu còn cuộc gọi. 2. Sao lưu `/opt/ivr/telephony-vm` + volume `ivr-telephony-vm-state` + luật ufw vào `/opt/ivr/sao-luu-02i/<giờ>` (root 700). 3. `vm_deploy apply` với `settings-2211.json` (chỉ tạo lại container Asterisk, chờ healthy ≤ 60 s; đo thời gian). 4. `verify`. 5. `settings.json` → bản 22.11.0 (giữ `settings-22101-truoc-02i.json`). 6. ufw: thêm `5060/udp` từ `42.1.66.131` → `192.168.1.64`, xoá `5060 ALLOW Anywhere` (v4+v6) (D-m8-137 a). Lỗi ở 3/4 → dừng, Toàn quyết `lui` (`vm_deploy rollback` + trả luật ufw). Sau đó phiên chính từ .99 kiểm cầu ARI (401 không xác thực) + đồng bộ cụm từ (chỉ đọc).
 - Không đụng receiver/cầu ARI. Nguồn SIP thật của MobiFone sau NAT router chưa kiểm (nếu router đổi IP nguồn thì sửa luật ở 05); RTP 10000–10999 chưa có luật ufw riêng — kiểm `ufw status verbose` (chính sách mặc định) trong bước 2, xử lý ở 05.
+
+## Kết quả bước 2 (20/11 11:07 giờ +07 = 04:07Z, Toàn gõ sudo; log gốc `ra-soat/kich-ban-64-1811/buoc2-02i-1811.log`)
+
+- Lần chạy 18/11 không có: `.64` khởi động lại 19/11 ~15:43 (+07), `/tmp` bị xoá; phiên chép lại `buoc2.sh` (sha256 `03043e61…`) rồi Toàn chạy lại 20/11.
+- Trước: Asterisk 22.10.1, 0 kênh, container khoẻ, release `8c8ee050…`; ufw mặc định deny incoming, có luật `5060` cho mọi nơi (bước 5 xóa luật này; log chỉ in 8 dòng đầu của `ufw status`).
+- Sao lưu `/opt/ivr/sao-luu-02i/20261120T040658Z` (release tgz, volume trạng thái 18 MB, `user.rules`/`user6.rules`).
+- `vm_deploy apply` PASS (10,9 giây, tạo lại đúng container Asterisk), `verify` PASS (`sip_tls_enabled=false`, `carrier_configured=false`, `REAL_CUSTOMER_CALL_ALLOWED=NO`), release mới `0b22542c…`, trước đó `8c8ee050…`. Sau: Asterisk 22.11.0, 0 kênh, `healthy`; receiver và cầu ARI `ivr-ari-link-vm` không đụng (Up 19 giờ).
+- `settings.json` → bản 22.11.0 (bản cũ giữ `settings-22101-truoc-02i.json`). ufw: thêm `5060/udp` chỉ từ `42.1.66.131` (MobiFone SBC), xoá luật `5060` cho mọi nơi (cả v4 và v6); luật `18089/tcp` từ `.61` và `.99` còn nguyên.
+- Từ .99 sau đó (chỉ đọc, `ra-soat/kich-ban-99-2011/sau-02i.log`): cầu ARI `/healthz` 200, `/ari/asterisk/info` 401, `/media-sync/v1/` 401 (Asterisk/receiver trả lời qua TLS); 8443 từ mạng M3 vẫn 200. Đúng giây Asterisk tạo lại (04:07:05–06Z) có 3 lượt 502 qua cầu và 3 lần "Remote media reconciliation failed" ở worker; 04:07:40 worker về "7 background loops turning" và cầu trả 200 liên tục (hàng đợi bền không mất). Không cuộc gọi nào bị ảnh hưởng (0 kênh).
+- Lùi: `sudo bash /opt/ivr/sao-luu-02i/buoc2.sh lui` (chưa cần).
+- CHƯA làm/kiểm: luật ufw cho RTP 10000–10999 (chính sách mặc định deny incoming; chưa có luật riêng), nguồn SIP thật của MobiFone sau NAT (nếu router đổi IP nguồn thì luật 5060 chặn nhầm), CDR tối giản trên .64 (D-m8-136). Chưa có cuộc gọi thật nào qua 22.11.0 (gọi thật NO) — việc của 01D/05.
 
 ## Diễn biến (mỗi vòng một dòng, mới nhất ở cuối)
 - 18/11 08:3x phiên chính: kiểm kê chỉ đọc như trên; scout gom dữ kiện repo (bản mới gồm gì, công cụ cài, secret, quay lui) chạy nền.
@@ -51,6 +62,6 @@ Chỗ làm: phiên chính (không subagent vào máy) · Base SHA: `aeb486eb` ·
 - 18/11 10:26 (giờ .64) bước 1 ĐẠT: nạp ảnh 22.11.0, `plan` + `preflight` PASS, dịch vụ không đổi. Soạn + chép `buoc2.sh`; chờ Toàn duyệt bước 2.
 
 ## Bước kế tiếp chính xác
-Toàn duyệt bước 2 → mở tab `ssh -t ssv@192.168.1.64 "sudo bash /tmp/kiem64c/buoc2.sh"` → đọc kết quả → kiểm từ .99 (cầu ARI, đồng bộ cụm từ) → ghi W bằng chứng + Sheet M8-015. Tránh khung E02/E03 19:40–21:05.
+(Bước 2 đã chạy 20/11, xem mục Kết quả bước 2.) Trước đó: Toàn duyệt bước 2 → mở tab `ssh -t ssv@192.168.1.64 "sudo bash /tmp/kiem64c/buoc2.sh"` → đọc kết quả → kiểm từ .99 (cầu ARI, đồng bộ cụm từ) → ghi W bằng chứng + Sheet M8-015. Tránh khung E02/E03 19:40–21:05.
 
 ## Còn lại / CẦN QUYẾT

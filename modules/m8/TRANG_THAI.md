@@ -2,6 +2,8 @@
 
 Mốc: 18/11/2026 11:59 +07 · `ginsengfood-ivr` `main` **local `4218d4eb`**, đi trước remote 6 commit, **chưa push**: W-0549 `11ed89f0`+`72c381e1` (khoá `krb5-libs`/`libxslt`), W-0550 `0da89319` (chặn gian lận cước + trần chi phí), W-0551 `feeca2ac`+`4218d4eb` (đo cước gọi + hợp đồng **draft.48** `978b0db4…`, callback không đổi). Remote = `aeb486eb` (pipeline chưa đọc: GitLab chưa đăng nhập ở phiên này). **.99 chạy `0f1a9eb5`** (MOCK, lịch TẮT, gọi thật NO). **.64 Asterisk 22.10.1** (bước 1 nâng cấp đã chuẩn bị, chưa đổi dịch vụ).
 
+**20/11 11:08 (mới hơn mốc trên):** 02I bước 2 ĐẠT: **.64 Asterisk 22.11.0**, ufw 5060 chỉ SBC MobiFone `42.1.66.131`, cầu ARI + 8443 vẫn thông ([phiếu](wp/M8-WP02I.md)); còn nợ RTP/NAT/CDR. **20/11 10:22:** `main` = GitLab = GitHub = `da306952`; CI xanh (`#3092120823`); `deploy_m8_99` xong 10:20 → .99 chạy `da306952`, migration W0551 đã áp, API đo cước sẵn (bảng 0 dòng vì chưa có cuộc mới), MOCK, lịch TẮT, gọi thật NO. `da306952` sửa lỗi W-0551 (số dòng snapshot lệch làm `test_noi_m3_tai_lieu` đỏ ở `4218d4eb`). `m8-https` + `m8-ari` lên `nginx:1.30.7-alpine`, ghim `sha256:bef15473…` (D-m8-142). Chi tiết [nhật ký 20/11](nhat-ky/2026-11-20.md). Các mục dưới đây còn số liệu 18/11 (bỏ qua chỗ ghi 'chưa push', '.99 chạy 0f1a9eb5').
+
 ## Hôm nay (chi tiết: [nhật ký 18/11](nhat-ky/2026-11-18.md))
 
 - **W-0549 ĐẠT** ([phiếu](wp/W-0549-krb5.md)): ảnh `backup`/`postgres` trivy 19 → 0 HIGH. Quét trước push bản sao: 17/17 dựng + trivy đạt; `refresh-locks` đỏ lúc 09:3x vì `tokenizers 0.22.2` — 11:5x kiểm lại CLEAN (trục trặc tạm PyPI).
@@ -36,6 +38,6 @@ Mốc: 18/11/2026 11:59 +07 · `ginsengfood-ivr` `main` **local `4218d4eb`**, đ
 ## Đang chờ
 
 - Toàn: chạy 02I bước 2 (lệnh trên); nói "chạy" lúc 19:40 cho khung E02/E03; chọn phiên m8; hỏi chú báo động sớm khi callback lỗi kéo dài 24 giờ; đăng nhập GitLab để đọc CI.
-- m34: báo N lúc 19:30; tab "Cước gọi" sau khi M8 push draft.48; deploy M3 `dev` (billing GitHub).
+- m34: tab "Cước gọi" phía M3 ĐÃ có trên .99 (m34 đọc jar `be` 20/11 10:2x: class `IvrCallUsageCsv`, image `5b68a2162`, mã tab `7c3910714` qua PR #170 ngày 18/11; chưa đối chiếu dòng-dòng vì image build ở GitLab của Phúc). Chưa thử đầu–cuối: Toàn vào /admin → IVR → Báo cáo → Cước gọi, kỳ vọng bảng rỗng, không 401/403. Còn: báo N lúc 19:30 (khung E02/E03 đã bỏ), deploy M3 `dev` (billing GitHub).
 - Việc ngoài: Chú (lời thoại 3 miền + 455 tên, pháp lý VieNeu), MobiFone (~24/11).
 - Gác: m8.58/59/61, m8.50. Câu mới đánh từ m8.108.
