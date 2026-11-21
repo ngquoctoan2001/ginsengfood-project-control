@@ -48,7 +48,7 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
    năng lực lên một bậc của thang sẵn sàng (`chung/CONG_PRODUCTION.md`). Việc vặt gộp vào gói cùng vùng.
 4. **Song song bằng subagent.** Một lệnh của Lead → phiên tách thành nhiều subagent chạy cùng lúc
    (`/song`, `/ra-soat`, `/ke-hoach`). Phiên chính điều phối, ghép kết quả, giữ sổ; không tự đọc cả repo.
-5. **Kiểm độc lập theo mức rủi ro** (R1/R2/R3, `chung/CACH_LAM.md` §4). Người viết không tự chấm.
+5. **Kiểm theo hai mức** (Thường / Nguy hiểm, D-lead-064, `chung/CACH_LAM.md` §4). Thường: test lọc của coder + phiên chính đọc diff, không verifier, CI chỉ chạy theo lịch đêm hoặc bấm tay. Nguy hiểm (tiền, đăng nhập/phân quyền, xoá/migration dữ liệu thật, gọi/nhắn khách thật, câu chat AI nói công dụng): người viết không tự chấm, verifier độc lập một lần ở cổng trước khi bật cờ/go-live.
 6. **Trung thực.** Chưa chạy ghi `CHƯA CHẠY`, không suy thành đạt. Không gọi module là "sẵn sàng chạy thật" khi chưa qua
    cổng. % luôn theo thang chung, không tính bằng số task xong.
 7. **Ngữ cảnh gọn.** `TRANG_THAI.md` ≤ 60 dòng, ghi đè mỗi lần chốt; lịch sử vào `nhat-ky/`; quyết định một dòng một mục.

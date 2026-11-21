@@ -35,7 +35,7 @@ bằng chứng cho báo cáo tuần, vừa là chỗ phiên mới đọc để l
 ```markdown
 # <WP> — <tên dễ hiểu>
 
-Trạng thái: SẴN SÀNG | ĐANG LÀM | CHỜ KIỂM | ĐẠT | CẦN SỬA | CHẶN | HUỶ · Rủi ro: R1|R2|R3 · Chế độ: W|S|A · Mốc: A–D
+Trạng thái: SẴN SÀNG | ĐANG LÀM | CHỜ KIỂM | ĐẠT | CẦN SỬA | CHẶN | HUỶ · Mức: Thường|Nguy hiểm · Mốc: A–D
 Hạng mục nâng: <hạng mục trong SAN_SANG.md> từ <bậc> lên <bậc> · Sheet: <id> · Ước lượng: <giờ>
 Chỗ làm: checkout chính của repo, nhánh <nhánh luồng> · Base SHA: <sha> · Khoá tệp: <đường dẫn đã khai ở tools/khoa_tep.py> · Kiểm: <SHA commit chấm>
 
@@ -44,8 +44,8 @@ Chỗ làm: checkout chính của repo, nhánh <nhánh luồng> · Base SHA: <sh
 2. Mục tiêu ("khi xong thì …") + tiêu chí đạt (lệnh hoặc kịch bản kiểm được):
 3. Phạm vi ghi · tệp cấm · tệp nóng được phép:
 4. Đọc trước (đường dẫn + mục):
-5. Lệnh kiểm nhanh (coder + verifier: build project bị đổi + test của WP, có lọc) · bộ kiểm đủ (chỉ phiên chính chạy cuối sóng;
-   coder/verifier KHÔNG chạy, D-lead-030) · lệnh KHÔNG được chạy · không được làm gì thêm:
+5. Lệnh kiểm nhanh (coder: build project bị đổi + test của WP, có lọc) · bộ kiểm đủ (do CI chạy theo lịch đêm hoặc bấm tay;
+   coder/verifier KHÔNG chạy, D-lead-064) · vùng Nguy hiểm? có/không (có → qua cổng Nguy hiểm trước khi bật cờ, `CACH_LAM.md` §4) · lệnh KHÔNG được chạy · không được làm gì thêm:
 6. Bằng chứng phải nộp:
 7. Tuân thủ `C:\Projects\Project Control\chung\LUAT_SUBAGENT.md`.
 8. Đầu ra: tin nhắn cuối ≤ 25 dòng theo LUAT_SUBAGENT mục 10.

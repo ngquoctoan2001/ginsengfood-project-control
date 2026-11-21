@@ -1,6 +1,6 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **21/11/2026 10:1x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **21/11/2026 14:0x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
@@ -15,7 +15,7 @@ Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "
 
 Đã chốt gần nhất: m7.254 chạy 4 luồng, trần lệnh nặng 3 (D-m7-142, 12:4x); m7.211–250 (D-m7-141, chi tiết mục E).
 
-**Tình hình lúc 21/11 10:1x:** **phiên .63 ĐỨNG từ 20/11 17:46** vì tài khoản Claude hết **hạn mức TUẦN** (mở lại 24/11 03:00); lúc 10:08 tài khoản trên .63 vẫn báo hết hạn mức tuần. **Cần bạn đăng nhập .63 bằng tài khoản Claude còn hạn mức tuần**; lượt tự chạy lại trong 3 phút. Trước khi dừng đã gộp vào main .63: nhiều tài khoản Claude cho worker, API mẫu Studio, cấm hồ sơ Vivaldi/Opera, lệnh tạo ảnh Codex (1 lượt Codex thật ĐẠT). Bộ kiểm đủ đêm 21/11 trên `17f165e`: 2 bước đỏ (bản OpenAPI của web lệch; một test tìm sai thư mục build), KHÔNG push; đã giao sửa. GitHub hiện ở `b3d635d`. Luật mới D-lead-063 đã áp cho M7 trên .63 (không bản sao, khoá tệp, bộ kiểm đủ chạy trong checkout chính).
+**Tình hình lúc 21/11 14:0x:** phiên .63 đứng từ 20/11 17:46 vì hết hạn mức tuần; **bạn đăng nhập tài khoản mới 13:59, lượt tự chạy lại ngay**, đang đưa việc từ các bản sao về checkout chính (T227 trước). Trước khi dừng đã gộp vào main .63: nhiều tài khoản Claude cho worker, API mẫu Studio, cấm hồ sơ Vivaldi/Opera, lệnh tạo ảnh Codex (1 lượt Codex thật ĐẠT). Bộ kiểm đủ đêm 21/11 trên `17f165e`: 2 bước đỏ (bản OpenAPI của web lệch; một test tìm sai thư mục build), KHÔNG push; đã giao sửa. GitHub hiện ở `b3d635d`. Luật mới D-lead-063 (không bản sao, khoá tệp) và D-lead-064 (kiểm nhẹ: bỏ verifier từng gói, bộ đủ chỉ chạy đêm) đã áp cho M7 trên .63; bỏ các vòng verifier/tester nên mỗi gói nhanh hơn khoảng 30%.
 
 Sudo trên .63: bạn đã cho (D-m7-144). AI không nhập mật khẩu: phiên .63 soạn sẵn script, khi cần bạn chạy đúng một lệnh `sudo bash ~/m7-drive/can-sudo-<việc>.sh` (mình báo khi có).
 

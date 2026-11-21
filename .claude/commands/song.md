@@ -24,15 +24,14 @@ Gói việc: `$ARGUMENTS` (trống = sóng trong bảng đầu phiên gần nh�
 5. **Khi từng coder xong** (không chờ cả sóng), chuẩn bị chỗ kiểm rồi giao:
    - Phiên chính commit WP theo đường dẫn (`git commit -m "<mã WP> …" -- <đường dẫn>`, chưa push) rồi giải khoá của coder; verifier/tester chấm
      đúng SHA đó (`git show <SHA>`), chỉ chạy lệnh kiểm khi không ai còn sửa tệp của WP (`CACH_LAM.md` §3 mục 4). Đột biến chỉ dưới khoá `@dot-bien`.
-   - R1: `verifier` (có thể đặt `model: sonnet`). R2: `verifier`. R3: một `coder` vai tester độc lập viết bộ test từ tiêu chí
-     (cùng chỗ kiểm) → rồi `verifier`. Coder và verifier chỉ chạy lệnh kiểm nhanh của WP (tầng 1–2, `CACH_LAM.md` §4).
+   - Mức Thường (D-lead-064): không giao verifier; phiên chính đọc diff đối chiếu tiêu chí rồi commit. Mức Nguy hiểm: gộp vào nhánh làm việc như Thường,
+     ghi vào danh sách cổng Nguy hiểm của luồng; verifier chấm một lần ở cổng (`CACH_LAM.md` §4), không từng WP. Coder chỉ chạy lệnh kiểm nhanh của WP (tầng 1).
    - Verifier ĐẠT và WP đã commit/ghép → ghi Sheet **ngay**, không đợi cuối sóng: `log --id <id> --status DONE --commit <SHA>
      --evidence "…"` (R3: `--status REVIEW`) (D-lead-032).
    - `CẦN SỬA` → giao lại `coder` vòng 2 kèm danh sách lỗi (khai lại khoá, sửa trên checkout chính, phiên chính commit thêm, kiểm lại ở SHA mới);
      vẫn chưa đạt sau vòng 2 → dừng WP, báo Lead.
 6. **Ghép, rồi chạy bộ kiểm đủ một lần cho cả sóng** (tầng 3, `CACH_LAM.md` §4, D-lead-030), theo luật repo (`PHIEN.md`):
-   - Mọi WP đã commit theo đường dẫn ở bước 5 (R3: test của tester độc lập đạt rồi mới commit). Bộ đủ chạy một lần ngay trong checkout chính,
-     ở commit cuối của sóng, dưới khoá `@bo-kiem-du`, giải khoá khi xong. Push, PR, merge chỉ khi luật repo + Lead cho phép trong phiên này.
+   - Mọi WP đã commit theo đường dẫn ở bước 5. Không chạy bộ đủ ở máy (D-lead-064): CI chạy theo lịch đêm hoặc bấm tay. Lên .99 bằng pipeline rút gọn, chỉ khi Lead nói "deploy"; sau đó bài kiểm nhanh (`CACH_LAM.md` §4). Push, PR, merge chỉ khi luật repo + Lead cho phép trong phiên này.
    - Bộ đủ chạy nền, chờ thông báo, không thăm dò. Xanh → ghi SHA + số vào phiếu mọi WP; task của Lead R1/R2 ghi luôn
      `node "C:\Projects\Project Control\tools\sheet_lead.mjs" ghi <ket-qua.json>` verdict Đạt (D-lead-032). Đỏ → WP bị quy lỗi ghi
      Sheet `--status IN_PROGRESS`; quy test hỏng về WP (chưa rõ thì

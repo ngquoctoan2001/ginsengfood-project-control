@@ -42,11 +42,11 @@ repo bán hàng: nhánh của luồng `toandeptrai`); module5 do Tài làm theo 
    Mỗi gói xong là một commit trên máy: Lead xem tiến độ bằng `git log`, `git diff` ngay trong checkout.
 3. **Khoá đặc biệt**, mỗi repo một lúc một chủ giữ MỘT trong ba, khai bằng `--tep @tên` (không chồng với khoá tệp thường):
    - `@bo-kiem-du`: chạy bộ đủ, integration, e2e, test chạm DB/cổng. Tránh cạn cổng TCP và cây đổi giữa chừng. Chạy nền, chờ thông báo, giải khoá khi xong.
-   - `@dot-bien`: verifier sửa tạm mã để thử đột biến. Trong lúc giữ, không ai khác build/test repo đó. Chỉ sửa tệp đã khoá cho gói đang kiểm và đang sạch
+   - `@dot-bien` (chỉ ở cổng Nguy hiểm, §4; mặc định không dùng): verifier sửa tạm mã để thử đột biến. Trong lúc giữ, không ai khác build/test repo đó. Chỉ sửa tệp đã khoá cho gói đang kiểm và đang sạch
      (`git diff --quiet -- <tệp>` đúng), tối đa 10 phút, trả lại bằng `git restore -- <tệp>` rồi kiểm lại `git diff --quiet -- <tệp>`.
    - `@dong-bo`: merge/pull nhánh gốc vào cây, kèm `--tep` các tệp sẽ đổi (`git diff --name-only HEAD..origin/<nhánh gốc>`). Chỉ làm khi các tệp đó không bị khoá
      bởi phiên khác (hoặc chủ khoá đã commit và giải); nếu không, nhắn họ chờ. Đây là việc của phiên chính, không phải của subagent.
-4. **Kiểm độc lập chấm đúng một commit.** Verifier/tester đọc diff bằng `git show <SHA>` hoặc `git diff <base>..<SHA> -- <đường dẫn gói>`, chỉ chạy lệnh kiểm
+4. **Kiểm độc lập (chỉ cổng Nguy hiểm, §4) chấm đúng một commit.** Verifier/tester đọc diff bằng `git show <SHA>` hoặc `git diff <base>..<SHA> -- <đường dẫn gói>`, chỉ chạy lệnh kiểm
    khi coder không còn sửa tệp của gói (coder đã giải khoá, hoặc phiên chính đã commit). Kết quả chỉ có giá trị nếu `git diff HEAD -- <tệp của gói>` rỗng và
    `git rev-parse HEAD` không đổi từ đầu tới cuối lượt chạy; không thì chạy lại. Thấy đỏ ở tệp ngoài phạm vi của gói: đó là việc đang dở của phiên khác, báo chủ
    khoá (không tự sửa, không quy lỗi cho gói mình). Build/test nặng: mỗi agent thư mục build riêng (`PHIEN.md`), không hai lệnh cùng thư mục build.
@@ -61,32 +61,32 @@ khai `@bo-kiem-du` rồi chạy ngay trong checkout, kết quả theo mục 4.
 Repo dùng chung **`ginsengfood-contracts` và `deploy` thuộc phiên `lead`.** Luồng khác cần sửa → thả `hop-thu/lead-<ngày>-<việc>.md`;
 Lead cho một luồng ghi cho một WP cụ thể bằng `/quyet`.
 
-## 4. Kiểm độc lập theo rủi ro
+## 4. Kiểm theo rủi ro, nhẹ vì đang dev/test (D-lead-064, thay R1/R2/R3, tầng 2 và tầng 3 cũ của D-lead-030)
 
-| Mức | Khi nào | Quy trình |
+Hai mức. Phần lớn gói là Thường; chỉ vùng Nguy hiểm mới có verifier, và chỉ ở cổng bật cờ/go-live, không từng task.
+
+| Mức | Gồm | Quy trình |
 |---|---|---|
-| R1 | tài liệu, chữ giao diện, thêm test, dọn mã đã có test bao | `coder` tự kiểm → `verifier` đọc nhanh |
-| R2 | tính năng thường | `coder` viết test đỏ trước → `verifier` độc lập: chạy lại lệnh kiểm nhanh từ đầu, đối chiếu tiêu chí, thử đột biến nhánh chính |
-| R3 | tiền/thanh toán, an toàn sức khoẻ, xác thực/phân quyền, migration dữ liệu thật, gọi đối tác thật, xoá dữ liệu | như R2 + một `coder` khác viết bộ test độc lập trước khi `verifier` chấm + **Lead duyệt diff trước khi gộp** |
+| **Thường** (mặc định, khoảng 80%) | giao diện, chữ, màn quản trị, tài liệu, thêm test, dọn mã đã có test, tính năng thường | `coder` viết và chạy test lọc của gói (tầng 1) → phiên chính đọc diff đối chiếu tiêu chí (khoảng 10 phút) → commit trên máy theo đường dẫn. Không verifier, không đột biến, không bộ đủ ở máy. |
+| **Nguy hiểm** | tiền và thanh toán · đăng nhập và phân quyền · xoá hoặc migration dữ liệu thật · gọi/nhắn khách thật hay đối tác thật · câu trả lời công khai của chat AI nói về công dụng sản phẩm | như Thường để gộp vào nhánh làm việc (chức năng đang tắt cờ, ví dụ luật gọi M8 ở MOCK, gộp được ngay), rồi qua **cổng Nguy hiểm** dưới đây **trước khi bật cờ thật**. Lead duyệt diff trước khi bật. |
 
-`verifier` trả `CẦN SỬA` → giao lại `coder` với danh sách lỗi cụ thể. Hai vòng vẫn chưa đạt → dừng, báo Lead
-(thường do tiêu chí mơ hồ, không phải do mã).
+**Cổng Nguy hiểm** (trước go-live 30/11; chỗ sẵn 25–27/11, đệm 28–29/11): mỗi vùng một `verifier` đọc **trạng thái cuối** của mã (`git diff <mốc cũ>..HEAD -- <đường dẫn vùng>`),
+tối đa 2 giờ mỗi vùng, một vòng. Đối chiếu từng tiêu chí; thử tối đa 5 đột biến nhắm đúng dòng quan trọng, chỉ khi đã giữ khoá `@dot-bien` (§3 mục 3) và không ai khác đang build/test repo đó.
+Lỗi nặng và lỗi trung bình: sửa ngay, phiên chính chạy lại test liên quan để xác nhận (không vòng 2 của verifier trừ khi có lỗi nặng). Lỗi nhẹ: ghi vào "Nợ" của `TRANG_THAI.md`/phiếu, làm sau.
+Bật cờ thật sớm hơn 25/11 thì cổng của vùng đó chạy ngay trước khi bật.
 
-### Test trong sóng: kiểm nhanh từng WP, chạy bộ đủ một lần cuối sóng (D-lead-030)
+### Test: coder chạy lọc, CI chạy bộ đủ lâu lâu (D-lead-064)
 
-| Tầng | Ai | Chạy gì | Không chạy |
+| Tầng | Ai | Chạy gì | Khi nào |
 |---|---|---|---|
-| 1 | `coder` | build/typecheck project bị đổi + test của WP (ca mới/sửa, tệp/lớp test vùng mình, có lọc: `--filter`, `pytest <tệp>`, `vitest run <tệp>`); báo xong chạy lệnh nhanh một lần | bộ đủ của repo/solution; integration/DB/e2e ngoài ca của WP; chạy lại khi mã chưa đổi |
-| 2 | `verifier` | lệnh nhanh của WP một lần từ đầu; đột biến chỉ chạy test lọc tới nhánh bị sửa | bộ đủ. ĐẠT ở tầng này là "ĐẠT, chờ bộ đủ" |
-| 3 | phiên chính | khi mọi WP của sóng đã ĐẠT tầng 2 và đã commit/ghép: bộ kiểm đủ trong `PHIEN.md` **một lần** trên SHA cuối, ngay trong checkout chính dưới khoá `@bo-kiem-du` (§3 mục 3), chạy nền, chờ thông báo, không thăm dò | bộ đủ cho từng WP |
+| 1 | `coder` | build/typecheck project bị đổi + test của gói (có lọc: `--filter`, `pytest <tệp>`, `vitest run <tệp>`); chạy lại chỉ khi mã đổi | từng gói |
+| CI | pipeline GitLab | bộ đủ + quét bảo mật/PII + dựng ảnh | **không chạy khi push.** Chạy theo lịch đêm (m12 01:30, m8 03:30; repo bán hàng giữ như Phúc đang có) và bấm tay trước mốc 25/11, 28/11, 30/11 |
 
-- Tầng 3 xanh → mọi WP của sóng ĐẠT, ghi SHA + số vào phiếu từng WP. Đỏ → quy test hỏng về WP theo tệp/vùng (chưa rõ thì chạy riêng
-  các test hỏng trên từng commit WP), giao lại đúng coder; sửa xong chỉ chạy test đã hỏng + tầng 2 của WP đó, rồi bộ đủ thêm một lần.
-- Một lệnh đã xanh trên một SHA thì trong sóng không ai chạy lại lệnh đó trên SHA đó.
-- Ngoại lệ: R3 thì verifier được chạy bộ đủ của project bị đổi (không cả solution) một lần. WP chạm tệp nóng (solution, lockfile,
-  đăng ký module/DI, migration) được build đủ một lần; integration DB của migration chạy ở tầng 3.
-- Brief tách hai dòng: "lệnh kiểm nhanh" (tầng 1–2) và "bộ kiểm đủ — chỉ phiên chính, cuối sóng" (`chung/MAU.md` §1 mục 5).
-  Gốc lỗi cũ: brief chỉ có một dòng "lệnh kiểm" chứa bộ đủ, coder và verifier đều phải chạy hết (10/11: M7 380 lần chạy test/ngày).
+- Bỏ: verifier chạy lại lệnh của coder; bộ đủ chạy ở máy (CI làm một lần là đủ). Repo mà CI không chạy test khi push (repo bán hàng) thì phiên chính chạy bộ đủ ở máy dưới khoá `@bo-kiem-du` trước mỗi lần lên .99 cho gói chạm vùng Nguy hiểm.
+- CI đêm đỏ: không chặn việc lên .99, trừ khi đỏ ở vùng Nguy hiểm. Phiên chính quy lỗi về gói theo tệp/vùng và sửa trong ngày.
+- **Lên .99:** pipeline rút gọn bấm tay, chỉ gồm `build-images` + `deploy-99` (m12) hoặc `publish_images` các ảnh có đổi + `deploy_m8_99` (m8); `trien-khai.sh` vẫn sao lưu DB, kiểm sức khoẻ, tự lùi. Chỉ làm khi Lead nói "deploy" (trừ phạm vi đã có lời duyệt sẵn, như m12.181: gói đã commit + kiểm nhanh xanh thì lên .99; bật cờ production hay sửa `.env` vẫn hỏi riêng). Sau mỗi lần lên: bài kiểm nhanh (`/health`, đăng nhập, một đơn thử MOCK), phiên chính chạy và ghi kết quả vào phiếu.
+- Giữ nguyên: quét gitleaks trước push (sổ và repo công khai), cờ production tắt mặc định, push/deploy chỉ khi Lead nói.
+- Brief tách hai dòng: "lệnh kiểm nhanh" (tầng 1) và "vùng Nguy hiểm? có/không" (`chung/MAU.md` §1 mục 5). Bộ đủ không nằm trong brief của coder.
 
 ## 5. Ngân sách song song
 
@@ -94,7 +94,7 @@ Lead cho một luồng ghi cho một WP cụ thể bằng `/quyet`.
 - Toàn máy khoảng **10 agent** → chỉ **2 phiên chạy sóng code cùng lúc**. Gặp lỗi 429: hạ cỡ sóng, chạy lại agent hỏng, không mở thêm phiên.
 - `scout` dùng model nhẹ; `coder`, `verifier`, `auditor` dùng model mạnh.
 - Build/test nặng (.NET, Maven): không chạy hai lệnh trên cùng thư mục build; mỗi agent thư mục build riêng (xem `PHIEN.md`).
-- Mỗi phiên cùng lúc tối đa **một bộ kiểm đủ** (tầng 3, §4); coder/verifier không chạy bộ đủ.
+- Mỗi repo cùng lúc tối đa **một bộ kiểm đủ chạy ở máy** (khoá `@bo-kiem-du`, §3 mục 3), chỉ khi §4 cho phép; coder/verifier không chạy bộ đủ.
 - **Dọn máy (D-lead-031):** ai bật tiến trình thì người đó tắt (`LUAT_SUBAGENT.md` mục 9). Phiên chính chạy
   `pwsh -NoProfile -File "C:\Projects\Project Control\tools\don_may.ps1" -Dung` ở đầu phiên (`/phien`), sau mỗi sóng (`/song` bước 8)
   và khi chốt phiên (`/cuoi-phien`). Công cụ chỉ dừng: tiến trình dự án có cha đã chết (mồ côi) và đứng yên; tiến trình nặng

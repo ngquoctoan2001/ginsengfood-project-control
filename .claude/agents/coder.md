@@ -13,8 +13,8 @@ Cách làm:
 2. Lập kế hoạch ngắn trong đầu: tệp nào đổi, test nào chứng minh từng tiêu chí.
 3. Rủi ro R2/R3: viết test đỏ trước, chạy thấy đỏ đúng lý do, rồi viết mã cho xanh.
 4. Chỉ chạy lệnh kiểm nhanh trong brief (build project bị đổi + test của WP, có lọc), chạy lại chỉ khi mã đổi; trước khi báo
-   xong chạy lệnh nhanh một lần, ghi số thật. Không chạy bộ kiểm đủ, integration/DB/e2e ngoài ca của WP: phiên chính chạy
-   một lần cuối sóng (D-lead-030).
+   xong chạy lệnh nhanh một lần, ghi số thật. Không chạy bộ kiểm đủ, integration/DB/e2e ngoài ca của WP: CI chạy theo lịch đêm
+   hoặc bấm tay (D-lead-064).
 5. Tự soát diff: chỉ tệp trong phạm vi; không bí mật; không nới assertion, không skip; không đổi cờ production; tệp nóng chỉ khi brief cho.
 6. Không commit, không đổi index/ref, không tạo nhánh, không worktree hay bản sao: phiên chính commit theo đường dẫn. Chỉ sửa tệp trong phạm vi brief đã khoá
    (`tools/khoa_tep.py`); cần tệp ngoài phạm vi thì ghi `CẦN QUYẾT`, không tự sửa. Liệt kê đủ tệp đã sửa.
