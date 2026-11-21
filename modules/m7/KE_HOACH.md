@@ -1,6 +1,6 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **20/11/2026 14:2x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **20/11/2026 15:5x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
@@ -9,6 +9,7 @@ Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "
 
 | Mã | Quyết gì | Đề xuất | Hệ quả |
 |---|---|---|---|
+| [x] m7.257 | Task R3: tester + verifier ĐẠT thì tự gộp, bạn xem sau | Đã duyệt 15:0x (D-m7-146) | Có hiệu lực từ lần nối lượt kế tiếp |
 | [x] m7.256 | Bộ kiểm đủ chạy thưa: mỗi đêm 01:30 + mốc lớn, xanh thì tự push | Đã chốt 14:1x (D-m7-145) | Đêm nay 01:30 chạy lần đầu trên main .63 |
 | [x] m7.255 | Muse thật cho video thứ hai tối đa 8 lượt, trần 25 → 33 | Đã duyệt 13:0x (D-m7-143) | — |
 
@@ -91,8 +92,8 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 | [x] | T233 Muse chạy trên Ubuntu | Xong | `4a06f85`, `31bd18c` (chưa push) | — |
 | [x] | T226 tạo ảnh qua Codex | Gộp | `20dd57f` (chưa push) | Lượt Codex thật: chờ bạn đăng nhập Codex (B2) |
 | [~] | T223 kịch bản + storyboard mới | Gộp, cần gộp về một bản | `90da326`, `0ccd5f0`, `cbfc54e`; sửa test `7a589b0` | Gộp về một bản (m7.211, luật D-m7-139); Claude thật chờ bạn đăng nhập (B1) |
-| [~] | T227 khung hình từng shot | Sửa vòng 1 xong; verifier vòng 2 bị ngắt 11:50 (hạn mức), làm lại ở lượt 07 | `b4d02ce` (bản sao) | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
-| [~] | T228 Muse một phiên cho cả video | Coder `fc811d8` (bản sao), đang chạy đột biến thì bị ngắt 11:50; làm tiếp ở lượt 07 | — | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
+| [~] | T227 khung hình từng shot | Tester R3 bắt 1 lỗi vừa + 5 thấp; coder đang sửa hết. Xong thì tự gộp (m7.257) | `5c2559b` (bản sao) | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
+| [~] | T228 Muse một phiên cho cả video | Coder sửa vòng 2 xong; verifier đang kiểm | `65a7128` (bản sao) | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
 | [ ] | T229 dựng video mới (ranh shot theo lời, karaoke, nhạc nền, khung kết) | Đã soạn giao việc (`wave3/T229`) | — | 14 giờ ước |
 | [ ] | T230 kiểm tự động video mới | Chưa | — | 8 giờ ước |
 | [ ] | **T232 lượt thật: ra video** | Chưa | — | Cần B1, B2; Muse tối đa 8 lượt (đã duyệt) |
@@ -108,15 +109,15 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 | [ ] | Vá 5 nhóm câu cấm còn lọt | m7.217 | Đã giao lượt 07 |
 | [ ] | Tự thêm dấu chấm cuối dòng | m7.218 | Đã giao lượt 07 |
 | [ ] | Bộ chấm kịch bản trên Claude thật (20 brief) | m7.219 | Đã giao lượt 07; chạy thật cần B1 và B4 |
-| [ ] | Claude CLI không lưu bản ghi phiên | m7.222 | Đã giao lượt 07 |
+| [~] | Claude CLI không lưu bản ghi phiên | m7.222 | Coder xong `2fec3bb` (bản sao S2), chờ verifier cùng luồng 2 |
 | [ ] | Ghi địa chỉ Claude gọi ra ngoài, làm bộ lọc mạng cho máy thật | m7.224 | Đã giao lượt 07 |
-| [ ] | API quản lý mẫu Studio (thay SQL duyệt giả) | m7.225 | Đã giao lượt 07 |
+| [~] | API quản lý mẫu Studio (thay SQL duyệt giả) | m7.225 | Coder xong (bản sao S4), verifier đang kiểm |
 | [ ] | JPEG tự đổi sang PNG | m7.227 | Đã giao lượt 07 |
 | [ ] | Từ điển cách đọc áp cho địa chỉ tổ chức | m7.235 | Đã giao lượt 07 |
-| [ ] | Chạy thử Codex thật 1–2 ảnh | m7.237 | Đã giao lượt 07; cần B2 |
+| [~] | Chạy thử Codex thật 1–2 ảnh | m7.237 | Lượt 1/2 ĐẠT: ảnh PNG 1064×1478 sau 81 giây; verifier đang kiểm |
 | [ ] | Codex chạy dưới tài khoản Linux riêng | m7.238 | Đã giao lượt 07; phiên .63 soạn script, bạn chạy bằng sudo (B3) |
 | [ ] | Thủ tục cài worker Ubuntu + khép kẽ hở dọn Chrome | m7.245, m7.248 | Đã giao lượt 07 |
-| [ ] | Thêm Vivaldi, Opera vào danh sách cấm | m7.249 | Đã giao lượt 07 |
+| [~] | Thêm Vivaldi, Opera vào danh sách cấm | m7.249 | Coder xong (bản sao S4), verifier đang kiểm |
 | [x] | Dọn 179 bản sao cũ trên máy bạn (4,5 GB) | m7.250 | Xong 11:2x: xoá 179, tệp vá + 7 bundle ở `C:\Projects\_wt\m7-luu-2026-11-20\` (86 MB) |
 
 ### D3. Yêu cầu mới 20/11 (D-m7-140), song song D1

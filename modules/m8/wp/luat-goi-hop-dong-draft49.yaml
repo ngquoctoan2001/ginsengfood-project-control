@@ -1,0 +1,149 @@
+# M8 — hợp đồng đề xuất 1.0.0-draft.49 (BẢN ĐỌC ĐƯỢC cho m34, 20/11/2026 16:09)
+# Chưa vào specs/ của repo ivr; coder/m8 ghép vào `ivr-order-confirmation.v1.yaml` (kèm baseline, NSwag, hash ghim) khi làm L-06/L-05.
+# Chỉ THÊM so với draft.48; callback (`order-core-ivr-callback.target-v1.yaml`, hash 323ba1d2…) KHÔNG đổi một byte.
+# Đọc cùng: modules/m8/wp/luat-goi-thiet-ke.md (mô hình bảng quy tắc, lý do kết quả cuối).
+
+# ===================================================================================== 1. Intake (POST /v1/ivr/order-confirmation/tasks)
+intake:
+  mode_v4_unchanged: >-
+    Gửi ĐỦ ba trường `attempt_policy_version`, `max_customer_attempts`, `attempt_offsets_seconds` (như draft.48) →
+    đường v4 y nguyên: M8 kiểm khớp chính xác bảng policy, lệch → 409 IVR_POLICY_MISMATCH. Đợt thử MobiFone ~24/11 dùng đường này.
+  mode_rules_new: >-
+    KHÔNG gửi cả ba → chế độ luật: M8 chọn luật ACTIVE theo `program_code`, chụp bản luật vào job (bất biến),
+    tự lên lịch mọi cuộc gọi. Gửi một phần (1–2 trong 3 trường) → 400 IVR_MALFORMED_REQUEST nêu tên trường thiếu.
+    Không có luật ACTIVE cho chương trình → 200 với decision TASK_HELD_POLICY_MISSING (như khi thiếu policy hôm nay) và `blocked_reasons: ["RULE_SET_NOT_ACTIVE"]` (mảng `blocked_reasons[]` có sẵn của IvrTaskIntakeResult; KHÔNG thêm trường `reason`).
+  fields_in_rules_mode:
+    confirmation_window_started_at: Giờ đơn đủ điều kiện (thời điểm M3 mở xác nhận). M8 đặt T0 theo khung giờ gọi.
+    confirmation_window_expires_at: >-
+      TRẦN GIỮ ĐƠN của M3 (bắt buộc như nay). M8 không lên lịch cuộc nào vượt trần và luôn gửi kết quả cuối trước trần
+      (job hết tầm xa sớm hơn thì kết thúc sớm hơn). Không còn ràng buộc "bằng đúng độ dài cửa sổ policy".
+    recall_of_task_id: Như draft.47 (gọi lại thủ công = task mới nối dòng dõi) — xem mục 4.
+  ack_additions:   # thêm vào IvrTaskIntakeResult khi chế độ luật (v4 không có)
+    call_rule_set: { id: string, version: integer, program_code: string }
+    first_call_due_at: date-time (UTC)
+    planned_horizon_at: date-time (UTC)   # min(T0 + max_horizon_minutes, confirmation_window_expires_at); M3 đặt watchdog ≥ giá trị này
+    earliest_final_at: date-time (UTC)    # sớm nhất có thể có kết quả cuối nếu mọi cuộc đều không nghe, theo luật chụp (ước lượng)
+  status_additions: >-
+    GET /tasks/{taskId}/result và /call-jobs/{id}: thêm `call_rule_set{id,version}`, `counted_attempts` (số cuộc đã tính lượt),
+    `last_attempt_ended_at`, `next_attempt_due_at` (null khi hết hoặc đang gọi). Mã `attempt_policy_code` của task chế độ luật = "rules:<PROGRAM>:v<N>".
+
+# ===================================================================================== 2. Kết quả cuối (callback KHÔNG đổi dây)
+callback_semantics:
+  unchanged: [result_type enum, recommended_core_action enum, payload fields, hash 323ba1d2…, revoke]
+  M3_should_treat_as_needs_staff:   # "chưa có 0/1"
+    - IVR_NO_ANSWER_FINAL
+    - IVR_INVALID_PHONE_FINAL
+    - IVR_CONFIRMATION_WINDOW_EXPIRED
+    - IVR_CAPACITY_EXCEPTION
+  M3_decides_by: result_type (+ result_reason để hiển thị); không cần nhãn mới. Nhãn `recommended_core_action` cũ giữ nguyên, M3 không còn suy "huỷ" từ chúng.
+  attempt_number: số cuộc đã tính lượt (≤ 10; trần `max_total_calls` của luật ≤ 10)
+  occurred_at: giờ cuộc cuối kết thúc
+  result_reason_stable_values:
+    IVR_NO_ANSWER_FINAL: ["RULES_EXHAUSTED:<G>", "HORIZON_REACHED:<G>", "SESSION_ENDED:<G>"]
+    IVR_INVALID_PHONE_FINAL: [UNREACHABLE, INVALID_DESTINATION]
+    IVR_CONFIRMATION_WINDOW_EXPIRED: [WINDOW_EXPIRED_ALL_CALLS_TECHNICAL_FAILURE, WINDOW_EXPIRED_BEFORE_FINAL_RESULT]
+    IVR_CAPACITY_EXCEPTION: [CAPACITY_UNAVAILABLE]
+    G_is_one_of: [RING_TIMEOUT, BUSY, SUBSCRIBER_ABSENT, REJECTED, ANSWERED_NO_INPUT, WRONG_INPUT]
+
+# ===================================================================================== 3. API quản trị luật (tiền tố /v1/ivr/order-confirmation)
+auth:
+  headers: [Authorization Bearer (tầng theo thao tác), X-Service-Scope khớp tầng, X-Actor-Id (bắt buộc mọi thao tác), X-Correlation-Id, "Idempotency-Key (tuỳ chọn, POST/PUT; CÓ khoá thì thân BẮT BUỘC có `reason` chuỗi không rỗng, xem decisions_for_m34.1)"]
+  tiers:
+    ivr.admin.read:   [GET mọi đường]
+    ivr.admin.write:  [POST tạo nháp, PUT sửa nháp, :validate, :simulate, :submit]
+    ivr.admin.danger: [":approve", ":reject", ":activate", ":retire"]  # đổi hành vi gọi khách ngay → thêm X-Action-Reason (như pause/resume hàng đợi)
+    # Thiếu X-Action-Reason ở đường danger → 403 IVR_FORBIDDEN_CALLER (như pause/resume hàng đợi; chốt 20/11 theo kiểm của coder W-0555), không phải 400.
+  permission_header: >-
+    X-Call-Rule-Permissions (M3 tự khai như X-Script-Permissions): IVR_CALL_RULE_EDIT (soạn, kiểm, mô phỏng, gửi duyệt),
+    IVR_CALL_RULE_APPROVE (duyệt, trả về), IVR_CALL_RULE_ACTIVATE (áp dụng, ngừng). Người duyệt PHẢI khác người soạn (so X-Actor-Id) → vi phạm: 403.
+  errors_reuse_existing_codes: >-
+    Không thêm mã lỗi mới (bộ 18 mã giữ nguyên). 400 IVR_MALFORMED_REQUEST (định dạng/định nghĩa luật sai; `details.errors[]` = {path (JSON pointer), code, message});
+    401 IVR_UNAUTHENTICATED; 403 sai tầng/thiếu permission/vi phạm người duyệt ≠ người soạn; 404 IVR_NOT_FOUND;
+    409 IVR_VERSION_CONFLICT (If-Match lệch, hoặc chuyển trạng thái không hợp lệ: details.current_status); 429 IVR_RATE_LIMITED.
+paths:
+  /call-rule-sets:
+    get:  { tier: read,  query: [program_code, status, limit, page_token], returns: "{items: CallRuleSetSummary[], next_page_token}" }
+    post: { tier: write, body: "{program_code, definition?: CallRuleDefinition, based_on?: ruleSetId, notes?}", returns: "201 CallRuleSet (DRAFT)", note: "based_on = sao chép định nghĩa từ bản khác; không có cả hai → luật rỗng bị :validate từ chối" }
+  /call-rule-sets/limits:
+    get:  { tier: read,  returns: "{calling_envelope: {GOLDEN_HOUR: windows, TWENTY_FOUR_SEVEN: windows}, max_total_calls_cap: 10, min_gap_seconds_floor: 60}", note: "vỏ giờ gọi triển khai: khung của luật chỉ được hẹp hơn hoặc bằng" }
+  /call-rule-sets/effective/{programCode}:
+    get:  { tier: read,  returns: "CallRuleSet ACTIVE của chương trình; 404 nếu chưa có" }
+  /call-rule-sets/{ruleSetId}:
+    get:  { tier: read,  returns: "CallRuleSet (kèm definition, người/giờ từng bước)" }
+    put:  { tier: write, headers: "If-Match: <row_version>", body: "{definition, notes?}", rule: "chỉ khi status = DRAFT", returns: "CallRuleSet" }
+  "/call-rule-sets/{ruleSetId}:validate":
+    post: { tier: write, returns: "{valid: boolean, errors: ValidationError[], warnings: ValidationError[]}", note: "luôn 200; không đổi trạng thái" }
+  "/call-rule-sets/{ruleSetId}:simulate":
+    post: { tier: write, body: "{received_at, outcomes: OutcomeGroup[], session_ends_at?, hold_ceiling_at?, assumed_call_seconds? (mặc định 30)}", returns: "{calls: [{number, at, assumed_outcome, matched_row_id}], final: {result_type, result_reason, at}, warnings[]}", note: "không ghi gì; chạy bộ máy luật thật trên bản đang xem" }
+  "/call-rule-sets/{ruleSetId}:submit":   { post: { tier: write,  rule: "DRAFT → SUBMITTED; bắt buộc :validate không lỗi" } }
+  "/call-rule-sets/{ruleSetId}:reject":  { post: { tier: danger, rule: "SUBMITTED → DRAFT (trả về để sửa); cần IVR_CALL_RULE_APPROVE; bản trả về sửa lại được và gửi duyệt lại được; ghi audit kèm người từ chối (thêm 20/11 theo kiểm của verifier W-0553)" } }
+  "/call-rule-sets/{ruleSetId}:approve":  { post: { tier: danger, rule: "SUBMITTED → APPROVED; người duyệt ≠ người soạn" } }
+  "/call-rule-sets/{ruleSetId}:activate": { post: { tier: danger, rule: "APPROVED → ACTIVE; ngừng bản ACTIVE cũ của cùng chương trình trong cùng giao dịch; chỉ đơn MỚI nhận sau thời điểm này dùng bản mới, đơn đã nhận giữ bản chụp cũ" } }
+  "/call-rule-sets/{ruleSetId}:retire":   { post: { tier: danger, rule: "ACTIVE|APPROVED → RETIRED; đơn đang chạy chạy tiếp theo bản chụp; chương trình không còn luật ACTIVE thì đơn mới ở chế độ luật bị giữ (TASK_HELD_POLICY_MISSING, `blocked_reasons: ["RULE_SET_NOT_ACTIVE"]`)" } }
+schemas:
+  OutcomeGroup: { enum: [RING_TIMEOUT, BUSY, SUBSCRIBER_ABSENT, REJECTED, ANSWERED_NO_INPUT, WRONG_INPUT, UNREACHABLE, INVALID_DESTINATION] }
+  CallRuleSet:
+    required: [id, program_code, version, status, definition, row_version]
+    properties:
+      id: string
+      program_code: { enum: [GOLDEN_HOUR, TWENTY_FOUR_SEVEN] }
+      version: integer   # tăng theo chương trình
+      status: { enum: [DRAFT, SUBMITTED, APPROVED, ACTIVE, RETIRED] }
+      definition: CallRuleDefinition
+      row_version: string   # dùng cho If-Match
+      notes: string
+      created_by/created_at, submitted_by/submitted_at, approved_by/approved_at, activated_by/activated_at, retired_by/retired_at: audit
+  CallRuleDefinition:     # nguyên văn modules/m8/wp/luat-goi-thiet-ke.md §1
+    time_zone: { const: Asia/Ho_Chi_Minh }
+    calling_windows: "[{days?: [MON..SUN] (mặc định cả tuần), from: 'HH:MM', to: 'HH:MM' (loại trừ)}]  # không chồng nhau; nằm trong vỏ /call-rule-sets/limits"
+    min_gap_seconds: "integer ≥ 60 (nghỉ sau cuộc đã tính lượt)"
+    rows: "[{id, when: {calls_made?: {from,to}, outcomes?: [OutcomeGroup], day_index?: {from,to}}, then: {action: CALL_AFTER{minutes} | CALL_IN_WINDOW{from,to,not_before_day} | FINISH{result: IVR_NO_ANSWER_FINAL|IVR_INVALID_PHONE_FINAL}}}]  # dòng đầu khớp thắng"
+    limits: "{max_total_calls 1..10, max_calls_per_day_per_order, max_calls_per_phone_per_day, max_horizon_minutes, stop_after_session_end_minutes|null (chỉ Giờ Vàng), technical_retry_limit}"
+  ValidationError: { path: "JSON pointer, vd /rows/3/then/minutes", code: "mã máy, vd MINUTES_NOT_POSITIVE", message: "tiếng Việt cho người đọc" }
+
+# ===================================================================================== 4. Gọi lại thủ công (nút "Gọi lại bằng IVR")
+recall:
+  how: Task mới có `recall_of_task_id` = task cuối của đơn (hợp đồng draft.47), chạy luật từ đầu.
+  changed_vs_draft47:
+    - Bỏ khung giờ gọi lại cố định 08–09/13–14/20–21 (RECALL_OUTSIDE_ALLOWED_HOURS không còn trả ở chế độ luật). Ngoài khung giờ gọi → đơn được nhận và giữ tới khung kế (ack có first_call_due_at), như đơn giữ ban đêm.
+    - Chạm trần cuộc mỗi số mỗi ngày → nhận và dời sang ngày kế (không từ chối).
+  still_refused_sync: [RECALL_ORIGINAL_TASK_UNKNOWN, RECALL_ORDER_HAS_OPEN_CALL_JOB]   # TASK_BLOCKED_OPERATIONAL + reason, như nay
+  new_refusal: "TASK_BLOCKED_OPERATIONAL / TASK_HELD_POLICY_MISSING với blocked_reasons: [\"RULE_SET_NOT_ACTIVE\"] (chương trình chưa có luật ACTIVE); lý do nằm trong mảng blocked_reasons[], như các lý do RECALL_* hiện có"
+
+# ===================================================================================== 5. Tương thích
+compat:
+  - Mọi đường draft.48 giữ nguyên hành vi; trường mới chỉ thêm, trường cũ ở intake thành tuỳ chọn có điều kiện.
+  - M3 cũ (LEGACY_V4) chạy y nguyên; cờ chế độ do M3 quyết (app.ivr-rules.mode).
+  - oasdiff draft.48 → draft.49 phải chỉ ra "thêm" (không phá): intake bỏ `required` của ba trường là thay đổi cần soát (không phá bên gửi cũ).
+
+# ===================================================================================== 6. Chốt 6 điểm m34 hỏi (20/11/2026, m8 trả lời; đã sửa chỗ liên quan ở các mục trên)
+decisions_for_m34:
+  1_idempotency_and_put:
+    - "PUT /call-rule-sets/{id} BẮT BUỘC If-Match (thiếu → 400 IVR_MALFORMED_REQUEST; lệch → 409 IVR_VERSION_CONFLICT)."
+    - "Idempotency-Key TUỲ CHỌN và ĐƯỢC TÔN TRỌNG trên mọi POST/PUT quản trị luật (create, PUT, :validate, :simulate, :submit, :approve, :activate, :retire), cùng cơ chế với `/scripts/…` (MutationReplayFilter keyRequired:false): cùng khoá + cùng thân → phát lại đúng phản hồi cũ; cùng khoá + thân khác → 409 IVR_IDEMPOTENCY_CONFLICT. M3 gửi khoá mới cho mỗi thao tác người dùng."
+    - "CÓ Idempotency-Key thì thân BẮT BUỘC có `reason` là chuỗi không rỗng (không chỉ khoảng trắng); thiếu hoặc rỗng → 400 IVR_MALFORMED_REQUEST ('A mutation reason is required.'), kiểm TRƯỚC khi phát lại nên khoá cũ không che được thân sai. Mã: MutationReplayFilter.cs; tài liệu: docs/operations/call-rules-admin.md §3; OpenAPI draft.49 cùng nói vậy (bổ sung vào YAML nháp này 21/11 theo m34). Không có khoá thì `reason` tuỳ chọn (lấy từ X-Action-Reason hoặc câu cố định theo thao tác). `reason` luôn qua bộ lọc dữ liệu cá nhân (≤ 500 ký tự): sai → 400 IVR_MALFORMED_REQUEST, details.errors[] = {path: \"/reason\", code: REASON_REFUSED}."
+  2_permission_header:
+    - "X-Call-Rule-Permissions: danh sách phân tách dấu phẩy, bỏ khoảng trắng hai đầu, BỎ phần tử rỗng, tối đa 16 phần tử, so khớp CHÍNH XÁC và PHÂN BIỆT hoa thường (chữ hoa như hằng): IVR_CALL_RULE_EDIT, IVR_CALL_RULE_APPROVE, IVR_CALL_RULE_ACTIVATE. Phần tử lạ bị bỏ qua. Cùng cách xử lý với X-Script-Permissions hiện có."
+    - "Ánh xạ: soạn/PUT/:validate/:simulate/:submit cần EDIT; :approve cần APPROVE; :activate và :retire cần ACTIVATE. Mọi GET chỉ cần tầng read, không cần permission. Four-eyes so X-Actor-Id: người :approve phải khác người tạo bản (created_by) và khác người :submit; X-Actor-Id của M3 phải là id người dùng ổn định giữa các bước."
+  3_golden_hour_first_call:
+    - "Chế độ luật: M3 gửi confirmation_window_started_at đã tính (Giờ Vàng: hết phiên + 10 phút như nay); M8 dùng làm T0, KHÔNG cộng thêm; luật chỉ quyết khung giờ + cuộc kế."
+    - "Mở đường cho sau này (mặc định để trống = không làm gì): tham số tuỳ chọn limits.first_call_delay_after_session_end_minutes trong luật Giờ Vàng; có giá trị thì T0 = max(started_at do M3 gửi, session_ends_at + giá trị). Khi Toàn muốn cấu hình mốc này, M3 bỏ phần tự tính mà không đổi hợp đồng."
+  4_no_active_rule:
+    - "Intake chế độ luật khi chương trình chưa có luật ACTIVE: 200 TASK_HELD_POLICY_MISSING + `blocked_reasons: [\"RULE_SET_NOT_ACTIVE\"]` (không có trường `reason`); M8 KHÔNG lưu task/job nào (không có ivr_call_job_id) nên không có gì để 'thả'. Khi luật ACTIVE xuất hiện, M3 gửi LẠI intake (task_id mới + Idempotency-Key mới); nút 'Gọi lại bằng IVR' của nhân viên là đường đó. M8 không tự thử lại."
+  5_ceiling_margin:
+    - "Trần giữ đơn = confirmation_window_expires_at. M8 không bắt đầu cuộc nào sau trần − 240 giây (trần 120 giây mỗi cuộc W-0550 + biên) và gửi xong kết quả cuối ≤ trần − 120 giây trong điều kiện bình thường; callback retry (250 ms → 5 phút, tới hạn cấu hình) vẫn tiếp tục nếu M3 tạm lỗi. Hai biên là cấu hình worker (mặc định 240/120 giây), không nằm trong luật."
+    - "M3 đặt watchdog = trần + 5 phút và giữ luật 'bấm 1/0 ghi nhận trước hạn vẫn tính dù tới muộn' (dựa customer_input_at, QT-CHUNG-002; hiện cờ IncludeCustomerInputAt của M8 TẮT mặc định — m8 sẽ bật khi bật chế độ luật; ghi vào L-09)."
+  6_counted_attempts_and_revoke:
+    - "GET /tasks/{id}/result và /call-jobs/{id} trả counted_attempts (số cuộc tính lượt, 0 nếu chưa gọi được cuộc nào), last_attempt_ended_at, next_attempt_due_at (null khi đã kết thúc) CẢ SAU KHI job kết thúc. Dọn dữ liệu: hiện worker M8 chỉ dọn dữ liệu giọng nói (365 ngày); lượt gọi/job chưa có job dọn trong cấu hình. Cam kết đọc được tối thiểu 90 ngày sau kết thúc; đổi thì báo m34 trước."
+    - "Revoke giữ NGUYÊN như draft.48: việc chưa quay số đóng im lặng (mọi cuộc chưa gọi của job bị huỷ, không callback); cuộc ĐANG gọi được kết thúc và kết quả/callback thật VẪN được phát (không đổi hợp đồng), nhưng không có cuộc nào bắt đầu sau đó. M3 bỏ qua callback đó (trả 409 REJECTED_STALE → M8 không retry). Không đổi sang 'không phát callback'."
+
+# ===================================================================================== 7. Giờ Vàng và phiên (m34 trả số thật 20/11, đã chốt)
+golden_hour_session:
+  facts_from_m3: >-
+    Từ 16/11 (QT-CHUNG-015) M3 KHÔNG gửi `session_ends_at` (và `golden_hour_session_id`) cho đơn Giờ Vàng. started_at (= giờ gọi đầu) =
+    max(giờ khách thanh toán/đặt, giờ hết phiên thật + 10 phút). Nên v4 thực tế không áp mốc phiên +5 phút nào.
+  decision:
+    - "Luật Giờ Vàng dựng sẵn: `stop_after_session_end_minutes` = null và `first_call_delay_after_session_end_minutes` = null (không mốc, khớp thực tế)."
+    - "Chế độ luật: M8 chỉ dùng `session_ends_at` khi luật có một trong hai tham số trên. Luật không dùng thì M8 BỎ QUA trường phiên (kể cả không từ chối đơn tới sau hết phiên bằng GOLDEN_HOUR_SESSION_ENDED như đường v4)."
+    - "Luật có tham số dùng phiên mà đơn Giờ Vàng thiếu `session_ends_at` → 400 IVR_MALFORMED_REQUEST nêu tên trường (lỗi cấu hình hiện ngay, không lặng lẽ bỏ mốc). Trước khi áp dụng luật loại này, báo m34 để M3 gửi `session_ends_at` thật."
+    - "`:validate` báo LỖI nếu cả hai tham số có giá trị mà stop_after ≤ first_call_delay (mọi đơn bị cắt)."
