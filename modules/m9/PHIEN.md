@@ -22,7 +22,7 @@ Gọi người bằng tên; tin cho Tài/Phúc giọng miền Tây, anh/em, kỹ
 - Mã M9: back-end `back-end/src/main/java/com/ginsengfood/project/finance/` (domain, service, api, adapter, port, repository) và `commission/`;
   tài liệu `docs/m9/` (MISA: `docs/m9/misa/`). Migration `back-end/src/main/resources/db/migration/V###__*.sql` (kiểm trùng số với Tài, chú).
 - Đọc nhánh chú không checkout: `git -C <repo> show origin/chudung/m9-<...>:<tệp>`, `git diff origin/dev...origin/chudung/m9-<...>`.
-  Chạy test khi cần: worktree tách rời `git worktree add --detach C:/Projects/_wt/m9/review-<tên> <SHA>`, xoá sau khi xong.
+  Rà bằng `git show`/`git diff`; không dựng worktree (D-lead-063); chỉ chạy test khi mã đã nằm trên nhánh của Lead trong checkout, còn lại dựa CI.
   Lệnh test như `modules/m34/PHIEN.md` mục Lệnh (back-end `-P ci-unit`; repo yêu cầu hỏi trước khi chạy `mvnw test`).
 - Sổ Tài: `C:\Projects\M4-PLAN` — chỉ đọc đoạn (báo cáo đầu ngày mới nhất), không đọc trọn tệp lớn.
 - Sheet: tab M9 (chủ Phúc, `tools/sheet-lead/Code.gs`); `node tools/task-tracker/sheet-sync.mjs list --module M9` trong repo. Rà task: chỉ W/X

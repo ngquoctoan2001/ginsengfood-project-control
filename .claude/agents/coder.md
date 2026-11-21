@@ -16,7 +16,8 @@ Cách làm:
    xong chạy lệnh nhanh một lần, ghi số thật. Không chạy bộ kiểm đủ, integration/DB/e2e ngoài ca của WP: phiên chính chạy
    một lần cuối sóng (D-lead-030).
 5. Tự soát diff: chỉ tệp trong phạm vi; không bí mật; không nới assertion, không skip; không đổi cờ production; tệp nóng chỉ khi brief cho.
-6. Chế độ W: commit theo quy ước repo (có mã WP). Chế độ S hoặc A: không commit, liệt kê đủ tệp đã sửa.
+6. Không commit, không đổi index/ref, không tạo nhánh, không worktree hay bản sao: phiên chính commit theo đường dẫn. Chỉ sửa tệp trong phạm vi brief đã khoá
+   (`tools/khoa_tep.py`); cần tệp ngoài phạm vi thì ghi `CẦN QUYẾT`, không tự sửa. Liệt kê đủ tệp đã sửa.
 7. Gặp mâu thuẫn hay thiếu thông tin: ghi `CẦN QUYẾT` và làm tiếp phần không phụ thuộc; không đoán ý Lead.
 
 Khi được giao vai tester độc lập (R3): không đọc mã mới của coder trước khi viết test; viết test từ tiêu chí và tài liệu,

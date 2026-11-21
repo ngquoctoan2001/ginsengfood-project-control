@@ -16,7 +16,7 @@ Luồng: `$ARGUMENTS`. Trống hoặc không thuộc `m12 m34 m5 m6 m7 m8 m9 lea
      (D-lead-031). Có dừng gì thì ghi một dòng vào bảng; tiến trình của phiên khác bị dừng thì nhắn phiên đó.
    - Nguồn ngoài git (Sheet, CI, sổ của Tài, báo cáo): ít thì tự đọc; nhiều thì giao 2–3 `scout` chạy nền trong **một** message.
    - Phiếu `modules/$ARGUMENTS/wp/*.md` đang `ĐANG LÀM`/`CHỜ KIỂM`/`CẦN SỬA` = việc dở của phiên trước → đưa vào mục 2 của bảng,
-     đề xuất làm tiếp theo "Bước kế tiếp" của phiếu (kiểm worktree/bản sao/tệp dirty tương ứng).
+     đề xuất làm tiếp theo "Bước kế tiếp" của phiếu (kiểm khoá tệp/tệp dirty tương ứng).
    - Dòng mới trong `modules/$ARGUMENTS/QUYET_DINH.md` (phiên `lead` có thể đã thêm) → áp vào sổ trước khi ghi đè.
    - `hop-thu/$ARGUMENTS-*` (phiên `lead`: `hop-thu/lead-*`) có tệp mới không.
 3. **Bảng đầu phiên** (≤ 40 dòng):
@@ -24,11 +24,11 @@ Luồng: `$ARGUMENTS`. Trống hoặc không thuộc `m12 m34 m5 m6 m7 m8 m9 lea
    **<Luồng> · <ngày giờ từ `date`>** · Sẵn sàng <X>% (bản nháp/đã kiểm) · Mốc kế: <mốc> còn <n> ngày · Kịp 15/11: XANH/VÀNG/ĐỎ
 
    1. Thay đổi từ lần trước — ≤ 5 dòng, có SHA/PR/người.
-   2. Đang chạy hoặc dở — WP, agent, worktree, tệp dirty.
+   2. Đang chạy hoặc dở — WP, agent, khoá tệp, tệp dirty.
    3. Việc chặn — chặn gì, ai gỡ, cần trước ngày.
    4. Cần bạn quyết — đánh số `<mã>.<n>` (ví dụ `m12.1`; tiếp số trong `TRANG_THAI.md`); mỗi mục: câu hỏi trả lời được ngay
       (có/không, A/B) · đề xuất của phiên · hạn · trễ thì sao.
-   5. Đề xuất — bảng: WP · mục tiêu · vì sao bây giờ · rủi ro R1–R3 · chế độ W/S/A. Tối đa 3 WP code + 1 WP tài liệu.
+   5. Đề xuất — bảng: WP · mục tiêu · vì sao bây giờ · rủi ro R1–R3 · khoá tệp cần khai. Tối đa 3 WP code + 1 WP tài liệu.
       Phiên `m34`/`m5`/`m6`: đề xuất đợt rà soát và việc cần nhắc người làm. Phiên `lead`: luồng nào mở phiên, chạy lệnh gì.
    6. Trả lời mẫu: ví dụ `ok 1 A, 2 có, chạy đi`.
 

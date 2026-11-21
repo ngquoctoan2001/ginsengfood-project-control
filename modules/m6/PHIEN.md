@@ -8,7 +8,7 @@ Lead nhận một lát việc → `/quyet` ghi rõ, báo Tài, rồi mới `/son
 
 - Từ 10/11 (DL-096 của M6, DL-220 của M5, D-m5-025): **`C:\Projects\module5` thư mục `m6/`**, GitHub `sasamviet-ai/module5`, nhánh `main`.
   `module6` (`master` `e5e8cca` 10/11) nằm trọn trong đó, ngừng nhận commit, Lead lưu trữ: chỉ đọc.
-- Checkout `module5` dùng chung với phiên `m5` (worktree rà của m5 ở `C:\Projects\_wt\m5\`). Phiên `m6` chỉ đọc/rà phần M6.
+- Checkout `module5` dùng chung với phiên `m5` (không worktree, D-lead-063; hai phiên dùng chung checkout theo `CACH_LAM.md` §3). Phiên `m6` chỉ đọc/rà phần M6.
 - Mã M6 ở `m6/app/`, `m6/tests/`, `m6/migrations/` (0001–0029), `m6/pyproject.toml`, build bằng `m6/Dockerfile` (M5 build bỏ `m6/`).
   Pack cũ ở `m6/_archive/pack-v1/`. FastAPI + Postgres `m6` (DL-O05).
 - UI quản trị chung ở `web/` gốc repo (Next.js, M5-138); màn M6 gọi `/api/admin/ads/*` cùng origin theo hợp đồng `m6/web/contract/`
@@ -87,7 +87,7 @@ Rà xong chỉ có **Đạt** hoặc **Cần sửa** (thiếu bằng chứng = C
 Ghi W/X bằng `node "C:\Projects\Project Control\tools\sheet_lead.mjs" ghi`, công cụ tự đọc lại; không mở trình duyệt.
 Task Tài: chỉ W/X. Task Lead/Nguyễn Quốc Toàn trong M6: H/J/W và nối X theo D-lead-011.
 Kết luận task không thay quyền triển khai/mở cờ production. Mặc định soạn tin nháp, không tự gửi.
-Test trong worktree tách rời `C:\Projects\_wt\m6\review-<tên>` (detached), xoá sau khi xong.
+Rà bằng `git show`/`git diff`; không dựng worktree (D-lead-063); test chạy ngay trong checkout `module5` dưới khoá `@bo-kiem-du` khi mã đã nằm trên `main`, còn lại dựa `ci-local` của Tài.
 
 ## Báo cáo tuần
 

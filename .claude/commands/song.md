@@ -8,12 +8,12 @@ Gói việc: `$ARGUMENTS` (trống = sóng trong bảng đầu phiên gần nh�
 1. **Chọn và kiểm sóng** (`chung/CACH_LAM.md` §3): phụ thuộc xong; phạm vi ghi tách nhau; mỗi tệp nóng chỉ một WP; ≤ 3 WP code;
    tổng agent nặng chạy cùng lúc ≤ 3 (§5). Không đủ điều kiện → nói lý do, đề xuất sóng sửa lại, dừng.
    Phiên `m34`/`m5`/`m6` chỉ chạy sóng code khi Lead đã lệnh rõ.
-2. **Chuẩn bị** (phiên chính tự làm, tuần tự) theo mục "Chạy song song" của `PHIEN.md` và `CACH_LAM.md` §3:
-   - W: `git fetch`; mỗi WP `git -C <repo> worktree add C:/Projects/_wt/<mã>/<WP> -b <nhánh theo luật repo> <base mới nhất>`;
-     bước chuẩn bị riêng (junction `node_modules`, restore…).
-   - S: kiểm vùng sẽ sửa sạch; ghi danh sách tệp/thư mục mỗi WP được ghi; dặn thư mục build riêng mỗi agent.
-   - A: tạo `C:/Projects/_wt/<mã>/<WP>`, `git -C <repo> archive HEAD | tar -x -C <đó>`, rồi tạo repo tạm có commit `goc`
-     trong bản sao (lệnh ở §3); ghi SHA gốc vào phiếu.
+2. **Chuẩn bị** (phiên chính tự làm, tuần tự) theo mục "Chạy song song" của `PHIEN.md` và `CACH_LAM.md` §3 (D-lead-063: sửa thẳng trong
+   checkout chính, không worktree, không bản sao):
+   - `git fetch`; nhánh luồng trễ nhánh gốc thì gộp dưới khoá `@dong-bo`; ghi SHA nền vào phiếu.
+   - Kiểm vùng sẽ sửa sạch (tệp dở của người khác thì làm né, không stash); ghi danh sách tệp/thư mục mỗi WP được ghi.
+   - Khai khoá mỗi WP: `python tools/khoa_tep.py khai --repo <repo> --chu <phiên>/<WP> --tep <đường dẫn…>`. Chồng khoá (mã thoát 2) → chọn WP
+     khác cho sóng, hoặc nhắn chủ khoá; không giao coder vào tệp đang bị khoá. Dặn thư mục build riêng mỗi agent.
 3. **Phiếu gói việc:** mỗi WP một tệp `modules/<mã>/wp/<WP>.md` theo `chung/MAU.md` §1 (brief đủ 8 mục, lấy mục tiêu, tiêu chí,
    phạm vi từ `SAN_SANG.md`). Phiếu đã có (WP làm tiếp) → cập nhật, không tạo tệp mới. WP chưa có id Sheet → tạo (§8).
 4. **Giao:** MỘT message, mỗi WP một Agent `coder`, `run_in_background: true`; prompt = nội dung phần Brief của phiếu (subagent
@@ -22,24 +22,17 @@ Gói việc: `$ARGUMENTS` (trống = sóng trong bảng đầu phiên gần nh�
    Ghi Sheet ngay từng WP `sheet-sync log --id <id> --status IN_PROGRESS` (D-lead-032, `CACH_LAM.md` §8).
    Báo Lead một dòng: sóng đã chạy gồm gì, dự kiến bao lâu.
 5. **Khi từng coder xong** (không chờ cả sóng), chuẩn bị chỗ kiểm rồi giao:
-   - W: verifier làm ngay trong worktree của WP. A: trong bản sao của WP.
-   - S: phiên chính commit WP theo đường dẫn (chưa push), tạo `git -C <repo> worktree add --detach C:/Projects/_wt/<mã>/kiem-<WP> <SHA>`;
-     verifier/tester chỉ làm ở đó, **không** trên checkout chung.
+   - Phiên chính commit WP theo đường dẫn (`git commit -m "<mã WP> …" -- <đường dẫn>`, chưa push) rồi giải khoá của coder; verifier/tester chấm
+     đúng SHA đó (`git show <SHA>`), chỉ chạy lệnh kiểm khi không ai còn sửa tệp của WP (`CACH_LAM.md` §3 mục 4). Đột biến chỉ dưới khoá `@dot-bien`.
    - R1: `verifier` (có thể đặt `model: sonnet`). R2: `verifier`. R3: một `coder` vai tester độc lập viết bộ test từ tiêu chí
      (cùng chỗ kiểm) → rồi `verifier`. Coder và verifier chỉ chạy lệnh kiểm nhanh của WP (tầng 1–2, `CACH_LAM.md` §4).
    - Verifier ĐẠT và WP đã commit/ghép → ghi Sheet **ngay**, không đợi cuối sóng: `log --id <id> --status DONE --commit <SHA>
      --evidence "…"` (R3: `--status REVIEW`) (D-lead-032).
-   - `CẦN SỬA` → giao lại `coder` vòng 2 kèm danh sách lỗi (S: sửa trên checkout chung, commit thêm, kiểm lại ở SHA mới);
+   - `CẦN SỬA` → giao lại `coder` vòng 2 kèm danh sách lỗi (khai lại khoá, sửa trên checkout chính, phiên chính commit thêm, kiểm lại ở SHA mới);
      vẫn chưa đạt sau vòng 2 → dừng WP, báo Lead.
 6. **Ghép, rồi chạy bộ kiểm đủ một lần cho cả sóng** (tầng 3, `CACH_LAM.md` §4, D-lead-030), theo luật repo (`PHIEN.md`):
-   - W: khi mọi WP ĐẠT tầng 2, kiểm từng nhánh ghép sạch lên base mới (`git merge-tree`); worktree kiểm tách rời ở base,
-     `git merge --no-edit` lần lượt các nhánh WP (chỉ trong worktree kiểm, không đẩy), chạy bộ đủ một lần. Push, PR, merge chỉ
-     khi luật repo + Lead cho phép trong phiên này (máy sẽ hỏi bạn trước mỗi lệnh push/merge).
-   - S: đã commit ở bước 5; test của tester độc lập (R3) đạt → chép về, commit theo đường dẫn. Worktree kiểm tách rời ở commit
-     cuối của sóng, chạy bộ đủ một lần.
-   - A: `git -C <bản sao> diff --binary HEAD > C:/Projects/_wt/<mã>/<WP>.patch` → `git -C <repo> apply --3way <patch>`
-     (hoặc cách `GIT_INDEX_FILE` trong `PHIEN.md`); không chép đè nguyên tệp; commit theo đường dẫn; áp hết patch của sóng
-     rồi chạy bộ đủ một lần trên checkout chính.
+   - Mọi WP đã commit theo đường dẫn ở bước 5 (R3: test của tester độc lập đạt rồi mới commit). Bộ đủ chạy một lần ngay trong checkout chính,
+     ở commit cuối của sóng, dưới khoá `@bo-kiem-du`, giải khoá khi xong. Push, PR, merge chỉ khi luật repo + Lead cho phép trong phiên này.
    - Bộ đủ chạy nền, chờ thông báo, không thăm dò. Xanh → ghi SHA + số vào phiếu mọi WP; task của Lead R1/R2 ghi luôn
      `node "C:\Projects\Project Control\tools\sheet_lead.mjs" ghi <ket-qua.json>` verdict Đạt (D-lead-032). Đỏ → WP bị quy lỗi ghi
      Sheet `--status IN_PROGRESS`; quy test hỏng về WP (chưa rõ thì
@@ -49,6 +42,6 @@ Gói việc: `$ARGUMENTS` (trống = sóng trong bảng đầu phiên gần nh�
    nhật ký; tracker: soát lại mọi WP của sóng đã ghi Sheet đúng trạng thái ở bước 4–6 (`--id` lấy từ phiếu), không để dồn tới đây. Việc repo bắt "mọi agent" làm
    (`dotnet build-server shutdown`, seed, sinh tệp chung) → phiên chính làm một lần cuối sóng.
 8. **Báo Lead (≤ 20 dòng):** bảng WP · kết quả · commit/nhánh/PR · bằng chứng; việc bạn cần làm (push, duyệt R3, quyết);
-   đề xuất sóng kế. Dọn worktree kiểm / worktree / bản sao của WP đã ghép xong (hỏi trước nếu còn thay đổi chưa ghép).
+   đề xuất sóng kế. Giải mọi khoá đã khai (`khoa_tep.py giai`); không có thư mục tạm nào cần dọn (D-lead-063).
    Rồi dọn máy: `pwsh -NoProfile -File "C:\Projects\Project Control\tools\don_may.ps1" -Dung` (D-lead-031); tiến trình của phiên khác
    bị dừng thì nhắn phiên đó một dòng.

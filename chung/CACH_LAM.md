@@ -25,23 +25,38 @@ Sóng = 2–3 WP code (hoặc tới 4 nếu có WP chỉ tài liệu) chạy cù
 - phụ thuộc đã xong;
 - ưu tiên: đường găng tới mốc gần nhất → việc mở khoá người/module khác → phần còn lại.
 
-Ba chế độ, chọn theo luật repo (ghi ở `PHIEN.md`):
+**Một chế độ duy nhất: sửa thẳng trong checkout chính của repo (D-lead-063, thay chế độ W/S/A cũ).** Không `git worktree add`, không
+`git archive`/clone vào `C:\Projects\_wt`, không ngoại lệ, kể cả ivr, golden-hour-video, ops-core, repo bán hàng. Lead có thể fork nhiều phiên cho một luồng
+và mỗi phiên spawn nhiều agent: tất cả cùng một cây, nên các luật dưới đây là bắt buộc. Nhánh theo luật repo (ops-core, ivr, golden-hour-video: `main`;
+repo bán hàng: nhánh của luồng `toandeptrai`); module5 do Tài làm theo luật repo đó trên máy Tài (`D:/M5-worktrees`), phiên m5/m6 ở máy này chỉ đọc.
 
-- **W — worktree:** mỗi WP một worktree + nhánh riêng ở `C:\Projects\_wt\<mã>\<WP>`, phiên chính tạo trước khi giao.
-  Dùng ở repo cho phép nhánh: module5 (gồm M6 ở `m6/`), golden-hour-video.
-- **S — chung checkout:** ops-core (cấm nhánh; checkout tách rời được phép để build/test). Golden-hour-video đang giai đoạn tài liệu
-  cũng dùng S cho gọn. Subagent sửa các tệp tách nhau trên cùng checkout và **không commit**; phiên chính commit theo đường dẫn
-  từng WP (chưa push). **Kiểm không chạy trên checkout chung** khi coder khác còn sửa: phiên chính tạo
-  `git -C <repo> worktree add --detach C:/Projects/_wt/<mã>/kiem-<WP> <SHA vừa commit>`, verifier/tester làm ở đó, xoá sau khi xong.
-  Migration/seed DB dev, sinh tệp dùng chung (OpenAPI, traceability), `dotnet build-server shutdown`: chỉ phiên chính, cuối sóng.
-- **A — bản sao archive:** ivr (cấm mọi `worktree add`, plan §10.1). Phiên chính `git archive HEAD | tar -x -C C:/Projects/_wt/<mã>/<WP>`,
-  rồi trong bản sao `git init -q && git add -A && git -c user.name=goc -c user.email=noreply@anthropic.com commit -qm goc`
-  (repo tạm, không liên quan repo gốc) để coder/verifier xem được diff. Ghép: `git -C <bản sao> diff --binary HEAD > <WP>.patch`
-  rồi `git -C <repo> apply --3way <WP>.patch` hoặc cách `GIT_INDEX_FILE` của repo; **không chép đè nguyên tệp**; commit theo
-  đường dẫn, chạy lại kiểm trên checkout chính.
+1. **Khai phạm vi ghi trước khi sửa.** `python tools/khoa_tep.py khai --repo <repo> --chu <phiên>/<gói> --tep <đường dẫn…>` (tệp hoặc thư mục tương đối
+   so với gốc repo; `<repo>` viết đúng một trong: `ops-core`, `business-platform`, `ivr`, `golden-hour-video`, `module5`, `deploy`, `contracts`; `<phiên>/<gói>`
+   ví dụ `m12/WP30`, phiên fork thì `m12-fork2/WP35`). Mã thoát 2 = chồng khoá: in ai giữ gì từ lúc nào. Lúc đó nhắn chủ khoá bằng `SendMessage` (tên phiên lấy từ `list_sessions`) hoặc
+   làm gói khác; không sửa tệp đang bị khoá. Xong gói thì `giai`. `xem` liệt kê khoá, `gio --tuoi 12` liệt kê khoá cũ (người dọn khoá của người khác
+   phải nhắn họ trước, dùng `giai --ep`). Tệp nóng (migration, tệp đăng ký module, tệp sinh tự động, solution/lockfile) chỉ một chủ giữ tại một thời điểm.
+   Phiên chính khai khoá cho cả phần subagent của mình; subagent chỉ sửa trong phạm vi brief đã khai.
+2. **Commit: chỉ phiên chính, theo đường dẫn.** `git commit -m "<mã gói> …" -- <đường dẫn của mình>` (chưa push). Subagent không commit, không đổi index/ref.
+   Cấm `git add -A`, `git add .`, `git commit -a`, `git stash`, `git reset`, `git clean`, `git checkout -- .`, `git restore .`, `git rebase`: những lệnh này
+   đụng việc của phiên khác. `index.lock` đang bị giữ thì thử lại 5 lần cách 5 giây; không xoá khoá (chỉ xoá khi không còn tiến trình git nào và khoá cũ hơn 10 phút).
+   Mỗi gói xong là một commit trên máy: Lead xem tiến độ bằng `git log`, `git diff` ngay trong checkout.
+3. **Khoá đặc biệt**, mỗi repo một lúc một chủ giữ MỘT trong ba, khai bằng `--tep @tên` (không chồng với khoá tệp thường):
+   - `@bo-kiem-du`: chạy bộ đủ, integration, e2e, test chạm DB/cổng. Tránh cạn cổng TCP và cây đổi giữa chừng. Chạy nền, chờ thông báo, giải khoá khi xong.
+   - `@dot-bien`: verifier sửa tạm mã để thử đột biến. Trong lúc giữ, không ai khác build/test repo đó. Chỉ sửa tệp đã khoá cho gói đang kiểm và đang sạch
+     (`git diff --quiet -- <tệp>` đúng), tối đa 10 phút, trả lại bằng `git restore -- <tệp>` rồi kiểm lại `git diff --quiet -- <tệp>`.
+   - `@dong-bo`: merge/pull nhánh gốc vào cây, kèm `--tep` các tệp sẽ đổi (`git diff --name-only HEAD..origin/<nhánh gốc>`). Chỉ làm khi các tệp đó không bị khoá
+     bởi phiên khác (hoặc chủ khoá đã commit và giải); nếu không, nhắn họ chờ. Đây là việc của phiên chính, không phải của subagent.
+4. **Kiểm độc lập chấm đúng một commit.** Verifier/tester đọc diff bằng `git show <SHA>` hoặc `git diff <base>..<SHA> -- <đường dẫn gói>`, chỉ chạy lệnh kiểm
+   khi coder không còn sửa tệp của gói (coder đã giải khoá, hoặc phiên chính đã commit). Kết quả chỉ có giá trị nếu `git diff HEAD -- <tệp của gói>` rỗng và
+   `git rev-parse HEAD` không đổi từ đầu tới cuối lượt chạy; không thì chạy lại. Thấy đỏ ở tệp ngoài phạm vi của gói: đó là việc đang dở của phiên khác, báo chủ
+   khoá (không tự sửa, không quy lỗi cho gói mình). Build/test nặng: mỗi agent thư mục build riêng (`PHIEN.md`), không hai lệnh cùng thư mục build.
+5. **Đồng bộ nhánh.** Đầu mỗi lượt `git fetch`. Nhánh luồng trễ nhánh gốc thì phiên chính tự gộp (m34: `toandeptrai` ← `dev`) dưới khoá `@dong-bo`, ghi một dòng
+   vào nhật ký; không chờ Lead. Tệp dở không phải của mình: ghi tên, làm né, không stash, không revert. Push, PR, merge vào nhánh chung vẫn chỉ khi Lead nói.
+6. **Dọn.** Không để thư mục tạm ngoài `C:\Projects\_wt\_luu`. Thư mục `_wt` cũ: `python tools/don_wt.py` (chỉ đọc) rồi `--xoa`; công cụ xoá bản sạch,
+   lưu bản vá nhỏ cho phần dở vào `_wt/_luu/<mã>/`, giữ mục sửa trong 24 giờ qua.
 
-Phiên `m34`, `m5`, `m6` đồng bộ nguồn an toàn trước khi rà theo §8. Phần rà chỉ đọc, không cần chế độ viết; nếu chạy test thì dùng worktree tách rời
-(detached, không nhánh) ở `C:\Projects\_wt\<mã>\review-<tên>` và xoá sau khi xong.
+Phiên `m34`, `m5`, `m6` đồng bộ nguồn an toàn trước khi rà theo §8. Phần rà chỉ đọc (`git show`, `git diff`, đọc tệp trong checkout); nếu phải chạy test thì
+khai `@bo-kiem-du` rồi chạy ngay trong checkout, kết quả theo mục 4.
 
 Repo dùng chung **`ginsengfood-contracts` và `deploy` thuộc phiên `lead`.** Luồng khác cần sửa → thả `hop-thu/lead-<ngày>-<việc>.md`;
 Lead cho một luồng ghi cho một WP cụ thể bằng `/quyet`.
@@ -63,7 +78,7 @@ Lead cho một luồng ghi cho một WP cụ thể bằng `/quyet`.
 |---|---|---|---|
 | 1 | `coder` | build/typecheck project bị đổi + test của WP (ca mới/sửa, tệp/lớp test vùng mình, có lọc: `--filter`, `pytest <tệp>`, `vitest run <tệp>`); báo xong chạy lệnh nhanh một lần | bộ đủ của repo/solution; integration/DB/e2e ngoài ca của WP; chạy lại khi mã chưa đổi |
 | 2 | `verifier` | lệnh nhanh của WP một lần từ đầu; đột biến chỉ chạy test lọc tới nhánh bị sửa | bộ đủ. ĐẠT ở tầng này là "ĐẠT, chờ bộ đủ" |
-| 3 | phiên chính | khi mọi WP của sóng đã ĐẠT tầng 2 và đã commit/ghép: bộ kiểm đủ trong `PHIEN.md` **một lần** trên SHA cuối, ở worktree kiểm tách rời, chạy nền, chờ thông báo, không thăm dò | bộ đủ cho từng WP |
+| 3 | phiên chính | khi mọi WP của sóng đã ĐẠT tầng 2 và đã commit/ghép: bộ kiểm đủ trong `PHIEN.md` **một lần** trên SHA cuối, ngay trong checkout chính dưới khoá `@bo-kiem-du` (§3 mục 3), chạy nền, chờ thông báo, không thăm dò | bộ đủ cho từng WP |
 
 - Tầng 3 xanh → mọi WP của sóng ĐẠT, ghi SHA + số vào phiếu từng WP. Đỏ → quy test hỏng về WP theo tệp/vùng (chưa rõ thì chạy riêng
   các test hỏng trên từng commit WP), giao lại đúng coder; sửa xong chỉ chạy test đã hỏng + tầng 2 của WP đó, rồi bộ đủ thêm một lần.
@@ -83,7 +98,7 @@ Lead cho một luồng ghi cho một WP cụ thể bằng `/quyet`.
 - **Dọn máy (D-lead-031):** ai bật tiến trình thì người đó tắt (`LUAT_SUBAGENT.md` mục 9). Phiên chính chạy
   `pwsh -NoProfile -File "C:\Projects\Project Control\tools\don_may.ps1" -Dung` ở đầu phiên (`/phien`), sau mỗi sóng (`/song` bước 8)
   và khi chốt phiên (`/cuoi-phien`). Công cụ chỉ dừng: tiến trình dự án có cha đã chết (mồ côi) và đứng yên; tiến trình nặng
-  (dotnet, node, testhost, python…) của phiên còn sống đã chạy ≥ 120 phút, đứng yên và phiên chủ không nhắc tới cổng/worktree/PID của nó
+  (dotnet, node, testhost, python…) của phiên còn sống đã chạy ≥ 120 phút, đứng yên và phiên chủ không nhắc tới cổng/thư mục/PID của nó
   trong 60 phút; container Testcontainers không còn ryuk. Không đụng tiến trình đang dùng CPU, MCP server, app/terminal người dùng
   tự mở, `ginsengfood-postgres-local`. Dừng tiến trình của phiên khác thì nhắn phiên đó một dòng (PID, lệnh, cổng).
   **Tự chạy mỗi 30 phút** (Lead duyệt 10/11): `tools/don_may_lap.ps1` chạy ẩn, tự bật khi đăng nhập (lối tắt
@@ -132,7 +147,7 @@ Không để luật dạng "A, trừ khi B, nhưng từ ngày X thì C".
   - Còn để `Chờ review` cho Lead: R3, báo cáo tuần, task cần người ngoài xác nhận (nghiệm thu, Chú duyệt, Anh Tuấn làm máy).
 - Trước mọi lượt `/ra-soat` (kể cả `bao-cao`, `lien-module`), phiên chính kiểm nhánh/upstream, checkout sạch và không có phiên đang dùng,
   chạy `git pull --ff-only --no-rebase` từng repo nguồn rồi ghim SHA; ghi kết quả và SHA trước/sau. Repo dirty, phân kỳ hoặc pull lỗi:
-  giữ checkout, báo lý do chưa pull; chỉ rà SHA remote trong detached worktree khi fetch được và luật repo cho phép.
+  giữ checkout, báo lý do chưa pull; chỉ rà SHA remote bằng `git show origin/<nhánh>:<đường dẫn>` hoặc `git diff` khi fetch được và luật repo cho phép (không dựng worktree, D-lead-063).
   Không tự checkout/tạo nhánh, stash/reset hay tạo merge commit. M3 chỉ pull `toandeptrai` từ `origin/toandeptrai`; sai nhánh dừng hỏi Lead.
 - Rà task của người khác không ghi `sheet-sync log` lên task coder. Mặc định `/ra-soat <người/module>` thực hiện đủ quy trình
   ở [lệnh rà soát](../.claude/commands/ra-soat.md) (D-lead-020): `tools/sheet_lead.mjs can-ra` lấy tập task Hoàn thành/Chờ review

@@ -30,3 +30,6 @@ Thumbs.db
 desktop.ini
 ~$*
 __pycache__/
+
+# Bảng khoá tệp giữa các phiên (D-lead-063), chỉ có ý nghĩa trên máy này
+khoa-tep/

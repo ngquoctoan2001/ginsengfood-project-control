@@ -6,7 +6,7 @@ argument-hint: [phuc|tai-m3|tai-m4|tai|all|lien-module|bao-cao] [từ ngày dd/m
 Dùng trong mọi phiên module (`m12`, `m34`, `m5`, `m6`, `m7`, `m8`, `m9`) hoặc `lead`. Đối số: `$ARGUMENTS`.
 Luật trong tệp này thắng mọi câu tóm tắt cũ về rà soát trong `PHIEN.md` của luồng (D-lead-020).
 Phiên chính đồng bộ checkout bằng fast-forward trước khi rà; phần rà không sửa mã hoặc commit vào repo của người được rà.
-Chỉ kiểm trong worktree/bản sao tách biệt theo luật repo, không dùng DB chung. Không tự push, tạo merge commit, rebase,
+Rà bằng `git show`/`git diff`/đọc tệp; test chỉ chạy ngay trong checkout chính dưới khoá `@bo-kiem-du` khi mã đã nằm trên nhánh của luồng (D-lead-063, không worktree), còn lại dựa CI hoặc hỏi Lead; không dùng DB chung. Không tự push, tạo merge commit, rebase,
 deploy, đổi cờ production hoặc gửi tin. Phiên chính pull và ghi Sheet; subagent chỉ giao bằng chứng.
 
 ## Đồng bộ nguồn — bắt buộc trước mọi lượt `/ra-soat`
@@ -21,7 +21,7 @@ Phiên chính thực hiện một lần mỗi repo trước khi giao auditor; đ
 2. Với repo đủ điều kiện, chạy `git -C <repo> pull --ff-only --no-rebase` theo upstream hiện tại ở mỗi lượt, kể cả khi lần fetch
    trước báo đã đồng bộ. Không dùng pull thường, không stash/reset/clean, không tạo merge commit, không tự xử lý xung đột.
 3. Dirty, thiếu upstream, lịch sử phân kỳ, đang có phiên dùng checkout hoặc pull lỗi: dừng cập nhật checkout đó, ghi lý do và báo Lead.
-   Nếu luật repo cho phép, fetch rồi rà SHA remote đã xác minh trong detached worktree; ghi rõ `CHƯA PULL`, không báo đã đồng bộ.
+   Nếu luật repo cho phép, fetch rồi rà SHA remote đã xác minh bằng `git show origin/<nhánh>:<đường dẫn>`/`git diff`; ghi rõ `CHƯA PULL`, không báo đã đồng bộ.
    Fetch lỗi thì ghi nguồn chưa làm mới; không lấy dữ liệu cũ làm kết luận cho bản mới.
 4. Ghi repo/nhánh/upstream, giờ chạy, kết quả pull, SHA trước/sau và SHA upstream; kiểm lại trạng thái checkout và ahead/behind.
    Local đi trước remote phải ghi rõ commit chưa push; không coi pull thành công là HEAD đã bằng remote. Ghim SHA thực sự được rà
@@ -66,7 +66,7 @@ Phiên chính thực hiện một lần mỗi repo trước khi giao auditor; đ
    Không tự gửi qua bất kỳ kênh nào; chỉ gửi khi Lead ra lệnh rõ cho đúng người/nội dung.
 7. **Chốt sổ và trả Lead:** cập nhật `SAN_SANG.md` theo bằng chứng, `TRANG_THAI.md` theo mốc mới; không tính readiness từ số task DONE.
    Trả ≤ 25 dòng: kết quả pull/SHA; số task Đạt / Cần sửa / chờ sửa; phát hiện chính; số mục `ghi` đã ghi và đọc lại khớp;
-   link bảng đầy đủ và tin nhắn nháp. Dọn worktree đã tạo theo luật repo.
+   link bảng đầy đủ và tin nhắn nháp. Giải khoá đã khai (`tools/khoa_tep.py giai`).
 
 ## Hai chế độ chuyên biệt giữ nguyên
 

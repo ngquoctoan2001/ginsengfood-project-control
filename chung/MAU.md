@@ -37,7 +37,7 @@ bằng chứng cho báo cáo tuần, vừa là chỗ phiên mới đọc để l
 
 Trạng thái: SẴN SÀNG | ĐANG LÀM | CHỜ KIỂM | ĐẠT | CẦN SỬA | CHẶN | HUỶ · Rủi ro: R1|R2|R3 · Chế độ: W|S|A · Mốc: A–D
 Hạng mục nâng: <hạng mục trong SAN_SANG.md> từ <bậc> lên <bậc> · Sheet: <id> · Ước lượng: <giờ>
-Chỗ làm: <worktree / bản sao / checkout chung> · Base SHA: <sha> · Chỗ kiểm: <worktree kiểm, nếu có>
+Chỗ làm: checkout chính của repo, nhánh <nhánh luồng> · Base SHA: <sha> · Khoá tệp: <đường dẫn đã khai ở tools/khoa_tep.py> · Kiểm: <SHA commit chấm>
 
 ## Brief
 1. Repo · thư mục làm việc tuyệt đối · nhánh/base:

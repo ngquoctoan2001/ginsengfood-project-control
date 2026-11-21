@@ -47,16 +47,15 @@
   Workflow bỏ push/schedule, khóa job bằng điều kiện false. GitHub kiểm 02/11 13:37 có 0 workflow; chưa push thay đổi local.
   Finding lịch sử tracker còn mở theo lượt kiểm trước; phần cấu hình đã ĐẠT 17 kiểm độc lập, không đồng nghĩa credential đã thu hồi.
 
-## Chạy song song: chỉ nhánh `main`, chế độ S (D-m7-013)
+## Chạy song song: chỉ nhánh `main`, sửa thẳng checkout chính (D-m7-013, D-lead-063)
 
 Lead chốt 01/11/2026: M7 chỉ làm trên **một nhánh `main`** — không nhánh tính năng, không worktree `_wt`, không PR. Mọi subagent làm trong
 checkout chính `C:\Projects\ginsengfood-golden-hour-video`, không commit; phiên chính commit theo đường dẫn khi verifier ĐẠT (R1, R2) hoặc Lead "ok gộp" (R3)
 (D-m7-053); push khi Lead bảo.
 Task code (.NET, web) chạy **lần lượt**; song song chỉ khi tệp tách hẳn và không cùng build (ví dụ một task tài liệu ‖ một task code).
-Làn code thứ hai (D-m7-056, m7.69): một task code nữa chạy được song song trong clone riêng `C:\Projects\_wt\m7\code-<task>` (clone `--no-local`,
-detached ở SHA `main`, không nhánh, không push từ clone); coder nộp patch so với SHA nền; verifier kiểm trong clone kiểm riêng; ĐẠT thì phiên chính áp patch vào
-`main` (`git apply --3way --cached` theo index tạm, xử lý CHANGELOG, tệp nóng) và commit theo D-m7-053; xong xoá clone. Hai làn không cùng giữ tệp nóng. D-m7-067/m7.117 duyệt kế hoạch Mốc 2 có 4 làn .NET + 1 web + 1 tài liệu, làm cả Chủ nhật; số tác nhân chạy thật phải theo tài nguyên máy và số suất công cụ. Trên máy đang thiếu RAM, giữ tối đa 3 tác nhân nặng tới khi đủ tài nguyên.
+Nhiều làn code (D-m7-056; D-lead-063 thay cách cũ): các làn cùng sửa checkout chính, mỗi làn khai khoá riêng bằng `tools/khoa_tep.py`, phiên chính commit theo đường dẫn; không clone, không `_wt`. Hai làn không cùng giữ tệp nóng. D-m7-067/m7.117 duyệt kế hoạch Mốc 2 có 4 làn .NET + 1 web + 1 tài liệu, làm cả Chủ nhật; số tác nhân chạy thật phải theo tài nguyên máy và số suất công cụ. Trên máy đang thiếu RAM, giữ tối đa 3 tác nhân nặng tới khi đủ tài nguyên.
 Tệp nóng `.sln`, `Directory.Packages.props`, DbContext + migration, `Contracts`, lockfile: một task tại một thời điểm.
+Trên .63 (nơi duy nhất sửa mã M7, D-m7-147): khoá tệp bằng `python3 ~/m7-drive/khoa_tep.py` (kho `~/m7-drive/khoa-tep`, chép từ `tools/khoa_tep.py`); bộ kiểm đủ chạy trong checkout chính bằng `~/m7-drive/bo-du-tai-cho.sh` dưới `@bo-kiem-du`, do `kiem-dem.sh` gọi mỗi đêm 01:30 (phiên .63 nhường khi thấy `~/m7-drive/xin-bo-kiem-du`); `vong-lap.sh` nối lượt.
 
 ## Tài nguyên máy (D-m7-079, 13/11/2026)
 

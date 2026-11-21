@@ -33,14 +33,12 @@
 - Chạy local: `pnpm local:prepare` → `pnpm dev:bootstrap` → `pnpm api:dev` / `pnpm worker`; `pnpm e2e:mock`; `pnpm sandbox:up`
 - **Cổng cố định: API 5005, Postgres 55433**; tên container/compose project dùng chung → chỉ một agent chạy compose mỗi lúc.
 
-## Chạy song song: chế độ A (bản sao `git archive`) + S cho việc nhỏ
+## Chạy song song: sửa thẳng trong checkout `main` (D-lead-063)
 
-- Cách của chính repo (plan §10.1): mỗi subagent làm trên bản sao `git archive HEAD` trong `C:\Projects\_wt\m8\<WP>\`; phiên chính
-  tạo repo tạm có commit `goc` trong bản sao (`CACH_LAM.md` §3) để xem diff, rồi đưa từng lô vào `main` tuần tự bằng bản vá
-  `git apply --3way` hoặc `GIT_INDEX_FILE` riêng — không chép đè nguyên tệp; chạy `detect_changes` + test trước khi commit.
+- ivr chỉ có `main` (hook cấm nhánh và `git worktree add`): phiên và agent của m8 sửa thẳng trong `C:\Projects\ginsengfood-ivr`, khai khoá `tools/khoa_tep.py`, phiên chính commit theo đường dẫn vào `main` tuần tự (`CACH_LAM.md` §3); chạy `detect_changes` + test trước khi commit. Không còn bản sao `git archive`.
 - **Bước gitleaks khi ghép (D-m8-037):** sau commit local, trước push: clone `main` trong container `dotnet/sdk:10.0.201`, chạy
   `gitleaks-linux git --config .gitleaks.toml --redact --log-opts="<cha>..HEAD"` và `--log-opts=HEAD` (như CI) — cả hai 0 mới được trình push.
-  Nhị phân đã kiểm checksum 8.30.0: `C:\Projects\_wt\m8\ci-sec-job\_log\gitleaks-linux`; script mẫu `C:\Projects\_wt\m8\prep-w0501\gl\run.sh`.
+  Nhị phân đã kiểm checksum 8.30.0: `C:\Projects\_wt\m8\ci-sec-job\_log\gitleaks-linux`; script mẫu `C:\Projects\_wt\m8\prep-w0501\gl\run.sh` (hai thư mục công cụ này GIỮ NGUYÊN, không phải bản sao, `tools/don_wt.py` không xoá).
   Có phát hiện thì sửa trước khi push (fingerprint chỉ cho giá trị đã chứng minh là sha256/giá trị giả, verifier kiểm).
 - **Quét trước push (D-m8-055):** ngay trước mỗi lần trình push, chạy `deploy/ci/tools/pre-push-scan.sh` trên HEAD local
   (dựng image publish, trivy CSDL mới, `refresh-locks.sh --check`, PII trên `ci-artifacts`/`.artifacts/api-matrix` trong container Linux).

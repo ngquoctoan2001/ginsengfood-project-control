@@ -4,7 +4,7 @@ description: Chốt phiên - cập nhật trạng thái, sẵn sàng, nhật ký
 
 1. Agent còn chạy? Còn → liệt kê, hỏi Lead đợi hay dừng. Tác vụ nền của phiên (server dev, test nền, `tail -f`, vòng chờ)
    không còn cần → tắt; rồi chạy `pwsh -NoProfile -File "C:\Projects\Project Control\tools\don_may.ps1" -Dung` (D-lead-031).
-2. Repo: worktree/bản sao dở, tệp dirty do phiên này, commit chưa push, nhánh chưa ghép — liệt kê, không tự dọn.
+2. Repo: khoá tệp còn giữ (`tools/khoa_tep.py xem`), tệp dirty do phiên này, commit chưa push, nhánh chưa ghép — liệt kê, không tự dọn.
    Phiếu `wp/` của WP còn dở: trạng thái + "Bước kế tiếp chính xác" phải đúng, để phiên mai làm tiếp được.
 3. Đọc dòng mới trong `QUYET_DINH.md` của luồng (phiên `lead` có thể đã thêm trong ngày) và áp vào sổ trước khi ghi đè.
 4. Chạy `date`. Ghi đè `TRANG_THAI.md` (≤ 60 dòng): mốc dữ liệu (giờ từ `date` + SHA đầu các nhánh chính) · % sẵn sàng ·

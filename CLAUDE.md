@@ -29,14 +29,15 @@ Ngày giờ hiện tại: chạy `date`, không đoán.
 | `lead` | Toàn hệ thống: tổng quan, nối liên module, báo cáo Chú | đọc mọi repo | Lead | điều phối |
 
 Repo dùng chung: `ginsengfood-contracts` (hợp đồng API/sự kiện), `deploy` (bộ triển khai chung, `MODULE_DEPLOY_CONTRACT.md`),
-`bao-cao-tuan` (báo cáo tuần). Worktree của các phiên: `C:\Projects\_wt\<mã>\<gói việc>\`.
+`bao-cao-tuan` (báo cáo tuần). **Không dùng worktree, bản sao hay clone (D-lead-063):** mọi phiên và agent sửa thẳng trong
+checkout chính của repo; nhiều phiên cùng lúc giữ nhau bằng `tools/khoa_tep.py` (§3 mục 8, `chung/CACH_LAM.md` §3).
 `ginsengfood-contracts` và `deploy` thuộc phiên `lead`; luồng khác cần sửa thì thả `hop-thu/lead-…`.
 Trạng thái git: `python "C:\Projects\Project Control\tools\git_tong_quan.py" [luồng] [--fetch] [--luu]` (chỉ đọc, vài giây,
 so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát, tin nhắn, nhật ký: `chung/MAU.md`.
 
 ## 3. Luật vàng
 
-1. **Một phiên một luồng.** Chỉ ghi vào `modules/<mã>/` của mình, repo của luồng mình, `C:\Projects\_wt\<mã>\`, tệp
+1. **Một phiên một luồng.** Chỉ ghi vào `modules/<mã>/` của mình, repo của luồng mình, tệp
    `hop-thu/<mã>-*` của mình (chuyển sang `hop-thu/xong/` khi xử lý xong) và báo cáo tuần của mình trong
    `C:\Projects\bao-cao-tuan\<kỳ>\`. `CLAUDE.md`, `chung/`, `TONG_QUAN.md`, `.claude/`, `tools/` chỉ phiên `lead` sửa.
    Phiên `lead` được thêm dòng vào `QUYET_DINH.md` của luồng khác, không ghi đè sổ khác của luồng (bảng đầy đủ: `CACH_LAM.md` §7).
@@ -51,6 +52,18 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
 6. **Trung thực.** Chưa chạy ghi `CHƯA CHẠY`, không suy thành đạt. Không gọi module là "sẵn sàng chạy thật" khi chưa qua
    cổng. % luôn theo thang chung, không tính bằng số task xong.
 7. **Ngữ cảnh gọn.** `TRANG_THAI.md` ≤ 60 dòng, ghi đè mỗi lần chốt; lịch sử vào `nhat-ky/`; quyết định một dòng một mục.
+8. **Một checkout, nhiều phiên và nhiều agent (D-lead-063).** Lead fork nhiều phiên cho một luồng, mỗi phiên spawn nhiều agent: tất cả làm thẳng
+   trong checkout chính của repo, trên nhánh của luồng, không `git worktree add`, không `git archive`/clone vào `_wt`, không ngoại lệ. Giữ nhau:
+   (a) **khai trước khi sửa:** `python tools/khoa_tep.py khai --repo <repo> --chu <phiên>/<gói> --tep <đường dẫn…>`; chồng khoá (mã thoát 2) thì
+   nhắn chủ khoá bằng `SendMessage` hoặc làm việc khác, không sửa tệp đang bị khoá; xong thì `giai`;
+   (b) **chỉ phiên chính commit, theo đường dẫn:** `git commit -m … -- <đường dẫn của mình>`; agent con không commit; cấm `git add -A`, `add .`,
+   `commit -a`, `stash`, `reset`, `clean`, `checkout -- .`, `restore .`, `rebase`; `index.lock` thì thử lại 5 lần cách 5 giây, không xoá khoá;
+   (c) **khoá đặc biệt**, mỗi repo một lúc một chủ giữ một trong ba: `@bo-kiem-du` (bộ đủ/integration/e2e/DB), `@dot-bien` (verifier sửa tạm mã để thử
+   đột biến), `@dong-bo` (merge/pull nhánh gốc vào cây, kèm danh sách tệp sẽ đổi);
+   (d) **verifier chấm đúng một commit** (`git show <SHA>`), chỉ chạy khi không ai còn sửa tệp của gói đó; kết quả chỉ có giá trị nếu `git diff HEAD -- <tệp của gói>`
+   rỗng và HEAD không đổi từ đầu tới cuối lượt chạy; đỏ vì tệp ngoài phạm vi của mình thì báo chủ tệp, không tự sửa.
+   Đầu mỗi lượt `git fetch`; nhánh luồng trễ nhánh gốc (m34: `toandeptrai` ← `dev`) thì tự gộp dưới khoá `@dong-bo`, không chờ Lead. Tệp dở của người khác:
+   làm né, không stash, không revert. Mỗi phiên tự dọn phần mình: không để thư mục tạm ngoài `_wt/_luu`.
 
 ## 4. An toàn
 

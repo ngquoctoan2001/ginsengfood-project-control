@@ -27,7 +27,7 @@ Mốc: 20/11/2026 23:59 +07 · `ginsengfood-ivr` `main` **local `b37a0ade`**, đ
 - D-m8-112…117 (D-lead-051): nhánh chú → rà, sửa cho xanh, gộp `main` (+ commit W của Toàn), giữ luật chú. D-m8-122: 02I m8 tự làm, Toàn gõ sudo.
 - D-m8-130…134: khung E02/E03 tối với m34, giữ `*` bấm 1; 02I chạy 18/11; 04B đêm 19/11 (không tải nặng .99 18–19/11). D-m8-135…138: đo cước, CDR tối giản .64, chống gian lận cước, trần chi phí. D-m8-139: chạy 02I bước 2.
 - D-m8-106: MobiFone 400 cuộc/10 giây/1 IP. D-m8-107: không tự viết báo cáo tuần.
-- Số W: NEXT_WORK_ID W-0557 (W-0556 đã giữ cho L-04b, đang làm). Quyết định tới D-m8-148.
+- Số W: NEXT_WORK_ID W-0557 (W-0556 đã giữ cho L-04b, đang làm). Quyết định tới D-m8-149.
 
 ## Nợ
 

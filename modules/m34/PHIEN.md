@@ -9,7 +9,7 @@ M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh c
 `compose.cong-khai.yml`. Phiên m34: đọc .99, chuẩn bị (SHA, bảng cờ, kịch bản kiểm, giờ), soạn yêu cầu để Toàn nhắn Phúc, đọc kết quả sau lượt của Phúc.
 
 **Trên máy này, mọi việc ghi vào repo (Claude, Codex, mọi phiên) chỉ trên nhánh `toandeptrai`** (D-m34-004): trước khi sửa/commit
-chạy `git branch --show-current`, khác `toandeptrai` thì dừng hỏi Lead; không tạo nhánh mới; worktree tách rời để rà/test thì được.
+chạy `git branch --show-current`, khác `toandeptrai` thì dừng hỏi Lead; không tạo nhánh mới; không worktree (D-lead-063): sửa và rà thẳng trong checkout, theo `chung/CACH_LAM.md` §3.
 Luật này cũng nằm ở `CLAUDE.local.md` (gốc repo, loại khỏi git) và `~/.codex/AGENTS.md` cho phiên mở thẳng trong repo.
 
 ## Repo và nguồn
@@ -38,12 +38,12 @@ Luật này cũng nằm ở `CLAUDE.local.md` (gốc repo, loại khỏi git) v�
 
 Bảng phân phạm vi gốc: `tools/task-tracker/bao-cao-tuan/bao-cao.json`.
 
-## Lệnh (chỉ chạy trong worktree tách rời khi rà soát cần — m34.5 có, D-m34-033; rà không chạy `sheet-sync log` lên task coder — m34.1, D-m34-033)
+## Lệnh (chạy trong checkout chính dưới khoá `@bo-kiem-du` khi rà soát cần — m34.5 có, D-m34-033; rà không chạy `sheet-sync log` lên task coder — m34.1, D-m34-033)
 
 - Back-end nhanh: `cd back-end && ./mvnw -B -fae test -P ci-unit` (không cần Docker, 2–4 phút; đặt `JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=40`).
   `-P ci-integration` cần Docker. Repo yêu cầu **hỏi trước** khi chạy `mvnw test`.
 - Front-end: `npm run lint`, `npm run build`, `npm run test:run` (≈1.861 test vitest, 2 lỗi có sẵn). `npm run test` là chế độ theo dõi — không dùng.
-- Worktree rà soát: `git worktree add --detach C:/Projects/_wt/m34/review-<tên> <SHA>`; xoá sau khi xong.
+- Rà soát: `git show <SHA>`/`git diff`; không dựng worktree (D-lead-063); chỉ chạy test khi mã đã nằm trên `toandeptrai`, còn lại dựa CI.
 
 ## Danh mục kiểm khi rà soát
 

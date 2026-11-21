@@ -1,6 +1,6 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **20/11/2026 15:5x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **21/11/2026 10:1x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
@@ -15,7 +15,7 @@ Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "
 
 Đã chốt gần nhất: m7.254 chạy 4 luồng, trần lệnh nặng 3 (D-m7-142, 12:4x); m7.211–250 (D-m7-141, chi tiết mục E).
 
-**Tình hình lúc 14:0x:** lượt 07 chạy 4 luồng; tài khoản Claude đăng nhập 12:40 hết hạn mức sau khoảng **1 giờ** (4 luồng tốn rất nhanh), bạn đổi tài khoản 13:54, lượt nối lại 13:55. Từ giờ hết hạn mức thì `vong-lap.sh` cứ 3 phút thử lại: **bạn đổi tài khoản là lượt tự chạy tiếp, không cần nhắn mình**. Đã xong trong lượt 07: ghi DL-352…357, mở gói M7-WP32 (tạm dừng/sửa tay/cấu hình UI, task T234…T238), giao coder cho luồng 2, 3, 4. Bộ kiểm đủ trên `7a589b0` có 1 bước đỏ do .63 quá tải (CI của dự án khác chạy cùng lúc, tải ~100 trên 10 nhân; chạy lại thì ca khác đỏ): **sẽ không tự push**; đã thêm cổng tải cho lệnh nặng của M7. Bộ đủ đó đã dừng; từ nay kiểm mỗi đêm 01:30 (D-m7-145).
+**Tình hình lúc 21/11 10:1x:** **phiên .63 ĐỨNG từ 20/11 17:46** vì tài khoản Claude hết **hạn mức TUẦN** (mở lại 24/11 03:00); lúc 10:08 tài khoản trên .63 vẫn báo hết hạn mức tuần. **Cần bạn đăng nhập .63 bằng tài khoản Claude còn hạn mức tuần**; lượt tự chạy lại trong 3 phút. Trước khi dừng đã gộp vào main .63: nhiều tài khoản Claude cho worker, API mẫu Studio, cấm hồ sơ Vivaldi/Opera, lệnh tạo ảnh Codex (1 lượt Codex thật ĐẠT). Bộ kiểm đủ đêm 21/11 trên `17f165e`: 2 bước đỏ (bản OpenAPI của web lệch; một test tìm sai thư mục build), KHÔNG push; đã giao sửa. GitHub hiện ở `b3d635d`. Luật mới D-lead-063 đã áp cho M7 trên .63 (không bản sao, khoá tệp, bộ kiểm đủ chạy trong checkout chính).
 
 Sudo trên .63: bạn đã cho (D-m7-144). AI không nhập mật khẩu: phiên .63 soạn sẵn script, khi cần bạn chạy đúng một lệnh `sudo bash ~/m7-drive/can-sudo-<việc>.sh` (mình báo khi có).
 

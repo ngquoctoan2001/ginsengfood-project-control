@@ -36,7 +36,7 @@
 - Cỡ bộ test: Unit ~7.500, Integration ~1.560, admin Vitest ~4.900.
 - **Cổng Lead đang dùng: API 5100, admin-web 3000 — không đụng.** Lab UAT: 5200/3200/5299 và 5202/3202.
 
-## Chạy song song: chế độ S (chung checkout)
+## Chạy song song: sửa thẳng checkout `main` (D-lead-063; trước là chế độ S)
 
 - Subagent sửa tệp tách nhau trên checkout `main`, **không commit**. Phiên chính commit tuần tự từng WP theo đường dẫn, chạy kiểm
   sau mỗi commit có rủi ro. Mẫu brief đã dùng: `.artifacts/agent-briefs/00-shared-rules-and-contract.md` (4 agent, 27/10).

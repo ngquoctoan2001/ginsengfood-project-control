@@ -1,53 +1,44 @@
 # Trạng thái: m12
 
-Mốc 20/11 10:xx (T6).
+Mốc 21/11 10:1x (T7), phiên m12 mới mở (`/phien m12`).
 
-- **ops-core:** `main` = `origin` = `gitlab` = `3e84ab68b`.
-- **.99:** chạy `3e84ab68b` trên **DB sạch** `ginsengfood_ops_production` (157 migration, D-m12-126/128). DB cũ giữ làm lưu trữ.
-- **Sẵn sàng:** 47% (`SAN_SANG.md` 17/11, chưa tính lại). Kịp 30/11: **VÀNG**.
-- **Mốc** (D-m12-088): M-b 20/11 M3 quan sát · M-c ≤ 25/11 Production · M-d 28/11 · 30/11.
+- **ops-core:** `main` cục bộ `bb3e8b48e` · `origin` = `gitlab` = `af0beda56` ⇒ **10 commit chưa push** (`272c0808d..bb3e8b48e`, 20/11 16:55 → 21/11 10:03).
+- **.99:** chạy `3e84ab68b` trên DB sạch `ginsengfood_ops_production` (157 migration, D-m12-126/128); DB cũ giữ lưu trữ. WP30–33 chưa lên.
+- **Sẵn sàng:** 47% (`SAN_SANG.md` 17/11, chưa tính lại). Kịp 30/11: **VÀNG** (WP17b chưa ai làm).
+- **Mốc** (D-m12-088): M-c ≤ 25/11 Production · M-d 28/11 · 30/11 chạy thật; ngoại lệ JWT hết 30/11 16:59Z.
+- **Luật mới D-lead-063 (21/11 10:0x):** không worktree/bản sao; mọi phiên sửa thẳng `main`, khai khoá `tools/khoa_tep.py`, chỉ phiên chính commit theo đường dẫn.
 
 ## Tình hình
 
-- **WP29 trang chi tiết người dùng** (D-m12-125, R3): đã lên .99 (`51f6fb1b8`). Còn chờ Toàn bấm thử.
-- **WP26 đăng nhập mail:**
-  - code đã lên .99;
-  - cờ `Auth__EmailLogin__Enabled` trong `.env` đã đổi `true` (20/11 sáng, Toàn tự làm), nhưng **chưa tạo lại API** ⇒ chưa có hiệu lực;
-  - kiểm `login/options` phải gọi kèm `Host: ops-core-api`.
-- **DB sạch .99:**
-  - còn 5 tài khoản: toan.nq, khanh.nk, sang.pv, dung.ptn, lan.vnm (giữ mật khẩu cũ);
-  - principal M3 có 10 quyền, M6 có 1 quyền;
-  - còn: 5 người đăng nhập thật, M3/M6 `kiem-token` + M3 nối lại SKU/kho (Phúc), nhập master data thật.
-- **11 góp ý 20/11** (D-m12-129) ⇒ phiếu `wp/M12-WP30-33-gop-y-20-11.md`. ~12:3x: WP30 `b9171a3d8`+`62f6b7cec`, WP31 `e31b8ada5` commit cục bộ CHƯA push; WP31 sửa lỗi tester, WP33 P1a/P2 dở trong checkout (xem cuối phiếu):
-  - WP30 giao diện (R2);
-  - WP31 phiên không văng (R3);
-  - WP32 quên mật khẩu (R3);
-  - WP33 màn cấu hình 3 đợt.
-  - Nguyên nhân văng đăng nhập: JWT quản trị 60 phút cố định, không gia hạn.
-- **WP28 bố cục:** còn cổng (dò 95 màn, 20 màn Lead thử). Hiện không phiên nào làm; chạy sau WP30.
-- **CI:** xanh ở `3e84ab68b`. Báo nhầm JWT lịch sử thứ 3 đã ghi (D-m12-127).
+- **Phiên m12 khác đang chạy** (`local_cf1de578`, "m12 · M1–M2 vận hành + rà release") giữ WP30–33; phiếu `wp/M12-WP30-33-gop-y-20-11.md`:
+  - WP30, WP31 ĐẠT kiểm; WP32 màn hình ĐẠT, máy chủ sửa lộ thời gian `610243558` chờ kiểm lại; cờ đặt lại mật khẩu TẮT;
+  - WP33: P1a, P1b, P2, P3a, P4-BE, P4-FE ĐẠT; P5-BE `4014ce5a8`, P8a `bb3e8b48e` (migration 159) chờ kiểm;
+  - pipeline #3093309855 (`af0beda56`) đỏ, đã sửa ở `e5b29ccc5` + `97d09da6c` (chưa push).
+- **3 tệp dirty** supplier-portal (`FeedbackDialog.tsx`, `IntakeActivitySection.tsx`, `FeedbackPackagingDialog.tsx`): không thuộc WP30–33, chủ chưa rõ ⇒ làm né.
+- **Phiếu ĐANG LÀM không phiên nào chạy:** WP24 (`120b2ea7e` 19/11), WP25 (chờ bộ đủ 18/11), WP27 (`3be14c8e5` 19/11), WP28 (`932b727bb`, cổng chưa chạy), WP12g đợt 2, WP-UAT sóng 0 (đứng từ 17/11). WP26 chờ Toàn duyệt diff R3 đợt 2.
+- **WP17b:** mã chưa ai sửa từ 17/11 (`deploy/m12/**` không commit mới): OPS-01 kho bằng chứng, cổng JWT sau 30/11, compose Production.
+- **36 worktree cũ** `_wt/m12` (D-lead-063 bảo dọn). Khoá tệp: chưa ai khai.
+- **Dọn máy 10:0x:** dừng 13 tiến trình mồ côi (7 MSBuild, 5 tail, 1 bash), không đụng phiên còn sống.
 
 ## Cần bạn quyết
 
-- **m12.178–185** (phiếu WP30–33):
-  - phiên trượt;
-  - chữa tạm 480 phút trên .99;
-  - quên mật khẩu;
-  - thứ tự;
-  - tên 2 menu;
-  - bố cục receipts;
-  - trade items Toàn thấy lỗi gì;
-  - phạm vi WP33.
-- **Kiểm chỉ đọc .99:** đếm dòng `op_stock_alert_policy` và `op_material_planning_policy` (nghi 0 dòng trên DB sạch).
+- **m12.200** phiên này nhận gói nào: A WP17b phần mã · B cổng WP28 · C WP-UAT. Đề xuất A.
+- **m12.201** soạn tin mời nghiệm thu + tập huấn sáng 27/11 và sửa kịch bản M12-010 theo .99 DB sạch: có/không. Đề xuất có (gửi trước 24/11).
+- **m12.202** 6 phiếu bỏ dở: A rà nhanh (1 scout chỉ đọc) rồi gộp phần còn lại · B để sau WP33. Đề xuất A.
+- **m12.203** (Phúc 21/11: M3 nối kho `WH-20112026-000002`, 19/19 SKU, M12 trả "không bán được" — đúng thiết kế, DB sạch chưa có mẻ; `ra-soat/2026-11-21-m3-ban-duoc.md`) cách có mẻ bán được: A mẻ thật đầu tiên với xưởng · B mẻ thử qua API trên .99 rồi khoá bán · C chờ 30/11. Đề xuất A.
+- **m12.204** chạy thật có hàng thành phẩm làm trước cần bán qua M3 không? Có ⇒ làm luồng nhập lô TP cũ (R3) vì tồn đầu kỳ nhập tay không bán được.
+- (Số bắt đầu 200 để khỏi trùng phiên đang chạy, phiên đó đã dùng tới m12.190.)
 
 ## Việc chặn
 
-- Mail login cần Toàn: tạo lại API trên .99, gắn mail công ty cho 5 người, từng người xác nhận bằng mã.
-- M3 quan sát cần Phúc chạy `kiem-token` và nối lại SKU/kho trên DB sạch.
+- Lên .99 WP30–33: phiên kia push + pipeline tay (biến JWT) + `deploy-99` (D-m12-129 mục 181).
+- Cờ mail .99 `true` trong `.env` nhưng API chưa tạo lại ⇒ lượt `deploy-99` kế sẽ bật luôn. Gắn mail công ty 5 người: Toàn.
+- M3 quan sát trên DB sạch: Phúc đã nối kho + 19 SKU (21/11); còn thiếu mẻ đủ chuỗi + kích hoạt bán SKU (m12.203).
+- Cổng JWT chỉ có nhánh gia hạn lần 3 ⇒ sau 30/11 16:59Z không ra image (SECR-02/OPS-05).
 
 ## Kế tiếp
 
-1. Toàn trả lời m12.178–185 ⇒ chạy WP31 + WP30 song song (chế độ S, 2 coder, verifier).
-2. WP32 + WP33 đợt 1.
-3. WP33 đợt 2 + cổng WP28.
-4. Mỗi lần lên .99 hỏi riêng.
+1. Toàn trả lời m12.200–202.
+2. Theo trả lời: WP17b phần mã (khai khoá `deploy/m12/**`, tệp cổng JWT, tệp kho bằng chứng; coder + tester độc lập + verifier R3, Toàn duyệt diff).
+3. Dọn `_wt/m12` bằng `tools/don_wt.py` (nhắn phiên kia trước).
+4. WP-NT: tin mời 27/11 + kịch bản M12-010.
