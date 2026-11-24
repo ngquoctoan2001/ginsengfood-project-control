@@ -1,6 +1,6 @@
 # Kế hoạch M7: ra video từ ảnh sản phẩm, chạy thật 30/11
 
-Cập nhật: **21/11/2026 14:0x** · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
+Cập nhật: **24/11/2026 18:0x** (kiểm .63 chỉ đọc; `.63` main = origin/main = `4ef0350`) · người cập nhật: phiên m7 máy Lead (sau mỗi lần kiểm .63 hay mỗi commit task) · nơi làm mã: phiên M7 trên .63.
 Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "tên nháp") và **làm luôn một lần** (không "để sau") — D-m7-139.
 
 ---
@@ -9,13 +9,27 @@ Luật đang áp: **một bản duy nhất** (không "bản 1/bản 2", không "
 
 | Mã | Quyết gì | Đề xuất | Hệ quả |
 |---|---|---|---|
+| [ ] m7.260 | **Video 2 chờ bạn:** cho thêm 1 lượt Muse (tổng 9, vượt DL-358 một lượt) để làm shot 8 (INVITATION), rồi dựng bản 2, kiểm lời, kiểm tự động 17 mục? Chỉ cần tiếp tục lượt đang PAUSED (EP-243, worker `realrun6`, ngưỡng ASR tạm 0,90) | **Có** (máy Lead) | Không có thì video 2 đứng ở 7/8 clip, không có video thứ hai để xem |
+| [ ] m7.261 | Hai lượt Muse của phần T228 đã dùng cho shot 3, 7 của video đầu (D-m7-150 cho dùng, DL-352 ghi "không mượn phần của task kia"): tính là lượt thử thật của T228 hay ghi lệch? Phần T228 còn 2 | Tính là lượt thử thật của T228 (đường một cuộc trò chuyện), giữ 2 còn lại cho T228 | Chỉ ghi sổ |
+| [ ] m7.262 | ASR video đầu 0,8954 < ngưỡng tạm 0,90: coi video này chỉ để xem, hay hạ ngưỡng tạm? (bản chấm mới T230 đã cho 0,9008) | Chỉ để xem; ngưỡng giữ 0,90 | Hạ ngưỡng thì video đầu sang IN_QA nhưng AUTO_CHECK 17 mục vẫn chặn ở mục đứng hình (6 giây cuối giữ khung) |
+| [ ] m7.263 | Cảnh hệ thống (tên sản phẩm, khuyến cáo, tổ chức): (a) đọc câu bắt buộc ngay trong cảnh, hay (b) không lời, hình chạy dưới lời cảnh trước (đang dùng tạm, `749d9d4`) | (b) cho video 2 (máy Lead, tạm; phiên .63 chưa đề xuất); (a) nếu bạn muốn nghe đọc | (a) tăng độ dài lời nhưng giúp qua ngưỡng 91 giây |
+| [ ] m7.264 | KEYFRAME_CHECK chạy ở m7-api lúc chốt bước KEYFRAME nhưng m7-api không có lớp AI: dev dùng bản giả (production chặn bằng Unavailable). (a) tách thành bước MÁY CHỦ chạy ở m7-worker, hay (b) chỉ dev cho m7-api gọi Claude | (a) | (b) nhanh nhưng lệch production |
+| [ ] m7.265 | EP-195: cho người có vai AD kích hoạt mục không nhạy cảm (đổi ApprovalPolicy dùng chung)? Cấm hẳn tự duyệt mẫu dây chuyền (DL-036 cho same_person)? | Giữ như đã làm: AD tự kích hoạt 403, không đổi chính sách dùng chung (phiên .63 chưa đề xuất) | AD tự kích hoạt đang 403 |
+| [ ] m7.266 | Hạt giống có quyết định: (a) migration nạp sẵn mẫu prompt ACTIVE kèm quyết định kích hoạt dẫn DL-355 (`_L11_ScriptTemplateSeed`, `_L10_KeyframeStep` KEYFRAME_CHECK) có đúng ý "bản mới nạp sẵn dùng luôn"? (b) khoá nhạy cảm `tts.pronunciation_dictionary`: theo DL-094 KHÔNG hạt giống; cho nới luật ADM-009 để EP-177 tạo được dòng đầu? | (a) đúng ý; (b) cho nới ADM-009 chỉ cho đường tạo dòng đầu (máy Lead, tạm; phiên .63 chưa đề xuất) | Không nới thì từ điển cách đọc chưa nạp được từ UI |
+| [ ] m7.267 | Mẫu kịch bản (≤ 12 từ/dòng, ≤ 6 dòng/cảnh) cộng 3 cảnh hệ thống và trần 8 lượt Muse chỉ cho tối đa ~90 giây lời, dưới ngưỡng 91 giây (mọi lần Claude viết đều thiếu; video 2 phải sửa brief; lần 2 ra 11 cảnh, vượt trần Muse): chỉnh luật mẫu hay ngưỡng? Miễn eval IMAGE_PROMPT_GENERATE cho mọi DB? Mẫu IMAGE_PROMPT_GENERATE v2 có mục lời dặn biên tập? | Chỉnh luật mẫu (nới số từ mỗi dòng hay số dòng mỗi cảnh), giữ 91 giây; miễn eval; có mục lời dặn (máy Lead, tạm; phiên .63 chưa đề xuất) | Không chỉnh thì mọi kịch bản Claude thật phải sửa tay |
+| [ ] m7.268 | AUTO_CHECK mục 16 (ranh shot so ranh lời) và 17 (karaoke): ngưỡng làm theo dòng kế hoạch 300 ms và 250 ms (trung vị/p95); thiết kế T222 (DL-340) đề xuất 200 ms và trung vị 120 ms: chọn theo số đo video 2? Cảnh không lời đứng sau cảnh chỉ một câu bị mục 16 chặn (đề xuất giữ, FR-STU-008). Gói guard EN_IMAGE_PROMPT: nhóm IMG_VI_* chặn mọi chữ "bác sĩ", "bệnh viện", danh sách tên người nổi tiếng là danh sách tĩnh: giữ? | Giữ 300/250 tới khi có số đo video 2; giữ cảnh không lời bị mục 16 chặn (đề xuất của phiên .63); giữ gói guard (máy Lead) | — |
+| [ ] m7.269 | T229: một clip mỗi cảnh (giữ cho T232); nhạc nền khi có tệp có quyền; khung kết dùng phần tiếp clip cuối; phông Noto Sans tới khi có Be Vietnam Pro; trần độ dài clip khi bật nhà cung cấp video qua API | Giữ một clip mỗi cảnh (đề xuất của phiên .63); các mục còn lại phiên .63 chưa đề xuất | — |
+| [x] m7.258 | Khung dọc không đúng 9:16 | Cắt giữa (D-m7-149) | — |
+| [x] m7.259 | Băm điểm ảnh ảnh có người | Có, cột ở migration 5b5 trên DB dev .63 (D-m7-149) | — |
 | [x] m7.257 | Task R3: tester + verifier ĐẠT thì tự gộp, bạn xem sau | Đã duyệt 15:0x (D-m7-146) | Có hiệu lực từ lần nối lượt kế tiếp |
 | [x] m7.256 | Bộ kiểm đủ chạy thưa: mỗi đêm 01:30 + mốc lớn, xanh thì tự push | Đã chốt 14:1x (D-m7-145) | Đêm nay 01:30 chạy lần đầu trên main .63 |
 | [x] m7.255 | Muse thật cho video thứ hai tối đa 8 lượt, trần 25 → 33 | Đã duyệt 13:0x (D-m7-143) | — |
 
+**Tình hình lúc 24/11 18:0x (kiểm .63):** phiên .63 chạy tới 24/11 06:03 rồi dừng (báo cáo `~/m7-drive/bao-07-nhap.md`); đã lên origin 59 commit từ 21/11 15:00, HEAD `4ef0350`; **video đầu có (93,7 giây, ASR 0,8954 chưa đạt 0,90)**, video 2 PAUSED 7/8 clip chờ m7.260; Muse đã dùng 28/33. Mười câu m7.260…269 là mười câu của báo cáo lượt 07 theo thứ tự; việc tay sudo (DL-359) ở `TRANG_THAI.md`.
+
 Đã chốt gần nhất: m7.254 chạy 4 luồng, trần lệnh nặng 3 (D-m7-142, 12:4x); m7.211–250 (D-m7-141, chi tiết mục E).
 
-**Tình hình lúc 21/11 14:0x:** phiên .63 đứng từ 20/11 17:46 vì hết hạn mức tuần; **bạn đăng nhập tài khoản mới 13:59, lượt tự chạy lại ngay**, đang đưa việc từ các bản sao về checkout chính (T227 trước). Trước khi dừng đã gộp vào main .63: nhiều tài khoản Claude cho worker, API mẫu Studio, cấm hồ sơ Vivaldi/Opera, lệnh tạo ảnh Codex (1 lượt Codex thật ĐẠT). Bộ kiểm đủ đêm 21/11 trên `17f165e`: 2 bước đỏ (bản OpenAPI của web lệch; một test tìm sai thư mục build), KHÔNG push; đã giao sửa. GitHub hiện ở `b3d635d`. Luật mới D-lead-063 (không bản sao, khoá tệp) và D-lead-064 (kiểm nhẹ: bỏ verifier từng gói, bộ đủ chỉ chạy đêm) đã áp cho M7 trên .63; bỏ các vòng verifier/tester nên mỗi gói nhanh hơn khoảng 30%.
+**Tình hình lúc 21/11 15:3x (D-m7-150):** đã push 11 commit lên GitHub (`0233366`); từ nay tự push mỗi giờ, không chờ xanh; bộ kiểm đủ đêm đã tắt, test hạn chế tối đa. **Phiên .63 chuyển sang chạy luồng làm video THẬT ngay** (Claude, Codex, Muse thật, dữ liệu MẪU) qua UI Studio để bạn xem; luồng 2–4 chạy phụ. Xem UI: mở PowerShell chạy `ssh -N -L 6700:127.0.0.1:6700 ssv@192.168.1.63`, rồi mở trình duyệt `https://localhost:6700` (bỏ qua cảnh báo chứng chỉ).
 
 Sudo trên .63: bạn đã cho (D-m7-144). AI không nhập mật khẩu: phiên .63 soạn sẵn script, khi cần bạn chạy đúng một lệnh `sudo bash ~/m7-drive/can-sudo-<việc>.sh` (mình báo khi có).
 
@@ -81,6 +95,8 @@ Lệnh thứ hai in địa chỉ và mã thiết bị: mở địa chỉ trên t
 
 Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là commit trên .63; "chưa push" = GitHub chưa có.
 
+**24/11 18:0x: bảng trạng thái từng task nằm ở `TRANG_THAI.md` (mục WP31, WP32 lúc 24/11 06:03); các hàng dưới đây là bản 21/11, chưa viết lại: T227, T228, T229, T230, WP32 (T234…T236), T237, T238, EP-192…195 nay đều xong và đã lên origin; còn T232 (video 2) chờ m7.260.**
+
 ### D1. Đường ra video đầu (T232)
 
 | | Task | Trạng thái | Đã làm | Vướng / cần |
@@ -92,8 +108,8 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 | [x] | T233 Muse chạy trên Ubuntu | Xong | `4a06f85`, `31bd18c` (chưa push) | — |
 | [x] | T226 tạo ảnh qua Codex | Gộp | `20dd57f` (chưa push) | Lượt Codex thật: chờ bạn đăng nhập Codex (B2) |
 | [~] | T223 kịch bản + storyboard mới | Gộp, cần gộp về một bản | `90da326`, `0ccd5f0`, `cbfc54e`; sửa test `7a589b0` | Gộp về một bản (m7.211, luật D-m7-139); Claude thật chờ bạn đăng nhập (B1) |
-| [~] | T227 khung hình từng shot | Tester R3 bắt 1 lỗi vừa + 5 thấp; coder đang sửa hết. Xong thì tự gộp (m7.257) | `5c2559b` (bản sao) | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
-| [~] | T228 Muse một phiên cho cả video | Coder sửa vòng 2 xong; verifier đang kiểm | `65a7128` (bản sao) | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
+| [x] | T227 khung hình từng shot (lõi) | Đã gộp vào main 21/11 14:07 sau vòng sửa của tester; phần guard prompt ở danh sách cổng | `9da8b00` | Lượt nối + migration 5b5 đã duyệt (m7.229), làm ở lượt 07 |
+| [x] | T228 Muse một phiên cho cả video (lõi) | Đã gộp 21/11 15:12; còn nối phần máy chủ cùng khung hình 5b5 và chạy Muse thật | `88531d7` | Muse thật tối đa 4 lượt (đã duyệt D-m7-136) |
 | [ ] | T229 dựng video mới (ranh shot theo lời, karaoke, nhạc nền, khung kết) | Đã soạn giao việc (`wave3/T229`) | — | 14 giờ ước |
 | [ ] | T230 kiểm tự động video mới | Chưa | — | 8 giờ ước |
 | [ ] | **T232 lượt thật: ra video** | Chưa | — | Cần B1, B2; Muse tối đa 8 lượt (đã duyệt) |
@@ -124,7 +140,7 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 
 | | Việc | Trạng thái | Ghi chú |
 |---|---|---|---|
-| [ ] | Tạm dừng / sửa tay / chạy tiếp lượt làm video (máy chủ: trạng thái tạm dừng, chạy lại phần phụ thuộc) | Đã giao lượt 07 | Hiện lượt chỉ có Chờ, Chạy, Chờ người vận hành, Xong, Lỗi, Huỷ; chưa có Tạm dừng |
+| [~] | Tạm dừng / sửa tay / chạy tiếp lượt làm video (máy chủ: trạng thái tạm dừng, chạy lại phần phụ thuộc) | Phần miền xong `e388111` (T234); đang làm lưu trữ, API, audit | Hiện lượt chỉ có Chờ, Chạy, Chờ người vận hành, Xong, Lỗi, Huỷ; chưa có Tạm dừng |
 | [ ] | Màn hình Studio: nút Tạm dừng, Tiếp tục; sửa kịch bản, khung hình, clip, chữ đọc ngay trên lượt | Đã giao lượt 07 | |
 | [ ] | Điểm dừng duyệt (sau kịch bản, khung hình, clip) bật tắt trên UI | Đã giao lượt 07 | |
 | [ ] | Trang Cấu hình mở đủ cài đặt vận hành | Đã giao lượt 07 | Đã có trang: cấu hình chung, hồ sơ đầu ra, loại video ngắn, mẫu prompt |
@@ -135,7 +151,7 @@ Ký hiệu: [x] xong · [~] đang làm · [ ] chưa · [!] vướng. SHA là com
 
 | | Việc | Trạng thái | Vướng |
 |---|---|---|---|
-| [~] | Push lên GitHub khi bộ kiểm đủ xanh | Bộ đủ `7a589b0` đỏ (T054 chập chờn do quá tải), đã dừng, không push. Kiểm mỗi đêm 01:30, xanh thì tự push (D-m7-145) | Lần đầu: đêm 20/11 rạng sáng 21/11 |
+| [x] | Push lên GitHub (D-m7-150: push mỗi giờ, không chờ xanh) | Bộ đủ `7a589b0` đỏ (T054 chập chờn do quá tải), đã dừng, không push. Kiểm mỗi đêm 01:30, xanh thì tự push (D-m7-145) | Lần đầu: đêm 20/11 rạng sáng 21/11 |
 | [!] | Máy ảo chạy thật M7 (Ubuntu 22.04, 8 nhân, 16 GB, 1 TB) | Chưa giao | Anh Tuấn |
 | [ ] | Cài worker và stack lên máy ảo, chạy thử một video | Chưa | Cần máy ảo |
 | [ ] | Kiểm bù 10 task thiếu verifier (D-m7-125) | Chưa | Sau T232 |

@@ -2,7 +2,8 @@
 
 Lead dùng phiên này để **đọc, kiểm tra, rà soát, báo cáo** ba mảng việc chạy song song, và để **code phần kết nối đơn hàng
 M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh chú Dũng vào `dev`; code của Toàn trên `toandeptrai` Toàn tự gộp vào `dev` (PR). Khi rà việc Phúc/Tài: đồng bộ checkout an toàn theo quy trình rồi đọc/kiểm; không sửa mã, commit, push hay tạo merge commit trừ khi Lead lệnh rõ
-(và báo người làm trước). Phần M3 → M8: commit trên nhánh `toandeptrai`, push/PR/merge vẫn hỏi Lead từng lần.
+(và báo người làm trước). Phần M3 → M8: commit trên nhánh `toandeptrai`; push/PR/merge khác vẫn hỏi Lead từng lần.
+**"Đồng bộ dev" (D-m34-112, Toàn chốt 21/11):** khi Toàn nói đúng cụm này, phiên làm đủ ba bước: `git fetch` + gộp `origin/dev` vào `toandeptrai` (khoá `@dong-bo`, tự xử lý xung đột), kiểm nhanh biên dịch + test hợp đồng lọc (khoá `@bo-kiem-du`) và quét bí mật các dòng mới, rồi `git push origin toandeptrai:dev`. Cụm này CHỈ cho phép đẩy `toandeptrai` lên `dev`; đẩy nhánh khác, mở PR, deploy .99, đổi cờ vẫn hỏi riêng. Đỏ không giải thích được hoặc xung đột không chắc cách giải thì dừng và hỏi, không đẩy.
 
 **Máy .99 (D-m34-108, D-lead-060, thay phần "m34 deploy .99" của D-m34-092): phiên này CHỈ ĐỌC .99.** Mọi thay đổi trên .99 của repo bán hàng
 (đưa bản mới, `.env`, compose, cờ, `cong-khai-99.sh lui|tat`, tạo lại container, sửa dữ liệu) chỉ Phúc làm, bằng image CI + `trien-khai.sh`, giữ lớp

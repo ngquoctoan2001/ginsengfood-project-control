@@ -40,5 +40,7 @@ Quyết định: D-m8-148 (Toàn: "sửa luôn chứ chấp nhận gì") trên D
 
 - 21/11 11:5x coder sửa xong 4 việc (cây coder +818/−51 trên goc; unit 582, tích hợp lọc nhanh 361/361; đột biến VX-04/VX-03/VX-20/VX-21 đỏ; giới hạn ghi ở `call-rule-scheduling.md` §8: job đến hạn + trong khung + có `phone_key` còn tốn đếm theo `started_at` cả ngày, trị bằng cột "mốc claim kế tiếp" cần migration, để gói khác). Chép sang cây verifier (md5 khớp 12 tệp), verifier vòng 2 đang kiểm.
 
+- 21/11 13:3x–14:2x: verifier vòng 2 (mới, chỉ đọc) = ĐẠT, chờ bộ đủ: mẹo `progress.counted >= 0`, đếm lại một câu, đếm lô khớp gương; 14/16 đột biến đỏ, R14 và R16 tương đương; kẽ hở test mốc phiên ở hai gương → thêm `IT-RULE-CLAIM-VX-23`; hai chỗ chữ trong tài liệu sửa. Ghép vào checkout `main`; ghim dòng `deploy/m8` dời (224→225, 341–346→427–432). Test lọc nhanh: build 0/0, unit 583/583, tích hợp 365/365 (28 phút 39 giây), lớp R2 5/5. **Commit local `f3a13a41`** (+ `a94c1dc7` sửa README); Sheet M8-024. D-lead-064: không bộ đủ ở máy, không verifier thêm; phép thử đột biến VX-23 dừng (gương kích hoạt đơn giữ đỏ, gương năng lực chưa thử) → cổng Nguy hiểm (`../cong-nguy-hiem.md`). Bản sao `_wt` đã xoá.
+
 ## Bước kế tiếp chính xác
-(Đã xong: coder sửa 4 việc.) Verifier vòng 2 kiểm đúng phần sửa; sau đó: verifier kiểm lại đúng phần sửa (VX-03/04 xanh, hiệu năng, đột biến lại 3–4 loại liên quan), rồi ghép vào checkout `main` (khai khoá tệp, D-lead-063), bộ kiểm đủ dưới `@bo-kiem-du`, commit local theo đường dẫn, cập nhật sổ, xoá bản sao `_wt` W-0552…W-0556.
+Không còn việc code. Chờ Toàn nói push (quét gitleaks trước push như cũ); CI đêm chạy bộ đủ; vùng Nguy hiểm qua cổng 25–27/11.
