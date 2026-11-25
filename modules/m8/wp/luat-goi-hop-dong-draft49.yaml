@@ -1,5 +1,5 @@
 # M8 — hợp đồng đề xuất 1.0.0-draft.49 (BẢN ĐỌC ĐƯỢC cho m34, 20/11/2026 16:09)
-# Chưa vào specs/ của repo ivr; coder/m8 ghép vào `ivr-order-confirmation.v1.yaml` (kèm baseline, NSwag, hash ghim) khi làm L-06/L-05.
+# Đã vào specs/ của repo ivr: phần quản trị (L-06) ở W-0555, intake chế độ luật (L-05) ở W-0558 `c2bb7064` (24/11, hash YAML 26a7bbe5…c729, chưa push); gọi lại thủ công (L-07) ở W-0559 `6ed2d535` (hash YAML mới 56cd056d…6229, đã lên origin + GitHub 25/11 07:26). Nguồn thật là YAML trong repo ivr; tệp này chỉ là bản đọc của 20/11.
 # Chỉ THÊM so với draft.48; callback (`order-core-ivr-callback.target-v1.yaml`, hash 323ba1d2…) KHÔNG đổi một byte.
 # Đọc cùng: modules/m8/wp/luat-goi-thiet-ke.md (mô hình bảng quy tắc, lý do kết quả cuối).
 
@@ -22,7 +22,7 @@ intake:
     call_rule_set: { id: string, version: integer, program_code: string }
     first_call_due_at: date-time (UTC)
     planned_horizon_at: date-time (UTC)   # min(T0 + max_horizon_minutes, confirmation_window_expires_at); M3 đặt watchdog ≥ giá trị này
-    earliest_final_at: date-time (UTC)    # sớm nhất có thể có kết quả cuối nếu mọi cuộc đều không nghe, theo luật chụp (ước lượng)
+    # earliest_final_at: BỎ (24/11, D-m8-154): ack thật chỉ có ba trường trên; planned_horizon_at của đơn giữ ngoài khung = confirmation_window_expires_at
   status_additions: >-
     GET /tasks/{taskId}/result và /call-jobs/{id}: thêm `call_rule_set{id,version}`, `counted_attempts` (số cuộc đã tính lượt),
     `last_attempt_ended_at`, `next_attempt_due_at` (null khi hết hoặc đang gọi). Mã `attempt_policy_code` của task chế độ luật = "rules:<PROGRAM>:v<N>".
@@ -104,6 +104,11 @@ schemas:
 # ===================================================================================== 4. Gọi lại thủ công (nút "Gọi lại bằng IVR")
 recall:
   how: Task mới có `recall_of_task_id` = task cuối của đơn (hợp đồng draft.47), chạy luật từ đầu.
+  l07_done: >-
+    L-07 XONG phía M8 (W-0559 `6ed2d535`, 24/11, đã lên origin + GitHub 25/11 07:26): task chế độ luật mang `recall_of_task_id` được nhận như task chế độ luật thường (hết 409 `RECALL_RULE_MODE_NOT_SUPPORTED`);
+    cuộc đầu theo `calling_windows` của luật (giữ tới khung kế trong trần M3); job mới đếm từ 0; trần số điện thoại/ngày đếm xuyên job; gọi lại KHÔNG bị mốc phiên Giờ Vàng
+    (`session_ends_at` không đòi, không lưu; luật được đọc không có hai mốc phiên); task gốc phải có và cùng đơn, đơn không còn chuỗi mở (như v4). Task của đơn M8 chưa từng nhận
+    task nào thì gửi như task thường, KHÔNG có `recall_of_task_id`. Hash YAML CUỐI (25/11, sau cổng Nguy hiểm, W-0560 `30ceb19c`) `af5b19204447276de55aa8f4f53a80364818ed46f74d782f95700cc2ff322e47` (chỉ đổi mô tả); callback không đổi.
   changed_vs_draft47:
     - Bỏ khung giờ gọi lại cố định 08–09/13–14/20–21 (RECALL_OUTSIDE_ALLOWED_HOURS không còn trả ở chế độ luật). Ngoài khung giờ gọi → đơn được nhận và giữ tới khung kế (ack có first_call_due_at), như đơn giữ ban đêm.
     - Chạm trần cuộc mỗi số mỗi ngày → nhận và dời sang ngày kế (không từ chối).

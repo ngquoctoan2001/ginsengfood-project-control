@@ -1,5 +1,7 @@
 # M12-010 — Nghiệm thu bản tối thiểu M1–M2 trên `.99` qua LAN, sáng CN 15/11/2026
 
+> **Cập nhật 24/11:** buổi 15/11 dời; nghiệm thu + tập huấn chạy **sáng 27/11** (D-m12-091) trên `.99` DB sạch. Kịch bản mới `wp/M12-010-bo-sang-27-11.md`, biên bản `wp/M12-010-bien-ban-27-11.md`, tin mời `ra-soat/2026-11-24-tin-nghiem-thu-27-11.md`. Phần dưới giữ làm lịch sử 14/11.
+
 Trạng thái: CHUẨN BỊ · Rủi ro: R3 (người thật thao tác trên máy chạy thật) · Quyết định: D-m12-062 · Sheet: M12-013 (tập huấn/nghiệm thu)
 Nguồn: manifest `docs/runbooks/release/02-11-08-50-manifest-nghiem-thu-moc-c-checklist.md` (ops-core), giáo án
 `docs/runbooks/release/huong-dan-su-dung/02-11-08-45-giao-an-tap-huan-doi-chay-thu-runbook.md`, checklist `13-08-21-04-production-manual-acceptance-checklist.md`.
