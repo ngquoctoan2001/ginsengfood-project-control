@@ -31,7 +31,7 @@ Mốc: 25/11/2026 12:2x +07 (phiên m8 [8c08ac]; **L-05 + L-07 xong và qua cổ
 - D-m8-112…117 (D-lead-051): nhánh chú → rà, sửa cho xanh, gộp `main` (+ commit W của Toàn), giữ luật chú. D-m8-122: 02I m8 tự làm, Toàn gõ sudo.
 - D-m8-130…134: khung E02/E03 tối với m34, giữ `*` bấm 1; 02I chạy 18/11; 04B đêm 19/11 (không tải nặng .99 18–19/11). D-m8-135…138: đo cước, CDR tối giản .64, chống gian lận cước, trần chi phí. D-m8-139: chạy 02I bước 2.
 - D-m8-106: MobiFone 400 cuộc/10 giây/1 IP. D-m8-107: không tự viết báo cáo tuần.
-- Số W: NEXT_WORK_ID W-0563 (W-0562 đã dùng). Quyết định tới D-m8-159.
+- Số W: NEXT_WORK_ID W-0563 (W-0562 đã dùng). Quyết định tới D-m8-160.
 
 ## Nợ
 
@@ -44,6 +44,8 @@ Mốc: 25/11/2026 12:2x +07 (phiên m8 [8c08ac]; **L-05 + L-07 xong và qua cổ
 - **Phiên m8 (24/11 18:07):** chỉ [8c08ac] đang mở (bản gốc 13/11, đã đọc lại phiên m8 tài khoản cũ `1d69a9d6` ngày 21/11 và nhật ký 14–21/11); các phiên m8 cũ chỉ còn bản ghi. Toàn chốt 24/11 giữ phiên này làm L-05 (m8.117, D-m8-152).
 
 ## Đang chờ
+
+- **KẾ HOẠCH TIẾP THEO (25/11, D-m8-160): [KE_HOACH.md](KE_HOACH.md)** — giọng đọc + trần cuộc/ngày làm trên UI Module 3, khung bảo trì .64 (RTP, CDR, đổi chứng thư), nợ nhóm C, kiểm/hồ sơ, việc cần Toàn nói; sóng 0–5 tới 30/11; phiên mới (tài khoản khác) bắt đầu từ đó. Chưa giao việc nào.
 
 - **Đã chốt 25/11 (D-m8-157):** m8.118 A (gọi lại không bị mốc phiên Giờ Vàng), m8.119 A (T2 chỉ sửa chữ + quy tắc vận hành: bật `RULES_ALLOWED` khi không còn chuỗi v4 của khách thật; không đụng v4).
 

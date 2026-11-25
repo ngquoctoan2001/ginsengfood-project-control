@@ -1,7 +1,7 @@
 # M12 — Xử lý 63 ca nghiệm thu chưa đạt (10 không đạt + 53 bị chặn), mở 25/11
 
 Lệnh: Toàn 25/11 "rà soát kiểm tra và fix cái này, tổng cộng 63 cái" (bảng 10 không đạt + 53 bị chặn của báo cáo 14–24/11).
-Nguồn số: sổ `ginsengfood-ops-core/docs/evidence/27-10-14-30-uat-chay-nhanh/results-2710.jsonl` (dòng cuối mỗi ca thắng; cục bộ, không đưa git) + `tools/uat/function-catalog/catalog.json`; tính lại 24/11: 1.737 đạt · 10 KĐ · 53 BC · 58 KAD · 468 chưa chạy. Trạng thái: **ĐANG LÀM**.
+Nguồn số: sổ `ginsengfood-ops-core/docs/evidence/27-10-14-30-uat-chay-nhanh/results-2710.jsonl` (dòng cuối mỗi ca thắng; cục bộ, không đưa git) + `tools/uat/function-catalog/catalog.json`; tính lại 24/11: 1.737 đạt · 10 KĐ · 53 BC · 58 KAD · 468 chưa chạy. Trạng thái: **XONG 25/11 14:30** (62 ca Đạt, 1 ca Không áp dụng; xem `ra-soat/2026-11-25-63-ca-ket-qua.md`).
 
 ## Nhóm việc
 
@@ -33,3 +33,7 @@ Chưa chạy ghi CHƯA CHẠY; không chuyển KHÔNG ĐẠT/BỊ CHẶN thành 
 - **D-m12-135 (Toàn "Đúng, giữ"):** "ký FRM-21 kết luận tạm giữ rồi mới phê duyệt" là đúng nghiệp vụ; ca G02-F02-T01/T05/T06/T07 chạy theo đường đó, sổ tay sửa theo (không đổi mã).
 - E01-F06-T01 (in lệnh sản xuất): ghi sổ Không áp dụng khi chốt cuối (sau khi lab/tester xong, vì thư mục bằng chứng đang được ghi).
 - G02-F05-T04: không tái hiện được trên code mới; chạy lại ở nhóm A để kết luận.
+
+## Kết quả cuối 25/11 14:30
+
+- Sổ: 1.799 đạt · 0 không đạt · 0 bị chặn · 59 không áp dụng · 468 chưa chạy (tổng 2.326). 62/62 ca chạy lại ĐẠT; E01-F06-T01 → Không áp dụng. Còn lại để lên chạy thật: các sửa giao diện `466245762`, `4b3655cc3` chưa lên .99; 39 ca cần sửa sổ tay; quyết m12.230–224.

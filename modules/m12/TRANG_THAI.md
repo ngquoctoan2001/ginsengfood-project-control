@@ -2,18 +2,18 @@
 
 Mốc 25/11 13:4x (T4). Phiên m12 `M1-2`. Chi tiết lịch sử: `nhat-ky/2026-11-24.md`, `nhat-ky/2026-11-25.md`; quyết định `QUYET_DINH.md` D-m12-130…137.
 
-- **ops-core:** `origin` = `gitlab` = `a0ccc740e`; `main` cục bộ `e98aa9458` hơn 3 commit CHƯA push (`69a901434` công cụ lab UAT-63; `f6b2b5399` bộ chạy nghiệm thu M3 cục bộ có S08–S14; `e98aa9458` dời ghim hợp đồng + ma trận truth). Dời ghim hợp đồng xong (`e98aa9458`), Governance 1128/1128. Dirty không phải của ta: 3 tệp supplier-portal; `next-env.d.ts`/`tsconfig.json`/`AGENTS.md` do `next dev` của lab (khôi phục đúng từng tệp CHỈ sau khi dừng lab).
-- **.99:** M1–M2 chạy **`a0ccc740e`** từ 25/11 10:31 (`trien-khai.sh` 18 giây, sao lưu CSDL trước, migrate "không có gì áp"; bản trước `417f15d53` = đường lui). **`ops.ginsengfood.vn` phục vụ code mới** (đã kiểm: tệp JS chỉ có ở bản mới tải được qua tên miền, không có trong ảnh cũ). API vẫn `Development`, compose `.99` vẫn bản WP16 chỉnh tay (WP17b/Production chưa bật), cờ quên mật khẩu TẮT, đăng nhập mail BẬT. **Chưa ghi phiếu thật; 19 SKU nhưng 0 kích hoạt bán, 0 mẻ, 0 giữ hàng.** Kho: `WH-20112026-000001` = nguyên liệu, `…000002` = thành phẩm (cùng tên "Kho Bình Phú", chưa có vị trí kho nào).
+- **ops-core:** `origin` = `gitlab` = `a0ccc740e`; `main` cục bộ `1472c5a5a` hơn **12 commit CHƯA push** (`69a901434` lab UAT-63; `f6b2b5399` bộ nghiệm thu M3 cục bộ; `e98aa9458` dời ghim hợp đồng `a57a11f`; `6a104b28e` giáo án/HDSD 27/11; `ec942c357` OPS-01; `397fefb24` F2/F3; `f45a5ab77` chú thích; `ae147decf` m12.211; `007cea669` WP32+S3; `710b89a01` gói chuyển Production; `c4381dcbf` vá S3 vòng 2; `1472c5a5a` sửa gói Production sau verifier). Kiểm độc lập vòng 2 xong (`ra-soat/2026-11-25-kiem-doc-lap-vong2.md`): mã đăng nhập/phân quyền 4/4 ĐẠT; gói Production CẦN SỬA 6 S2 ⇒ đã sửa (`1472c5a5a`), verifier V2 lượt 2 ĐẠT; coder `m12/prod99-fix2` đang sửa P2/P3 (không được làm mất khoá bằng chứng) + 7 ghi chú S3 (chưa commit), vá S3 vai INACTIVE xong (`c4381dcbf`). Dirty không phải của ta: 3 tệp supplier-portal; `next-env.d.ts`/`tsconfig.json` do `next dev` của lab.
+- **.99:** M1–M2 chạy **`a0ccc740e`** từ 25/11 10:31 (chưa có `466245762`, `4b3655cc3`) (`trien-khai.sh` 18 giây, sao lưu CSDL trước, migrate "không có gì áp"; bản trước `417f15d53` = đường lui). **`ops.ginsengfood.vn` phục vụ code mới** (đã kiểm: tệp JS chỉ có ở bản mới tải được qua tên miền, không có trong ảnh cũ). API vẫn `Development`, compose `.99` vẫn bản WP16 chỉnh tay (WP17b/Production chưa bật), cờ quên mật khẩu TẮT, đăng nhập mail BẬT. **Chưa ghi phiếu thật; 19 SKU nhưng 0 kích hoạt bán, 0 mẻ, 0 giữ hàng.** Kho: `WH-20112026-000001` = nguyên liệu, `…000002` = thành phẩm (cùng tên "Kho Bình Phú", chưa có vị trí kho nào).
 - **Mốc** (D-m12-088): M-c ≤ 25/11 Production · nghiệm thu + tập huấn sáng **27/11** · M-d 28/11 · chạy thật 30/11; ngoại lệ JWT hết 30/11 16:59Z. Kịp 30/11: **VÀNG**.
 - **Luật:** D-lead-063 (một checkout, khai khoá, chỉ phiên chính commit theo đường dẫn) · D-lead-064 (kiểm hai mức, lên .99 không qua CI). Push, ssh/.99, cờ production, `.env`: chỉ khi Toàn nói rõ cho đúng việc.
 
 ## Cổng Nguy hiểm (7 vùng, kiểm độc lập xong 25/11 rạng sáng)
 
-#17, P13, P10, P14, VAT P1b, WP31: ĐẠT sau sửa (F1 `fdba2a1ad`, test P10, P14 `497019c07`, test U02) — tất cả đã trong `a0ccc740e` trên remote và trên .99. **WP32 (quên mật khẩu, cờ TẮT): CẦN SỬA trước khi bật** (chiếm hộp thư ⇒ đặt lại mật khẩu R-ADMIN/R-DEVOPS; kẻ lạ khoá hộp thư 24 giờ). Tổng hợp + bảng quyết: `ra-soat/2026-11-25-cong-nguy-hiem-tong-hop-cho-toan.md`.
+#17, P13, P10, P14, VAT P1b, WP31: ĐẠT sau sửa (F1 `fdba2a1ad`, test P10, P14 `497019c07`, test U02) — tất cả đã trong `a0ccc740e` trên remote và trên .99. **WP32 (quên mật khẩu, cờ TẮT): đã sửa S1/S3 (`007cea669`), chờ verifier vòng 2 rồi mới được bật cờ.** Admin quên mật khẩu: nhờ admin khác đặt lại ở màn Người dùng. Tổng hợp + bảng quyết: `ra-soat/2026-11-25-cong-nguy-hiem-tong-hop-cho-toan.md`.
 
-## 63 ca nghiệm thu chưa đạt (Toàn lệnh 25/11; phiếu `wp/M12-UAT-63-ca.md`)
+## 63 ca nghiệm thu chưa đạt (Toàn lệnh 25/11): XONG phần chạy lại, 25/11 14:3x (phiếu `wp/M12-UAT-63-ca.md`)
 
-Sổ (2.844 dòng, 13:4x): **1.789 đạt · 3 không đạt · 8 bị chặn · 58 KAD · 468 chưa chạy** (2.326). Trong 63 ca: **52 ĐẠT** (9 lỗi phần mềm sửa `4226499b9`/`85d56310f`/`a0ccc740e` + chạy lại trên lab bản mới; vòng tester t1…t10 do các phiên có trình duyệt ghi; mình đếm theo sổ, chưa rà bằng chứng từng ca của t6…t10). **Còn 11:** C04-F03-T02 và C05-F03-T02 (KĐ: lõi nghiệp vụ đúng nhưng thông điệp chặn bị giấu/ca dựng bằng SQL lab), C02-F03-T01, E08-F04-T05, O07-F06-T99/T100 (cần lab 2 + app xưởng), C02-F05-T90, C02-F07-T90, H05-F04-T02, G02-F02-T04 phần PRINTER_DEFERRED (cần API lab 2 khởi động lại với `ReleaseScope__Profile`), E01-F06-T01 (in lệnh SX, hoãn ⇒ ghi Không áp dụng khi chốt). Phiên m12 này KHÔNG có trình duyệt (built-in không còn, Chrome chưa kết nối): các ca còn lại do phiên có trình duyệt chạy. Lab còn chạy (API 5200/5202, admin 3200/3202, app xưởng 3201, bộ thu 5299); dừng: `lab.ps1`/`lab2.ps1 -Action all-stop -ArtifactsName UAT63` + dừng bộ thu + khôi phục `next-env.d.ts`.
+Sổ nghiệm thu 2.326 bước: **1.799 đạt · 0 không đạt · 0 bị chặn · 59 không áp dụng · 468 chưa chạy** (đầu ngày 1.737 · 10 · 53 · 58 · 468). 62 ca ĐẠT trên lab bản `a0ccc740e`, E01-F06-T01 (in lệnh SX) chuyển Không áp dụng (D-m12-002/006, tiền lệ D-m12-103). Lỗi thật đã sửa + commit: QR/trang công khai `4226499b9`, phiếu cấp đông/sấy `85d56310f`, Gán tôi + lý do QC `a0ccc740e`, liên kết MRP `466245762`, câu chặn rõ lý do `4b3655cc3` (+ test thu hồi `2f763f04c`). 39 ca gắn `catalog_correction_pending` (sửa sổ tay, không đổi code). Chi tiết + quyết m12.230–224: `ra-soat/2026-11-25-63-ca-ket-qua.md`. Lab đã dừng, tệp `next-env.d.ts` khôi phục, build lab xoá.
 
 ## Nối M12 ↔ M3 (Sheet 67 việc: ~30 hoàn thành; chi tiết `ra-soat/2026-11-25-noi-m3-ke-hoach-chot.md`)
 
@@ -28,6 +28,10 @@ WP17b: OPS-01 kho bằng chứng (chờ m12.207), hồ sơ đóng ngoại lệ J
 
 ## Cần Toàn quyết / làm tay
 
+- **m12.237 (mới):** cho chạy **P0 chỉ đọc** của gói Production trên `.99` TRƯỚC 27/11 (một lệnh ssh đọc, không ghi): cho biết `.env` có khoá mã hoá bằng chứng chưa, kho bằng chứng có bao nhiêu tệp rõ/mã hoá, ma trận ký 3 phiếu nhập kho, phiên bản Compose. Cần để biết bằng chứng tải ở buổi 27/11 có sang Production 28/11 được không. Mình đề xuất CÓ.
+- **m12.238 (mới):** đưa ảnh mới (mọi code từ F1 đến vá S3) lên `.99` ở chế độ Development sớm sáng 26/11 (dựng 5 ảnh từ đúng commit, `trien-khai.sh`, có đường lui `417f15d53`→`a0ccc740e`) để nhập dữ liệu nền và buổi 27/11 chạy trên đúng mã đã kiểm; chuyển Production để 28/11. Cần bạn nói rõ push + lên `.99`; mình đề xuất CÓ (sau khi `prod99-fix2` xong).
+- **m12.236 (mới, verifier vòng 2):** quản trị (R-ADMIN/R-DEVOPS/ADMIN_FULL) vẫn đăng nhập được bằng mã mail công ty; chiếm hộp thư của quản trị ⇒ phiên quản trị. A (đề xuất): chấp nhận + ghi "hộp thư công ty là yếu tố đăng nhập của quản trị" (mail do IT quản, bạn đang dùng). B: chặn LOGIN bằng mã mail cho quản trị, quản trị chỉ vào bằng mật khẩu. Chỉ cần trả lời trước khi BẬT cờ quên mật khẩu; đăng nhập mail đã BẬT sẵn trên `.99`.
+
 - **m12.223 (đã sửa):** KHÔNG ngừng kho nào (D-m12-137). Chờ Toàn nói tên mới để đổi tên hiển thị hai kho (màn Kho › Sửa; gợi ý "Kho nguyên liệu Bình Phú"/"Kho thành phẩm Bình Phú"); thêm 1 vị trí mỗi kho. **Đính chính Phúc một dòng** (kho còn lại là kho nguyên liệu, không ngừng).
 - **Cổng Nguy hiểm m12.208 · 210–217** (ô ký phiếu nhập kho, admin tạo user R-BOD, loại SKU, tên nhóm, đặt lại mật khẩu/gỡ vai, WP32): đề xuất A trừ 208, 210, 216, 217 (B), ở mục 4 của tổng hợp cổng.
 - **m12.207** OPS-01 kho bằng chứng (A nới điều kiện "quét sạch" – đề xuất) · **m12.204** hàng thành phẩm làm trước 30/11 có bán qua M3 không (mẻ 27/11 thật ⇒ nhiều khả năng có) · m12.109/115/116 (WP12g còn lại) · GitLab token cho lịch CI đêm · xác nhận khoá JWT mới.
@@ -35,7 +39,6 @@ WP17b: OPS-01 kho bằng chứng (chờ m12.207), hồ sơ đóng ngoại lệ J
 
 ## Kế tiếp
 
-1. Đọc diff + commit phần dời ghim của `m12/pin-hd` khi xong; cập nhật Sheet NM3-33/M12-049.
-2. Chạy lại Governance đủ sau khi ghim xong; push khi Toàn ra lệnh (2 commit + phần ghim).
-3. Sửa WP32 (chặn đặt lại mật khẩu cho tài khoản quản trị, mở khoá hộp thư) sau khi Toàn duyệt bảng cổng.
+1. Nhận báo cáo 2 verifier vòng 2: sửa phát hiện S1/S2 (coder mới), chạy lại verifier cho đúng phần sửa.
+2. Push và lên `.99` (Production) chỉ khi Toàn ra lệnh đúng việc; gói `deploy/m12/chuyen-production-99/` cần Toàn duyệt SHA + 2 băm + khoá JWT mới ≠ khoá lịch sử.
 4. Chuẩn bị 27/11: kịch bản, tập vai, danh sách chuẩn bị; sau buổi: NM3-45b trên .99 với mẻ thật.
