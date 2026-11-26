@@ -14,6 +14,12 @@ Thay `2026-11-18-chuyen-tai-khoan.md`. Toàn chuyển sang tài khoản Claude k
 | m7 | `local_76a91745-5a47-4234-8622-070752fa38f6` | điều khiển phiên trên .63 |
 | m5 / m6 / m9 | `local_93f172da-edaa-4fc7-b126-84345baf00d9` / `local_a2155b5d-2835-4a00-b8cb-2833e08aeefe` / `local_ccda712c-8db1-4b7d-acae-d12699463217` | im từ 18/11, giám sát |
 
+**Cập nhật 26/11 (đọc `ListAgents`, đúng hơn bảng trên):** phiên đang sống thật là các phiên Toàn chạy bằng Claude CLI, gửi tin theo **tên**, không theo id `local_…`:
+`M1-2 [3705b2]` (CLI, đang chạy; đây chính là phiên m12 làm việc từ 31/10, hội thoại `6b4be261-c086-4b8d-b8a0-d709823e1a2e`, nhật ký đầy đủ
+`C:\Users\Administrator\.claude\projects\C--Projects-Project-Control\6b4be261-c086-4b8d-b8a0-d709823e1a2e.jsonl`, 85 MB) · `M3-4 [c7c4a4]` (m34) · `M8 [865c36]` (m8) ·
+`m12 · M1–M2 vận hành + rà release [0960f3]` (phiên app, mở 26/11, rỗi). Các id `local_…` ở bảng trên là phiên app cũ, im từ 21/11 (m12 `cf1de578` failed vì hết giới hạn, bản fork đã lưu trữ).
+Khối tin ở mục 3 cho "m12" gửi tới `M1-2` (CLI), không gửi tới `cf1de578`. Phiên CLI không hiện trong danh sách phiên của app (`list_sessions`) nhưng `ListAgents` thấy và `SendMessage` tới được.
+
 ## 1. Trạng thái chung
 
 - **Luật làm việc mới (21/11):** D-lead-063: không worktree/bản sao/clone, mọi phiên và agent sửa thẳng checkout chính, giữ nhau bằng `tools/khoa_tep.py`

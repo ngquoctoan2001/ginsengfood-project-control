@@ -30,9 +30,9 @@ Mốc: **26/11/2026 04:2x** (đồng hồ máy) · phiên m8 · Toàn giao 25/11
 
 ## CẦN TOÀN (sáng mai đọc, chốt) — chi tiết [KE_HOACH §6](KE_HOACH.md)
 
-- **m8.130 (quan trọng):** MVP = nghe thử + duyệt cụm + kích hoạt hồ sơ, hay làm hẳn đổi giọng/tốc độ thật (cần render lại bank, sau 30/11)? Mặc định A.
-- **m8.141:** phần Module 3 (G-08 BE, G-09 FE, T-02) cần phiên m34: mở phiên m34 hay cho m8 làm trong repo bán hàng. Phiếu sẵn [wp/giong-m34-be-fe.md](wp/giong-m34-be-fe.md). Mặc định mở phiên m34.
-- **m8.145:** báo động "chưa đặt trần" (A bắt buộc có hàng trần / B nối chỉ số worker vào Prometheus / C chỉ checklist). **m8.146:** kích hoạt hồ sơ khi kho cụm trống được không. **m8.147:** thêm "trần 120 giây là cấu hình bắt buộc" vào checklist go-live.
+- ~~m8.130~~ **ĐÃ CHỐT B (D-m8-161, 26/11 07:3x):** làm hiệu lực thật ngay đổi giọng/tốc độ (G-11b: bank mới + co giãn tốc độ); đang thiết kế ([wp/giong-thuc-te-thiet-ke.md](wp/giong-thuc-te-thiet-ke.md) khi xong). Pháp lý giọng (X-03) chỉ chặn bật production.
+- ~~m8.141~~ **ĐÃ CHỐT B (D-m8-161):** Toàn đã mở phiên m34; phiên m34 làm G-08/G-09/T-02 theo [wp/giong-m34-be-fe.md](wp/giong-m34-be-fe.md); m8 đã nhắn brief + hash draft.50. m34 sẽ hỏi Tài giữ số migration V410.
+- ~~m8.145–147~~ **ĐÃ CHỐT (D-m8-161):** 145 = C (chỉ checklist go-live, chưa làm báo động "chưa đặt trần"), 146 = A (kích hoạt hồ sơ khi kho cụm trống vẫn được), 147 = ghi "trần 120 giây là cấu hình bắt buộc 1–300" vào checklist go-live.
 - **m8.140** N3 (hai task không `recall_of_task_id`); **m8.142–144** CDR; **m8.138/139** xoay chứng thư ARI; **m8.123–126** giờ bảo trì .64 (mặc định 28/11 22:30), ufw RTP, khoá CA ARI.
 - Việc ngoài: X-01 MobiFone gọi thử, X-03 pháp lý giọng (VieNeu), X-04 người trực/cảnh báo, X-05 custody khoá, X-08 token GitLab, X-09 sudo .64; B-01…B-06 (push + quét trước push, lên .99 **chỉ Phúc**, 01D gọi thật nội bộ, đo tải, bật production).
 - Bật nghe thử trên .99 cần `Ivr__Voice__Preview__Synthesis=ON` cho API và worker + `Phrases:Enabled` + `Ivr:Speech:Phrases:MediaDirectory` ở API; chỉ khi Toàn nói.
