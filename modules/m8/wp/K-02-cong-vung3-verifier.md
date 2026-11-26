@@ -1,0 +1,13 @@
+# K-02 / K-01 — Cổng Nguy hiểm vùng 3 (giọng đọc, nghe thử, kho cụm, trần cuộc/ngày) và vùng 2 (quay số thật, cước)
+
+Trạng thái: ĐANG GIAO 26/11 (cây đứng yên: HEAD `673904dc`, W-0576 + W-0577 đã commit) · Mức: Nguy hiểm · Người chấm: verifier độc lập, **một vòng**, ≤ 3 giờ
+Khoá: `@dot-bien` (mượn cây để thử đột biến; hoàn lại từng đột biến, `cmp`/băm khớp) + `@bo-kiem-du` khi chạy test PostgreSQL. Chỉ chạy khi `git diff HEAD -- <vùng>` rỗng và không ai còn khoá tệp vùng đó.
+
+## Brief cho verifier
+1. Đối tượng: `ginsengfood-ivr` `main`, ghi `git rev-parse HEAD` đầu lượt. Vùng 3: commit `f8906674` (W-0565), `f86eaa52` (W-0566), `0652c742` (W-0567), `90518ccd` (W-0568), `cc912f55` (W-0569), `38db107c` (W-0570), `a8612283` (W-0573), `2fc21962` (W-0575) + `8da39af2` (đóng 26 stub, bảng lối vào), `25f76cac` (W-0576: hợp đồng draft.50 hash `a8852a7f…bcb6`), `0b42b9f4` (CT-VOICE-OAS-09), `673904dc` (W-0577: ma trận 87 thao tác). Mốc cũ để so vùng 3: `f375bfaf` (origin/main). Vùng 2: W-0550, W-0551 (đã trong `main`) + guard đã sửa ở W-0570 (`DailyDialBudget.cs`, `CEILING_UNSET`).
+2. Điều phải đúng + chỗ đọc + đột biến gợi ý: `modules/m8/cong-nguy-hiem.md` mục "Vùng 3" (17 hàng) và "Vùng 2"; mỗi gói có bảng "cổng Nguy hiểm" ở `ginsengfood-ivr/docs/evidence/W-05xx/README.md` (§6). Đọc đúng các bảng đó, KHÔNG đọc kết luận của người viết như bằng chứng.
+3. Việc: (a) đọc diff từng gói theo bảng (chỗ đọc), tìm điều sai/thiếu; (b) chạy lại test lọc của từng gói (không bộ đủ); (c) thử đột biến: **vùng 3 ≤ 12, vùng 2 ≤ 4** (chọn điều nặng nhất: không đổi giọng khi bank lệch; nghe thử không phát cho khách; không lộ lời chào; ack REJECT cụm đã dùng; trần cuộc/ngày fail-closed `CEILING_UNSET`, hạ trần ≤ mức đã dùng cần ack; audit cùng giao dịch không chữ; readiness 100% mới kích hoạt; ba vùng ba giọng khác nhau; chỉ mục duy nhất một sự cố tạm dừng; quay số chỉ di động VN + trần 120 s); mỗi đột biến: đổi một dòng, chạy test lọc đúng gói, ghi test nào đỏ, hoàn lại từ bản sao tệp đã chép trước khi đổi (không dùng `git checkout`/`restore`, bị cấm), kiểm `cmp`/SHA-256 khớp; (d) soát PII/chữ cụm trong log, audit, CSV, báo cáo; (e) soát đường dẫn tới máy thật (không ssh, không gọi mạng).
+4. Phán quyết: ĐẠT / CẦN SỬA / CHẶN cho từng vùng (3 và 2), mỗi phát hiện kèm mức (nặng/trung bình/nhẹ), tệp:dòng, test đỏ/thiếu. Không sửa mã sản phẩm, không commit. Báo cáo ≤ 60 dòng tại `modules/m8/ra-soat/2026-11-26-cong-vung3-ket-qua.md` (repo công khai: không số điện thoại, không bí mật).
+
+## Phiên chính sau khi nhận kết quả
+Sửa điều nặng/trung bình (gói nhỏ, test đỏ-trước), đọc lại một vòng điều đã sửa, ghi bằng chứng vào `cong-nguy-hiem.md` (như vùng 1), cập nhật KE_HOACH K-01/K-02.

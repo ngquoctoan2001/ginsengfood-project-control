@@ -41,9 +41,52 @@ Gói: W-0552 (bộ máy luật), W-0553 (dữ liệu luật), W-0554 (lịch g�
 
 **W-0558 chưa có bằng chứng nào của cổng** (gói Thường: coder + phiên chính đọc diff và chạy lại: build 0/0, unit mới 39/39, tích hợp mới 40/40 trong đó 19 trên PostgreSQL, contract 24/24; không đột biến, không verifier). Bảng đầy đủ 9 hàng của coder: `C:\Projects\ginsengfood-ivr\docs\evidence\W-0558\README.md` mục 5. Đã có bằng chứng: verifier R3 vòng 1 (W-0554: 36 đột biến; W-0556: 46 đột biến, 43 đỏ), vòng 2 đọc nốt W-0556 ĐẠT (16 đột biến, 14 đỏ + 2 tương đương). Chưa có: bộ đủ (CI đêm), đua trên 8 claim, hiệu năng VM thật, chi phí câu claim khi nhiều job đến hạn trong khung (ngoại suy), mức cô lập `READ COMMITTED` chưa có test ghim.
 
-## Vùng 2 — Quay số thật, cước, đích gọi (đã có, chưa vào cổng)
+## Vùng 2 — Quay số thật, cước, đích gọi (qua cổng 26/11: ĐẠT chờ bộ đủ)
 
 Gói: W-0550 (chỉ quay di động VN, trần 120 s/cuộc, trần lượt/giây theo ngày và `QUEUE_PAUSE`), W-0551 (đo cước). Đường dẫn: bộ lọc đích, `DispatchGate`, `AsteriskSchedulerDispatchGateway`. Đột biến gợi ý: bỏ kiểm đầu số `+84[35789]`, bỏ trần 120 s, bỏ `ADMIN_QUEUE_PAUSE` khỏi claim.
+
+**Cổng chạy 26/11** (verifier độc lập, một vòng, HEAD `673904dc`, báo cáo [ra-soat/2026-11-26-cong-vung3-ket-qua.md](ra-soat/2026-11-26-cong-vung3-ket-qua.md)): **ĐẠT, chờ bộ đủ**, 0 nặng, 0 trung bình; 4 đột biến đều đỏ (đầu số di động thêm số 2; bỏ `Enabled` bắt buộc ở nhánh thật; `CEILING_UNSET` cho phép quay; lớp bọc kho lịch không dừng khi không được quay). Guard đã sửa ở W-0570 (đọc trần từ bảng, chưa có trần thì không quay) nằm trong lượt này. Nợ nhẹ N5, N6 ở mục Vùng 3.
+
+## Vùng 3 — Giọng đọc, nghe thử, kho cụm, trần cuộc/ngày, tổng đài .64 (KE_HOACH G/T/H; thiết kế `wp/giong-doc-thiet-ke.md` §J)
+
+Gói: W-0564 (hợp đồng draft.50 + khung 501, `1ef3b3c7`), W-0565 (dữ liệu), W-0566 (đọc giọng từ kho), W-0567 (API hồ sơ giọng), W-0568 (nghe thử), W-0569 (API kho cụm), W-0570 (trần cuộc/ngày, sửa `DailyDialBudget.cs` — vùng 2 chưa qua cổng nên cùng một verifier đọc cả hai), W-0572 (CDR tối giản .64). Chạy cổng K-02 sau khi các gói xong; một verifier, một vòng, ≤ 5 đột biến dưới `@dot-bien`.
+
+| Điều phải đúng | Chỗ đọc (dự kiến) | Đột biến gợi ý (≤ 3) |
+| --- | --- | --- |
+| Production không tổng hợp lúc gọi; nghe thử/đọc kho không thêm đường tổng hợp | `SpeechServiceCollectionExtensions.cs:514,525`, `SpeechSynthesisService.cs:75-90`; mã API không phụ thuộc `ISpeechPhraseSynthesizer` (host vẫn đăng ký nó khi `Phrases:Enabled`) | đăng ký synthesizer ở API; bỏ `RuntimeSynthesisForbidden`; nghe thử gọi `ITtsProvider` |
+| ACTIVE chỉ thuộc giọng đã chốt, ba vùng ba giọng khác nhau | `VoiceProfileRules`, `ux_…one_active_per_voice`, store `ActivateAsync` | bỏ kiểm tập giọng; bỏ chỉ mục `per_voice`; bỏ kiểm `distinct` |
+| Kích hoạt chỉ khi `readiness` 100% (voice, rate, bank, phrases) | `VoiceReadiness.Evaluate`, `ActivateAsync` | `ready >= needed` → `>= 0`; bỏ kiểm `bank.covered`; không đếm REJECTED là thiếu |
+| Rollback phục hồi đúng bộ ba bản trước (hàng mới), RETIRED bản hiện hành, kiểm lại readiness | `RollbackAsync` | sao chép bản hiện hành; bỏ kiểm readiness; không RETIRED bản hiện hành |
+| `voice_id` ghi theo cuộc là giọng thật đã phát; hồ sơ lệch bank không đổi giọng | `DispatchedVoice`, `DbVoiceProfileSource` (nhánh bỏ hàng lệch bank) | nhánh lệch bank trả hàng DB; ghi `voice_id` từ cấu hình |
+| Nghe thử không bao giờ phát cho khách | bảng riêng `ivr_voice_previews`, `VoicePreviewIsolationTests`, CHECK `clip_id` | ghi WAV vào `MediaDirectory`; ghi preview vào `ivr_speech_phrase_clips`; trả `sound:` |
+| Chữ nghe thử chỉ từ câu cố định/cụm địa bàn có sẵn, qua guard PII | `VoicePreviewCatalog`, `PreviewRequestValidator`, `SpokenTextGuard` | nhận `text` tự do; bỏ `SpokenTextGuard`; cho `phrase_key` là lời chào |
+| Quyền không gán sẵn; thiếu quyền 403 TRƯỚC replay; mọi thay đổi có audit không chứa chữ | `CallRuleRouteMetadata` từng tuyến, `CallRuleAdminFilter.cs:59-63`, `AppendAudit` | bỏ metadata quyền ở `:activate`/`PUT cost`; audit ghi `render_text`/`area_text`; bỏ audit ở `:review` |
+| Lỗi/trống kho giọng không đổi giọng bất ngờ (giữ snapshot gần nhất) | `DbVoiceProfileSource.Refresh` | lỗi nạp → rơi về options; xoá snapshot khi lỗi; chấp nhận bộ ba trái `VoiceProfileRules` |
+| Trần tiền fail-closed: không trần > 0 ⇒ không quay (đường thật) | `PostgresDailyDialBudgetGuard.CheckAsync`, `DailyDialBudgetOptionsValidator` | `CEILING_UNSET` → `MayDial=true`; bỏ `Enabled` bắt buộc ở đường thật; hàng DB 0 thắng options |
+| Hạ/nâng trần đúng: hạ ≤ đã dùng phải `acknowledge`; hạ tạm dừng bằng đường sẵn có; nâng không tự mở hàng đợi | `CostCeilingStore.SetAsync`, guard `:238-241` | bỏ kiểm `CEILING_BELOW_USAGE`; `>=` → `>`; PUT tự resolve sự cố |
+| Audit trần cùng giao dịch với đổi số, không PII | `SetAsync` (SERIALIZABLE) | audit tách giao dịch; `reason` thô không qua guard |
+| HTTP không bao giờ trả cụm lời chào/tên khách; không cột PII mới | `SpeechPhraseAdminReader` (`WHERE phrase_kind='DELIVERY'`), CHECK `clip_id`, `DataClassification` | bỏ lọc `DELIVERY`; `GET {key}` không chặn `phrase-greeting-*`; CSV không qua guard |
+| REJECT/đọc lại cụm địa bàn đã dùng cần `acknowledge_call_impact` | `SpeechPhraseAdminApiService.Review` | bỏ kiểm ack; coi `use_count` null là 0 |
+| Migration chỉ thêm; dọn trùng sự cố tạm dừng giữ hàng cũ nhất; chỉ mục duy nhất một sự cố `ADMIN_QUEUE_PAUSE` mở | migration `W0565…`, `OpenPauseUniqueIndexTests` | bỏ `WHERE` của unique; bỏ bước dọn trùng; bỏ CHECK `clip_id` |
+| CDR .64 không ghi số điện thoại; volume bền; `verify` chặn cấu hình sai (W-0572) | `deploy/telephony-vm/config/cdr_custom.conf`, `vm_deploy.py`, `cdr_tong_hop.py` | thêm `src`/`dst` vào định dạng; bỏ volume; nới `verify` |
+| Kịch bản bảo trì .64 từ chối nguồn RTP rộng, dừng khi còn cuộc, có đường lùi (H-02) | `ra-soat/kich-ban-64-bao-tri/buoc3.sh` | nới dải; bỏ kiểm cuộc; bỏ so luật 5060 (đã thử: đỏ 24/6/2) |
+
+**Cổng chạy 26/11** (một verifier độc lập, một vòng ≈ 33 phút, HEAD `673904dc`; gói: W-0564 `1ef3b3c7`, W-0565 `f8906674`, W-0566 `f86eaa52`, W-0567 `0652c742`, W-0568 `90518ccd`, W-0569 `cc912f55`, W-0570 `38db107c`, W-0572 `b5c1824a`, W-0573 `a8612283`, W-0574 `4c078617`, W-0575 `2fc21962`, W-0576 `25f76cac`, W-0577 `673904dc`): **ĐẠT, chờ bộ đủ**, 0 nặng, 0 trung bình, 10 nhẹ; 12 đột biến vùng 3: 11 đỏ, 1 tương đương (`vm_deploy.py` bỏ nhánh `field not in CDR_FIELDS`: kiểm cột đúng thứ tự ngay sau bắt cùng ca, không phải lỗ hổng test). Số thật: unit lọc 335/335; tích hợp lọc 343/343 (PostgreSQL thật, 8 phút 27); contract 33/33; ma trận API 87 thao tác + parity + composition root 13/13; python CDR 57/57, ghim số dòng 7/7 và 24/24, kiểm độc lập nối M3 126 ca; `scan-pii.sh` PASS 14 thư mục bằng chứng; `kiem-logic.sh` H-02 226/226. Điều đã xác nhận: manifest bank khớp khoá `SpeechBankManifest` thật; migration chỉ thêm; hash draft.50 `a8852a7f…bcb6` khớp commit và khớp mã về tầng/quyền của 26 tuyến; không bí mật, chỉ số điện thoại giả trong test.
+
+**Nợ nhẹ từ cổng (đã ghi, chưa sửa; không chặn):**
+- N1 kho cụm trống ⇒ `needed=0` ⇒ kiểm phrases đạt ⇒ kích hoạt được khi chưa làm nóng cụm nào (`VoiceReadiness.cs:140`, ghim chủ ý ở `IT-VOICE-READY-04`; hậu quả: thử lại kỹ thuật, không sai giọng). Quyết ở cổng bật STORE.
+- N2 rollback bị chặn nếu bản trước thiếu cụm mới phát sinh; bản RETIRED không `:warm` được (`PostgresVoiceProfileStore.cs:310,478-485`). Lùi nhanh = `Ivr:Voice:ProfileSource=OPTIONS`; thiếu IT "rollback của rollback".
+- N3 `Resolve` gọi nhiều lần trong vòng đời một đơn; trúng lúc ảnh chụp đổi thì chờ/thử lại, không sai giọng (`DispatchedVoice` lấy đúng giọng đã dựng).
+- N4 hai bản câu đếm trần (`DailyDialBudget.cs`, `DailyDialUsageQuery.cs`) chỉ giữ giống nhờ `IT-COST-USAGE-PARITY`.
+- N5 kiểm trần rồi mới claim: nhiều worker có thể vượt tối đa N−1 lượt (nợ cũ W-0550, chưa có test đua).
+- N6 "trần 120 giây/cuộc" thực ra là cấu hình bắt buộc 1–300; 120 chỉ nằm ở mẫu `closed-profile.example.json` ⇒ thêm vào checklist go-live.
+- N7 `VoiceProfileRules.BankHolds` không đòi `Clips ≥ 1` (manifest ghim sha nên rủi ro nhỏ).
+- N8 `ISpeechPhraseSynthesizer` vẫn được đăng ký ở host API đầy đủ khi `Phrases:Enabled` (có từ trước), nhưng không type nào của `Ivr.Api` dùng nó; câu "API không có ISpeechPhraseSynthesizer" ở hàng 1 bảng trên là nói quá, đúng là "mã API không phụ thuộc nó" (`ISO-API`).
+- N9 `deploy/telephony-vm/cdr_giu.py` cờ `--bay-gio` (cho test) nhận giờ tuỳ ý: kèm `--ap-dung xoa-qua-han` với giờ tương lai thì xoá hết CDR đã xoay ⇒ không dùng cờ này trên .64.
+- N10 migration W0565: dọn trùng sự cố tạm dừng không để lại audit cho hàng bị RESOLVED ⇒ ghi tay vào nhật ký lên .99; chữ cũ "answering 501" ở `IvrAdminEndpoints.cs:93`.
+- Ca chưa có test: đua hai vùng cùng giọng; đổi manifest ghim sau kích hoạt (`/voice-profiles/effective` vẫn nói STORE dù `Judge` gạt hồ sơ); đua nhiều worker qua trần. Công thức cước 6+1 vẫn chờ MobiFone xác nhận (nợ cũ).
+
+Kết luận này **không** là "sẵn sàng chạy thật": bộ đủ, CI, `oasdiff`, gitleaks chế độ git, document-links và mọi thứ trên .99/.98/.64 chưa chạy; kịch bản `buoc3.sh` chỉ kiểm trên host giả.
 
 ## Cách thêm vào
 

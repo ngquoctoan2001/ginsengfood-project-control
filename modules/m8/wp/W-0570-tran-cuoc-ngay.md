@@ -1,0 +1,17 @@
+# W-0570 — Trần cuộc/ngày cả hệ thống: nguồn cấu hình từ DB, API đọc/ghi, guard fail-closed (KE_HOACH T-01)
+
+Trạng thái: CHƯA LÀM (chờ W-0564, W-0565) · Mức: Nguy hiểm (tiền cước; sửa guard vùng 2 chưa qua cổng) · Mốc: 27/11
+Sheet: (cấp khi xong) · Ước lượng: 6 giờ · Khoá tệp: `m8/W-0570`
+
+## Brief
+1. Quy tắc chung [giong-doc-quy-tac-agent.md](giong-doc-quy-tac-agent.md); thiết kế [giong-doc-thiet-ke.md](giong-doc-thiet-ke.md) §0 #6, §B (`ivr_cost_ceilings`), §E tuyến 23–25, §G (toàn bộ), §J hàng 10–12.
+2. Mục tiêu: (a) `ICostCeilingSource` (`src/Ivr.Infrastructure/Cost/`): hàng DB > options > không có; đệm 5 giây theo `TimeProvider`; lỗi đọc dùng bản đệm tối đa 60 giây rồi KHÔNG quay (ném như câu đếm của guard); (b) `PostgresDailyDialBudgetGuard.CheckAsync` (`DailyDialBudget.cs:210-259`) thay `budget.Max*` ở `:239-240` và `:348-350` bằng giá trị hiệu lực; constructor thêm tham số tuỳ chọn `ICostCeilingSource? ceilings = null` (không sửa `SchedulerCapacity.cs:1085`, không sửa `DailyBudgetSchedulerStore.cs:31-45`); (c) nới `DailyDialBudgetOptionsValidator` (bỏ đòi số > 0 ở khởi động `:71-82`, GIỮ đòi `Enabled` ở đường quay thật `:64-69`); fail-closed mới: `Enabled` mà trần hiệu lực ≤ 0 (không hàng, không options) ⇒ guard `MayDial=false`, `ExceededLimit="CEILING_UNSET"`, `PausedQueue=false`, log (EventId dải 2550–2559) + đồng hồ `ivr_daily_dial_budget_unset` — KHÔNG tạo sự cố tạm dừng; test đỏ trước: "đường thật, không hàng, options 0 ⇒ không claim"; (d) API `GET /cost-ceilings[/{scope}]` (`enabled`, `utc_offset_minutes`, hiệu lực + `origin`, `row_version`, `usage:{local_day, dials, answered_seconds}` cùng câu SQL của guard `DailyDialBudget.cs:221-236` qua `Cost/DailyDialUsageQuery` + `IT-COST-USAGE-PARITY`, `state` OK|EXCEEDED|UNSET|DISABLED, `pause:{open, reason, opened_at}`; chưa có hàng ⇒ `row_version:"0"`) và `PUT /cost-ceilings/GLOBAL` (Danger + `IVR_COST_EDIT` + `X-Actor-Id` + `X-Action-Reason` + `If-Match` (`"0"` để tạo; tạo trùng ⇒ 409) + `{max_dials_per_day, max_answered_seconds_per_day, acknowledge_below_usage?, reason?}`; chặn 1–1.000.000; một giao dịch SERIALIZABLE ghi hàng + `ivr_audit_log` `ADMIN_COST_CEILING_SET`, mẫu `DailyDialBudget.cs:314-354`; hạ trần ≤ mức đã dùng ⇒ 409 `CEILING_BELOW_USAGE` trừ `acknowledge_below_usage=true`; không `resume_if_below`, không tự `QUEUE_PAUSE` từ PUT; hạ trần ⇒ lượt claim kế tự tạm dừng bằng đường sẵn có).
+3. Phạm vi ghi: `src/Ivr.Infrastructure/Cost/**`, `src/Ivr.Api/Admin/Cost/**`, `src/Ivr.Infrastructure/Telephony/DailyDialBudget.cs` (**khoá riêng**, chỉ gói này), test `tests/Ivr.UnitTests/Cost/CostCeilingSourceTests` (~12), `tests/Ivr.IntegrationTests/Cost/` (`CostCeilingAdminApiTests` ~16, `DailyDialBudgetCeilingTests` ~14; chạy lại và sửa nhỏ `DailyDialBudgetTests`/`DailyDialBudgetPersistenceTests` chỉ khi validator nới làm chúng đổi; sửa stub tuyến 23–25 trong `VoiceAdminStubTests`), `docs/evidence/W-0570/README.md`, `docs/operations/cost-ceilings-admin.md`. Cấm: migration, YAML, `Voice/**`, `DailyBudgetSchedulerStore.cs`, `SchedulerCapacity.cs`.
+4. Đột biến tự thử: `CEILING_UNSET` ⇒ `MayDial=true`; bỏ `Enabled` bắt buộc ở đường thật; hàng DB 0 thắng options; bỏ kiểm `CEILING_BELOW_USAGE`; `>=`→`>` ở so sánh trần; PUT tự resolve sự cố; audit tách giao dịch; `reason` thô không qua guard.
+5. Ghi nhớ: số trần cụ thể KHÔNG đặt trong mã hay mẫu cấu hình (Toàn nhập trên UI, D-m8-138).
+
+## Diễn biến
+- 25/11 22:4x phiên chính: tạo phiếu.
+
+## Bước kế tiếp chính xác
+Giao agent coder khi W-0564 + W-0565 đã commit; đọc diff kỹ vì chạm guard vùng 2.

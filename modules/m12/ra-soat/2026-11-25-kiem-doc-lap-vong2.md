@@ -48,3 +48,14 @@ Sáu lỗi S2 (F1–F6) sửa đúng, mỗi lỗi có ca bắt riêng; S3 F7–F
 Ghi chú S3 mới: R2-1 nhật ký `nohup` mặc định quyền 644 ghi dấu vết mật khẩu CSDL; R2-2 quét kho của P0 lệch quét khởi động API (tệp `GFEN2` ngắn, tệp uid 10001 không đọc được, tệp `*.uploading` có phong bì hợp lệ, liên kết mềm); R2-3 ba chỗ lệch kiểm ma trận ký; **R2-4 (sửa trước khi chạy thật): P2 sinh khoá mã hoá bằng chứng MỚI khi tệp khoá mất dù kho đã có bằng chứng mã hoá** (phiên chính mở rộng: P2 cũng không nhập khoá này từ `.env` nếu chế độ Development đang giữ nó, mà P3 gỡ khỏi `.env` ⇒ mất khoá cũ, bằng chứng tải ở buổi 27/11 không đọc được vĩnh viễn); R2-5 SIGPIPE khi đóng ssh không tty; R2-6 `LC_ALL=C` cho `daily-backup.py`; R2-7 biến thừa.
 
 **Xử lý:** coder `m12/prod99-fix2` sửa R2-4 mở rộng (nhập từ `.env`, từ chối khi mất khoá mà kho có bằng chứng mã hoá, P3 chỉ gỡ khi tệp khoá đã khớp, P0 báo trước) + R2-1…R2-7 + hai đột biến sống. Sau đó phiên chính chạy lại, gọi verifier chấm lại riêng phần P2/P3.
+
+## V2 lượt 3: P2/P3 khoá bằng chứng, commit `7c7d07234` — ĐẠT CÓ ĐIỀU KIỆN
+
+Kiểm trên chính commit đã push và đã dùng để chạy P0 thật trên `.99`. P0 chỉ đọc (xác nhận bằng chạy thật trong thế giới giả rồi so cây: ngoài `tam-sql/` không tệp/thư mục nào đổi; lệnh docker chỉ đọc + 2 `docker run --rm` gắn `:ro`). `evi_decide`/P2/P3: không có đường thay/ghi đè/gỡ khoá đang dùng hay làm lộ giá trị; thử `.env` nháy kép/đơn/`export`/CRLF/trùng dòng/mẫu giữ chỗ/43 ký tự không đệm/31–33 byte/`=` cuối, `--xoay`, `--xoay-tru-bang-chung`, `--ghi-lai-db`, P2 chết giữa chừng, P3 trước P2, lùi rồi P2 lại: đều an toàn. Hằng số quét khớp mã .NET (GFEN2 ≥ 45, GFENC ≥ 34; đính chính: lượt 2 ghi nhầm 37). Bộ bash Linux 725/0/1 ở hai locale; 20 đột biến mới: 17 bắt, 3 không ai bắt (base64 thiếu đệm; P0 tạo thư mục rỗng; cờ `:ro` của `fp_existing`).
+
+| # | Mức | Phát hiện | Xử lý |
+|---|---|---|---|
+| R3-1 | S2 có điều kiện | `evi_decide` chỉ biết `.env` và tệp khoá; nếu khoá Development ở nguồn khác (pilot env, `environment:` trong compose tay) mà kho trống lúc P2 thì P2 sinh khoá mới và bằng chứng tải sau P2 bằng khoá cũ mất | **Điều kiện không xảy ra trên `.99`** (phiên chính đọc 25/11 21:2x: API Dev có 0 biến `EvidenceStorage__EncryptionKey` ở container/`.env`/pilot env). Ghi nợ: P0 ghi tên biến trong môi trường container; P6 dừng nếu lượt này P2 sinh khoá mà kho giờ có đối tượng mã hoá |
+| R3-2…R3-5 | S3 | tệp khoá 0 byte/sai dạng; thư mục secrets quyền 000; quét uid 10001 mù khi thư mục gốc không vào được; 3 đột biến sống | Ghi nợ |
+
+CHƯA CHẠY: P1–P7 trên `.99`; ENOSPC thật; SIGPIPE; Pester đọc kết quả Git Bash.
