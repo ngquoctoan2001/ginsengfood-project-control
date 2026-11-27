@@ -1,11 +1,11 @@
 # Trạng thái: m12
 
-Mở phiên 27/11/2026, giờ Bangkok. Phiên M1–M2 Operational Core. Quyết định tới D-m12-144. Lịch sử ở [nhật ký 26/11](nhat-ky/2026-11-26.md) và [nhật ký 27/11](nhat-ky/2026-11-27.md).
+Mở phiên 27/11/2026, giờ Bangkok. Phiên M1–M2 Operational Core. Quyết định tới D-m12-146. Lịch sử ở [nhật ký 26/11](nhat-ky/2026-11-26.md) và [nhật ký 27/11](nhat-ky/2026-11-27.md).
 
 - **Git · 15:02:** ops-core `main` = `origin/main` = `gitlab/main` = `4bb29f8dff4ca576c756667bb9d1e003870af476`. Thêm 15 commit từ `d4163331c`: kho, dashboard, audit, PWA, đồng bộ sổ tay/catalog/Excel. `c355f22cd` sửa nghiệp vụ PWA, `8d85cd1da` sửa chuyển trang khi gặp 403 (Vitest lọc 2 Đạt), `4bb29f8df` đồng bộ 2.326 ca/626 chức năng theo sổ theo dõi. Diff commit không đổi `deploy/` và đường dẫn EF migrations. Chưa xác minh pipeline GitLab đúng SHA mới.
 - **Checkout chung:** 4 worktree phụ, index trống. 5 tệp tracked đang dở: ba tệp màn nhà cung cấp admin-web, `apps/public-trace/app/manifest.ts` và sổ theo dõi Toàn. Hai mục chưa theo dõi gồm cấu hình công cụ local và đường dẫn icon PWA. Khoá `@bo-kiem-du` vẫn thuộc `m12/uat-codex`. Dọn máy đã dừng sáu tiến trình mồ côi, gồm API lab :5200 và web lab :3204. Container PostgreSQL lab và local còn chạy.
-- **.99 theo lần kiểm đã ghi:** `d4163331c` Development từ 26/11 09:16. Sao lưu trước nâng Đạt, health và trang HTTP 200, M3 availability 19/19 HTTP 200. Lần đó chưa kiểm đăng nhập thật. Đường lui Development `7c7d07234`. Lượt 15:21 đã đọc giao diện `.99`, chưa xác minh lại SHA và chế độ đang phục vụ. [Kết quả m12.243b](ra-soat/2026-11-26-chuan-bi-production-codex.md#kết-quả-m12243b-ngày-2611)
-- **Mốc:** 28/11 chuyển Production và go/no-go, 30/11 chạy thật. **VÀNG** cho 30/11 theo đánh giá gần nhất. **47%** theo thang trọng số 17/11, chưa tính lại. Mốc 15/11 đã qua, ĐỎ theo sổ. Ngoại lệ JWT hết 30/11 lúc 16:59 UTC (23:59 giờ Bangkok). [Thang sẵn sàng](SAN_SANG.md)
+- **.99 · 27/11 20:08 (D-m12-146):** `4bb29f8df` **Development** (5 ảnh `git archive`, ID khớp; sao lưu trước PASS 4.217.864 byte; không migration; PG giữ ID). Live/ready 200 (chỉ MISA_SYNC UNKNOWN), ops/pwa/trace 200/307, M3 availability 13/13 lượt 200, 0 lỗi. Chưa kiểm đăng nhập người thật. Đường lui `d4163331c` (5 ảnh còn trên máy). Sheet M12-124.
+- **Mốc:** 28/11 chuyển Production và go/no-go, 30/11 chạy thật. **VÀNG nghiêng ĐỎ** cho 30/11 (`/ke-hoach` 27/11 19:3x: mã đủ, nhưng 0 mẻ/0 tồn/0 thao tác người thật trên `.99`, biên bản trống). **48%** theo thang trọng số (17/11: 47). Mốc 15/11 đã qua, ĐỎ theo sổ. Ngoại lệ JWT hết 30/11 lúc 16:59 UTC (23:59 giờ Bangkok). [Thang sẵn sàng](SAN_SANG.md)
 - **Sheet 27/11 · 15:02:** đọc lại 123 việc. Có 61 Hoàn thành, 5 Hủy, 29 Đang làm, 11 Chờ review, 15 Chưa bắt đầu, 2 Bị chặn. Trong 57 còn mở, 28 thuộc nối M3 và 29 thuộc M12 khác theo đối chiếu ngày 27/11. Kết luận 10 hồ sơ W/X đã lưu tại phiếu rà. [Đối chiếu Sheet](ra-soat/2026-11-27-review-sheet-codex.md)
 
 ## Đang làm và việc chặn
@@ -17,6 +17,8 @@ Mở phiên 27/11/2026, giờ Bangkok. Phiên M1–M2 Operational Core. Quyết 
 - **Nợ và phụ thuộc:** WP18b khôi phục, cảnh báo và thử tải; CI đêm chờ quyền; m12.242 lịch giám sát chờ lệnh `go`; m12.204 lô cũ chờ danh sách; DIET-2 chờ chú Dũng; SEC-11 đã dời sau 30/11, còn đối chiếu thứ tự với ký NM3-99. MISA và in tem đã hoãn.
 
 ## Cần Toàn quyết / làm tay
+
+- **D-m12-145/146 (27/11):** bản chạy thật `4bb29f8df` — ĐÃ lên `.99` Development 20:08; webhook M12→M3 + 3 nợ S3 dời sau 30/11; hồ sơ đóng JWT có bản nháp + script tự kiểm ĐẠT ở `_wt/_luu/m12-jwt-dong` (điền sau P2; cùng commit phải sửa `.gitlab-ci.yml` 2 dòng ghim). **Cần Toàn:** giờ P0–P7 sáng 28/11 (Phúc lên BP chiều 28/11); chạy job JWT pipeline tay trên `4bb29f8df` trước P2 để chắc gitleaks vẫn 3 phát hiện (đề xuất có). [SAN_SANG](SAN_SANG.md)
 
 - **m12.244:** Toàn duyệt kế hoạch sáng 28/11, candidate `d4163331c` và P0 chỉ đọc sau xác nhận mẻ. Chưa có giờ bắt đầu cụ thể. Hai băm compose/Caddyfile đã đối chiếu lại từ blob Git. P1–P7 chờ P0 đạt, đủ điều kiện tay và lệnh riêng.
 - **m12.247:** Toàn giao Codex kiểm FRM-22, nhập kho và đối chiếu S02/S03 ở chế độ quan sát bằng ChatGPT Extension trên Chrome. Đã vào được `ops.ginsengfood.vn` sau khi Toàn cấp quyền và đăng nhập. Kiểm 15:21: danh sách nhập kho không có phiếu và 19/19 SKU hiển thị Chưa có tồn, 0 mẻ. Dòng 7 chờ chứng từ FRM-22, dòng 9 chờ tồn bán được. S02/S03 và P0 chưa chạy.

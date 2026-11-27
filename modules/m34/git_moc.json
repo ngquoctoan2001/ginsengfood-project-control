@@ -1,5 +1,5 @@
 {
- "_luc": "2026-11-27 16:31",
+ "_luc": "2026-11-27 18:25",
  "ginsengfood-business-platform": {
   "gitlab/PhucApu": "662642874614dff9b80a8d67557687d0c7252df9",
   "gitlab/chudung/m3-14112026-chon-hop-phi-ship-giam-2-phan-tram": "5e9c2e002fbca232914071f39c6b4a4744067440",
@@ -33,7 +33,7 @@
   "gitlab/chudung/m9-15112026-voucher-co-3388-an-so-tai-chinh-theo-vai": "9f67acda1196dad17295c64ecc33fd5434103fa6",
   "gitlab/chudung/m9-16112026-trang-thai-don-cho-cham-soc-khach-doi-so": "10e6461ee438748f03f0a5989fbdf8feb00e0d86",
   "gitlab/chudung/m9-17112026-brief-ket-noi-misa-cho-tai": "a3458abd55dc245ba3e65bcb7a3dd950d9a15c84",
-  "gitlab/dev": "662642874614dff9b80a8d67557687d0c7252df9",
+  "gitlab/dev": "12cae17998c0ae1af7eecaf4a9aef6ad22518ddc",
   "gitlab/dev015": "f1d7c206d422490c5f9c0dba671ed1aeb6d41a41",
   "gitlab/feat/m9-finance": "cb2226c0b87a05b89152d347c31e58d4ebef5e8f",
   "gitlab/feat/m9-loi-0611": "fa5f214559d4852603e5974ad79d16404d7789e5",
@@ -42,7 +42,7 @@
   "gitlab/fix/m9-ra-soat-0511": "df1f82e6c8de3eb31ea6f45999973597c5b62493",
   "gitlab/fix/m9-ra-soat-2": "01d255cf1ece59a44306ba9c29cb4bd5c83b02ae",
   "gitlab/master": "0621b0b2692fa0bff23ecee1ce13d89d3d20fda8",
-  "gitlab/toandeptrai": "2a255c521f7a2de27cf110a09c81f77012b8136b",
+  "gitlab/toandeptrai": "12cae17998c0ae1af7eecaf4a9aef6ad22518ddc",
   "origin/PhucApu": "662642874614dff9b80a8d67557687d0c7252df9",
   "origin/chudung/m3-14112026-chon-hop-phi-ship-giam-2-phan-tram": "5e9c2e002fbca232914071f39c6b4a4744067440",
   "origin/chudung/m3-14112026-don-hang-thu-tien-xac-nhan-m8": "a4c90821058e60bd4f919f93c632de7c17b7e423",
@@ -84,7 +84,7 @@
   "origin/fix/m9-ra-soat-0511": "df1f82e6c8de3eb31ea6f45999973597c5b62493",
   "origin/fix/m9-ra-soat-2": "01d255cf1ece59a44306ba9c29cb4bd5c83b02ae",
   "origin/master": "0621b0b2692fa0bff23ecee1ce13d89d3d20fda8",
-  "origin/toandeptrai": "2a255c521f7a2de27cf110a09c81f77012b8136b"
+  "origin/toandeptrai": "ef296ce59a90821859e2f350cf4eea39a2838d38"
  },
  "M4-PLAN": {
   "origin/main": "ebe9da565477d89ceb9d96e0e86a9c6c3dae4054"

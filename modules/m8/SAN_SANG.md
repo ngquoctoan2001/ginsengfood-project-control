@@ -1,157 +1,128 @@
 # Sẵn sàng — M8 IVR
 
-Mốc: 14/11/2026 23:01 +07 · **Sẵn sàng 55%** (54 → 55: "Sao lưu và khôi phục" 50 → 75 nhờ 03B trên .99 14/11, phiên tự chấm, chờ phiên `lead` đối chiếu; 13/11: 49 → 54 nhờ E02) ·
-**Kịp 15/11: XANH** (cập nhật 14/11 13:00) — bản tối thiểu (một đơn M3 → M8 → gọi MOCK → callback `ACCEPTED`) đạt trên cặp máy thử trước chuyển máy 13/11 14:32 và trên máy chính thức .99 14/11 08:49 (M8 cắt sang .99 07:43–07:46); nghiệm thu .99 ĐẠT 6/10 ca 14/11 13:39 (mọi ca thuộc bản 15/11, W-0540); E04/E07/E08/E09 `NOT_RUN` theo phiếu.
-**Kịp 30/11: VÀNG** — gọi khách thật còn chờ ngoài (Chú duyệt lời thoại + pháp lý VieNeu, MobiFone xác nhận kênh, kho sao lưu ngoài máy, custody khoá, định danh ~20/11).
-Nguồn: `ginsengfood-ivr` `main` local `eb5156ff` (remote `af93ca42`; `7f12ddaf` W-0533 của phiên phụ và `eb5156ff` W-0534 chưa push); sổ m8 tới 13/11 16:28; 2 scout chỉ đọc 13/11 (không chạy test, không vào máy; điểm không xác minh được ghi rõ). Thay hẳn bản 10/11. Hạn chung: 30/11 chạy thật, 15/11 mốc giữa (D-lead-025).
+Mốc: **27/11/2026 19:4x** (đồng hồ máy) · % sẵn sàng: **54** (trung bình trọng số, không đổi từ 26/11) · **Kịp 30/11 gọi khách thật: ĐỎ** — chưa có cuộc nào từ worker M8 qua trunk MobiFone, MobiFone chưa hẹn gọi thử (hạn 24/11 đã qua), pháp lý giọng VieNeu chưa ký. **Bản tối thiểu 30/11 (MOCK trên .99, D-m8-167): VÀNG** — mã và ảnh đã lên .99, còn phải chạy lại ca trên bản mới và Toàn tự thao tác.
 
-> **25/11: kế hoạch hoàn thiện tiếp theo ở [KE_HOACH.md](KE_HOACH.md)** (giọng đọc tự phục vụ, trần cuộc/ngày trên UI, bảo trì .64, nợ C, kiểm/hồ sơ, việc cần Toàn nói).
->
-> **Chấm lại 26/11 (K-05, phiên m8): giữ 54%, không tăng.** Thang chung đòi bậc 75 = thao tác như người dùng thật trên máy thử, bậc 90 = Lead/Chú tự thao tác theo phiếu. Đêm 25–26/11 chỉ thêm mã + test cục bộ (13 gói W-0563…W-0577, commit local chưa push, chưa lên .99; vùng 1, 2, 3 qua cổng Nguy hiểm ĐẠT chờ bộ đủ: [cong-nguy-hiem.md](cong-nguy-hiem.md)). "Giọng đọc, lời thoại 3 miền, tên địa bàn": phần mềm tự phục vụ (hồ sơ giọng, nghe thử, duyệt cụm, đọc từ kho) có mã + test nhưng chưa có màn hình Module 3 (G-08/G-09 chờ phiên m34) và chưa chạy trên máy thử, nên giữ bậc 50 (thiếu mới: đổi giọng/tốc độ thật cần bank mới, pháp lý `PENDING_SEP_SIGNATURE`, Chú duyệt lời thoại). Trần cuộc/ngày (hạng mục "Cài lên máy chủ" và "Phần mềm IVR lõi"): guard + API sẵn, chưa nhập số trên .99. Bảng cổng G1–G8 không đổi (CHƯA); chi tiết số liệu mới ở [TRANG_THAI.md](TRANG_THAI.md).
+Nguồn: `/ke-hoach` 27/11, 3 scout chỉ đọc (lõi + nối M3; tổng đài + giọng + Giờ Vàng; triển khai + vận hành + hồ sơ) và phiên chính đọc .99 lúc 19:27 ([log](ra-soat/kich-ban-99-1611/kiem-ban-99-2711.log), thư mục không vào git). Repo `ginsengfood-ivr` `main` = GitLab = GitHub `169a6859`. Bản trước: [nhat-ky/2026-11-27-san-sang-truoc-viet-lai.md](nhat-ky/2026-11-27-san-sang-truoc-viet-lai.md). Danh sách việc chi tiết G/T/H/N/K/B/X vẫn ở [KE_HOACH.md](KE_HOACH.md) §3; tệp này là kế hoạch tới 30/11. Khung `chung/MAU.md` §0 đổi mốc 15/11 thành 30/11 vì các mốc A–D đã qua.
 
-> **Cập nhật 18/11 08:5x (phiên m8, không chấm lại %):** từ mốc 14/11 đã ĐẠT trên .99: 02K (job CI `deploy_m8_99` 17/11, .99 `0f1a9eb5`), E07 + E08 (Toàn xác nhận 17/11), 02J (tắt khẩn + cảnh báo thử), 07E (401/403/429, hạn mức 600/60 s), custody khoá .99 (gói Toàn giữ), thu hồi CD .61. Cổng G3/G6 có thêm bằng chứng máy thật nhưng vẫn CHƯA (custody .64, người nhận cảnh báo, reboot). Hạng mục giữ bậc: "Nối với M3" chờ E02/E03 qua web (D-m8-130); "Cài lên máy chủ" chờ .64 (02I). `main` = remote `aeb486eb` (pipeline chưa đọc).
-
-> **Máy hiện hành:** M3 và ứng dụng M8 chạy trên .99. Asterisk chạy trên .64. Dùng .99 cho các lượt kiểm khi chưa có máy thử (D-lead-065). M8 ở `https://192.168.1.99:8443`, thư mục `/data/ginsengfood-ivr`.
-
-## Phạm vi và quyết định đang hiệu lực
-
-- D-m8-008: phía M3 của M3 → M8 do Toàn làm ở phiên m34; phiên m8 chỉ làm phần M8 và nhận bằng chứng. D-m34-065 (13/11): nghiệm thu E01, E03, E05, E06-A/B, E10 làm trên .99 sau khi M8 chuyển máy; E02 trên thử trước chuyển máy giữ làm bằng chứng.
-- D-m8-010: máy chạy app M8 giữ khoá LAB tạm; custody production chốt trước release. D-m8-011: cụm hai máy (app + VieNeu + DB) + .64 (Asterisk). D-m8-076: 15/11 gọi MOCK, 01D (gọi số nội bộ thật) sau 15/11.
-- `REAL_CUSTOMER_CALL_ALLOWED=NO`, `production_accepted=false`, `deployable=false`; kế hoạch không tự đổi.
+**Máy (đọc 27/11 19:27):** .99 chạy M8 `75aa3a9c` (triển khai 27/11 11:08, 52 migration, cái cuối `W0586RegionProvinces`), chỉ kém `main` một commit tài liệu; lịch gọi TẮT, `REAL_CUSTOMER_CALL_ALLOWED=NO`, 0 task trong 7 ngày, 5 callback chết cũ; sao lưu đêm còn chạy (bản 27/11 02:30). M3 .99 chạy be `4e5d26ae` (19:15, phiên m34 dùng ngoại lệ một lần D-m34-120; lần sau chỉ Phúc, D-lead-060), ghim cùng hash draft.51 `abf1d485…61fd`. .64 Asterisk 22.11.0 từ 20/11.
 
 ## Hạng mục lõi (tổng trọng số 100, giữ trọng số cũ)
 
-| Hạng mục | Trọng số | Bậc | Bằng chứng | Thiếu để lên bậc sau | WP |
-|---|---:|---:|---|---|---|
-| Phần mềm IVR lõi: nhận đơn, lập lịch giờ gọi, gọi, nhận phím, gọi lại, trả kết quả | 25 | 50 | Pipeline `62b0e973` xanh (Unit 1654 ×2, Integration 808, 09/11) và pipeline 3052521652 `10f335de` xanh (11/11); `src/` không đổi từ `005bc43d` (`git diff --name-only 005bc43d eb5156ff -- src` = 0), W-0526 chỉ thêm 34 test lối vào (`tests/Ivr.IntegrationTests/LoiVao*`); đường thuận chạy trên máy cũ (E02: nhận đơn, lịch, một lượt MOCK trả lời phím 1, `IVR_CONFIRMED`, `docs/evidence/W-0534`) | 75: ca không nghe / sai phím / phím 0 (E03) / gọi lại / hết cửa sổ / thu hồi chưa chạy trên máy thử (chỉ có test tự động: `ResultNormalizationPersistenceTests.cs:534`, `MockTelephonyFollowUpTests.cs:33`, `EligibilityBlockedDeadlineTests.cs:27`, `TaskRevocationApiTests.cs:87`); CI các commit sau `10f335de` CHƯA KIỂM; `IT-IMG-E2E-05` đỏ 2/4 lượt local (W-0530), nguyên nhân chưa rõ | 01E, 02M |
-| Nối với M3: nhận đơn từ M3, trả kết quả về M3 | 20 | **75** ↑ | E02 đầu-cuối trước chuyển máy: đơn M3 363 → TLS ghim chứng thư lá + token thật → task `ELIGIBLE` → lượt gọi MOCK → callback `DELIVERED_ACCEPTED`/`ACCEPTED`/200 → M3 `CONFIRMED`; `doi_soat_m3.py` KHỚP 1/1, M3 kết luận áp đúng một lần (`docs/evidence/W-0534`, `ra-soat/2026-11-13-e02-doi-soat.md`); hợp đồng draft.45 hash `38c85c87…`, callback target-v1 `af0cb5cc…` khớp bản M3 ghim | 90: phiếu E01–E10 chưa đóng ca nào; Lead chưa thao tác theo phiếu; hợp đồng vẫn `DRAFT` (M3 chưa ký nhận); máy chính thức đổi sang .99 (chứng thư, `M8_ORIGIN`, cầu 8445) nên phải lặp lớp 2 trên .99 | 01E; m34 |
-| Tổng đài và nhà mạng MobiFone | 15 | 50 | Một cuộc nội mạng 23/10 đạt bằng dialplan riêng, phím 1 (`docs/evidence/l35-single-call-20261022/public-from-20261023/README.md:30-60`); worker → SIP lab 20 ca (`docs/evidence/l35-worker-route-20261026/`); .64 đã mở cầu ARI cho .99 (TCP mở, HTTPS không chứng thư trả 400) | Chưa cuộc nào từ worker M8 qua trunk; năng lực đường dây lấy theo số MobiFone đã trả: 400 cuộc gọi/10 giây/1 IP (D-m8-106; bỏ đòi xác nhận 36 kênh/2 CPS); .64 vẫn bản 27/10 | 02I, 05 |
-| Giọng đọc, lời thoại 3 miền, tên địa bàn | 10 | 50 | Nguồn địa bàn M3 34/3.321, công cụ 80/80 test; 2.866 tên khớp, 455 chờ duyệt; 92 mẫu Toàn đã duyệt (`wp/M8-WP04A.md`, `docs/evidence/l26-listening-20261020/`); công cụ làm nóng 3.318 cụm đã gộp (W-0520) | Làm nóng CHƯA CHẠY (≈1,75 giờ máy, chưa đo CPU); Chú chưa duyệt lời thoại; pháp lý `PENDING_SEP_SIGNATURE` (`deploy/tts/models/MODELS.lock`) | 04B, 07V |
-| Giờ Vàng 5.000 đơn | 10 | 50 | 5.000 đơn/77 phút 45 s, 36 kênh/tối đa 2 cuộc bắt đầu mỗi giây giả lập (`docs/reports/21-10-ket-qua-5000-don-phan-bo-bat-may-som.md`); MobiFone cho tới 400 cuộc/10 giây/1 IP (D-m8-106), nên ngưỡng đo tải lấy 36 kênh của cấu hình làm giới hạn chính, CPS không còn là trần 2 | Chưa chạy lại trên bản hiện hành, chưa đo qua nhà mạng, .99 dùng chung 6 nhân với M1–M2/M3/M4/M9 | 08 |
-| Cài lên máy chủ (đích .99 + .64) | 10 | 50 | máy cũ: khuôn, CI → registry → job CD cũ Passed, quay lui, hậu kiểm 12/11, `10f335de`; kịch bản chuyển .99 test host giả 30 ca, đột biến 5/5 (`docs/evidence/W-0533`) | .99: M8 chạy từ 14/11 07:45 (cắt 07:43–07:46, W-0533); khoá CD + biến `M8_99_*` xong 14/11 20:01; `trien-khai.sh e9976810` (.NET 10.0.15) qua khoá CD thoát 0 lúc 20:47; job CI `deploy_m8_99` chưa chạy lần nào (runner .63 chết); .64 vẫn bản 27/10 nên giữ 50 | 02K, 02I |
-| Sao lưu và khôi phục | 5 | **75** ↑ | `deploy/backup/` backup/restore/offhost + 5 bộ test; W-0522 lab 5/5; **03B trên .99 14/11 22:36 (W-0541 `143c9c79`, local)**: sao lưu mới 335 mục, khôi phục vào Postgres tạm, đối soát bảng/số dòng/45 migration/schema ĐẠT, RTO 9,7 s, dọn sạch; migration từ DB rỗng khớp tên + cấu trúc, schema khác chữ ở CHECK `ARRAY` (cùng nghĩa) nên công cụ kết luận `LECH`; cron 02:30 chạy lần đầu 15/11 XONG (957860 byte, 335 mục; `may-99/sao-luu.sh`, giữ 14 bản, cùng VM) | 90: kho ngoài máy BỎ (D-m8-122: Anh Tuấn tự sao lưu `/data`, Toàn chấp nhận); còn RPO/RTO chưa duyệt, tiêu chí h cần chuẩn hoá cách so schema, Lead tự thao tác diễn tập | 03B |
-| Hồ sơ phát hành | 5 | 30 | `docs/release/readiness-board.md:24`: board nấc 0; **551 work item (đo lại 26/11)**, 310 ACCEPTED (tự nghiệm thu), 190 EVIDENCE_SUBMITTED, 20 BLOCKED_EXTERNAL; 11 gate repo `BLOCKED_EXTERNAL`, mỗi gate thiếu gì/ai ký ở [wp/ho-so-phat-hanh-07F.md](wp/ho-so-phat-hanh-07F.md) | Chữ ký/release approval; rà 190 mục | 07F |
-| **Tổng** | **100** | **54%** | (25×50 + 20×75 + 15×50 + 10×50 + 10×50 + 10×50 + 5×50 + 5×30)/100 = 54,0 | | |
+| Hạng mục (người ngoài hiểu được) | Trọng số | Bậc | Bằng chứng (tệp:dòng / lệnh / SHA) | Thiếu để lên bậc kế |
+|---|---:|---:|---|---|
+| Phần mềm IVR lõi: nhận đơn, lập lịch giờ gọi, gọi, nhận phím, gọi lại, trả kết quả (gồm luật gọi cấu hình được) | 25 | 50 | Bộ đủ `cebf9d1c` 26/11: unit 3235/3235, integration 1781/1781, contract 46, chaos 8; luật gọi L-01…L-07, L-11 có trong ảnh `75aa3a9c` (L-05 `c2bb7064`, L-07 `6ed2d535`, L-11 `15e5a6bb`); cổng Nguy hiểm vùng 1–3 ĐẠT ([cong-nguy-hiem.md](cong-nguy-hiem.md)) | 75: chạy trên `75aa3a9c` các ca thuận + không nghe / sai phím / phím 0 / hết cửa sổ / gọi lại (E04 chưa chạy lần nào); luật gọi bật `IntakeMode` + luật ACTIVE và chạy L-10 cùng M3 |
+| Nối với M3: nhận đơn từ M3, trả kết quả về M3 | 20 | 75 | E02/E03/E01/E05/E06-A/B/E10 đạt trên .99 14/11 (AI thao tác, `docs/evidence/W-0540/README.md`, `565490cd`), trên ảnh cũ `10f335de`; E07/E08 Toàn xác nhận 17/11 ([hướng dẫn bậc 90](wp/huong-dan-bac-90-noi-m3.md):49-50); hợp đồng draft.51 hai phía cùng hash (`IvrContractPinTest.java:25` ở BP `4e5d26ae`) | Lặp ca trên bản mới (đỏ thì hạ về 50); 90: Toàn tự đặt đơn E02/E03 theo phiếu và ký; `dial_evidence` M3 đang đọc mà M8 chưa trả ([hộp thư](../../hop-thu/m8-2026-11-27-m3-dial-evidence.md)) |
+| Tổng đài và nhà mạng MobiFone | 15 | 50 | Một cuộc lab nội mạng 23/10 (`docs/evidence/l35-single-call-20261022/public-from-20261023/README.md:31-61`); worker → SIP lab 20 ca (`l35-worker-route-20261026/README.md:26,37`); .64 22.11.0 + ufw 5060 chỉ SBC ([WP02I](wp/M8-WP02I.md):47-56); kịch bản bảo trì H-02 226/226 kiểm giả, CDR W-0572/W-0574 | 75: một cuộc qua worker M8 trên .99 + .64 + trunk (X-01 MobiFone, `carrier_configured:false`, số nội bộ X-07); RTP/CDR áp trên .64 |
+| Giọng đọc, lời thoại 3 miền, tên địa bàn (hồ sơ giọng, nghe thử, đổi giọng/tốc độ, tỉnh thuộc vùng) | 10 | 50 | W-0579…W-0583 (WSOLA, bank 9 cặp, bản dẫn xuất, kích hoạt cả bộ), W-0586/0587/0589 (34 tỉnh), draft.51; rà độc lập 0 nặng 0 trung bình, đột biến giọng 15/15, tỉnh–vùng 22/22; có trong ảnh `75aa3a9c`; màn M3 lên .99 27/11 | 75: dựng 6 cặp bank trên .99 (W-0584, ≈37 phút máy), làm nóng 3.318 cụm (≈1,75 giờ máy), bật `Variants`/`STORE`/`RegionSource=STORE`, Toàn nghe 0.80/1.20 và đổi vùng một tỉnh (W-0585). Pháp lý `MODELS.lock` `PENDING_SEP_SIGNATURE` chỉ chặn production |
+| Giờ Vàng 5.000 đơn | 10 | 50 | Mô phỏng 21/10: 5.000 đơn/77 phút 45 s, 36 kênh (`docs/reports/21-10-ket-qua-5000-don-phan-bo-bat-may-som.md:7,84-86`), bản `90795cfe` (cũ 200 commit) | Chạy lại trên bản hiện hành chỉ làm mới bậc 50; 75 cần đo qua nhà mạng (sau X-01 + 01D) |
+| Cài lên máy chủ (.99 + .64) | 10 | 50 | `deploy_m8_99` 17/11; `trien-khai.sh` lên `f8e29b46` 21/11 và `75aa3a9c` 27/11 (52 migration, health); .64 22.11.0 20/11 (Toàn gõ sudo, `verify` PASS) | 75: kiểm sau lên bản 27/11 theo [checklist-go-live](wp/checklist-go-live.md):9-14 (health, ready, JWKS, 32 tuyến, cấu hình bắt buộc `PlaybackCallLimitSeconds`, `DailyBudget`), Toàn nhập trần; diễn tập quay lui một lần |
+| Sao lưu và khôi phục | 5 | 75 | Khôi phục .99 14/11 22:36, RTO 9,7 s (W-0541 `143c9c79`); cron đêm 02:30 chạy liền 25–27/11 (bản gần nhất `ivr-20261126T193001Z`) | 90: Toàn tự diễn tập khôi phục trên schema 52 migration theo phiếu, duyệt RPO/RTO (`deploy/backup/README.md:17-18`) |
+| Hồ sơ phát hành | 5 | 30 | `docs/release/readiness-board.md`: nấc 0, 579 work item (ACCEPTED 310, EVIDENCE_SUBMITTED 218, BLOCKED_EXTERNAL 20); 11 gate repo `BLOCKED_EXTERNAL` ([07F](wp/ho-so-phat-hanh-07F.md) §2) | Sinh lại board, thêm dấu cho 18 dòng, Toàn đọc 80 dòng chờ; chữ ký gate là việc ngoài |
+| **Tổng** | **100** | **54** | (25×50 + 20×75 + 15×50 + 10×50 + 10×50 + 10×50 + 5×75 + 5×30)/100 = 54,0 | |
 
-Bậc 75 cần thao tác như người dùng thật trên máy thử; 90 cần Lead/Chú tự thao tác theo phiếu. "Nối với M3" lên 75 vì mô tả hạng mục (nhận đơn từ M3, trả kết quả về M3) đã chạy trọn ở E02; "Phần mềm IVR lõi" giữ 50 vì hạng mục gồm cả gọi lại, sai phím, hết cửa sổ mà trên máy thử mới có đường thuận. Deploy máy cũ không cộng điểm riêng vì hạng mục "Cài lên máy chủ" gồm cả .99 và .64.
+Nếu sóng 1–2 dưới đây đạt hết: lõi 75, nối M3 90, giọng 75, cài máy 75, sao lưu 90, hồ sơ 50 ⇒ **70%**. Tổng đài và Giờ Vàng không lên được nếu MobiFone chưa hẹn.
 
-**Mở rộng (ngoài trọng số):** ngoại mạng + nhà mạng thứ hai — bậc 0, chờ giấy định danh (hẹn ~20/11, không phải cam kết) → [06](wp/M8-WP06.md).
+**Mở rộng (ngoài trọng số):** ngoại mạng + nhà mạng thứ hai — bậc 0, chờ giấy định danh (hồ sơ gửi 31/10, Sheet M8-006 chặn, không có ngày) → [WP06](wp/M8-WP06.md). `dial_evidence` cho M3 (bộ đếm Điều kiện gửi đơn) — bậc 0, gói DE dưới đây.
 
-## Cổng G1–G8
+## Cổng G1–G8 (`chung/CONG_PRODUCTION.md` §3)
 
 | Cổng | Kết luận | Thiếu gì · đóng bằng gì |
 |---|---|---|
-| G1 Chức năng lõi | CHƯA | Không hạng mục nào ≥ 90 · 01E → UAT Lead |
-| G2 Liên module | CHƯA | Một ca (E02) đạt trên thử trước chuyển máy; hợp đồng khớp hash nhưng `DRAFT`, M3 chưa ký nhận (`docs/api-changelog.md:3`); E02 lặp (đơn 577), E01, E06-A, E03, E05, E06-B, E10 đạt trên .99 14/11 (W-0540, tự nghiệm thu, Lead duyệt từng lượt nhưng phiên AI thao tác); hợp đồng draft.46 khớp runtime (m8.81, W-0542 `e1a55451` đã push 15/11, hash `67674591…`, m34 ghim lại) · ký hợp đồng; Toàn tự thao tác E02/E03/E07/E08 (`wp/huong-dan-bac-90-noi-m3.md`) |
-| G3 Bảo mật | CHƯA | Token Sheet cũ còn trong lịch sử (`e464cd05`, GitLab + GitHub; xoay chờ phiên lead); mật khẩu sudo máy cũ lộ chat 09/11 và gõ lại vào chat 12/11, chưa có bằng chứng đã đổi; custody khoá production chưa chốt; ma trận 401/403/429 đạt ở test local (41/41, 188 + 236 ca), công cụ đo CHƯA CHẠY trên máy thật; m8.78, m8.81 chờ Lead; chứng thư 8443 mới trên .99 chưa thử với be Java M3 · 07E đo, 07G, việc ngoài |
-| G4 Dữ liệu | CHƯA | Migrate từ bản đang chạy đạt trên máy cũ (11/11, 45 migration); từ DB rỗng chỉ lab local; restore chỉ lab; chuyển CSDL sang .99 (`pg_dump` lúc dừng ghi, `pg_restore`, so số dòng từng bảng) mới thử bằng host giả; kho ngoài máy chưa có · 03B, 02K |
-| G5 Triển khai | CHƯA | Khuôn M8 là ngoại lệ D-m8-011 (nhiều container, 8443, `/health/live`, `USER 1654`), chưa ghi vào `MODULE_DEPLOY_CONTRACT.md`; .99 chạy M8 từ 14/11 07:45; khoá CD `.99` + biến `M8_99_DEPLOY_*` (scope `m8-99`) xong 14/11 20:01, `trien-khai.sh e9976810` qua khoá CD (ssh từ máy Lead, runner .63 chết) thoát 0 lúc 20:47, .NET 10.0.15 trên .99; job CI `deploy_m8_99` chưa chạy được lần nào với biến khoá đã sửa (chờ .63); Protected environment cần GitLab Premium · 02K, 02M, 02I |
-| G6 Vận hành | CHƯA | Có `X-Correlation-Id` và 3 luật cảnh báo nhưng chưa nối người nhận (m8.73 gác, D-m8-075; máy cũ đang bắn 3 × `IvrOperationsProbeUnknown`); runbook có (`deploy/m8/README.md` §3/8–13, `tat-khan/README.md`); diễn tập tắt khẩn chưa chạy trên máy thật; cron sao lưu .99 chưa cài; reboot chưa chạy · 02J, 03B |
-| G7 Kiểm thử | CHƯA | CI xanh `62b0e973` và `10f335de`; pipeline GitLab `eca6670f` (13/11 19:11) có 2 job đỏ không do mã: `governance` dừng ở dind kéo `docker:29.6.2-cli` (`TLS handshake timeout`, exit 125), `dotnet` đạt mọi test và cổng (JUnit 2542 + 1654 + 25 ca, `JUNIT_SUBSET_GATE_PASS` 6/6) rồi chạm hạn 1h lúc tải artifact, lúc máy Lead 100% CPU; từ 14/11 10:42 chạy trên runner `may-63`: `dotnet` + `governance` xanh, còn đỏ `publish_images`, `publish_aux_images`, `pii_scan` (`pii_scan`: W-0539 sửa nguyên nhân JUnit in mã hex); pipeline `21e8f958` (14/11) xanh 5 job, `dotnet`/`pii_scan`/`publish_*` không chạy vì gói chỉ đổi `docs/`; quét trước push (D-m8-055) PASS trên `eca6670f` (phiên phụ, 13/11 19:44: dựng 9/9 image `--no-cache`, trivy 8/8, `refresh-locks --check`, PII 3397 tệp, gate-sweep; gitleaks 0) sau khi `refresh-locks` (W-0537) vào main; phiếu E01–E10 trên .99: 6/10 ca ĐẠT 14/11 (W-0540), E04/E07/E08/E09 `NOT_RUN` theo phiếu; tải chưa chạy trên bản hiện hành · 02M, 01E, 08 |
-| G8 Ngoài code | CHƯA | Bảng việc ngoài dưới đây; trừ .64 mở cho .99 (13/11 16:08) và `/data/ginsengfood-ivr` (15:15), chưa việc nào có bằng chứng đã gửi/đã xong |
+| G1 Chức năng lõi | CHƯA | Không hạng mục nào ≥ 90 · E99 + L10 rồi Toàn nghiệm thu |
+| G2 Liên module | CHƯA | Hash draft.51 khớp hai phía; ca E chỉ đạt trên ảnh cũ; `dial_evidence` lệch; hợp đồng vẫn `DRAFT`, M3 chưa ký (`docs/api-changelog.md:3`) · E99, DE, ký G-CONTRACT |
+| G3 Bảo mật | CHƯA | Token Sheet cũ (`e464cd05`) chưa xoay; mật khẩu sudo máy cũ lộ chat chưa có bằng chứng đã đổi; khoá CA ARI chưa rõ chỗ (m8.126); 401/403 đo 178/178 ngày 17/11, chưa đo 32 tuyến draft.50/51; trivy ảnh `75aa3a9c` chưa chạy · QUET, K99, X-05 |
+| G4 Dữ liệu | CHƯA | Khôi phục mới thử trên 45 migration (14/11); RPO/RTO chưa duyệt; sao lưu cùng VM (D-m8-122: Anh Tuấn chụp `/data`, chưa thấy xác nhận) · VH |
+| G5 Triển khai | CHƯA | Ngoại lệ nhiều container (D-m8-011) chưa vào `MODULE_DEPLOY_CONTRACT.md` (phiên lead); chưa diễn tập quay lui; Protected environment GitLab chưa có · K99, VH, hộp thư lead |
+| G6 Vận hành | CHƯA | 5 luật cảnh báo, chưa có Alertmanager/người nhận (m8.73, X-04); tắt khẩn đạt 17/11 trên bản cũ; reboot .99 chưa chạy; runbook viết lại 27/11 (`169a6859`, `deploy/m8/README.md` §3, §10–13) · VH, X-04 |
+| G7 Kiểm thử | CHƯA | Bộ đủ xanh ở `cebf9d1c` (trước 2 commit sửa định dạng C#); CHƯA CHẠY: oasdiff draft.50→51, gitleaks chế độ git, gate-sweep lần hai, phiếu E trên bản mới, đo tải; CI định kỳ chờ X-08 · QUET, E99 |
+| G8 Ngoài code | CHƯA | Bảng việc ngoài dưới đây: MobiFone, pháp lý, lời thoại, định danh đều chưa có bằng chứng tiến triển |
 
-11 gate repo `BLOCKED_EXTERNAL`: G-CONTRACT, G-SPEECH, G-DIAL, G-AUTH, G-POLICY, G-LAB-SIM, G-ESIM32, G-LEGAL, G-RELEASE, G-GITLAB, G-PLATFORM (`docs/release/gate-status.yaml`).
+## Gói việc (mức theo D-lead-064: Thường / Nguy hiểm)
 
-## Gói việc
+Đã xong từ mốc 14/11 (chi tiết ở bản trước và KE_HOACH §3): 02K chuyển .99, 01E nghiệm thu 6/10 ca 14/11, 07E, 02J, 02I .64, W-0549, 07G, 03B, luật gọi L-01…L-07 + L-11, giọng/tốc độ W-0579…W-0583, tỉnh–vùng W-0586…W-0590, draft.51 W-0590…W-0595, nợ C, cổng Nguy hiểm vùng 1–3, lên .99 `75aa3a9c` (27/11).
 
-Đã xong: 01A, 02A–02E, 02G, 02H, 03A, 04A, 07A, 07D, 01B (cấu hình nối M3 đã áp và chạy trên máy cũ 13/11), công cụ 01C/02J/07E/03B/04B (đã gộp, W-0520…W-0526), hỗ trợ nối M3 (W-0527 bảng địa bàn, W-0528/0529 `lan-thu.sh`, W-0531 ghim chứng thư lá, W-0532 kiểm `/healthz/`), W-0530 runtime .NET 10.0.15, W-0534 bằng chứng E02. Giờ = công AI tạo + kiểm còn lại, chưa gồm chờ ngoài.
-
-| WP | Mục tiêu | Rủi ro | Phụ thuộc | Mốc | Giờ | Trạng thái |
+| WP | Mục tiêu | Mức | Phụ thuộc | Hạn | Giờ | Trạng thái |
 |---|---|---|---|---|---:|---|
-| 02K mới (phiên phụ, W-0533, Sheet M8-011) | Chuyển app M8 từ máy cũ sang .99: kịch bản pha `kiem`/`a`/`mo-64`/`b`/`allow --ip`/`sao-luu`/`d`/`quay-lui`, CD `deploy_m8_99` | R3/S | Lead duyệt push `7f12ddaf` + lượt duyệt liền; .64 mở (xong 13/11); m12 → m34 cắt xong trước pha `b` | sau m34 cắt (~15–16/11) | 6 (còn lại) | **ĐẠT** 17/11: cắt 14/11 07:43–07:46 (M8 chạy .99, 37 bảng khớp; máy cũ dừng); job CI `deploy_m8_99` chạy lần đầu 17/11 08:57–08:58 đưa `0f1a9eb5` lên (D-m8-120), health 200, migration 46; job job CD cũ gỡ (D-m8-121, W-0545) ([phiếu](wp/chuyen-may-99.md)) |
-| 01E mới | Nghiệm thu trên .99: E02 lặp, rồi E01, E06-A, E03, E05/E06-B, E10; điền phiếu | R2/S | 02K xong; m34 trên .99 + `ca-m8.pem` mới + cầu 8445; trong khung gọi 08:00–21:08 | 1–2 ngày sau cắt (~16–17/11) | 8 | **ĐẠT 14/11 13:39** (6/10 ca phiếu = mọi ca thuộc bản 15/11; E04, E07–E09 `NOT_RUN` theo phiếu; E05, E06-B, E10 chiều 14/11: [biên bản](ra-soat/2026-11-14-e05-e06b-e10-99.md); repo W-0540 `565490cd`). Sáng: E02 lặp .99 ĐẠT 14/11 08:49 (đơn 577, [đối soát](ra-soat/2026-11-14-e02-lap-99-doi-soat.json)); E01 ĐẠT 14/11 09:36 ([đối soát](ra-soat/2026-11-14-e01-99.md)); E06-A ĐẠT 14/11 10:10 ([ghi chú](ra-soat/2026-11-14-e06a-99.md)); E03 ĐẠT 14/11 10:23 ([ghi chú](ra-soat/2026-11-14-e03-99.md)); còn E05/E06-B, E10 ([phiếu](wp/nghiem-thu-tren-99.md)); E02 trước chuyển máy làm bằng chứng đã có |
-| 02M mới | CI xanh trên đúng bản sẽ lên: xem pipeline GitLab của `af93ca42`; điều tra `IT-IMG-E2E-05` chập chờn; `refresh-locks` (phiên phụ làm, không chạy song song) | R1/S | commit refresh-locks của phiên phụ vào main | trước push kế | 4 | ĐANG LÀM: **CI xanh trọn trên `main` hiện hành** — pipeline `3074409240` (`0f1a9eb5`, 16/11) và `3072568426` (`680508c7`) success 8/8 job gồm `dotnet`, `pii_scan`, `publish_images` (đọc 17/11); còn: `IT-IMG-E2E-05` chưa điều tra |
-| 01D | Gọi số nội bộ thật cùng callback M3 trên .99 (mã tắt Asterisk khi bật hồ sơ sandbox M3) | R3/A | 01E, 02I (.64 bản mới), số nội bộ Lead cấp | sau 15/11, trước 30/11 | 8 (ước) | Chưa làm |
-| 08A mới | Luật gọi cấu hình được + hàng chờ nhân viên (D-m8-143/144/145): bộ luật theo chương trình (số cuộc, khoảng cách, khung giờ, gọi lại theo lý do), lịch gọi tính cuộc kế tiếp, API CRUD + mô phỏng, hợp đồng draft.49; phần M3 (hàng chờ nhân viên, bỏ phần cứng, trang Luật gọi) do m34 | R3/S | m34 làm phần M3; đợt thử MobiFone ~24/11 chạy luật v4 cũ | trước 30/11 | chưa ước | ĐÃ CHỐT HƯỚNG 20/11; L-02/03/04/06 đã lên .99 ở `f8e29b46`; L-05 intake chế độ luật xong ở `main` local `c2bb7064` (24/11, chưa push, cờ `IntakeMode` mặc định `V4_ONLY`); còn L-07 gọi lại thủ công, L-08…L-11 ([phiếu](wp/luat-goi-cau-hinh.md), [theo dõi](../lead/wp/theo-doi-luat-goi.md)) |
-| 07G mới | m8.78: hạn mức không che 403/404 (XONG phần mã: W-0536 `855a57c2` + `1ec9e911`, verifier R3 ĐẠT 13/11, đã lên remote 13/11); m8.81 và hợp đồng draft.45 (enum `sales-platform`, 401 vs 403, 6 lối nội bộ khai 429), 400-trước-401 ở lối nội bộ | R3/A | D-m8-109 (m8.81 oke) | 14/11 | 0 | **Phần hợp đồng XONG local 14/11 23:3x**: draft.46 (enum `order-core`, bỏ 429 ở 6 lối nội bộ, chữ 401/403/400/422 và 429 không header), hash `38c85c87…` → `67674591…`, FREEZE-03 danh sách khác biệt đã duyệt, NSwag sinh lại, baseline oasdiff draft.46, ghim W-0183; W-0542 `e1a55451` + `322ca04d` (fingerprint gitleaks); verifier độc lập 2 lượt; quét trước push PASS, gitleaks 0; đã push 15/11 06:39 (`322ca04d`); đã báo m34 ghim lại. Còn ngoài gói: 400-trước-401 ở lối nội bộ (phương án (a) đưa xác thực nội bộ lên middleware) |
-| 04B | Làm nóng 3.318 cụm trên .99, đo CPU (≈1,75 giờ máy); gói 455 tên gửi Chú | R2/A | 02K (kho clip chuyển sang .99); Chú duyệt | sau cắt | 4 | Công cụ đã gộp W-0520; CHƯA CHẠY, hẹn đêm 19/11 sau buổi sếp thử M4 (D-m8-132) ([phiếu](wp/M8-WP04B.md)) |
-| 03B | Restore thật trên .99 vào DB tách riêng, đo RTO; 45 migration từ DB rỗng; cron sao lưu; kho ngoài máy bỏ (D-m8-122) | R3/A | 02K | 14/11 (chạy sớm theo lệnh Toàn) | 4 | **ĐÃ CHẠY 14/11 22:36**: khôi phục ĐẠT, RTO 9,7 s; công cụ kết luận `LECH` chỉ vì schema từ DB rỗng khác chữ (CHECK `ARRAY`, cùng nghĩa); bằng chứng W-0541 `143c9c79` (đã push 15/11); cron 02:30 lần đầu XONG 15/11; còn: kho ngoài máy, chuẩn hoá tiêu chí h ([phiếu](wp/M8-WP03B.md)) |
-| 07E | Đo ma trận lối vào 401/403/429 trên máy thật (`do_loi_vao.py`; `--loat-429` chỉ sau khi báo M3) | R3/A | 02K | sau cắt | 2 | **ĐẠT trên .99 17/11**: 401/403 178/178; 429 đạt sau khi bật hạn mức (đo 20/60 s, chạy 600/60 s, D-m8-127) ([phiếu](wp/M8-WP07E.md)) |
-| 02J | Diễn tập công tắc tắt khẩn + luật cảnh báo trên máy thật; người nhận chờ m8.73 | R2/A | 02K | sau cắt | 3 | **ĐẠT trên .99 17/11**: tắt khẩn (pause/resume có kiểm, cửa sổ 0 giao việc) + cảnh báo thử FIRING/RESOLVED; W-0546 sửa `X-Service-Scope` ([phiếu](wp/M8-WP02J.md)) |
-| 02I | .64 lên bản mới; secret media-sync .99 → .64 (media-token, ARI TLS) | R3/A | D-m8-122: phiên m8 soạn kịch bản + chọn giờ ít gọi, Toàn gõ sudo .64; custody theo [phiếu](wp/custody-khoa-m8.md) | 18/11 | 14 | **ĐẠT 20/11 11:08** (bước 2: .64 Asterisk 22.11.0, ufw 5060 chỉ SBC MobiFone; ARI .99 → .64 thông) ([phiếu](wp/M8-WP02I.md)) |
-| W-0549 mới | Khoá `krb5-libs` 1.22.3-r0 cho ảnh `backup`/`postgres` (19 HIGH của ảnh gốc, nợ W-0548) | R2/A | — | trước dựng bản phát hành | 2 | **ĐẠT 18/11** (trivy 19 → 0 HIGH) ([phiếu](wp/W-0549-krb5.md)) |
-| [07V](wp/M8-WP07V.md) | Bộ giọng/artifact được duyệt | R3/A | Chú: lời thoại, pháp lý, kho artifact | 20/11 | 10 | CHẶN ngoài |
-| [07B](wp/M8-WP07B.md) | Đóng và kiểm bộ ứng viên đủ định danh | R2/A | 07V-L, 02I | 22/11 | 10 | LAB monitoring đạt; 07B-L chờ |
-| [05](wp/M8-WP05.md) | Worker M8 → MobiFone thật, đủ ca phím/busy/không nghe | R3/A | 02I, 07B-L, kênh + grant MobiFone | 24/11 | 8 | CHẶN |
-| [08](wp/M8-WP08.md) | Đo tải thật, chốt quy mô (mô phỏng chạy lại được sớm, cần cửa sổ độc quyền; .99 dùng chung 6 nhân) | R3/A | 05 | 26/11 | 6 | CHẶN |
-| [02F](wp/M8-WP02F.md) | Lên production bằng `trien-khai.sh` + phiếu kiểm, nghiệm thu vận hành; phiếu đọc lại theo `/data/ginsengfood-ivr` (D-m8-068) | R3/A | 07B-L, 02I, custody, cửa sổ | 27–28/11 | 12 | D020 xong `005bc43d`; viết lại cho .99 |
-| 07F | Hồ sơ phát hành: rà 190 mục, danh sách chữ ký, sinh lại board | R1/S | 01E, 05, 08 | 28/11 | 6 | Rà xong 26/11 ([phiếu](wp/ho-so-phat-hanh-07F.md)); sinh lại board ở nối 3 |
-| [06](wp/M8-WP06.md) | Ngoại mạng, nhà mạng thứ hai | R3/A | Giấy định danh | sau 20/11, chốt lại | 6 | CHẶN |
+| K99 | Kiểm sau lên `75aa3a9c` + cấu hình bắt buộc: đọc cờ và trần, health/ready/JWKS, 32 tuyến đúng mã (`do_loi_vao.py`), đặt `PlaybackCallLimitSeconds`/`DailyBudget` nếu thiếu; Toàn nhập trần trên màn M3 (T-03) | Thường (đặt cấu hình .99: Toàn duyệt) | D-m8-163 | 28/11 sáng | 3 | SẴN SÀNG (duyệt) |
+| E99 | Chạy lại bộ ca trên bản mới, MOCK: E01, E02, E03, E05, E06-A/B, E10, ca không nghe / sai phím / hết cửa sổ, E04, gọi lại; Toàn tự đặt 2 đơn web (E02/E03) và ký phiếu | Nguy hiểm (bật lịch trên .99, theo lượt duyệt một lần) | K99; web .99 đặt được đơn | 28/11 trong khung 08:00–21:08 | 7 | SẴN SÀNG (phiếu cũ [buoi-e07-e02-e03-e08](wp/buoi-e07-e02-e03-e08.md), [nghiem-thu-tren-99](wp/nghiem-thu-tren-99.md)) |
+| L10 | Luật gọi đầu–cuối với M3 trên .99: `IntakeMode=RULES_ALLOWED`, muối `phone_key`, nạp luật ACTIVE; M3 bật `M8_RULES` + quyền (Phúc); hết luật → hàng chờ nhân viên → xác nhận / huỷ / gọi lại | Nguy hiểm | E99; Phúc bật cờ M3 (D-lead-060) | 29/11 | 6 | CHỜ PHÚC ([luat-goi-cau-hinh](wp/luat-goi-cau-hinh.md), [theo dõi](../lead/wp/theo-doi-luat-goi.md)) |
+| DE | `dial_evidence` cho 2 tuyến GET kết quả: cột chế độ lúc quay (migration thêm cột, cho phép rỗng), đóng dấu khi bắt đầu quay, `DIALED`/`NO_DIAL_FINAL`/`UNKNOWN`, hợp đồng draft.52 (NSwag, baseline, manifest), 8 ca test; báo m34 hash mới | Nguy hiểm (migration + hợp đồng) | D-m8-164 | 29/11 | 10 + 2 cổng | ĐANG LÀM (W-0596, [phiếu](wp/DE-dial-evidence.md)) |
+| GIONG99 | W-0584 + W-0585 trên .99: dựng 6 cặp bank, làm nóng 3.318 cụm (đêm), bật `Variants` → Toàn nghe 0.80/1.20 trên câu có số tiền → `STORE` → kích hoạt cả bộ → đổi vùng một tỉnh; lùi bằng cờ OPTIONS | Nguy hiểm (lời nói với khách) | K99; D-m8-165 | 29/11 (làm nóng đêm 28/11) | 7 + máy | SẴN SÀNG, Toàn nghe ([checklist-go-live](wp/checklist-go-live.md) §4) |
+| H64 | Bảo trì .64 tối thứ Bảy 28/11 22:30 (đệm 29/11): preflight, `bat-log`, CDR apply/verify, đọc hạn chứng thư; RTP HOLD khi chưa có cuộc thử; chứng thư lá ARI dừng ở CSR nếu chưa rõ khoá CA | Nguy hiểm | D-m8-166; Toàn gõ sudo; Anh Tuấn nhận lịch | 28/11 | 4 | CHUẨN BỊ ([phiếu 27/11](ra-soat/2026-11-27-goi-van-hanh-64-01d-wp10-wp11.md)) |
+| VH | Vận hành: diễn tập quay lui `trien-khai.sh`, khôi phục trên schema 52 (Toàn tự làm theo phiếu), tắt khẩn lại trên bản mới, nối người nhận cảnh báo khi X-04 có | Nguy hiểm | E99 xong; X-04 | 30/11 sáng | 4 | SẴN SÀNG |
+| QUET | oasdiff draft.50→51 (sau DE: →52), gitleaks chế độ git, trivy ảnh `75aa3a9c`, gate-sweep, CI bấm tay một lần | Thường | — | 28/11 | 2 | SẴN SÀNG |
+| 07F | Hồ sơ phát hành: sinh lại board, dấu cho 18 dòng, sửa dòng cũ L-08/L-09 trong tracker lead, đưa 80 dòng cho Toàn đọc | Thường | DE xong (một người ghi register) | 30/11 | 3 | MỘT PHẦN ([phiếu](wp/ho-so-phat-hanh-07F.md)) |
+| 01D | Gọi số nội bộ thật qua worker + trunk MobiFone, 1–3 cuộc (phím 1/0/không bấm) cùng callback M3 | Nguy hiểm | X-01, X-07, H64 | khi MobiFone hẹn | 8–10 | CHẶN (X-01) |
+| 08 | Đo tải: chạy lại mô phỏng 5.000 đơn trên bản hiện hành (máy Lead); đo qua nhà mạng sau 01D | Nguy hiểm | 01D cho phần nhà mạng | sau 30/11 | 4 + 6 | CHẶN phần nhà mạng ([WP08](wp/M8-WP08.md)) |
+| 02F | Lên production + bật gọi thật | Nguy hiểm | 01D, 08, X-03, cổng Nguy hiểm cuối | sau 30/11 | 12 | CHẶN ([WP02F](wp/M8-WP02F.md)) |
 
-**Tiêu chí đạt và tệp nóng của WP mới/đổi** (phiếu `wp/` lập khi giao sóng):
+**Tiêu chí đạt và tệp nóng** (phiếu `wp/` lập khi giao sóng; chỉ phiên chính chạy lệnh trên .99/.64, không giao subagent):
 
 | WP | Tiêu chí đạt | Phạm vi ghi · tệp nóng |
 |---|---|---|
-| 02K | Push `7f12ddaf`; `kiem`, `a`, `b`, `allow --ip`, `sao-luu`, `d` đạt; `/health/live` 8443 trên .99 200; 10 dịch vụ chạy đúng SHA; so số dòng từng bảng khớp; quay lui thử được | `deploy/m8/may-99/**`, `compose.yml`, `trien-khai.sh`, `noi-m3/{dat-cau-hinh,lan-thu}.sh`, CD · **chỉ phiên phụ ghi** |
-| 01E | E02 .99 `KHOP`; E01 401/403/403 + `so_task=0`; E06-A `TASK_REVOKED`, 0 lượt gọi; E03 xác nhận + hủy (kịch bản bấm 0) `KHOP`; E05/E06-B `RETRY_EXHAUSTED` rồi replay; E10 `sau-luot`, receipt sha256, đối soát trước/sau thu dọn; mỗi ca có correlation M3 → job → callback | `docs/evidence/` (WP mới từ W-0535), `~/…/nghiem-thu/` trên .99; **không sửa `deploy/m8`** khi 02K còn chạy |
-| 02M | Pipeline GitLab của HEAD xanh, hoặc từng job đỏ có nguyên nhân + việc sửa; `IT-IMG-E2E-05` giải thích | `deploy/ci/**`, khóa gói (sau commit refresh-locks của phiên phụ) |
-| 07G | m8.78 theo phương án Lead chọn: 6 lối nội bộ + hạn mức không che 403/404; test KDL-43 đổi; m8.81 hợp đồng và hash mới báo m34 | `src/Ivr.Api/Middleware`, `Internal`, `specs/api/` · **nóng:** hash draft.45 M3 đã ghim |
-| 04B / 03B / 07E / 02J | Như phiếu cũ, chạy trên .99 (đường `/data/ginsengfood-ivr`, project compose `m8`) | công cụ đã gộp; chỉ phiên chính chạy trên máy, không giao subagent |
+| K99 | Log đọc cờ + trần; 32 tuyến draft.51 đúng mã 401/403/2xx; trần hiển thị trên màn M3; `checklist-go-live` mục 9–14 tick | `ra-soat/` (không vào git), `du-lieu/*/appsettings.json` trên .99 qua `dat-cau-hinh.sh` có sao lưu |
+| E99 | Mỗi ca có tương quan M3 → task → job → callback, `doi_soat_m3.py` KHỚP; lịch trả về TẮT, worker về sha cũ, hàng đợi như trước; phiếu Toàn ký cho E02/E03 | `docs/evidence/W-05xx/` (bằng chứng mới), kịch bản `ra-soat/kich-ban-99-*` |
+| L10 | Ba nhánh hàng chờ nhân viên chạy thật MOCK; chế độ v4 cũ vẫn chạy khi tắt cờ | cấu hình .99 (M8 phiên m8, M3 Phúc) |
+| DE | Bốn tổ hợp M3 đòi (quay rồi không bắt máy, lỗi trước/sau quay, thu hồi, gọi lại, dữ liệu cũ thiếu chế độ, đổi chế độ sau quay) có test; hash draft.52 báo m34 một lần; verifier một vòng | **nóng:** migration + `IvrDbContextModelSnapshot.cs`, `specs/api/openapi/ivr-order-confirmation.v1.yaml`, NSwag, `PostgresSchedulerStore.cs`, `TaskResultReadService.cs`, `work-register.md` |
+| GIONG99 | `bank-check` đạt 9 cặp; readiness 100%; một cuộc MOCK ghi đúng `voice_speaking_rate` và giọng vùng; Toàn ghi đạt sau khi nghe | `deploy/tts/`, cấu hình .99; ghim bank mới |
+| H64 | Biên bản từng phần GO/HOÃN; `verify` PASS sau thay đổi; 0 kênh trước/sau | `ra-soat/kich-ban-64-bao-tri/` |
+| VH | Quay lui và quay về bản cũ có health 200; khôi phục khớp bảng + 52 migration; RTO ghi lại | `docs/evidence/`, `deploy/backup/` chỉ đọc |
+| QUET | oasdiff không breaking ngoài danh sách đã duyệt; gitleaks 0 mới; trivy 0 HIGH/CRITICAL | chỉ đọc |
 
-Tệp một người ghi giữ như `PHIEN.md` (register, gate-status, traceability, migration + snapshot, compose/appsettings chung).
+## Sóng và đường găng tới 30/11
 
-## Sóng đề xuất
+Ba làn, không chung tệp nóng: **L1 code** (DE, agent coder trong checkout `main`, khai khoá `tools/khoa_tep.py`); **L2 máy** (K99 → E99 → L10 → GIONG99 → VH, phiên chính, tuần tự, Toàn duyệt theo chuỗi); **L3 sổ/quét** (QUET ngay, 07F sau DE vì chung `work-register.md`).
 
-| Sóng | Khi | L1 | L2 | L3 | Tài liệu |
-|---|---|---|---|---|---|
-| 1 | 13–16/11 | 02K (phiên phụ, R3): push, `kiem`, `a`, `mo-64`; `b` sau m34 cắt | 02M (R1): pipeline + `IT-IMG-E2E-05`, sau commit refresh-locks | — (m8 chính: báo m34 giờ cắt, đổi callback khi m34 cắt) | tin nhóm Phúc/Tài trước pha `b` |
-| 2 | sau cắt (~16–19/11) | 01E (R2): E02 lặp → E01 → E06-A → E03 → E05/E06-B → E10 | 03B + 04B + 02J (chạy trên máy, tuần tự) | 07E đo (R3) | biên bản UAT, phiếu E01–E10 |
-| 3 | 18–28/11 | 02I → 05 → 08 → 02F (R3, nối tiếp) | 07V, 07B (Chú) | 07G (sau Lead quyết), 07F | gói phát hành |
+| Sóng | Khi | L1 | L2 (.99/.64) | L3 |
+|---|---|---|---|---|
+| 1 | 27/11 tối – 28/11 | DE (mã + test + draft.52) | 28/11 08:30 K99 → E99 (Toàn đặt 2 đơn); 22:30 H64; đêm làm nóng cụm (GIONG99 bước đầu) | QUET |
+| 2 | 29/11 – 30/11 sáng | DE: cổng verifier, báo m34 ghim | L10 (cần Phúc) → GIONG99 nghe + bật → VH | 07F, chấm lại % |
 
-Tệp nóng không chồng: sóng 1 `deploy/m8/may-99` (phiên phụ) · `deploy/ci` (02M); sóng 2 `docs/evidence` + việc chạy trên máy (một người một lúc); sóng 3 `src/Ivr.Api` (07G) · `deploy/telephony-vm` (02I).
-Tối đa 3 agent nặng cùng lúc gồm cả tester/verifier; việc trên máy chủ do phiên chính (hoặc phiên phụ cho 02K) chạy theo lệnh Lead, không giao subagent.
-
-**Kiểm chéo:** 8/8 hạng mục dưới 90 có WP (lõi: 01E, 02M; nối M3: 01E; tổng đài: 02I, 05; giọng: 04B, 07V; Giờ Vàng: 08; cài máy: 02K, 02I; sao lưu: 03B; hồ sơ: 07F). Tổng 121 giờ AI còn lại (02K 6, 01E 8, 02M 4, 01D 8, 07G 10, 04B 4, 03B 4, 07E 2, 02J 3, 02I 14, 07V 10, 07B 10, 05 8, 08 6, 02F 12, 07F 6, 06 6). Tới 17/11 cần khoảng 31 giờ (02K, 01E, 02M, 03B, 04B, 07E, 02J) trên 3 làn ≈ 10 giờ/làn: làm được nếu cắt .99 chạy trong 15–16/11; nút thắt không phải giờ code mà là thứ tự cắt (m12 → m34 → m8), quyền sudo/khung bảo trì .64 và việc ngoài (Chú, MobiFone, Anh Tuấn).
-
-## Đường găng tới mốc A–D
-
-| Mốc | Ngày | Cần có | Trạng thái · cách xử lý |
+| Mốc | Ngày | Cần có | Trạng thái |
 |---|---|---|---|
-| A Xong chức năng | 07/11 | Mọi hạng mục ≥ 50, trên nhánh chung, lên máy thử | Đạt muộn 09/11 trừ hồ sơ phát hành (30) |
-| B Nối liên module | 10/11 → **13/11** | M3 nối M8 trước chuyển máy, một đơn thử | **Đạt 13/11 14:32** ở mức một đơn MOCK (E02 KHỚP). Trên .99 phải lặp |
-| C Nghiệm thu | 12/11 → 14/11 → **~17/11** | Lead UAT phiếu E01–E10 trên máy chính thức .99 | D-m34-065 dời sang .99; phụ thuộc 02K cắt xong (m12 → m34 → m8). Nghiệm thu đầy đủ (lời thoại, pháp lý, nhà mạng) ~25/11 |
-| D Chạy thật | 14/11 → **28/11** | Bản đã nghiệm thu lên production, smoke, quay lui | Production: 07V 20/11 → 07B 22/11 → 02I + 05 24/11 → 08 26/11 → 02F 27–28/11; trên .99/.64 |
-| Hạn chung | 30/11 | Gọi khách thật nội mạng MobiFone | Ngoại mạng nếu giấy định danh về kịp |
+| Kiểm bản mới trên .99 | 28/11 trưa | K99 + E99 đạt | Duyệt (D-m8-163) |
+| Toàn nghiệm thu nối M3 | 28/11 tối | Toàn tự đặt E02/E03, ký | Lần 16/11 không có đơn (web chưa đặt); đặt lại |
+| Luật gọi + giọng chạy thật MOCK | 29/11 | L10, GIONG99 | Cần Phúc + Toàn nghe |
+| Bản tối thiểu 30/11 | 30/11 | MOCK đầu–cuối trên bản hiện hành, trần đặt, quay lui đã thử | Khả thi nếu L2 bắt đầu sáng 28/11 |
+| Gọi khách thật | 30/11 | X-01 + 01D + X-03 + 02F | Không kịp nếu MobiFone chưa hẹn trước 29/11 |
 
-## Việc ngoài code (phiên `lead` gom về `modules/lead/VIEC_NGOAI.md`, bản đó cũ từ 02/11)
+Kiểm chéo: 8/8 hạng mục dưới 90 có WP hoặc lý do (lõi: E99, L10; nối M3: E99, DE; tổng đài: H64, 01D; giọng: GIONG99; Giờ Vàng: 08, phần nhà mạng chặn ngoài; cài máy: K99, VH; sao lưu: VH; hồ sơ: 07F). Tệp nóng: chỉ DE ghi migration/hợp đồng; 07F ghi register sau DE; làn máy một người. Ước lượng: L1 12 giờ (vừa), L2 27 giờ máy + người trong ~2,5 ngày, phần lớn trong khung gọi 08:00–21:08 và cần Toàn có mặt ⇒ **nút thắt là giờ của Toàn và Phúc, không phải giờ code**; nếu thiếu thì bỏ GIONG99 trước, giữ K99 + E99 + VH.
 
-Ngày là ngày kế hoạch cần, không phải cam kết của người gỡ. Trạng thái chỉ ghi "đã" khi thấy tệp/tin chứng minh.
+## Việc ngoài code (phiên `lead` gom về `modules/lead/VIEC_NGOAI.md`)
 
-| Việc | Ai gỡ | Cần trước | Trạng thái |
+| Việc | Ai gỡ | Cần trước | Trạng thái (chỉ "đã" khi có bằng chứng) |
 |---|---|---|---|
-| .64 cho .99 vào cầu ARI | Lead (sudo) | 13/11 | **XONG 16:08** |
-| `sudo mv` tạo `/data/ginsengfood-ivr` + `/data/sao-luu/ginsengfood-ivr` | Lead | trước pha `a` | **XONG 15:15** (phiếu 02K còn ghi chưa làm) |
-| Duyệt push `7f12ddaf` (và W-0534 `eb5156ff` nếu muốn) | Lead | trước khi cắt | Chờ |
-| m12 rồi m34 cắt sang .99 xong; m34 đổi `M8_ORIGIN` + ghim `ca-m8.pem` mới, đo `M8_ALLOW_IP` | Lead (phiên m12, m34) | trước pha `b` của m8 | m12 dự kiến 13/11 22:30; m34 14/11 (không cắt giữa buổi chạy mốc D) |
-| Nhắn nhóm Phúc, Tài: M8 dừng nhận đơn ~20 phút lúc pha `b` | Lead | trước pha `b` | Chưa |
-| Quyết m8.78, m8.81 | Lead | — | Chờ |
-| Đổi mật khẩu sudo `ssv` máy cũ và mật khẩu đã gõ vào chat (09/11, 12/11) | Lead | ngay | Chưa có bằng chứng |
-| Kho sao lưu ngoài máy cho M8 (đích .99), RPO/RTO | — | — | **BỎ** (D-m8-122, D-lead-058): Anh Tuấn tự sao lưu `/data`; Sheet M8-003 bỏ chặn |
-| Chỗ cất khoá media-token + ARI TLS, người giữ dự phòng | phiên m8 + Toàn | 25/11 | D-m8-122: tự cất; kiểm kê .99 xong 17/11, [phiếu custody](wp/custody-khoa-m8.md) chờ Toàn duyệt cách giữ bản dự phòng (m8.96) |
-| .64: khung bảo trì để lên bản mới (02I) | phiên m8 soạn + Toàn gõ sudo (D-m8-122) | 18/11 | Chưa: kịch bản + giờ ít gọi chưa soạn |
-| Kênh nhận cảnh báo ngoài giờ + người trực | Lead | 13/11 | Chưa chọn (m8.73 gác, D-m8-075) |
-| Lời thoại 3 miền + 455 tên | Chú | 14/11 | Chưa có kết quả; `VIEC_NGOAI.md` ghi "chưa gửi", TRANG_THAI ghi bản nghe gửi 09/11: lệch, Lead xác nhận |
-| Pháp lý VieNeu, kho artifact (DF-03, G-LEGAL) | Chú / Lead | 18/11 (07V 20/11) | Chưa |
-| MobiFone: gọi thử qua trunk (~24/11), phím bấm, đầu mối (năng lực 400 cuộc/10 giây/1 IP đã có, D-m8-106) | Lead | hẹn thử trước 18/11 | Chưa thấy đã hẹn (Sheet M8-005) |
-| Giấy định danh → ngoại mạng | Đơn vị dịch vụ / Lead | ~20/11 | Hồ sơ gửi 31/10; Sheet M8-006 Bị chặn, chưa biết ngày |
-| Custody khoá production + người dự phòng | phiên m8 + Toàn | 25/11 (trước 02F) | Gộp vào [phiếu custody](wp/custody-khoa-m8.md) (D-m8-122): bản gốc trên máy dùng nó, bản dự phòng Toàn giữ ngoài git |
-| Biến CI `M8_99_DEPLOY_SSH_KEY`, `M8_99_DEPLOY_KNOWN_HOSTS`, environment `m8-99`, `authorized_keys` .99 | Lead | — | **XONG**: job CI `deploy_m8_99` chạy được 17/11 08:57 (lần đầu) |
-| Protected environment GitLab (Premium) hoặc chấp nhận cách thay | Lead | 25/11 | Chưa |
-| Xoay token Sheet cũ (6 repo) | phiên lead | trước 30/11 | Chưa thấy bằng chứng (`hop-thu/lead-2026-11-05-m8-xoay-token-sheet.md`) |
-| Tên miền `admin.` cho M8 qua proxy | Anh Tuấn; phiên lead | — | DNS `admin` đã xoá (theo nhật ký phiên lead 13/11); M8 8443 chỉ LAN; có còn cần UI admin M8 từ ngoài: KHÔNG XÁC MINH ĐƯỢC |
+| X-01 MobiFone hẹn gọi thử qua trunk, đầu mối, nguồn SIP/RTP sau NAT, xác nhận kênh/cước/chặn quốc tế | Toàn | 28/11 | Chưa thấy đã hẹn; Sheet M8-005 chặn từ 14/11; hạn 24/11 đã qua |
+| X-03 Pháp lý VieNeu (`MODELS.lock`), kho artifact | chú Dũng ký (D-m8-117); Chú cấp kho | trước bật production | `PENDING_SEP_SIGNATURE`; lời "tôi ký nè" 27/11 của Toàn chưa đủ uỷ quyền; không chặn máy thử |
+| Lời thoại 3 miền + 455 tên | Chú (Toàn gửi) | trước bật production | Chưa thấy kết quả; tính năng tự chọn giọng không thay cổng này |
+| X-07 Số nội bộ thật cho 01D | Toàn | trước 01D | Chưa |
+| X-04 Kênh nhận cảnh báo + người trực | Toàn | trước bật thật | Người trực = Toàn (m8.85); kênh chưa chọn |
+| X-05 Xoay token Sheet cũ (6 repo), đổi mật khẩu sudo đã lộ, khoá CA ARI | Toàn + phiên lead | 28/11 | Chưa thấy bằng chứng; custody .99 xong 17/11 |
+| X-09 Khung bảo trì .64 28/11 22:30 + sudo | Toàn, Anh Tuấn | 28/11 | Phiếu soạn 27/11; chưa thấy Anh Tuấn nhận lịch |
+| Phúc bật `M8_RULES` + quyền `IVR.RULE.*` trên .99 | Phúc (Toàn nhắn) | 29/11 | Chưa nhắn |
+| m34 ghim draft.52 sau DE | Toàn/phiên m34 | 29/11 | Chờ DE |
+| Anh Tuấn chụp `/data` ngoài máy; bàn giao máy thử (D-lead-065) | Anh Tuấn | 28/11 | Mở |
+| X-02 Giấy định danh (ngoại mạng) | đơn vị dịch vụ | không chặn 30/11 | Không có ngày |
+| X-08 Token GitLab `api` cho CI đêm | Toàn | — | Chưa; không có CI định kỳ |
+| Protected environment GitLab | Toàn | — | Chưa (cần Premium hoặc chấp nhận cách thay) |
 
-## Không kịp 15/11 + bản tối thiểu chạy được 15/11
+## Không kịp 30/11 + bản tối thiểu 30/11
 
-- **Không kịp 15/11:** nghiệm thu đầy đủ trên máy chính thức .99 (mốc C trượt ~17/11, tuỳ lúc m8 cắt), gọi khách thật (cần lời thoại, pháp lý, xác nhận kênh, custody), .64 bản mới, đo tải qua nhà mạng, lên production → 24–28/11; ngoại mạng sau giấy định danh.
-- **Bản tối thiểu 15/11 (D-m8-069, D-m8-076):** một đơn M3 → M8 thật → gọi MOCK → callback `ACCEPTED`, M3 áp một lần, không gọi số thật: **đã chạy 13/11 14:32** trước chuyển máy (E02 KHỚP, `docs/evidence/W-0534`). Giữ lại trên .99: E02 lặp + E01 + E06-A + E03 + E05/E06-B + E10 sau cắt (01E); restore thử, công tắc tắt khẩn thử, làm nóng kho tên phường chạy trên .99 (03B, 02J, 04B). `REAL_CUSTOMER_CALL_ALLOWED=NO` giữ nguyên.
+- **Không kịp 30/11:** gọi khách thật (thiếu cuộc thử MobiFone qua worker, pháp lý giọng, lời thoại Chú duyệt, 01D, đo tải qua nhà mạng, production 02F); ngoại mạng; xoay chứng thư ARI (hạn ~14/12, khoá CA chưa rõ); mọi chữ ký gate phát hành.
+- **Bản tối thiểu 30/11 (MOCK, `REAL_CUSTOMER_CALL_ALLOWED=NO`):** trên .99 bản hiện hành, đơn M3 thật → M8 → gọi MOCK (phím 1, phím 0, không nghe, hết cửa sổ) → callback → M3 đổi trạng thái đúng một lần; trần cuộc/ngày đã nhập; Toàn tự đặt đơn và ký phiếu E02/E03; quay lui và khôi phục đã diễn tập. Luật gọi và giọng mới là phần thêm nếu Phúc và Toàn kịp.
 
 ## Rủi ro lớn nhất
 
-1. **Cắt .99 chưa chạy pha nào trên máy thật, không có verifier độc lập** (`docs/evidence/W-0533`); thời gian dừng app máy cũ "chưa đo"; `quay-lui` không chép dữ liệu ngược (đơn ghi trên .99 sau cắt mất nếu lui).
-2. **Đường nối M3 ↔ M8 trên cùng .99 và CI:** IP nguồn qua NAT Docker chưa đo (nginx 8443 sẽ 403 tới khi `allow --ip`), chứng thư tự ký mới chưa thử với be Java; CI GitLab các commit sau `10f335de` chưa kiểm (quét trước push cục bộ PASS trên `eca6670f`); ảnh chuyển sang vẫn runtime 10.0.14 (3 CVE HIGH) tới khi CD `deploy_m8_99` chạy.
-3. **Gọi khách thật trước 30/11 phụ thuộc việc ngoài** (Chú duyệt lời thoại và pháp lý, MobiFone, kho sao lưu ngoài máy, custody, .64 khung bảo trì): nhiều việc đã quá hạn hoặc chưa có bằng chứng đã gửi.
+1. **Hạn 30/11 gọi khách thật trượt vì việc ngoài**: MobiFone chưa hẹn, pháp lý chưa ký; phần mềm không gỡ được. Cách giảm: chốt với Toàn ngay rằng 30/11 = MOCK, gọi thật là mốc riêng sau khi có cuộc thử.
+2. **Bản mới trên .99 chưa chạy ca nào** (52 commit từ lần chạy ca gần nhất, gồm luật gọi, giọng, tỉnh–vùng): có thể lộ lỗi khi chạy thật MOCK. Cách giảm: K99 + E99 ngay sáng 28/11, trước mọi việc bật cờ.
+3. **Giờ Toàn và Phúc** là nút thắt của làn máy (duyệt ghi .99, đặt đơn, nghe giọng, sudo .64, bật cờ M3). Lần 16/11 cả buổi E dời vì không có đơn. Cách giảm: duyệt một lần cho cả chuỗi K99 → E99, soạn sẵn kịch bản, hẹn giờ cụ thể.
 
-## Quyết định và câu còn mở
+## Câu đã chốt 27/11 19:4x ("ok 155-159", D-m8-163…167)
 
-- Đã chốt: D-m8-068…077 (10–11/11); D-m8-076 (15/11 gọi MOCK); D-m8-078 (cách làm); D-m8-099 (13/11): nghiệm thu còn lại dời sang .99 (D-m34-065); D-m8-100/101 (không đụng phiên phụ; cắt là việc phiên phụ theo D-lead-038).
-- Lead trả lời 13/11 (D-m8-102): m8.78 làm (W-0536 `855a57c2`: hạn mức chỉ tính ở lối quản trị; 07G còn phần hợp đồng cùng m8.81); m8.83 bỏ (dev/test, không chép dữ liệu ngược khi quay lui); m8.84 làm 02M; m8.85 người trực = Nguyễn Quốc Toàn (đổi được), kênh nhận cảnh báo chưa chọn, không gấp. **Còn mở:** m8.81 (hợp đồng: enum `sales-platform`, 401 vs 403, và 6 lối nội bộ khai 429; sửa đổi hash draft.45, báo m34 một lần).
+- **m8.155** Cho phiên m8 chạy K99 + E99 trên .99 từ 08:30 thứ Bảy 28/11 (đọc cờ, đặt trần/cấu hình bắt buộc có sao lưu, bật lịch MOCK theo lượt, chạy bộ ca, trả lại), duyệt một lần cho cả chuỗi; Toàn tự đặt 2 đơn web. Đề xuất: **có**.
+- **m8.156** `dial_evidence` (draft.52, M3 ghim lại): **A** làm ngay ở làn code (đề xuất) / B sau 30/11.
+- **m8.157** Bật giọng mới (bank, `Variants`, `STORE`) trên .99 coi là máy thử theo D-lead-065, pháp lý chỉ chặn production: **A** có (đề xuất) / B chờ máy thử của Anh Tuấn.
+- **m8.158** Bảo trì .64 tối 28/11 22:30 (m8.123): preflight + log + CDR, RTP hoãn, chứng thư dừng ở CSR. Đề xuất: **có**, Toàn báo Anh Tuấn.
+- **m8.159** 30/11 là bản MOCK; gọi khách thật thành mốc riêng sau cuộc thử MobiFone. Đề xuất: **có**, Toàn hẹn MobiFone trong tuần sau.
+
+Câu cũ còn mở (giữ mặc định ở KE_HOACH §6): m8.124–126, m8.138–140, m8.142–144.

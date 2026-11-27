@@ -1,5 +1,7 @@
 # Phiếu nghiệm thu M3 / M4 theo luồng khách (M34-NT)
 
+> HẾT DÙNG từ 27/11: thay bằng [NT-99.md](NT-99.md) (máy .99, phạm vi chạy thật 30/11). Giữ làm tham khảo bước Silver/Gold và M4.
+
 Soạn 10/11/2026 (gói M34-NT, D-m34-054). **Bản nháp, Toàn duyệt rồi mới phát.** Mốc: chạy đầu–cuối 13/11 · nghiệm thu 14/11 · bản tối thiểu 15/11.
 Gọi tên: **M3** = bán hàng, đơn, thanh toán, vận chuyển · **M4** = AI tư vấn · **M5** = kênh Facebook/Messenger · **M8** = hệ thống gọi điện xác nhận đơn (ở đây chạy giả lập, không gọi điện thật).
 

@@ -1,39 +1,37 @@
 # Trạng thái — m8
 
-Mốc: **26/11/2026 ~19:3x** (đồng hồ máy) · phiên m8 · lệnh Toàn 25/11 tối: làm hết [KE_HOACH.md](KE_HOACH.md); sáng 26/11 Toàn chốt D-m8-161/162 (làm hiệu lực thật đổi giọng/tốc độ, ba vùng ba giọng khác nhau, thêm cấu hình tỉnh thuộc vùng, phiên m34 làm phần Module 3). Bản cũ: [nhat-ky/2026-11-25-trang-thai-truoc-viet-lai.md](nhat-ky/2026-11-25-trang-thai-truoc-viet-lai.md).
+Mốc: **27/11/2026 19:4x** (đồng hồ máy) · phiên m8 · `/ke-hoach` dựng lại [SAN_SANG.md](SAN_SANG.md) tới 30/11 (3 scout chỉ đọc + đọc .99). Bản 26/11: git history; danh sách việc chi tiết vẫn ở [KE_HOACH.md](KE_HOACH.md) §3.
 
-## Máy thật (không đổi)
-- `ginsengfood-ivr`: HEAD local `cebf9d1c` (hợp đồng draft.51 đã chốt chữ; 8 commit chưa lên origin); **.99 chạy `f8e29b46` theo sổ 21/11, chưa kiểm lại**; MOCK, lịch TẮT, `REAL_CUSTOMER_CALL_ALLOWED=NO`. **.64** Asterisk 22.11.0. Phiên m8 **không** push, không lên .99, không ssh/sudo, không đổi cờ, không chạy lệnh trên .64 (có người push `origin/main`; không phải phiên này).
-- **Lên .99: M8 TRƯỚC (Toàn, pipeline M8), rồi bản M3 (Phúc).** Chi tiết: [wp/checklist-go-live.md](wp/checklist-go-live.md).
+## Máy thật (đọc 27/11 19:27, chỉ đọc)
+- `ginsengfood-ivr`: `main` = GitLab = GitHub `169a6859` (27/11 17:39, runbook .99). Trước đó 27/11: `09fb5a2b` (agent MOCK m34), `e7ce8510` (ghim gói Asterisk + gitleaks giả), `75aa3a9c` (sửa định dạng C#). Không do phiên này push.
+- **.99 chạy M8 `75aa3a9c`** (triển khai 27/11 04:08Z, 52 migration, cái cuối `W0586RegionProvinces`): có giọng/tốc độ, tỉnh–vùng, draft.51, luật gọi L-05/L-07/L-11. Lịch TẮT, `REAL_CUSTOMER_CALL_ALLOWED=NO`, `ASPNETCORE_ENVIRONMENT=SandboxM3`, 0 task trong 7 ngày, 5 callback chết cũ, 0 cuộc dở; sao lưu đêm còn chạy (bản 27/11 02:30).
+- M3 .99: be `4e5d26ae` (27/11 19:15, phiên m34 ngoại lệ một lần D-m34-120; lần sau chỉ Phúc), ghim draft.51 `abf1d485…61fd` khớp M8; đã có `IvrDialEvidenceQueryAdapter` đọc `dial_evidence` mà M8 chưa trả.
+- .64: Asterisk 22.11.0 từ 20/11; chưa RTP, chưa CDR; chứng thư lá ARI hết hạn 13/01/2027.
 
-## Đã xong (commit local, chưa lên máy)
-| Việc | Gói |
-|---|---|
-| Đêm 25–26/11: 26 tuyến draft.50 chạy thật (hồ sơ giọng, nghe thử, kho cụm, trần), dữ liệu, CDR + kịch bản bảo trì .64 (chỉ soạn), nợ nhóm C, ma trận API 87, bộ đủ xanh, cổng Nguy hiểm vùng 1–3 ĐẠT | W-0563…W-0578 |
-| **Giọng/tốc độ thật (m8.130 = B):** bộ co giãn WSOLA (hash vàng đúng trên Windows + Linux), bank 9 cặp + tập giọng cấu hình được, bản dẫn xuất theo tốc độ, luồng gọi dùng bản dẫn xuất + ghi `voice_speaking_rate`, luật 0.80–1.20, readiness có bản dẫn xuất, kích hoạt nguyên tử cả bộ (hoán đổi giọng, GIỮ ba giọng khác nhau) | W-0579…W-0583 |
-| **Tỉnh thuộc vùng:** bảng 34 tỉnh + nguồn `RegionSource`, kho + kiểm sẵn sàng + làm nóng + áp dụng lô tất-cả-hoặc-không + API, ghim vùng/giọng theo lượt quay | W-0586, W-0587, W-0589 |
-| **Hợp đồng draft.51** (W-0590, chốt chữ ở W-0595) hash `abf1d485f621b1a56f373053f459b7100bff0797bbc78ab38de047bbfcea61fd` (draft.50 `a8852a7f…` giữ byte cho m34), 32 tuyến nối | W-0590 |
-| **Chốt draft.51** hash CUỐI `abf1d485f621b1a56f373053f459b7100bff0797bbc78ab38de047bbfcea61fd` (thay `4efa9132…`, chưa ai ghim); ma trận API 93/93; nghe thử khi tổng hợp TẮT; nợ sau cổng giọng và tỉnh–vùng | W-0591, W-0592, W-0593, W-0594, W-0595 |
-| Rà độc lập + đột biến: phần giọng ĐẠT (0/0/10 nhẹ; đột biến 15/15 đỏ do người viết gói nợ, 4 cái rà đề nghị đã nằm trong đó); phần tỉnh–vùng ĐẠT (0/0/8 nhẹ; đột biến độc lập 22/22 đỏ, 0 sống) ([cong-nguy-hiem.md](cong-nguy-hiem.md) Vùng 3b/3c) | — |
-| m34 (Module 3): G-08/G-09/T-02 xong, commit trên `toandeptrai`; m34.136 = A (route queue/resume) | phiên m34 |
+## Sẵn sàng
+- **54%** (không đổi). Kịp 30/11 gọi khách thật: **ĐỎ** (0 cuộc qua worker + trunk, MobiFone chưa hẹn, pháp lý giọng chưa ký). Bản tối thiểu MOCK 30/11: **VÀNG**. Sóng 1–2 đạt hết ⇒ 70%.
+- `production_accepted=false`, `deployable=false`.
 
-## Kiểm (bộ đủ lần hai, HEAD `cebf9d1c`, 26/11)
-- contract 46, media 14, chaos 8, **unit 3235/3235, integration 1781/1781** (31 phút), python `deploy/m8/tests` 458 OK (14 bỏ qua): không đỏ nào. Lần một (đêm 25–26/11): integration 1550, unit 2705.
-- **Chưa chạy:** `oasdiff` (CI), gitleaks chế độ git, trivy ảnh, gate-sweep lần hai, nghe tốc độ 0.80/1.20, bank 9 cặp + bản dẫn xuất + bật `STORE` trên .99. Không agent nào đang chạy.
+## Kiểm
+- Bộ đủ lần hai `cebf9d1c` 26/11: unit 3235/3235, integration 1781/1781, contract 46, media 14, chaos 8, python 458 OK. Sau đó 3 commit (định dạng C#, ghim gói, tài liệu): bộ đủ CHƯA CHẠY lại.
+- **CHƯA CHẠY:** mọi ca trên bản `75aa3a9c` (ca E gần nhất trên ảnh `10f335de` 14/11 và E07/E08 17/11), oasdiff draft.50→51, gitleaks chế độ git, trivy ảnh `75aa3a9c`, gate-sweep lần hai, bank 9 cặp, làm nóng cụm, nghe tốc độ 0.80/1.20.
 
-## CẦN TOÀN / việc ngoài (tóm tắt; chi tiết [KE_HOACH §6](KE_HOACH.md))
-- **Dán hộp thư cho phiên m34:** [hop-thu/m34-2026-11-26-m8-draft51-hash-moi.md](../../hop-thu/m34-2026-11-26-m8-draft51-hash-moi.md) (hash draft.51 **`abf1d485…61fd`** (đã chốt, dán được ngay), nút "đặt cả bộ", màn hình Tỉnh–Vùng); phiên m34 cũ không còn mở nên m8 không nhắn được.
-- **Việc cần máy thật + Toàn:** dựng 6 cặp bank ở .99 rồi nghe duyệt (W-0584); **nghe tốc độ 0.80 và 1.20 trên câu có số tiền** (khuyến nghị chỉ bật 0.90–1.10 tới khi nghe); làm nóng, bật `Variants`, `ProfileSource=STORE`, `RegionSource=STORE`, kích hoạt (W-0585, từng bước, lùi bằng cờ OPTIONS).
-- Còn mở: m8.140 (N3 recall), m8.142–144 (CDR), m8.138/139 (chứng thư ARI), m8.123–126 (bảo trì .64, mặc định 28/11 22:30), việc ngoài X-01/03/04/05/07/08/09, B-01…B-06 (push, lên .99, 01D, đo tải, production). Pháp lý giọng X-03 chỉ chặn bật production.
-- Đã chốt (không còn hỏi): m8.130 B, m8.141 B, m8.145 C, m8.146 A, m8.147 ghi (checklist), m8.148 B (giữ ba giọng khác nhau), m8.149 A, m8.150 oke, m8.151 oke; m8.152–154 làm theo mặc định A (đơn đã nhận theo vùng mới từ lượt kế; dùng lại hai quyền giọng; chỉ cấu hình theo tỉnh), Toàn đảo được.
+## Gói việc tới 30/11 (chi tiết [SAN_SANG.md](SAN_SANG.md))
+- Làn máy (phiên chính, Toàn duyệt): **K99** kiểm sau lên + cấu hình bắt buộc + trần → **E99** chạy lại bộ ca MOCK, Toàn tự đặt 2 đơn → **L10** luật gọi với M3 (Phúc bật cờ) → **GIONG99** bank + làm nóng + bật giọng, Toàn nghe → **VH** quay lui, khôi phục, tắt khẩn. **H64** bảo trì .64 tối 28/11 22:30.
+- Làn code: **DE** `dial_evidence` + draft.52 (cổng Nguy hiểm, báo m34 ghim). Làn sổ: **QUET**, **07F**.
+- Chặn ngoài: **01D**, **08** phần nhà mạng, **02F** (X-01 MobiFone, X-03, X-07).
 
-## Sẵn sàng và ranh giới
-- **54%** (K-05 giữ, không tăng: thang đòi thao tác trên máy thử/Lead). Kịp 30/11: VÀNG. `production_accepted=false`, `deployable=false`. Chưa chạy: `oasdiff` (CI), gitleaks chế độ git, trivy ảnh, mọi thứ trên .99/.64.
+## CẦN TOÀN
+- **Đã chốt 27/11 19:4x ("ok 155-159"):** D-m8-163 chuỗi K99 + E99 trên .99 từ 08:30 28/11 (Toàn đặt 2 đơn); D-m8-164 `dial_evidence` làm ngay (W-0596); D-m8-165 bật giọng mới trên .99 coi là máy thử; D-m8-166 bảo trì .64 28/11 22:30; D-m8-167 30/11 = bản MOCK, gọi thật là mốc riêng.
+- Việc ngoài: X-01 hẹn MobiFone; nhắn Phúc bật `M8_RULES` + quyền (29/11); báo Anh Tuấn khung .64; X-04 kênh cảnh báo; X-05 xoay token Sheet, đổi mật khẩu đã lộ, khoá CA (m8.126); X-07 số nội bộ.
+- Câu cũ còn mở (giữ mặc định KE_HOACH §6): m8.124–126, m8.138–140, m8.142–144.
 
 ## Quyết định đang hiệu lực
-- D-m8-157, 160, 161, 162; D-m8-138 (số trần nhập trên màn hình); D-lead-063 (một checkout, khoá tệp); D-lead-064 (kiểm Thường/Nguy hiểm).
-- Số W đã cấp tới W-0595; `work-register.md` đã ghi tới W-0595 (579 mục); `NEXT_WORK_ID` W-0596 (W-0584/W-0585 giữ cho dựng bank và bật thật ở .99).
+- D-m8-157, 160, 161, 162; D-m8-138; D-m8-150 (bỏ chờ CI, dựng ảnh rồi kéo lên .99); D-lead-060 (lên .99 phía M3 chỉ Phúc), D-lead-063 (một checkout, khoá tệp), D-lead-064 (kiểm Thường/Nguy hiểm), D-lead-065 (.99 làm máy thử tới khi Anh Tuấn bàn giao máy thử).
+- Số W: `NEXT_WORK_ID` W-0596 (W-0584/W-0585 giữ cho bank và bật giọng trên .99).
 
-## Nợ
-- Nợ nhẹ N1…N10 (Vùng 3), N1…N10 (3b), N1…N8 (3c) ở [cong-nguy-hiem.md](cong-nguy-hiem.md); phần lớn đã giao W-0593/W-0594. Còn: N-12 báo động chưa đặt trần (m8.145 = C, chỉ checklist); đổi bank khi hồ sơ ≠ 1.00 thì vùng tạm về giọng cấu hình (N6 vùng 3b, vào runbook W-0584).
-- Dirty không do phiên: `deploy/operations/m34_mock_agent.py` + test (chưa theo dõi).
+## Nợ và sổ
+- Nợ nhẹ ở [cong-nguy-hiem.md](cong-nguy-hiem.md); N-12 báo động chưa đặt trần (m8.145 = C, chỉ checklist).
+- Sổ lệch đã biết: tracker lead L-08/L-09 còn "CHƯA LÀM" (đã push + đã lên .99); hồ sơ phát hành nay 579 work item (EVIDENCE_SUBMITTED 218). Sửa ở gói 07F.
+- Hộp thư chưa xử lý: [m8-2026-11-27-m3-dial-evidence.md](../../hop-thu/m8-2026-11-27-m3-dial-evidence.md) (gói DE).
+- Dirty không do phiên trong repo ivr: không còn (`m34_mock_agent*` đã vào `09fb5a2b`).
