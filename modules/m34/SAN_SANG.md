@@ -1,5 +1,7 @@
 # Sẵn sàng — m34 (M3 bán hàng, M3 vận chuyển + thanh toán, M4 AI tư vấn, M3 → M8)
 
+> Ảnh chụp kế hoạch mốc 10/11. Theo dõi hiện hành ở [TRẠNG THÁI](TRANG_THAI.md). Kiểm M3 ↔ M8 dùng [quy trình trên .99](wp/GOI-LENH-NOI-M8-THAT.md).
+
 Mốc: 10/11 11:00 · % sẵn sàng: **40** (trung bình trọng số; 03/11: 36) · Kịp 15/11: **ĐỎ** đủ phạm vi, **VÀNG** bản tối thiểu trên .60 —
 M3 + M8 giả lập đã chạy trên .60 nhưng phần đang chạy chưa commit; chưa ai mua qua giao diện, chưa chạy phí ship/vận đơn tay, M4 chưa lên .60;
 Phúc 0 task đóng từ 03/11. Chạy thật 30/11: **ĐỎ** — máy chạy thật đã chốt .99 (D-lead-035; gói `~/m34` cắt từ .60 ngày 14/11 22:45), tên miền + HTTPS chưa chạy thật, chưa nạp ảnh tồn WMS M2 → M3, CI trên PR đỏ.

@@ -1,5 +1,7 @@
 # M8-WP01B — Nối M8 thật trên .61 với M3 .60
 
+> Hồ sơ công việc trước chuyển máy. M3 ↔ M8 hiện kiểm trên .99 theo D-lead-065. Đọc `ginsengfood-ivr/deploy/m8/noi-m3/luot-thu.md` cho lệnh hiện hành.
+
 Trạng thái: ĐÃ GỘP local W-0521 (`6212ebfa`, chưa push) · Rủi ro: R3 · Chế độ: A · Mốc: B (dời 12/11)
 Hạng mục nâng: Nối với M3 50 → 75 và Phần mềm IVR lõi 50 → 75 (khi lượt đơn thử trên máy thử đạt) · Sheet: M8-001 · Ước lượng: 12 giờ
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP01B` (bản sao archive, repo tạm commit `goc` 183a9b8) · Base SHA: `005bc43d` · Chỗ kiểm: cùng bản sao

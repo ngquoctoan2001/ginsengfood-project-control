@@ -21,7 +21,7 @@ Trang M3 `/admin/ivr` báo "Chưa kiểm tra được quyền" vì be M3 chạy 
 ## 2b. Hàng đợi M8 lúc kiểm thử (15/11 08:23, `kiem_hang_1611.sh`, [log](../ra-soat/kich-ban-99-1611/))
 
 - 0 attempt đang gọi, 0 callback đang gửi; 5 job `RESULT_READY_FOR_CALLBACK`/`HELD_CALLBACK` (đúng thiết kế sau callback); callback
-  `DELIVERED_ACCEPTED` 4, `REJECTED_STALE` 1, `INVALID_DEAD_LETTER` 5 (cũ, 13/11 07:14Z mang từ .61, M3 trả 404; không do lượt này, không replay).
+  `DELIVERED_ACCEPTED` 4, `REJECTED_STALE` 1, `INVALID_DEAD_LETTER` 5 (cũ, 13/11 07:14Z từ dữ liệu trước chuyển máy, M3 trả 404; không do lượt này, không replay).
 - Giờ in trên .99 là UTC (08:23 ở đây = 01:23 trên máy).
 
 ## 3. Giá trị cấu hình (m34 áp)

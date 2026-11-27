@@ -1,5 +1,7 @@
 # M3M8-MAY60 — máy chạy thử BP .60: đổi CI/registry sang GitHub Actions + GHCR
 
+> Hồ sơ triển khai trước chuyển máy. Thao tác và phân công hiện hành xem [kiểm M3 ↔ M8 trên .99](GOI-LENH-NOI-M8-THAT.md).
+
 Trạng thái: ĐẠT, commit `fcb3bcd9e` đã push; .60 chạy m34 từ 05/11 21:54 (M3-090) · Rủi ro: R2 (hạ tầng triển khai, chưa chạm máy thật) · Chế độ: worktree tách rời `C:\Projects\_wt\m34\may-60` (detached `3c9993b36`, 8 mục chưa commit)
 · Mốc: B (máy chạy thử trước 10/11) · Sheet: M3-071 (cha), M3-072…100 · Thiết kế: `C:\Projects\_wt\m34\may-60-notes\THIET_KE.md` (bản GitLab) · Tệp nóng: `.github/workflows/`, `SecurityConfig.java`
 

@@ -8,7 +8,7 @@ M3 và ứng dụng M8 chạy cùng .99. Truy cập quản trị qua [Điều ki
 
 ## Điều kiện gửi đơn
 
-1. Phúc kiểm quyền đọc và sửa luật. Soạn bản dùng trên .99, mô phỏng bằng các trường hợp mẫu rồi gửi duyệt. Toàn dùng tài khoản khác có quyền duyệt. Người có quyền **Áp dụng** kiểm đúng mã phiên bản trước khi chuyển sang active.
+1. Trên .99, xác minh `IVR.VIEW` và quyền theo thao tác. Phúc dùng `IVR.DISPATCH_RULE.EDIT` để soạn bản dùng trên .99, mô phỏng rồi gửi duyệt. Toàn dùng tài khoản riêng với `IVR.DISPATCH_RULE.APPROVE` để duyệt và `IVR.DISPATCH_RULE.ACTIVATE` để áp dụng. Tiền kiểm 27/11 ghi nhận ba quyền thao tác đã có trong danh mục nhưng chưa gán qua vai trò hoặc trực tiếp cho người dùng. Cấp quyền bằng chức năng quản trị phân quyền và kiểm lại theo đúng tài khoản trước khi thử.
 2. Có thể kiểm quy trình quản trị khi cờ checkout IVR đang tắt. Bản luật active là dữ liệu cấu hình thật của .99, nên chỉ áp dụng bản có nội dung đã chốt để dùng trên máy này. Đọc lại trạng thái và lịch sử thay đổi.
 3. Lượt kiểm checkout cần kiểm riêng hai ca: khách mới COD chỉ xác thực email đi `CONFIRMING / STAFF_MANUAL` và không tạo task M8; khách mới COD đã xác thực đúng số điện thoại đi M8, callback được M3 áp đúng một lần. Chuẩn bị bằng chứng `dial_evidence` theo M3-023 trước khi bật chính sách đối soát của bộ luật mới.
 

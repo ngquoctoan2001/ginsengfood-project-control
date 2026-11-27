@@ -1,5 +1,7 @@
 # M8-WP01C — Bộ nghiệm thu E01–E10 cho cặp M3 .60 ↔ M8 .61 (phần chuẩn bị)
 
+> Hồ sơ công việc trước chuyển máy. M3 ↔ M8 hiện kiểm trên .99 theo D-lead-065. Đọc `ginsengfood-ivr/deploy/m8/noi-m3/luot-thu.md` cho lệnh hiện hành.
+
 Trạng thái: ĐÃ GỘP W-0524 `2dbfe0aa` (đã lên GitLab + GitHub 13:48, không do phiên này; chưa chạy trên .60/.61) · Rủi ro: R2 · Chế độ: A · Mốc: 13/11 (UAT 14/11)
 Hạng mục nâng: Nối với M3 (chuẩn bị nghiệm thu; bậc chỉ lên khi chạy thật trên .60/.61) · Sheet: M8-001 · Ước lượng: 7 giờ (phần chuẩn bị ~4)
 Chỗ làm: `C:\Projects\_wt\m8\M8-WP01C` (bản sao archive, repo tạm commit `goc` 1ddb8f8) · Base SHA: `10f335de` · Chỗ kiểm: cùng bản sao

@@ -1,5 +1,7 @@
 # M3M8-NOI-61 — M3 .60 nối M8 thật .61 (MOCK) cho UAT 14/11 · Sheet M3-023 (+ task con)
 
+> Hồ sơ triển khai trước chuyển máy. Thao tác và phân công hiện hành xem [kiểm M3 ↔ M8 trên .99](GOI-LENH-NOI-M8-THAT.md).
+
 Giao: Toàn, 12/11/2026 (hộp thư M8 `hop-thu/m34-2026-11-10-noi-m8-that-61.md`). Ưu tiên cao hơn mọi việc M12↔M3 tới 14/11.
 Gọi MOCK, KHÔNG gọi số thật, `REAL_CUSTOMER_CALL_ALLOWED=NO`, cờ production tắt.
 

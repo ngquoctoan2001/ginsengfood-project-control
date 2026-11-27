@@ -4,7 +4,7 @@ Mọi brief của đợt này trỏ về đây. Thiết kế gốc: [giong-doc-t
 
 ## An toàn (cứng)
 - KHÔNG commit, KHÔNG push, KHÔNG stash/reset/clean/`checkout --`/`restore .`/rebase, KHÔNG `git worktree add`, KHÔNG `git add`. Chỉ phiên chính commit.
-- KHÔNG ssh/scp, KHÔNG chạm .99/.98/.60/.61/.63/.64, KHÔNG gọi mạng ngoài ngoài `dotnet restore` từ cache sẵn, KHÔNG đổi cờ/`.env*`, KHÔNG đọc/in `.env*`, `sheet.json`, khoá, token, mật khẩu, số điện thoại (≥ 10 chữ số). Không chạy script máy thật. `REAL_CUSTOMER_CALL_ALLOWED` luôn NO.
+- KHÔNG ssh/scp, KHÔNG chạm máy triển khai, KHÔNG gọi mạng ngoài ngoài `dotnet restore` từ cache sẵn, KHÔNG đổi cờ/`.env*`, KHÔNG đọc/in `.env*`, `sheet.json`, khoá, token, mật khẩu, số điện thoại (≥ 10 chữ số). Không chạy script máy thật. `REAL_CUSTOMER_CALL_ALLOWED` luôn NO.
 - Tệp dưới `C:\Projects\Project Control\` là repo công khai: không bí mật, không số điện thoại.
 
 ## Khoá tệp
