@@ -15,7 +15,7 @@ Phiên điều phối dẫn tệp này trong mọi brief. Brief cho phạm vi; t
    Tệp nóng (migration, tệp đăng ký module, tệp sinh tự động, lockfile, solution) chỉ sửa khi brief nói rõ.
 4. **Cấm:** push, merge, mở PR; đổi nhánh của checkout dùng chung; rebase, reset, stash, clean, xoá nhánh;
    cài/đổi dependency (`npm install/ci`, `dotnet add package`, `pip install`, sửa lockfile) trừ khi brief cho;
-   chạy migration lên DB dùng chung; gọi đối tác thật, `ssh`/`scp` hoặc chạy script máy thật (.60/.61/.63/.64/.98/.99, `s5v4_host.py`,
+   chạy migration lên DB dùng chung; gọi đối tác thật, `ssh`/`scp` hoặc chạy script máy thật ( `s5v4_host.py`,
    `run_lab.py`); đổi cờ production; chạy `sheet-sync`; `--no-verify`; đổi `core.hooksPath`.
 5. **Bí mật.** Không đọc `.env*` (kể cả `.env.example`), khoá, token, `tools/task-tracker/sheet.json` (có token, đã commit ở
    6 repo); không in chuỗi giống bí mật; dữ liệu test giả và ngắn. Mọi `git show`, `git diff`, `git log -p` thêm đuôi

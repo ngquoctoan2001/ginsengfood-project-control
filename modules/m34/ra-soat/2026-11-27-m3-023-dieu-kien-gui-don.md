@@ -17,7 +17,9 @@ Ngày 27/11/2026, nhánh `toandeptrai`, nền `51c9f5275`. Gói đang làm cục
 - Vitest 24/24, TypeScript và ESLint đạt. Playwright dùng trình duyệt Edge và dữ liệu giả lập đạt 3/3 ca gồm mô phỏng rồi gửi duyệt, bản nháp xung đột và tài khoản chỉ xem.
 - Kiểm số migration và danh sách bộ chạy Docker đạt. Compose kiểm cú pháp bằng giá trị mẫu cục bộ. Gói này chưa có SHA ứng viên và chưa chạy tích hợp trên `.99`.
 
-## Đưa lên máy chạy thử
+## Kiểm trên .99
+
+Trong lúc chờ máy thử do Anh Tuấn bàn giao, chạy lượt kiểm M3 ↔ M8 trên .99 theo D-lead-065. Xem [các bước kiểm và người thực hiện](../wp/GOI-LENH-NOI-M8-THAT.md).
 
 1. Phúc hoàn tất checkout Giờ Vàng COD. Kiểm ràng buộc checkout cùng V412–V413 trước khi chọn SHA ứng viên. Phiên M8 bổ sung và ghim `dial_evidence` trên bản M8, kèm bằng chứng quay ở chế độ MOCK.
 2. Chạy bộ kiểm BE và FE đầy đủ của ứng viên, kèm verifier độc lập. Thử đủ bốn tổ hợp qua checkout M3 → intake M8 → quay MOCK → M3 đối soát. Chạy thêm chặn giao lúc chờ suất, hủy trước quay, gộp khách, gọi lại và cài hai lần lịch sử. Tham chiếu kết quả đối chiếu luật nháp với hành vi hiện tại trên mẫu đã lọc thông tin cá nhân.

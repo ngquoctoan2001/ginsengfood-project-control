@@ -73,7 +73,7 @@ bản trong repo, ghi rõ "lấy từ repo, chưa nhận file gửi". Danh sách
   mã task, tên tệp, đường dẫn.
 - Mọi việc còn lại có: vì sao chưa xong · cách giải quyết · ai làm · hạn. Con số chưa đạt luôn tách nhóm lý do.
 - Bảng là chính (Word khổ A4 dọc, `tools/md_sang_docx.py --doc`; chữ ≥ 13, tiêu đề 18 đậm, ô bảng thoáng); "Nhận xét:" viết từng ý.
-- Tên module viết đúng và **in đậm** mỗi khi nhắc (Toàn dặn 14/11): **Module 1-2 - Vận hành sản xuất** · **Module 3 - Bán hàng** · **Module 4 - AI Tư vấn** · **Module 5 - Kết nối Meta** · **Module 6 - Đo lường quảng cáo** · **Module 7 - Sản xuất Video giờ vàng** · **Module 8 - Gọi xác nhận đơn tự động**; không viết "nhà máy", "bán hàng", "gọi xác nhận đơn", "M1–M2"… thay cho tên module. Máy chủ luôn ghi "máy chủ .99" (cũng vậy với .98, .63, .60, .61), không ghi ".99" trơn hay "máy chủ chính thức (.99)".
+- Tên module viết đúng và **in đậm** mỗi khi nhắc (Toàn dặn 14/11): **Module 1-2 - Vận hành sản xuất** · **Module 3 - Bán hàng** · **Module 4 - AI Tư vấn** · **Module 5 - Kết nối Meta** · **Module 6 - Đo lường quảng cáo** · **Module 7 - Sản xuất Video giờ vàng** · **Module 8 - Gọi xác nhận đơn tự động**; không viết "nhà máy", "bán hàng", "gọi xác nhận đơn", "M1–M2"… thay cho tên module. Máy chủ luôn ghi "máy chủ .99" (cũng vậy với .98, .64 và .63), không ghi ".99" trơn hay "máy chủ chính thức (.99)".
 - Bản tổng hợp: Kết luận tuần không có dòng "Nguy cơ lớn nhất" (rủi ro ở Phần 4); bảng tổng quan không có cột Kịp 30/11; tiêu đề module không ghi màu.
 - "backend" giữ nguyên, không dịch thành "máy chủ" (máy chủ chỉ dùng cho server thật) (D-lead-007).
 - Không ghi %; không có mục cần Chú quyết hoặc hỗ trợ (việc chờ người khác ghi trong bảng việc còn lại, có người và hạn); không bàn quỹ giờ;

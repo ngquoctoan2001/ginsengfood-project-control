@@ -2,7 +2,7 @@
 
 Mốc dữ liệu: 24/11/2026 23:xx (`/tong-hop-tuan` 14–24/11, gộp hai tuần) · chỉ phiên `lead` sửa tệp này.
 Máy chủ: .99 nhà máy + bán hàng (M1–M2 `417f15d53`, M3/M4/M9 `1e2406589` do Phúc đưa 21/11, M8 `f8e29b46`), .98 mkt (M5 + M6) + proxy HTTPS `edge`,
-.63 CI + M7; .60/.61 dừng, giữ dữ liệu làm đường lui (`chung/MAY_CHU.md`). **Hạn dự án 30/11/2026** (D-lead-025); 15/11 giữa kỳ không đạt.
+.63 CI + M7; xem [bảng máy hiện hành](chung/MAY_CHU.md). **Hạn dự án 30/11/2026** (D-lead-025); 15/11 giữa kỳ không đạt.
 Bản gửi Chú: `C:/Projects/bao-cao-tuan/2026-11-14_2026-11-24/bao-cao-tong-hop-2026-11-14_2026-11-24.md` + `.docx` (12 trang, chưa gửi);
 số đã đối chiếu: `modules/lead/ra-soat/2026-11-24-kiem-cheo-tuan.md` (Phúc 21/30 khớp, Tài 16/25 khớp). Màu dưới đây là của phiên lead, không đưa vào bản gửi Chú.
 

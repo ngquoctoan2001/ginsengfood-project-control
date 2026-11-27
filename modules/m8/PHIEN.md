@@ -5,14 +5,14 @@
 - `C:\Projects\ginsengfood-ivr`, **chỉ nhánh `main`**; `git push origin main` đẩy cùng lúc GitLab và GitHub (push chỉ khi Lead bảo).
 - Dịch vụ .NET 10 độc lập (SDK 10.0.201): `src/Ivr.{Api,Worker,Infrastructure,Domain,Contracts,MediaReceiver}`; test
   `tests/{Unit,Integration,Contract,MediaReceiver}` + `tests/chaos`. Không có màn hình vận hành — M3 làm màn hình.
-- Tổng đài: Asterisk trên máy `.64` (`deploy/telephony-s5`, `telephony-vm`) nối trunk SIP MobiFone; ứng dụng M8 chạy trên `192.168.1.99` từ 14/11 07:45 (D-lead-035/036, `chung/MAY_CHU.md`); `.61` chỉ là đường lui, giữ `.64`.
+- Tổng đài: Asterisk trên máy `.64` (`deploy/telephony-s5`, `telephony-vm`) nối trunk SIP MobiFone; ứng dụng M8 chạy trên `192.168.1.99` (D-lead-035–038, [bảng máy](../../chung/MAY_CHU.md)). Khi chưa có máy thử, kiểm M3 ↔ M8 trên .99 (D-lead-065).
 - Hợp đồng hiện hành với M3: `specs/api/openapi/ivr-order-confirmation.v1.yaml` draft.47 (`main` `680508c7`, 16/11; .99 còn chạy draft.45 tới khi `deploy_m8_99`) + `order-core-ivr-callback.target-v1.yaml` + IR-06/07/08. M8 **không** dùng `ginsengfood-contracts`; baseline draft.44 ghim hash vẫn giữ nguyên.
 - Nhánh chú Dũng (`github/chudung/m8-*`, D-lead-051): rà, sửa cho xanh, gộp `main` (tua nhanh + một commit W của Toàn ở đầu để cổng `tts-provenance` thấy tác giả HEAD có trong `m8-builders.json`), giữ luật chú.
 - Lead đang tự xử lý M3 → M8 ở phiên m34; phiên m8 chỉ đọc để biết, không chủ động soạn/gửi gói hợp đồng hoặc theo việc phía M3 (D-m8-008).
 - D-m8-012: lấy JSON tỉnh/thành phố và phường/xã từ repo M3 chỉ đọc, ghim nguồn mới tại M8 và giữ namespace mã nội bộ M3 (không ghép mã hành chính trùng số); không sửa tích hợp M3 hoặc dùng nguồn mới để tự xác nhận audio L26 cũ.
-- D-m8-010: dùng máy chạy app M8 (`.61` tới giờ cắt, sau đó `.99`) tạm cho khóa/bí mật LAB; không dùng custody production làm việc chặn code/lab. Kho khóa/người giữ/khôi phục production chốt trước bước cấp production và release; không tự đổi register/cờ gọi thật.
+- D-m8-010: dùng máy chạy app M8 (`.99`) tạm cho khóa/bí mật LAB; không dùng custody production làm việc chặn code/lab. Kho khóa/người giữ/khôi phục production chốt trước bước cấp production và release; không tự đổi register/cờ gọi thật.
 
-- D-m8-011: m8.13 A đã chốt hướng ngoại lệ cụm hai host (.61/.64 tới giờ cắt, sau đó .99/.64); WP07D khai chi tiết. Giữ cổng/health thật, file secret và migration job riêng; chưa đóng G5 hoặc cấp quyền deploy.
+- D-m8-011: m8.13 A đã chốt hướng ngoại lệ cụm hai host (.99/.64); WP07D khai chi tiết. Giữ cổng/health thật, file secret và migration job riêng; chưa đóng G5 hoặc cấp quyền deploy.
 
 ## Luật repo phải nhớ (`CLAUDE.md` = `AGENTS.md`)
 
@@ -23,7 +23,7 @@
 - Tracker: phiên chính chạy `node tools/task-tracker/sheet-sync.mjs log --id M8-NNN …` sau mỗi lệnh có chạm repo (subagent không chạy).
   Mã việc nội bộ `W-NNNN` (số tiếp theo ở `docs/release/work-register.md` §2) — chỉ phiên chính cấp số.
 - **Không chạy script máy thật** (`s5v4_host.py`, `run_lab.py`), không chạm trunk, `REAL_CUSTOMER_CALL_ALLOWED` luôn `NO`.
-  Mọi việc trên `.61`/`.99`/`.64` cần Lead (và anh Tuấn mở sudo/khung bảo trì).
+  Mọi việc trên `.99`/`.64` cần Lead (và anh Tuấn mở sudo/khung bảo trì).
 
 ## Lệnh
 
@@ -63,7 +63,7 @@
 - Kiểm theo rủi ro: công cụ/tài liệu chưa chạy thật → coder viết, phiên chính chạy test một lần rồi ghép. Verifier độc lập chỉ khi chạm mã sản phẩm, cờ production hoặc bí mật.
 - Sau vòng sửa thứ hai, còn lại chỉ là độ chặt của test hay việc không ảnh hưởng an toàn/sản phẩm → sửa tại chỗ hoặc ghép và ghi nợ; chỉ dừng báo Lead khi có lỗi an toàn/sản phẩm thật.
 - Không push chỉ để bảo trì CI/CVE/gitleaks: gom theo ngày hoặc khi có thay đổi nhìn thấy được; bảo trì dồn sang lịch chạy đêm (m8.50).
-- Báo cáo mở đầu bằng điều đã đổi trên máy chạy M8 (.61 tới giờ cắt, sau đó .99) và nút thắt thật (hiện: nghiệm thu M3 ↔ M8 từng vòng với m34; cắt sang .99 chờ .64 mở cho .99; ssh bằng khoá, mỗi lệnh có duyệt của máy). Tối đa 2 agent nền.
+- Báo cáo mở đầu bằng điều đã đổi trên .99 và nút thắt của lượt kiểm M3 ↔ M8 hoặc tổng đài .64. Tối đa 2 agent nền.
 
 ## Kiểm đầu phiên
 
@@ -73,7 +73,7 @@
 
 ## Mảng khảo sát cho `/ke-hoach`
 
-1. Chuyển sang chạy thật trên `.99`/`.64` (WP1; trước giờ cắt `.61`/`.64`) — `deploy/rollouts/production-window-20261027/` đang "PREPARED / NOT READY".
+1. Chuyển sang chạy thật trên `.99`/`.64` (WP1) — `deploy/rollouts/production-window-20261027/` đang "PREPARED / NOT READY".
 2. Tích hợp M3 (WP2) — callback, D-16, ca E01–E10, ký r2.
 3. Nhà mạng + giọng đọc (WP3, WP4) — phần nào còn trong tay mình, phần nào chờ ngoài.
 4. Sao lưu/DR (WP5) + nghiệm thu bằng chứng, `gate-status` (WP6).

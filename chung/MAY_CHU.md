@@ -9,24 +9,20 @@ cổng vào, cổng LAN, ai gọi ai, lịch cắt: `modules/lead/may-chu/2026-1
 |---|---|---|---|
 | **192.168.1.99** (`ginsengfood`, 6 nhân, 28 GB, `/data` 280 GB) | **nhà máy + bán hàng** | M1–M2 (`/data/ginsengfood-ops-core`), M3 + M4 + M9 (`/data/ginsengfood-business-platform`), app M8 (`/data/ginsengfood-ivr`) | dữ liệu dưới `/data`; `ssv` vào bằng khoá; sudo cần mật khẩu → phần root do Toàn/Anh Tuấn |
 | **192.168.1.98** (mkt) | **marketing** + **cổng vào HTTPS** | M5 + M6 (`/data/ginsengfood-marketing`), giao diện chung `mkt.`; proxy Caddy `edge` (`/data/deploy/edge-98`, cổng 80/443, D-lead-057) | Tài dựng nền + app; proxy do phiên `lead` giữ (chạy thật từ 17/11 16:3x, chứng chỉ Sectigo wildcard, xem mục Cổng vào; kiểm 24/11: Caddy 2.11.9 khoẻ, HSTS còn 300 giây, thư mục `deploy/edge-98` chưa commit); RAM vẫn ~4 GB (xin trên 8 GB từ 17/11, Anh Tuấn chưa nâng) |
-| 192.168.1.60 | **không dùng** (14/11) | không còn app nào chạy (kiểm 14/11 20:3x: chỉ CSDL M3 cũ + clamav, giữ làm đường lui); M7 thử trên .63 | không dựng gì mới; xin Anh Tuấn để nguyên tới khi Toàn báo thu hồi |
-| 192.168.1.61 | **không dùng** (14/11) | app M1–M2, M8 đã dừng (kiểm 14/11 20:3x); dữ liệu cũ giữ làm đường lui; cụm microk8s + Prometheus chung .61/.63/.64 không phải của mình (lead.26) | không dựng gì mới; để nguyên tới khi Toàn báo thu hồi |
-| 192.168.1.64 | Asterisk M8 | giữ nguyên | đang chặn .99, Anh Tuấn mở trước khi cắt m8 |
+| 192.168.1.64 | Asterisk M8 | tổng đài tách khỏi ứng dụng M8 | ARI của ứng dụng M8 đi từ .99 |
 | 192.168.1.63 | **máy dev** (D-lead-039) — **từ 18/11 chỉ chạy CI + M7** (D-lead-061; staging `stg*` đã dọn; máy thử trước release sẽ là bản sao .99 do Anh Tuấn nhân bản) | runner GitLab `may-63` cho CI ivr + ops-core (container `gitlab-runner-63`, **3 job một lúc từ 18/11 14:45** (D-lead-062; trước đó 2), mỗi job 5 nhân, 12 GB từ 16/11 14:09, D-m12-078; ops-core chỉ chạy ở đây, D-lead-042); **từ 21/11 CI ops-core + ivr không tự chạy khi push** (D-lead-064: lịch đêm + bấm tay; 24/11 lịch đêm chưa tạo); thêm 2 runner của Phúc cho repo bán hàng (`gitlab-runner-bp-ci`, `gitlab-runner-bp-deploy`, D-lead-060); phiên M7 | bản thử cũ `stg_*` giữ nguyên, cấm `docker … prune`; không chạy thật gì ở đây |
 
 Máy video (M7) và máy thử: Anh Tuấn chưa giao.
 
-## Lịch cắt sang .99 (D-lead-036, D-lead-038)
+## Môi trường kiểm M3 ↔ M8
 
-Không chờ giờ cố định: luồng nào kịch bản sẵn thì cắt ngay, Toàn duyệt liền. **Cả ba đã chạy trên .99:** 1. m12 (M1–M2) xong 13/11 19:15 · 2. m34 (M3 + M4 + M9) xong 14/11 07:36 · 3. m8 xong 14/11 08:50 (vòng M3 ↔ M8 đơn MOCK đạt). .60 (M3) và .61 (M1–M2, M8) dừng, giữ dữ liệu làm đường lui. Hai dòng cổng tạm trên .99 (.60 → 8443, .61 → 8445) **đã gỡ 16/11 11:02** (D-lead-046; kiểm sau = DAT; .60/.61 không còn gọi vào .99, đường lui chỉ còn là dữ liệu cũ trên máy).
-Chụp CSDL máy cũ ngay trước khi dừng ghi; nhắn nhóm Phúc/Tài một câu trước khi dừng ghi.
-Tới giờ cắt của luồng nào thì địa chỉ cũ của luồng đó vẫn dùng; sau giờ cắt máy cũ dừng app, giữ dữ liệu làm đường lui tới khi Toàn cho gỡ.
+M3 và ứng dụng M8 đã chuyển sang .99 theo D-lead-035–038. Cặp kiểm đầu-cuối hiện chạy trực tiếp trên .99 trong lúc chờ máy thử. Asterisk nằm ở .64. Cổng M8 là 8443 và cầu callback M3 là 8445. Khi kiểm, dùng đơn nội bộ và phối hợp với Phúc trước thao tác ảnh hưởng checkout. [Quyết định](../modules/lead/QUYET_DINH.md).
 
 ## Địa chỉ nội bộ mới (áp từ giờ cắt của bên được gọi)
 
 | Gọi tới | Địa chỉ | Bên gọi phải đổi |
 |---|---|---|
-| API M1–M2 | `http://192.168.1.99:5000` (LAN chỉ mở cho .60, .98; M3 trên chính .99 từ mạng Docker `m34_app` 172.24.2.0/24 gọi được — đo 17/11 200, tường lửa không chặn đường cầu Docker) | M3 `OPS_CORE_BASE_URL`, M6 `M6_OPSCORE_BASE_URL`, M7 `M7_OPSCORE__BASEURL` |
+| API M1–M2 | `http://192.168.1.99:5000` (M3 trên chính .99 từ mạng Docker `m34_app` 172.24.2.0/24 gọi được — đo 17/11 200, tường lửa không chặn đường cầu Docker) | M3 `OPS_CORE_BASE_URL`, M6 `M6_OPSCORE_BASE_URL`, M7 `M7_OPSCORE__BASEURL` |
 | `ops.`, `pwa.`, `trace.` (Caddy M1–M2) | `http://192.168.1.99:8012` | proxy cổng vào trên .98 (D-lead-057) |
 | M3 + M4 (nginx gói `ginsengfood-business-platform`) | `http://192.168.1.99:80` | M5 `M4_ADVISOR_BASE_URL`, `M3_ORDER_STATE_*`; M6 `M6_M3_BASE_URL`; M7 `M7_M3__BASEURL` |
 | M8 | `https://192.168.1.99:8443` (chứng thư mới theo IP .99) | M3 `M8_ORIGIN` + ghim CA mới |
@@ -46,8 +42,8 @@ Go/No-go M4/M5/M6 tính theo HTTPS `mkt.` trên .98, chậm nhất 20/11; HTTPS 
 
 ## Luật
 
-- Việc mới (triển khai, cấu hình, tài liệu, kế hoạch, kiểm thử máy) nhắm **.99 / .98**. Không lập kế hoạch mới trên .60/.61; nhắc .60/.61 chỉ khi nói về đường lui hoặc M7.
-- Thư mục trên máy chủ **theo tên repo** (D-lead-037): `/data/ginsengfood-ops-core`, `/data/ginsengfood-business-platform`, `/data/ginsengfood-ivr`, `/data/ginsengfood-marketing`, `/data/ginsengfood-golden-hour-video`; sao lưu `/data/sao-luu/<repo>`; thư mục thật, không liên kết trong nhà `ssv`; không đặt `m12`, `m34`, `m56`… (.60/.61 giữ tên cũ làm đường lui).
+- Triển khai, cấu hình và kiểm ứng dụng trên máy hiện hành của từng module. M3 ↔ M8 dùng **.99** trong lúc chờ máy thử (D-lead-065).
+- Thư mục trên máy chủ **theo tên repo** (D-lead-037): `/data/ginsengfood-ops-core`, `/data/ginsengfood-business-platform`, `/data/ginsengfood-ivr`, `/data/ginsengfood-marketing`, `/data/ginsengfood-golden-hour-video`; sao lưu `/data/sao-luu/<repo>`; thư mục thật, không liên kết trong nhà `ssv`; không đặt `m12`, `m34`, `m56`….
 - **Ai đưa bản lên máy (D-lead-060, 18/11):** repo `ginsengfood-business-platform` (M3, M4, M9) trên .99 — **chỉ Phúc** (bản mới, `.env`, compose, cờ,
   khởi động lại container), qua image CI (runner trên .63 do Phúc dựng) + `trien-khai.sh`, báo trước, giữ lớp `compose.cong-khai.yml`, gửi lại mã commit + kết quả;
   Toàn, phiên `m34`/`m9`, Tài, chú Dũng chỉ đọc .99 và nhắn Phúc khi cần. M1–M2 (.99): phiên `m12` · M8 (.99, .64): phiên `m8` · M5 + M6 (.98): Tài ·

@@ -76,9 +76,9 @@ so với mốc SHA đã lưu). Mẫu sẵn sàng, phiếu gói việc, rà soát
 - `.claude/settings.json` chặn hẳn force-push, `reset --hard`, `clean -f`, xoá nhánh, `--no-verify`, đổi hook, script máy thật.
   Không còn luật "ask" (Lead bỏ 14/11, các phiên chạy bypass): máy không hiện hộp hỏi duyệt lệnh nữa; không thêm lại luật "ask".
 - Không force-push, `reset --hard`, `clean -fdx`, xoá nhánh, rebase nhánh chung, sửa lịch sử.
-- Máy chủ chính thức từ 13/11: **.99** nhà máy + bán hàng (M1–M2, M3, M4, M9, app M8), **.98** mkt (M5 + M6); .60 chỉ còn M7 tạm và đường lui,
-  .61 đường lui, .64 Asterisk. Bảng máy, địa chỉ, lịch cắt: `chung/MAY_CHU.md`. Việc mới nhắm .99/.98, không lập kế hoạch mới trên .60/.61.
-- Không push, merge, mở PR, deploy, chạy migration lên DB dùng chung hay máy chủ (.60/.61/.63/.64/.98/.99), đổi cờ production
+- Máy chủ hiện hành: **.99** nhà máy + bán hàng (M1–M2, M3, M4, M9, app M8), **.98** marketing (M5 + M6), **.64** Asterisk. Xem [bảng máy](chung/MAY_CHU.md).
+  M3 ↔ M8 kiểm trên **.99** trong lúc chờ máy thử do Anh Tuấn bàn giao (D-lead-065).
+- Không push, merge, mở PR, deploy, chạy migration lên DB dùng chung hay máy chủ đang vận hành, đổi cờ production
   (`PRODUCTION_ENABLED`, `M5_M7_DISPATCH_MODE=real`, `GLOBAL_GATEWAY_STATE`…), gọi đối tác thật (Meta, VNPAY, GHN, Viettel Post,
   nhà mạng) — **trừ khi Lead nói rõ cho đúng việc đó trong phiên này**. Lời đồng ý không chuyển sang việc khác.
 - Khi `/ra-soat`, phiên chính đồng bộ repo nguồn bằng `git pull --ff-only --no-rebase` sau khi kiểm checkout sạch, đúng nhánh/upstream

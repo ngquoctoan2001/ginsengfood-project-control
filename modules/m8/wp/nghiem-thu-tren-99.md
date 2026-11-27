@@ -2,7 +2,7 @@
 
 **ĐẠT 14/11 13:39: mọi ca thuộc bản 15/11 trên .99** — E02 lặp, E01, E06-A, E03, E05, E06-B, E10 đều KHỚP (6/10 ca của phiếu; E04, E07, E08, E09 `NOT_RUN` theo lý do trong phiếu, như bảng dưới) (biên bản `ra-soat/2026-11-14-*-99.md`, `ra-soat/2026-11-14-e05-e06b-e10-99.md`); bằng chứng repo W-0540 `565490cd`. Còn: hợp đồng draft.45 `DRAFT` (m8.81), chữ ký M3/Tech Lead; tự nghiệm thu.
 
-Trạng thái (08:34 14/11): M8 ĐÃ CẮT .99 (07:43–07:46, phiên phụ `chuyen-may-99`); thứ tự dưới đây được Toàn duyệt qua tin m34 (D-m34-068, "m34.95 A"); E02 lặp ĐẠT 14/11 08:49 (đơn 577; đối soát `ra-soat/2026-11-14-e02-lap-99-doi-soat.json`, lịch tắt 08:50:52); E01 ĐẠT 14/11 09:36 (`ra-soat/2026-11-14-e01-99.md`); E06-A ĐẠT 14/11 10:10 (`ra-soat/2026-11-14-e06a-99.md`); E03 ĐẠT 14/11 10:23 (`ra-soat/2026-11-14-e03-99.md`); còn E05/E06-B, E10, mỗi lượt Toàn duyệt riêng. Soạn 13/11 bởi phiên m8 chính (D-m8-099, D-m34-065). Chỉ là kế hoạch và danh sách bài học từ lượt .61; không chứa việc nào đã chạy trên .99, không đụng `deploy/m8` hay `wp/chuyen-may-99.md` của phiên phụ.
+Trạng thái (08:34 14/11): M8 ĐÃ CẮT .99 (07:43–07:46, phiên phụ `chuyen-may-99`); thứ tự dưới đây được Toàn duyệt qua tin m34 (D-m34-068, "m34.95 A"); E02 lặp ĐẠT 14/11 08:49 (đơn 577; đối soát `ra-soat/2026-11-14-e02-lap-99-doi-soat.json`, lịch tắt 08:50:52); E01 ĐẠT 14/11 09:36 (`ra-soat/2026-11-14-e01-99.md`); E06-A ĐẠT 14/11 10:10 (`ra-soat/2026-11-14-e06a-99.md`); E03 ĐẠT 14/11 10:23 (`ra-soat/2026-11-14-e03-99.md`); còn E05/E06-B, E10, mỗi lượt Toàn duyệt riêng. Soạn 13/11 bởi phiên m8 chính (D-m8-099, D-m34-065). Chỉ là kế hoạch và danh sách bài học từ lượt trước chuyển máy; không chứa việc nào đã chạy trên .99, không đụng `deploy/m8` hay `wp/chuyen-may-99.md` của phiên phụ.
 
 ## Điều kiện trước (chặn nếu thiếu)
 
@@ -23,13 +23,13 @@ Trạng thái (08:34 14/11): M8 ĐÃ CẮT .99 (07:43–07:46, phiên phụ `chu
 
 Cách làm khi Toàn cho phép bước 0: một kịch bản chỉ đọc (stat/resolv.conf/`grep -c` token/`hien-trang`), chạy qua `ssh … 'bash -s' < kịch bản`, con `< /dev/null`; chép bộ `noi-m3/` bản `main` lên thư mục làm việc trên .99 trước (ghi lên .99: Toàn duyệt).
 
-## Bài học từ lượt .61 (13/11), kiểm TRƯỚC khi chạy trên .99 (đều chỉ đọc)
+## Bài học từ lượt trước chuyển máy (13/11), kiểm TRƯỚC khi chạy trên .99 (đều chỉ đọc)
 
-| # | Điều đã gặp trên .61 | Kiểm trên .99 | Nếu hỏng |
+| # | Điều đã gặp trước chuyển máy | Kiểm trên .99 | Nếu hỏng |
 | --- | --- | --- | --- |
 | 1 | `du-lieu/api/appsettings.json` thuộc uid 1654, mode 0400: `ssv` không đọc được, `cai-cau-hinh` dừng `PermissionError` (cần `sudo chown 1000:1000` + `chmod 444`, như tệp worker) | `stat -c '%u:%g %a' <du-lieu>/api/appsettings.json` và `test -r` bằng `ssv` | nhờ Toàn chạy `sudo chown`; mình không dùng sudo |
 | 2 | Container kế thừa `search ssv.com`, `ndots:0` từ host: tên ngắn như `m8-worker-1` bị busybox đổi thành địa chỉ công cộng, `/healthz/` hết giờ (W-0532: gọi `m8-worker-1.` có dấu chấm cuối; đã có trong `main`) | `cat /etc/resolv.conf` trên .99 và trong `m8-api-1`; thử `wget http://m8-worker-1.:8081/healthz/` | tên có dấu chấm cuối; báo phiên phụ nếu còn chỗ khác gọi tên ngắn từ busybox |
-| 3 | `ca-m8.pem` là chứng thư lá (CA ký không còn trên máy); Python 3.10 của .61 từ chối nó làm điểm tin (W-0531: bật `VERIFY_X509_PARTIAL_CHAIN`, đã có trong `main`); be Java M3 ghim lá đã PKIX đạt thật 13/11 | `chuyen.sh` in `chung_thu_8443=`; vân tay SHA-256 DER báo m34 qua kênh khác; một chứng thư, còn hạn, SAN `IP:192.168.1.99` | cấp lại từ CA có tệp nếu phiên phụ làm được |
+| 3 | `ca-m8.pem` là chứng thư lá (CA ký không còn trên máy); Python 3.10 lúc kiểm trước chuyển máy từ chối nó làm điểm tin (W-0531: bật `VERIFY_X509_PARTIAL_CHAIN`, đã có trong `main`); be Java M3 ghim lá đã PKIX đạt thật 13/11 | `chuyen.sh` in `chung_thu_8443=`; vân tay SHA-256 DER báo m34 qua kênh khác; một chứng thư, còn hạn, SAN `IP:192.168.1.99` | cấp lại từ CA có tệp nếu phiên phụ làm được |
 | 4 | Worker bị tạo lại thì log container cũ mất (E02 không còn log theo correlation) | chụp `docker compose logs api worker` ra tệp ngay trước mỗi lượt `tat-lich` hoặc tạo lại | lưu log vào `<nghiem-thu>/` |
 | 5 | `lan-thu.sh`/`dat-cau-hinh.sh` đọc stdin: chạy qua `ssh 'bash -s' < kịch bản` thì con của nó nuốt phần còn lại của kịch bản | luôn `< /dev/null` cho lệnh con, hoặc `scp` kịch bản rồi chạy | — |
 | 6 | Token quyền nguy hiểm cho replay E05/E06-B: `grep -c '^IVR_ADMIN_DANGER_TOKEN=' api.env` phải 1 | sau khi bí mật sang .99 | thiếu thì E05/E06-B replay ghi `NOT_RUN` |
@@ -40,7 +40,7 @@ Cách làm khi Toàn cho phép bước 0: một kịch bản chỉ đọc (stat/
 | 10 | `lan-thu.sh kiem-sau` (`kiem_noi_m3.py sau-luot`, dòng 627–630) tìm container `asterisk` cục bộ để đếm kênh; trên .99 Asterisk ở .64 nên `kenh_asterisk` luôn HỎNG (E02 lặp: 25 đạt, 1 hỏng, đúng mục này) | E10 phải đếm kênh qua ARI .64, chỉ đọc; cần W sửa `kiem_noi_m3.py`/`lan-thu.md` | tạm: bằng chứng 0 kênh từ `ivr_sim_channels` (SIM MOCK), `doi_soat_m3` không cờ `LUOT_GOI_KHONG_MOCK`, cờ gọi thật NO |
 | 11 | Kịch bản bấm 0 gắn theo `task_id` chỉ có sau khi đơn tạo, mà lịch bật thì gọi trong vài giây (577: đặt 08:49:28, callback 08:49:32) và bật lịch thì media đồng bộ ~5 phút (bài học 8) | dùng khoá tiền tố `m3-ivr-<idĐơn>-*` (hỗ trợ từ W-0203) cho ba id đơn kế tiếp (m34 đọc trước sequence M3, không tiêu thụ): đặt cấu hình, `bat-lich`, chờ media lắng, rồi mới đặt đơn; E03 14/11 chạy đúng thế, đơn gọi trong 2 giây | id đơn ngoài dải thì đơn bấm 1 (xác nhận), làm lại một vòng; dặn m34 báo ngay `task_id` thật |
 
-## Thứ tự (theo `deploy/m8/nghiem-thu-m3/README.md`; thay địa chỉ .61 bằng .99, thư mục làm việc theo `deploy/m8/may-99/README.md`)
+## Thứ tự (theo `deploy/m8/nghiem-thu-m3/README.md`; thư mục làm việc theo `deploy/m8/may-99/README.md`)
 
 | Bước | Ca | Ai | Lịch gọi | Việc |
 | --- | --- | --- | --- | --- |
@@ -57,7 +57,7 @@ Khi Toàn nói rõ trong phiên này một lượt (ví dụ "chạy E02 lặp t
 
 ## Bằng chứng
 
-`docs/evidence/W-0534` giữ E02 của cặp .60/.61 (một đơn đầu-cuối). Bằng chứng .99: gói WP mới trong repo (số từ W-0535), cùng cấu trúc: dòng thời gian, `doi_soat_m3.py` JSON, receipt sha256, giới hạn. Phiếu `deploy/m8/nghiem-thu-m3/phieu-e01-e10.md` điền khi có ca đóng (không sửa tệp trong `deploy/m8` khi phiên phụ còn đang làm; điền bản sao ở Project Control hoặc sau khi phiên phụ báo xong).
+`docs/evidence/W-0534` giữ E02 của cặp trước chuyển máy (một đơn đầu-cuối). Bằng chứng .99: gói WP mới trong repo (số từ W-0535), cùng cấu trúc: dòng thời gian, `doi_soat_m3.py` JSON, receipt sha256, giới hạn. Phiếu `deploy/m8/nghiem-thu-m3/phieu-e01-e10.md` điền khi có ca đóng (không sửa tệp trong `deploy/m8` khi phiên phụ còn đang làm; điền bản sao ở Project Control hoặc sau khi phiên phụ báo xong).
 
 ## Việc ngoài code (chặn)
 

@@ -137,5 +137,5 @@ Repo đòi GitNexus `impact`/`detect_changes` trước khi sửa/commit, nhưng 
 ## Báo cáo tuần
 
 `/bao-cao-tuan` làm một lượt hai việc (D-lead-024): bước 1 tự viết `M3-ket-noi-trien-khai` của Toàn (task tab M3 trên Sheet có người
-phụ trách Nguyễn Quốc Toàn: nối M3 → M8, máy chạy thử .60 (cắt sang .99 ngày 14/11 22:45, D-lead-036), CI lên máy chủ; lưu thẳng vào thư mục tuần) và bước 2 rà `M3-ban-hang`,
+phụ trách Nguyễn Quốc Toàn: nối M3 → M8, kiểm trên .99 trong lúc chờ máy thử (D-lead-065), CI lên máy chủ; lưu thẳng vào thư mục tuần) và bước 2 rà `M3-ban-hang`,
 `M3-van-chuyen-thanh-toan`, `M4-tu-van-ai`. M3 có ba người, không lẫn việc người này vào báo cáo người kia.
