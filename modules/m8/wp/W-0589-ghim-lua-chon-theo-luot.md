@@ -1,0 +1,16 @@
+# W-0589 — Ghim lựa chọn giọng/vùng theo lượt quay (G-13, gói 4; cũng đóng cửa sổ trộn của hồ sơ giọng W-0566)
+
+Trạng thái: ĐANG LÀM (26/11) · Mức: Nguy hiểm (lời nói với khách: một lượt không được nói nửa vùng này nửa vùng kia) · KE_HOACH G-13.4
+Khoá tệp: agent tự khai `m8/W-0589` · Thiết kế: [tinh-vung-thiet-ke.md](tinh-vung-thiet-ke.md) §D6, §D7, §E (điều 6), §F (gói W-0589) · Đã có: W-0586 `3cc84574` (`RegionalVoiceMap.ResolveRegion`, nguồn vùng), W-0566 (nguồn hồ sơ giọng), W-0582 (luồng gọi dùng tốc độ)
+
+## Brief
+1. Quy tắc chung [giong-doc-quy-tac-agent.md](giong-doc-quy-tac-agent.md) (build `--artifacts-path .artifacts/build-W-0589`; DB test dưới `@bo-kiem-du` ngắn khi cần; chữ trong `docs/evidence` không dùng "đường", "tổ", "ấp"… và chạy `scan-pii.sh`; GitNexus `impact` hoặc `grep` mọi nơi dùng `RegionalVoiceMap.Resolve/ResolveRegion` trước khi sửa).
+2. Vấn đề (thiết kế §D7): mỗi lượt quay tính vùng/giọng NĂM lần (`AsteriskSchedulerDispatchGateway.cs:118,124,135`: renderer, synthesize, 3 câu phản hồi), mỗi lần đọc `Current` của nguồn vùng (2 giây) và nguồn hồ sơ giọng; nếu bảng đổi giữa hai lần thì một lượt có thể đọc số theo vùng A và giọng/câu phản hồi theo vùng B. Cần: **một lượt quay dùng cùng MỘT ảnh chụp** (vùng theo tỉnh + hồ sơ giọng + tốc độ) cho cả năm lần; lượt sau theo bảng mới.
+3. Làm: một cơ chế ảnh chụp theo lượt (đề xuất `AsyncLocal` hoặc đối tượng ngữ cảnh mở ở hai cổng gửi quay: `AsteriskSchedulerDispatchGateway.cs` và `MockTelephonyDispatchGateway.cs`, đóng khi xong; không rò sang lượt khác kể cả khi lỗi/huỷ) mà `RegionalVoiceMap.Resolve/ResolveRegion` đọc ưu tiên khi có; ngoài lượt (intake, màn quản trị) hành vi như cũ (đọc `Current`). Ảnh chụp lấy `ProvinceRegionSnapshot` + `VoiceProfileSourceSnapshot` đúng một lần lúc mở. Không đổi chữ ký công khai đã có (tham số tuỳ chọn nếu cần). Hành vi mặc định (cờ OPTIONS) giống từng byte hôm nay.
+4. Test (`UT-REGION-PIN-*`, `IT-REGION-PIN-*`): đổi bảng vùng giữa hai lần tính trong cùng lượt ⇒ cùng kết quả cả năm lần; lượt kế theo bảng mới; đổi hồ sơ giọng giữa chừng ⇒ giữ; lượt lỗi/huỷ không để ảnh chụp lại cho lượt sau (`AsyncLocal` sạch); hai lượt chạy song song không lẫn ảnh chụp của nhau; ngoài lượt đọc `Current` như cũ; chạy lại nguyên lớp cũ dựng gateway/`RegionalVoiceMap`. Đột biến (≥ 5, hoàn lại, băm khớp): bỏ ghim (đọc `Current` mỗi lần); ghim nhưng đọc lại bảng ở câu phản hồi; không dọn ngữ cảnh sau lượt; ảnh chụp dùng chung giữa lượt; ghim nhưng bỏ hồ sơ giọng.
+5. Kiểm lọc: UnitTests `~Region|~RegionalVoice|~Dispatch|~Telephony|~VoiceProfileSource`; tích hợp `~Telephony|~Dispatch|~Region|~MockTelephony`; build 0/0. Không bộ đủ.
+6. Phạm vi ghi: `src/Ivr.Infrastructure/Telephony/AsteriskSchedulerDispatchGateway.cs`, `MockTelephonyDispatchGateway.cs`, `src/Ivr.Infrastructure/Speech/RegionalVoiceMap.cs`, tệp mới trong `src/Ivr.Infrastructure/Voice/Regions/` cho ngữ cảnh ảnh chụp, tests tương ứng (`tests/*/Voice/Regions/Pin*`), `docs/evidence/W-0589/README.md` (≤ 70 dòng + bảng "cổng Nguy hiểm"). Cấm: `PrerenderedSpeechCatalog.cs`, `Voice/Profiles|Variants|Preview`, kho/API tỉnh–vùng (`Voice/Regions` do W-0587 sửa: bạn chỉ THÊM một tệp mới ở đó, không sửa tệp của W-0587), migration, hợp đồng.
+7. Báo cáo cuối ≤ 30 dòng.
+
+## Diễn biến
+- 26/11 phiên chính: tạo phiếu, giao coder (song song W-0587).

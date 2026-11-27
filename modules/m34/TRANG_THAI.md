@@ -1,7 +1,7 @@
 # Trạng thái — m34
 
-Mốc: 20/11/2026 16:0x (+07) · **D-m34-108 (D-lead-060): chỉ Phúc ghi .99 cho repo bán hàng; phiên m34 CHỈ ĐỌC .99**
-· BP `origin/dev` = `origin/toandeptrai` = local `toandeptrai` = `d109369c2` (21/11 15:1x, bước đồng bộ dev: gộp dev `1e2406589` của Phúc/Tài + luật gọi M3-02…07, đã đẩy; BE chưa biên dịch kiểm sau gộp) · `dev015` `699fd410c` (= dev) · M4-PLAN `87362e22`
+Mốc: 26/11/2026 11:5x (+07; mục git và Giọng đọc cập nhật 26/11, các mục khác còn ghi 20–21/11) · **D-m34-108 (D-lead-060): chỉ Phúc ghi .99 cho repo bán hàng; phiên m34 CHỈ ĐỌC .99**
+· BP: `dev` và `toandeptrai` ở cả GitLab lẫn GitHub = local `toandeptrai` = `51c9f5275` (26/11, gộp GitLab `dev` của Phúc: V410 giỏ Giờ vàng của Phúc + V411 quyền giọng đọc của m34; KHÔNG chạy test sau gộp theo lời Toàn). **Đẩy CHỈ lên GitLab, GitHub nhận qua gương (D-m34-117); cách "đồng bộ dev" và đẩy: `PHIEN.md` mục "Git của repo bán hàng"** · `dev015` `699fd410c` (= dev) · M4-PLAN `87362e22`
 · .99 (đọc 20/11 09:56): CI/CD qua GitLab PhucApu (runner LAN `m34-lan`, tự deploy theo SHA); `be`/`fe` `5b68a2162` + bản trước `efa976c61` đều KHÔNG có trên GitHub, `compose.yml` .99 ≠ dev; lớp công khai + `compose.vnpay-sandbox.yml` trong `COMPOSE_FILE`; Claude bật, khoá có nhưng **42/42 lượt HTTP 401** → chat ra câu mẫu ([rà 20/11](ra-soat/2026-11-20-m4-dev-tai.md)) · M8 `0f1a9eb5` MOCK.
 Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc gần: buổi sếp test M4 18–19/11, cổng NK-b 20/11.
 
@@ -18,7 +18,7 @@ Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc
 - **20/11 rà M4:** khoá Claude trên .99 bị từ chối (401) chứ không do mã/compose như sổ Tài ghi; tin nháp Tài (tạo khoá mới + trần chi tiêu → Phúc thay) trong [rà 20/11](ra-soat/2026-11-20-m4-dev-tai.md), CHƯA GỬI. Tài 18–20/11 chủ yếu vá luật lọc chat (#171–#176) + M3 ship/VNPAY.
 - CI GitHub repo bán hàng vẫn KẸT Billing (tài khoản PhucApu): mọi `m34-images` từ 17/11 08:42 (`9c71e37ce`, `5b92e6618`, `103036c8b`, `88d5fe01e`) hỏng ở bước bắt đầu job → không image mới. Image GHCR mới nhất có: `3627ce4f0`.
   m34.131 A (D-m34-107): tin Billing 18/11 THAY bằng tin đồng bộ GitLab ↔ GitHub (image giờ build trên GitLab) trong [rà 20/11](ra-soat/2026-11-20-m4-dev-tai.md), CHƯA GỬI.
-- D-m34-109 (thay chặn của D-m34-107): nhánh chú để sau; Toàn chấp nhận đưa `dev` (có V392–V395) lên .99 trước, Phúc xử lý thứ tự Flyway khi gộp chú. Kế hoạch: xong tab "Cước gọi" (`wp/ivr-cuoc-goi.md`, coder đang làm) → gộp `toandeptrai` → `dev` + push → tin để Toàn nhờ Phúc đưa `dev` mới nhất lên .99.
+- **Giọng đọc + trần cuộc/ngày (G-08/G-09/T-02, D-m34-114/115, 26/11):** mã XONG trên `dev` (BE 26 tuyến M8 draft.50 `a8852a7f…bcb6`, FE `/admin/ivr/voices` + `/phrases` + thẻ trần, V411 bốn quyền không gán sẵn, `queue/resume` mở nhưng đóng trên .99 vì `privileged-user-id` không đặt). CHƯA CHẠY: test sau gộp, trình duyệt thật + M8 thật, verifier cổng Nguy hiểm. Lên .99 chỉ Phúc, SAU khi Toàn đưa M8 lên bản có 26 tuyến (gói `ra-soat/2026-11-26-ban-giao-phuc-giong-doc-tran-ngay.md`; token `admin-danger` .99 có thể là tệp giữ chỗ). Chờ hợp đồng draft.51 của M8 (đặt cả bộ, màn Tỉnh–Vùng).
 - Tài: chưa thấy SHA cuối + bảng cờ + kịch bản kiểm trong sổ; báo cáo đầu ngày 18/11 ghi M4-SEP-TEST-KICH-BAN-001 READY_FOR_TEST "đang để", ".99 chạy SHA nào chưa kiểm, Phúc nắm máy" (từ 13:4x đúng: Phúc nắm máy, D-m34-108).
 - Khung chat FE bật trong image từ `3627ce4f0` → lên .99 là người ngoài Internet thấy (m34.129). P0 `FIX-CHAT-CHILD-GATE-LEAK-PUNCT-001` của Tài: "phải xong trước khi gắn Page khách thật".
 - Lượt deploy kế tiếp gồm: giao diện IVR ui-kit-v2, nginx proxy .98 (`nginx -t` trên .99 trước), ghim mạng `m34_app` (Compose tự tạo lại mạng → cửa sổ dừng M3, chạy đủ bộ), bộ ngắt mạch theo ngăn, việc "sau HTTPS": `.env` `CORS_ALLOWED_ORIGINS` thêm https://ginsengfood.vn + www (giữ http://192.168.1.99 tới pha 4), `AUTH_COOKIE_SECURE=true`.
@@ -53,7 +53,7 @@ Sẵn sàng: **40%** (chấm 10/11, chưa chấm lại) · 30/11: ĐỎ · mốc
 
 ## Quyết định đã áp (chi tiết `QUYET_DINH.md`)
 - D-m34-001…097 như sổ cũ · 098 rà Phúc: không bảo vệ nhánh, mã email trung lập, tài khoản mẫu cố tình · 099 ghim mạng `m34_app` · 100–102 nối M12 .99, kho, "hộp" · 103–104 gộp #164 không CI · 105 tắt OTP giả + nối IVR .99 · 106 đơn lạ trong khung tự xác nhận · 107 131 A, kéo + push dev về toandeptrai, chặn deploy dev tới khi nhánh chú vào.
-- Luật giữ: KHÔNG ghi .99 (D-m34-108, cần gì soạn tin cho Toàn nhắn Phúc); không push/PR/gửi tin khi Toàn chưa nói rõ từng lần; không sửa nhánh chú, không nhắn chú. M9 thuộc luồng `m9`.
+- Luật giữ: KHÔNG ghi .99 (D-m34-108, cần gì soạn tin cho Toàn nhắn Phúc); không push/PR/gửi tin khi Toàn chưa nói rõ từng lần (đẩy chỉ lên GitLab, xem `PHIEN.md`); không sửa nhánh chú, không nhắn chú. M9 thuộc luồng `m9`.
 
 ## Câu hỏi mở: m34.129 (khung chat khi tên miền đã mở — nay gắn với khoá Claude: khoá chạy là người ngoài chat với AI thật)
 - **m34.135** (LEGACY_V4, chưa gấp): nhân viên huỷ đơn giữ vì lỗi kỹ thuật ở chế độ cũ vẫn tính vào khách (khách huỷ +1, cờ cam +1), huỷ 'không bắt máy' cộng đôi hai cột thống kê, khách đọc 'huỷ theo yêu cầu của khách'. Chế độ mới đã sửa. Đề xuất: giữ nguyên LEGACY (D-m34-110, MobiFone 24/11), sửa sau khi chạy luật mới; hạn: trước khi bật `M8_RULES` thật.

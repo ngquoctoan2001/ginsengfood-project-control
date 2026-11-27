@@ -1,6 +1,13 @@
 # M1–M2 · Phiếu thực thi Development và Production trên .99
 
-**Hồ sơ 26/11/2026, chỉ đối chiếu mã và bằng chứng cục bộ.** Toàn đã đồng ý các phương án trong phiên điều phối. Lệnh m12.243b, lượt đọc P0 và lượt ghi P1–P7 có phạm vi riêng. Phiên UAT giữ quyền chạy test. Phiếu này chưa xác minh trạng thái hiện tại trên .99.
+**Hồ sơ 26/11/2026.** Toàn đã đồng ý các phương án trong phiên điều phối và ra lệnh riêng m12.243b (D-m12-142). Lượt đọc P0 sau mẻ thật và lượt P1–P7 có phạm vi riêng. Phiên UAT giữ quyền chạy test sau khi m12.243b xong.
+
+## Kết quả m12.243b ngày 26/11
+
+- `.99` chạy **`d4163331ce9804f625c81bc448a23a2298f757b4` Development từ 09:16:10 giờ Việt Nam**. Đối chiếu 5 image ID và nhãn revision trước/sau khi nạp. 4 dịch vụ ứng dụng đang dùng đúng ảnh. Đường lui `7c7d07234f6fdb2292c711dee5c1d319503137f9`.
+- Sao lưu tiền kiểm PASS, bản ngay trước đổi container lúc 09:15:48 **PASS**, 3.681.867 byte. Migrator báo không có migration mới cần áp. PostgreSQL cùng ID, Compose giữ đúng nội dung Development ban đầu.
+- Sáu dịch vụ chạy. Health live/ready, API cấu hình đăng nhập, trang đăng nhập Admin/PWA và trang truy xuất trả 200. Phần đăng nhập kiểm ở mức tuyến HTTP. M3 thực hiện **19/19** lời gọi availability trả 200 trong lượt đối chiếu sau nâng, không thấy 401/403/429/500 ở các lời gọi này.
+- Máy Windows khởi động lại giữa lượt dựng. Ba ảnh hoàn tất được giữ lại, sau khi mở lại Docker chỉ dựng tiếp Public Trace và Shopfloor PWA. Lượt kiểm duy nhất đã bàn giao lại cho UAT.
 
 ## Bản ứng viên và đường lui
 
@@ -9,7 +16,7 @@
 | Candidate | `d4163331ce9804f625c81bc448a23a2298f757b4`. HEAD và hai nhánh theo dõi remote cục bộ cùng SHA lúc rà. Hai commit đã lên remote theo nhật ký 26/11. Diff từ `7c7d07234` không đổi deploy hay migration. |
 | Compose SHA-256 | `1df348da708da6831537a02b59e1de860c37fde70f3eebf8a3ff522481b1a550` |
 | Caddyfile SHA-256 | `3639671f7118bfbb7a4624751a1a8c32912196794d3c333b06ce170c719f7a3c` |
-| Bản chạy được ghi nhận | `7c7d07234` Development theo nhật ký 25/11. Đo lại sau khi Toàn duyệt truy cập. Lấy SHA đầy đủ của bản thực sự đang phục vụ làm đường lui Development. `a0ccc740e` là đường lui của lượt 25/11. |
+| Bản chạy được ghi nhận | `d4163331c` Development từ 26/11 09:16:10. Đường lui xác minh của m12.243b là `7c7d07234`. |
 | Phạm vi hash | Hai băm lấy từ byte blob Git, trùng ở `7c7d07234` và candidate. Dùng gói giải nén từ `git archive` để giữ LF. |
 
 ## 1. Development · m12.243b
@@ -62,4 +69,4 @@ bash "$G/chay-tat-ca.sh" --ban d4163331c \
 - [Script dựng ảnh từ Git](build_m12_images_sha.sh)
 - Trong ops-core, runbook `25-11-chuyen-production-99-runbook.md` mục 2–9, WP17 mục 2.3 bước 0, `deploy/m12/trien-khai.sh` và `deploy/m12/chuyen-production-99/chay-tat-ca.sh`.
 
-Trạng thái M1–M2 đã xác minh candidate và hai băm cục bộ, m12.243b và các lượt .99 vẫn chờ lệnh đúng phạm vi của Toàn.
+Trạng thái M1–M2 đã hoàn tất m12.243b trên .99 Development, lượt P0 sau mẻ thật và P1–P7 chờ lệnh riêng.

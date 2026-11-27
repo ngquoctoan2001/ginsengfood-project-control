@@ -1,9 +1,9 @@
 # Phiên `m34` — rà soát M3 và M4 trong business-platform
 
 Lead dùng phiên này để **đọc, kiểm tra, rà soát, báo cáo** ba mảng việc chạy song song, và để **code phần kết nối đơn hàng
-M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh chú Dũng vào `dev`; code của Toàn trên `toandeptrai` Toàn tự gộp vào `dev` (PR). Khi rà việc Phúc/Tài: đồng bộ checkout an toàn theo quy trình rồi đọc/kiểm; không sửa mã, commit, push hay tạo merge commit trừ khi Lead lệnh rõ
+M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh chú Dũng vào `dev`; code của Toàn trên `toandeptrai` Toàn tự gộp vào `dev` (đẩy thẳng lên GitLab, mục "Git của repo bán hàng" bên dưới). Khi rà việc Phúc/Tài: đồng bộ checkout an toàn theo quy trình rồi đọc/kiểm; không sửa mã, commit, push hay tạo merge commit trừ khi Lead lệnh rõ
 (và báo người làm trước). Phần M3 → M8: commit trên nhánh `toandeptrai`; push/PR/merge khác vẫn hỏi Lead từng lần.
-**"Đồng bộ dev" (D-m34-112, Toàn chốt 21/11):** khi Toàn nói đúng cụm này, phiên làm đủ ba bước: `git fetch` + gộp `origin/dev` vào `toandeptrai` (khoá `@dong-bo`, tự xử lý xung đột), kiểm nhanh biên dịch + test hợp đồng lọc (khoá `@bo-kiem-du`) và quét bí mật các dòng mới, rồi `git push origin toandeptrai:dev`. Cụm này CHỈ cho phép đẩy `toandeptrai` lên `dev`; đẩy nhánh khác, mở PR, deploy .99, đổi cờ vẫn hỏi riêng. Đỏ không giải thích được hoặc xung đột không chắc cách giải thì dừng và hỏi, không đẩy.
+**Đẩy ở đâu và "đồng bộ dev" làm thế nào: xem mục "Git của repo bán hàng" bên dưới (D-m34-112, 116, 117). Tóm tắt: chỉ đẩy lên GitLab; GitHub nhận qua gương; lệnh đẩy chỉ chạy khi Toàn nói đúng việc đó.**
 
 **Máy .99 (D-m34-108, D-lead-060, thay phần "m34 deploy .99" của D-m34-092): phiên này CHỈ ĐỌC .99.** Mọi thay đổi trên .99 của repo bán hàng
 (đưa bản mới, `.env`, compose, cờ, `cong-khai-99.sh lui|tat`, tạo lại container, sửa dữ liệu) chỉ Phúc làm, bằng image CI + `trien-khai.sh`, giữ lớp
@@ -13,15 +13,49 @@ M3 → M8** (D-m34-003). Từ 16/11 (D-m34-091): Phúc rà + gộp các nhánh c
 chạy `git branch --show-current`, khác `toandeptrai` thì dừng hỏi Lead; không tạo nhánh mới; không worktree (D-lead-063): sửa và rà thẳng trong checkout, theo `chung/CACH_LAM.md` §3.
 Luật này cũng nằm ở `CLAUDE.local.md` (gốc repo, loại khỏi git) và `~/.codex/AGENTS.md` cho phiên mở thẳng trong repo.
 
+## Git của repo bán hàng — đẩy ở đâu, đồng bộ dev thế nào (D-m34-112, D-m34-116, D-m34-117; cập nhật 26/11)
+
+**Đẩy ở đâu: CHỈ GitLab** (`gitlab` = `https://gitlab.com/PhucApu/ginsengfood-business-platform`, nơi Phúc chạy CI và deploy trên nhánh `dev`).
+GitHub (`origin`) chỉ để lấy về; GitHub nhận code qua **gương GitLab → GitHub** (gương giữ "Keep divergent refs": KHÔNG tắt, tắt là gương ghi đè ép và mất commit).
+Hai lệnh đẩy hợp lệ: `git push gitlab toandeptrai:dev` (vào `dev`) và `git push gitlab toandeptrai` (nhánh của Toàn). Mọi lệnh đẩy: chỉ khi Toàn nói đúng việc đó (cụm "đồng bộ dev" cho phép đúng `toandeptrai:dev`); chạy riêng, không nối với lệnh khác; không force; không đẩy nhánh khác; không mở PR; không `git push origin`.
+Tài và Toàn cùng đẩy thẳng vào `dev` trên GitLab (không còn PR; D-m34-019/056 cũ hết hiệu lực). Lên .99 vẫn chỉ Phúc.
+
+Cấu hình trong checkout (đã đặt 26/11): `remote.pushDefault=gitlab`; `origin` có địa chỉ đẩy đặt sai cố ý nên lỡ `git push origin` báo lỗi; `toandeptrai` theo dõi `gitlab/toandeptrai`. Nếu `git remote -v` thiếu `gitlab` hoặc `origin` đẩy được thật (checkout mới, cấu hình mất) thì dựng lại:
+
+```
+git remote add gitlab https://gitlab.com/PhucApu/ginsengfood-business-platform.git
+git config remote.pushDefault gitlab
+git config remote.origin.pushurl KHONG_DAY_LEN_GITHUB__chi_day_len_gitlab_github_nhan_qua_guong
+git branch --set-upstream-to=gitlab/toandeptrai toandeptrai
+```
+
+(GitLab là kho riêng tư: `git fetch/push` dùng thông tin đăng nhập đã lưu của Toàn trên máy; API và pipeline không đọc được nếu không có token, không dùng cách khác để đọc.)
+
+**"Đồng bộ dev" (Toàn nói đúng cụm này) làm theo thứ tự:**
+
+1. `git branch --show-current` phải là `toandeptrai`; `git status` chỉ được dở hai tệp của Toàn (`.gitignore`, `docs/weekly-tracking/nguyen-quoc-toan.md`): không commit, không stash.
+2. Khai khoá: `python tools/khoa_tep.py khai --repo ginsengfood-business-platform --chu m34/dong-bo-<ngày> --tep @dong-bo <thư mục sẽ đổi>`; thoát mã 2 (chồng khoá) thì dừng. Rồi `git fetch gitlab` và `git fetch origin`.
+3. Đọc lệch trước khi gộp: `git rev-list --left-right --count gitlab/dev...origin/dev` và `git log toandeptrai..gitlab/dev`. GitLab `dev` là nguồn thật. GitHub `dev` có commit mà GitLab không có thì báo Lead (gương đang lệch), không tự xử bằng force.
+4. Gộp `gitlab/dev` vào `toandeptrai`: `git merge --ff-only gitlab/dev` khi toandeptrai không có commit riêng, nếu không `git merge --no-ff gitlab/dev -m "merge: gộp gitlab/dev (<sha>) vào toandeptrai"`. Xung đột thì tự giải như coder; không chắc cách giải thì dừng và hỏi.
+5. **Git gộp sạch về chữ chưa đủ** (bài học 26/11: hai nhánh cùng đặt V410, git không báo, `be` không khởi động): chạy `python back-end/scripts/ci/kiem_migration.py` (trùng/thiếu số Flyway) và `python back-end/scripts/ci/docker_tests.py --check`; xem số migration cao nhất bằng `git ls-tree -r --name-only HEAD -- back-end/src/main/resources/db/migration`. Máy này dùng `python`, KHÔNG dùng `python3` (là bản giả của Windows). Rồi kiểm nhanh biên dịch + test hợp đồng lọc dưới khoá `@bo-kiem-du`; Toàn có thể dặn "khỏi test" từng lần: khi đó ghi CHƯA CHẠY vào nhật ký và vào tin cho Phúc. Bộ đủ BE/FE chạy MỘT lần trước khi báo Phúc lên .99 (D-lead-064), không bắt buộc trước khi đẩy `dev` (đẩy chỉ làm GitLab dựng ảnh, Phúc deploy tay).
+6. Quét bí mật các dòng mình thêm (khoá, token, số từ 10 chữ số trở lên; số điện thoại giả trong test bộ lọc lý do là chấp nhận được).
+7. Ngay trước khi đẩy: `git fetch gitlab` lần nữa; `gitlab/dev` phải là tổ tiên của HEAD. Nếu có người đẩy xen (Phúc/Tài) hoặc lệnh đẩy báo "fetch first" thì fetch, gộp tiếp, chạy lại bước 5, rồi đẩy lại; không force.
+8. `git push gitlab toandeptrai:dev` (và `git push gitlab toandeptrai` khi Toàn cho). Kiểm `git ls-remote gitlab` và `git ls-remote origin`: gương cập nhật GitHub sau ít phút; bốn ref (`dev` và `toandeptrai` ở hai nơi) phải trùng nhau.
+9. Giải khoá, ghi `nhat-ky` (SHA trước và sau, gì đã kiểm, gì CHƯA CHẠY), nhắn Toàn để báo Phúc nếu có migration mới hoặc đổi số.
+
+**Số migration:** trước khi viết migration mới kiểm cả `origin/*` và `gitlab/*` (`git ls-tree -r --name-only <ref> -- back-end/src/main/resources/db/migration`); cao nhất V411 ngày 26/11, lần sau lấy từ V412; hỏi Tài/Phúc nếu họ có nhánh đang dở. .99 Flyway `out-of-order=false`, nên số mới luôn phải lớn hơn mọi số đã có ở cả hai nhánh.
+
+**Phúc hay gộp tay nhánh của Toàn vào `PhucApu`:** sau khi đẩy lên GitLab `dev`, báo Phúc là đã đẩy và đừng gộp thêm; nếu Phúc đã gộp (như 26/11 10:47) thì lấy `gitlab/dev` về gộp tiếp trước khi đẩy.
+
 ## Repo và nguồn
 
-- Repo: `C:\Projects\ginsengfood-business-platform` (GitHub `PhucApu/ginsengfood-business-platform`). Spring Boot `back-end/` + Next.js `front-end/`.
+- Repo: `C:\Projects\ginsengfood-business-platform` (GitLab `PhucApu/ginsengfood-business-platform` là nơi đẩy, CI và deploy; GitHub cùng tên chỉ nhận qua gương). Spring Boot `back-end/` + Next.js `front-end/`.
 - Nhánh: `dev` (chung) · `dev015` (Tài, PR `dev015 → dev`, Tài tự gộp PR của mình, Lead soát cuối tuần) · `PhucApu` (Phúc) ·
-  `toandeptrai` (Lead, M3 → M8, tạo 02/11 từ `origin/dev`, checkout chính đang ở nhánh này; đã push, theo dõi `origin/toandeptrai`) ·
-  `master` (cũ, sau `dev` hơn 1.600 commit, không dùng). CI chỉ chạy trên PR vào `dev`/`master`; job front-end đang tắt (`if: false`).
-- D-m34-019 (03/11): mọi lần vào `dev` qua PR (Phúc `PhucApu → dev`, Tài `dev015 → dev`, Toàn `toandeptrai → dev`, cả sổ tracker); trước đó
+  `toandeptrai` (Lead, M3 → M8, tạo 02/11, checkout chính đang ở nhánh này; theo dõi `gitlab/toandeptrai`) ·
+  `master` (cũ, sau `dev` hơn 1.600 commit, không dùng). CI: GitLab chạy `kiem-tra-khuon` + `build-images` khi đẩy `dev`; test BE/FE không chạy tự động (D-lead-064); CI GitHub kẹt Billing từ 17/11, không dùng.
+- (Lịch sử, HẾT HIỆU LỰC từ 21–26/11, thay bằng mục "Git của repo bán hàng":) D-m34-019 (03/11): mọi lần vào `dev` qua PR (Phúc `PhucApu → dev`, Tài `dev015 → dev`, Toàn `toandeptrai → dev`, cả sổ tracker); trước đó
   từ PR #145 (30/10) Phúc và sổ tracker đẩy thẳng `dev` → CI không chạy. Rà: lần vào `dev` không có "Merge pull request #" là vi phạm.
-- D-m34-056 (10/11, m34.81 A): PR vào `dev` cần **CI bộ nhanh xanh + 1 người soát (Toàn)**; không tự gộp PR của mình khi CI đỏ. Hiện `dev` đỏ sẵn 21 test (hậu kiểm RS1 10/11)
+- (Lịch sử, hết hiệu lực như dòng trên) D-m34-056 (10/11, m34.81 A): PR vào `dev` cần **CI bộ nhanh xanh + 1 người soát (Toàn)**; không tự gộp PR của mình khi CI đỏ. Hiện `dev` đỏ sẵn 21 test (hậu kiểm RS1 10/11)
   nên bộ nhanh chưa có: gói M34-CI đang dựng (tách `ci-unit` nhanh bắt buộc / đầy đủ chạy riêng). PR #155 (M3-112) gộp ngoại lệ một lần khi không có test đỏ ngoài 21 test đã biết.
 - Sổ điều hành của Tài: `C:\Projects\M4-PLAN` (bản clone, Tài tự push). Trước khi dùng: `git -C C:\Projects\M4-PLAN pull --ff-only`.
   **Chỉ đọc đoạn:** báo cáo đầu ngày mới nhất `02_PROJECT_CONTROL/04_REPORTS/PERIODIC/bao-cao-dau-ngay-<ngày>.md`;
@@ -76,7 +110,7 @@ Mặc định `all` = 3 auditor (`phuc`, `tai-m3`, `tai-m4`) + 1 liên ngành, c
 báo cáo tuần trong `docs/weekly-tracking/bao-cao/`, nhật ký `docs/weekly-tracking/<người>.md`,
 Sheet `node tools/task-tracker/sheet-sync.mjs list --module M3|M4`, và (Tài) sổ `C:\Projects\M4-PLAN` theo đoạn ở trên.
 Áp bước đồng bộ của `.claude/commands/ra-soat.md`: kiểm checkout sạch, không có phiên đang dùng; pull `--ff-only --no-rebase`
-trên `toandeptrai` từ `origin/toandeptrai` và pull an toàn M4-PLAN. Sai nhánh dừng hỏi Lead; không checkout sang dev/dev015/PhucApu.
+trên `toandeptrai` từ `gitlab/toandeptrai` và pull an toàn M4-PLAN. Sai nhánh dừng hỏi Lead; không checkout sang dev/dev015/PhucApu.
 Rà từng SHA của task/PR trên nhánh nguồn/đích tương ứng, không dùng HEAD toandeptrai thay cho mọi task của Phúc/Tài.
 Rà toàn bộ DONE/REVIEW theo từng ID/tiêu chí/code/PR/test, ghim SHA;
 kiểm không thiếu/lặp và đọc lại cuối lượt. Phiên chính cập nhật Lead duyệt: ĐẠT PHẠM VI → Đạt; CẦN SỬA → Cần sửa;
@@ -87,7 +121,7 @@ Kết luận task không thay quyền merge/deploy. `bao-cao`/`lien-module` gi�
 
 ## Kiểm đầu phiên
 
-- `git -C <repo> fetch --all --prune`; đầu `origin/dev`, `origin/dev015`, `origin/PhucApu`; commit mới mỗi nhánh từ mốc trong
+- `git -C <repo> fetch --all --prune`; đầu `gitlab/dev`, `gitlab/dev015`, `gitlab/PhucApu` (và `origin/*` để so gương); commit mới mỗi nhánh từ mốc trong
   `TRANG_THAI.md` (`git log --format='%h %an %ad %s' --date=short <mốc>..origin/<nhánh>`); PR mới (dòng "Merge pull request #").
 - Sổ Tài: pull, đọc báo cáo đầu ngày mới nhất (mục "Cần anh làm", "Vướng").
 - Sheet M3/M4: việc trễ hạn, bị chặn.
