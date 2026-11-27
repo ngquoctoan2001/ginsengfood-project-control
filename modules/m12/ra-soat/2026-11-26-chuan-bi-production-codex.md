@@ -69,4 +69,4 @@ bash "$G/chay-tat-ca.sh" --ban d4163331c \
 - [Script dựng ảnh từ Git](build_m12_images_sha.sh)
 - Trong ops-core, runbook `25-11-chuyen-production-99-runbook.md` mục 2–9, WP17 mục 2.3 bước 0, `deploy/m12/trien-khai.sh` và `deploy/m12/chuyen-production-99/chay-tat-ca.sh`.
 
-Trạng thái M1–M2 đã hoàn tất m12.243b trên .99 Development, lượt P0 sau mẻ thật và P1–P7 chờ lệnh riêng.
+Trạng thái M1–M2 đã hoàn tất m12.243b trên .99 Development. Theo D-m12-144, đã duyệt P0 chỉ đọc sau xác nhận mẻ. P0 chưa chạy. P1–P7 chờ lệnh riêng.

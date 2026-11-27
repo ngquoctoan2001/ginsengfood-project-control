@@ -1,44 +1,39 @@
 # Trạng thái — m6
 
-Mốc dữ liệu: 18/11/2026 07:53 · module5 `main` `aa6d55d4` = `origin/main`, checkout sạch (257 commit từ `6ee2bedc`, 34 chạm `m6/`) · tag `m6-l1-done` → `d7fe04e`
-· Sheet đọc 07:53 · sổ Tài M4-PLAN local `fdc7e78b`, remote `3ff48a75` (chưa pull, sau 93; pull ở bước đầu `/ra-soat`). Phiên mở ở tài khoản Claude mới
-(bàn giao `modules/lead/ban-giao/2026-11-18-chuyen-tai-khoan.md` §3.5).
-Lịch: HTTPS `mkt.` chạy thật 17/11 ~16:3x (Caddy trên .98, D-m6-026) → Go/No-go 19/11, chậm nhất 20/11 (D-m6-013); lịch Tài 20/11; chạy thật 30/11.
-Sẵn sàng: chưa chấm lại theo trọng số (`/ke-hoach`). Phần lớn P0 ở bậc Xong mã; chưa hạng mục nào Chạy thử.
+Mốc 27/11/2026 · pull 12:48 · module5 `main f9318df5` = origin/main; M4-PLAN `main a1245e55` = origin/main; hai checkout sạch. M6 nằm trong module5/m6, không dùng repo module6 lưu trữ.
+Sheet đọc 12:48, đối chiếu 13:03; rà23 task và ghi/đọc lại W/X 23/23. Trạng thái của Tài giữ nguyên. Hạn chạy thật 30/11(D-lead-025); chưa có bằng chứng chốt Go/No-go mới.
 
-## Từ lượt rà 4 (16/11, [bản rà](ra-soat/2026-11-16-tai.md)) tới nay
+## Lượt rà 5 — 27/11
 
-- Tài sửa cả 12 task Cần sửa 17/11 07:56–10:21 (Sheet "Chờ review", cập nhật sau lượt rà) + 2 task mới chờ rà: M6-039 (cờ an toàn đọc từ biến, #130),
-  M6-054 (hộp nhận `m6_inbound_event` migration 0029 + consumer `ORDER_VERIFIED`, #146) → **14 task cần rà lượt 5**.
-- PR gộp `main`: #130 (M6-039, M6-042 mã lý do từ chối JWT), #132 (sổ rà lượt 4), #134 (M6-100 bản khai khuôn A–D), #146 (M6-054). Hồ sơ Go/No-go M6-125 v0.3.
-- Sổ DL M6: DL-105…109 = D-m6-021…025 (người chốt Toàn); DL-110…113 "CẦN XÁC NHẬN, chờ Tài ký" (110 map tên v1, 111 smoke Go/No-go S1–S4,
-  112 nhãn STAGED + commit ứng viên — ghi "Tài và anh Toàn chờ chốt", 113 ba điểm lệch hợp đồng triển khai chung).
-- Báo cáo đầu ngày Tài 18/11 07:38: .98 chạy `43d96da4` (deploy 17/11 15:37); M6-159 (`deploy.py` thư mục 700) Tester FAIL, phải gộp trước deploy M6 kế;
-  M6-055 chờ Tester lượt 2; deploy .98 đợt 2 dự kiến chiều 18/11; báo cáo còn ghi "HTTPS .98 chưa có giờ" (lỗi thời).
-- Hộp thư `m6-2026-11-16-m5-jwt-t6.md` (D-m5-050: mỗi người một `sub`, thu hồi khẩn = đổi khoá → khu Quảng cáo đăng xuất cùng M5) đã áp vào `PHIEN.md`, chuyển `xong/`.
-- D-m6-026 (Caddy .98), D-m6-027 (bên mình tự sinh khoá JWT + phát token) đã áp vào `PHIEN.md`, `SAN_SANG.md`. Dọn máy: không dừng gì.
+- **13 Đạt,10 Cần sửa,0 chờ sửa trước lượt rà.** [Bản rà](ra-soat/2026-11-27-tai.md) · [Bảng23 task](ra-soat/evidence/2026-11-27-tai/task-review.md).
+- Từ lượt rà 16/11(`6ee2bedc`):136 commit chạm M6,121 tệp;21 PR M6 gộp từ 17/11. Có inbox/hoàn-huỷ/quy kết/dashboard giả lập M3, liên kết conversion↔measurement↔DQ, nhiều sửa bảo mật và deploy.
+- Đạt: M6-014,024,038,039,051,054,055,056,130,133,157,159,160.
+- Cần sửa: M6-042,052,057,058,082,100,120,122,125,131. Cụ thể đã nối ghi chú X và chấm W.
+- Test lọc36 tệp/1085 ca:1084 pass,1 fail sau sửa runner thiếu git/chạy lại deploy;0 error,0 skip. Ca đỏ là fixture/giả định JSON sâu trên Linux Py 3.12.16, chưa chứng minh lỗi production. Không phải full suite.
+- RUNBOOKPG 16 trống:31 migration áp dụng, chạy lại0, pending 0. Docs 0 lỗi, 40 cảnh báo, traceability khớp.
 
-## Việc chặn
+## Vận hành: bằng chứng mới thay mốc18/11
 
-| Việc | Chặn gì | Ai gỡ | Hạn |
-|---|---|---|---|
-| Bật JWT trên .98: cặp khoá bên mình sinh, token có `iat` + `sub` riêng; Tài đề xuất chỗ sinh + người phát, Toàn duyệt (D-m5-052) | Khu Quảng cáo 401; nhập/duyệt chi phí cho M9 | Tài → Toàn | 19/11 |
-| Deploy .98 đợt 2 (M6 có M6-159) + dời dữ liệu B2–B11 | Chạy thử M6 bản mới trên máy | Tài | 19/11 |
-| Deploy key .98 có quyền ghi (TRK-93, trái D-m6-019) | An toàn repo | Toàn gắn lại khoá chỉ đọc | trước deploy đợt 2 |
-| Tài chưa biết HTTPS `mkt.` đã chạy (báo cáo 18/11) | Khai Meta, trang chính sách (phía M5) | Toàn gửi tin HTTPS còn treo (bàn giao §2 mục 3, phiên `lead`) | 18/11 |
-| M6 chưa nhận event ngoài test: route track/conversions chưa gắn (DL-O10 Tài + Phúc), DQ không có nguồn → KPI HOLD | ROAS null; chỉ đường chi phí dùng được ở Go/No-go | Tài, Phúc | trước chạy thật |
+- Log .98 ngày 21/11 có image-check 0, migration 0031, health 200,M6B_DONE; hồ sơ login/dashboard đã có. Bỏ nhận định cũ “chưa bật JWT” và “M6-159 chưa sửa” khỏi danh sách chặn mã.
+- BAN_KHAI ghi build/deploy bảo mật24–25/11 đạt. Lead chỉ đối chiếu log/tài liệu, chưa SSH/live UAT và chưa xác nhận SHA image đang phục vụ.
+- Chưa nối doanh thu M3 thật; reader runtime vẫn unavailable, route nguồn còn đóng; revenue/ROAS chưa được nghiệm thu. BLOCKED/OFF/OFF giữ nguyên.
 
-## Cần bạn quyết
+## Việc chặn cần theo dõi
 
-- **m6.20** Họp Go/No-go M6 ngày nào? A = 20/11 cùng M5 theo lịch Tài · B = 19/11 đúng 2 ngày làm việc sau HTTPS. Đề xuất **A**: .98 chưa có JWT
-  và M6-159, 14 task chưa Đạt; 20/11 vẫn trong hạn D-m6-013. Hạn trả lời 18/11; trễ quá 20/11 là phạm D-m6-013.
-- **m6.21** Chốt DL-112 như Tài đề xuất? `STAGED` = có trong `main` + test Postgres thật nhưng chưa kiểm trên .98, `DONE` chỉ khi đã kiểm trên .98;
-  commit ứng viên Go/No-go = `main` sau khi PR sửa lượt 4 gộp, có `CI_LOCAL` N/N, hồ sơ M6-125 ghi đúng SHA. Đề xuất **có**. Hạn trước họp; trễ thì hồ sơ không chốt được SHA.
+| Việc | Người xử lý | Mốc |
+|---|---|---|
+| DL-228(M5),110,120,113,111,112 chưa ký/chốt; smoke và hồ sơ lệch code | Tài; phần thuộc Lead trình Toàn | trước Go/No-go |
+| M6-058/DL-O81: NO_SOURCE hay REVENUE_SOURCE_UNAVAILABLE khi chưa có đơn | Tài trình người quyết | hạn DL 28/11 |
+| M6-082/TRK-90: policy=None vẫn enqueue, chưa có task lane E nối tiếp | Tài | trước mở gửi/khép tiêu chí |
+| M6-122: T7/T8/T9 thiếu bằng chứng; test closed-3000 đỏ trên Linux; báo cáo còn SHA cũ | Tài/phía giữ quyền tương ứng | trước production |
+| M6-125/131: hồ sơ Go/No-go và release notes chưa cùng candidate; thiếu chứng cứ các gate thật | Tài soát → Toàn quyết | trước chạy thật 30/11 |
+| Nguồn M3, DQ/recall và nối M9 thật còn phải chứng minh theo từng gate | Tài, Phúc | theo phạm vi pilot được duyệt |
 
-## Đề xuất tiếp
+## Cần quyết / tiếp theo
 
-1. `/ra-soat tai` lượt 5 ngay: 14 task, gồm DL-105…113, hồ sơ M6-125 v0.3, migration 0029 (M6-054 chạm doanh thu `ORDER_VERIFIED`), mã M6-039.
-2. Tin Tài sau lượt 5: kết quả + JWT (đề xuất chỗ sinh khoá/người phát), M6-159 trước deploy đợt 2, ký DL-110/111/113, sửa "HTTPS chưa có giờ".
-3. `/ke-hoach` chấm lại % sau lượt 5, trước họp Go/No-go.
+- m6.20 (lịch họp 19–20/11) đã qua; chưa thấy biên bản quyết trong nguồn đã rà. Tài cập nhật lịch và nộp pack mới ở M6-125; không tự ghi quyết định thay Lead.
+- m6.21/DL-112 về STAGED/DONE và SHA ứng viên vẫn chưa chốt; giữ chờ quyết.
+- M6-114: T-5/6/7/10 tiếp tục mặc định theo DL-104 tới khi có quyết định mới.
+- [Tin nhắn nháp](ra-soat/2026-11-27-tai-tin-nhan-nhap.md) đã soạn, chưa gửi. Sau khi Tài sửa, rà lại đúng task được cập nhật; chấm trọng số sẵn sàng bằng /ke-hoach khi cần.
 
-Không có WP code/agent đang chạy; không worktree rà còn lại. Không sửa/commit repo Tài.
+Không sửa/commit mã repo Tài, không push/deploy/đổi cờ trong lượt rà. Không worktree rà.

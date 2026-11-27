@@ -128,3 +128,7 @@ Mốc 25–26/11 dùng làm số gốc về kết nối. Đã kiểm khô monito
 - **M12-055.** Phúc báo bộ nhận webhook phía M3 đang tắt. Vòng hỏi 4 phút hiện là cơ chế M3 biết thay đổi. Phúc sẽ báo sau về người trực và đầu nhận. S16 tiếp tục chờ bằng chứng webhook tới bên nhận thật.
 - **Điền hai lượt hỏi.** Sau khi FRM-22 của mẻ đúng môi trường đã xác nhận, lấy đúng mã SKU, kho và đơn vị. Đọc lượng bán được Q tại thời điểm kiểm. Với Q là số hộp dương và SKU đã đủ điều kiện, hỏi 1 hộp cho S02 và Q + 1 hộp cho S03. Ví dụ Q = 6 hộp thì gửi 1 và 7. Ghi hai kết quả, giờ kiểm, bản hai bên và lý do trả về. Mẻ tập trên lab cục bộ có dấu vết riêng ở môi trường demo.
 - **Sheet.** Đã cập nhật và đọc lại M12-094 lúc 12:36, M12-054 và M12-055 lúc 12:37.
+
+## Đối chiếu trên giao diện lúc 15:21
+
+Sau khi Toàn cấp quyền Chrome và đăng nhập, đã kiểm chỉ đọc `ops.ginsengfood.vn`. Danh sách Nhập kho thành phẩm và Lệnh sản xuất ở bộ lọc mặc định trống. Màn Tồn theo SKU hiển thị 19/19 dòng Chưa có tồn, 0 mẻ, 0 đơn vị và 0 vị trí. Chưa có mã phiếu/mẻ và lượng khả dụng dương để đối chiếu. M12-054 còn mở; S02/S03 giữ `NOT_RUN`. Dòng 7/9 đã bổ sung căn cứ trong [biên bản](../wp/M12-010-bien-ban-27-11.md).

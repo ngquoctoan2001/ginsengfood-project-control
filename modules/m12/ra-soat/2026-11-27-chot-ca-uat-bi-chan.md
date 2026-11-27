@@ -48,3 +48,7 @@ Toàn chuẩn bị một điện thoại Android có camera sau hoạt động v
 | N07-F02-T01 | Mở PWA xưởng demo với vai R-PROD-OP, cho phép camera và dùng mẫu QR riêng của PWA. Kiểm mã, nguồn nhận diện và trạng thái nghiệp vụ sau quét. |
 
 Một phiên UAT thực hiện tuần tự. Giữ năm ca ở Bị chặn đến khi có bằng chứng từng bước, cập nhật sổ và đọc lại M12-009, M12-105 sau từng lô.
+
+## Lượt giao lại m12.248 · 27/11
+
+Toàn giao Codex thao tác qua ChatGPT Extension trên Chrome. Máy Windows không nhận diện camera vật lý ở lượt rà thiết bị. Bốn ca quét chờ máy có camera và lab HTTPS/loopback phù hợp. Ca J03-F04-T01 đã xác định bản làm việc có manifest khai icon và route icon, còn chờ bàn giao lượt UAT để xác minh Chrome cài được ứng dụng, mở từ biểu tượng và tra lại mã demo. Khóa `@bo-kiem-du` còn thuộc `m12/uat-codex`. Chưa ghi kết quả thiết bị mới.
